@@ -1,0 +1,913 @@
+<!-- current counter = 12 -->
+
+
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”>
+
+<html xmlns=”https://www.w3.org/1999/xhtml” lang=”en” xml:lang=”en”>
+	<head>
+		<meta name="viewport" content="width=device-width">
+		<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8” />
+		<link rel="stylesheet" type="text/css" href="../css/mainCSS.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/otherStyles.css"/>
+		<title> Keivan Hassani Monfared's Home Page </title>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+ 			for(i = 1; i < 200; i++){ // i is the IDnumber of codes. See next line.
+ 			toggleSlowly('code' + i);
+ 			}
+ 			});
+ 			
+ 			$(document).ready(function(){
+ 			for(i = 1; i < 200; i++){ // i is the IDnumber of outputs. See next line.
+ 			toggleSlowly('output' + i);
+ 			}
+ 			});
+ 			
+ 			$(document).ready(function(){
+ 			for(i = 1; i < 200; i++){ // i is the IDnumber of descriptions. See next line.
+ 			toggleSlowly('description' + i);
+ 			}
+ 			});
+
+ 			function toggleSlowly(elementId){
+ 			$("#" + elementId).slideToggle(500);
+ 			} 		
+		</script>
+	
+		<!-- load mathjax scripts -->
+		<script type="text/javascript"
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<!-- load floating script-->
+		<script type="text/javascript" src="css/floating-1.12.js">  </script>
+
+    <script type="text/javascript">  
+        floatingMenu.add('floatdiv',  
+            {  
+                // Represents distance from left or right browser window  
+                // border depending upon property used. Only one should be  
+                // specified.  
+                targetLeft: 10,  
+                // targetRight: 0,  
+      
+                // Represents distance from top or bottom browser window  
+                // border depending upon property used. Only one should be  
+                // specified.  
+                targetTop: 10,  
+                // targetBottom: 0,  
+      
+                // Uncomment one of those if you need centering on  
+                // X- or Y- axis.  
+                // centerX: true,  
+                // centerY: true,  
+      
+                // Remove this one if you don't want snap effect  
+                snap: true  
+            });  
+    </script>
+	
+	<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+    <script>
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+    </script>
+	
+	</head>
+
+
+
+
+	<body>
+
+
+
+	<div class="container">
+
+	<div class="myTitle">
+		KEIVAN HASSANI MONFARED
+	</div>
+	<div class="myTitleFooter">University of Calgary</div>
+
+	<div id="menu">
+	<span class="menuItem"><a href="../index.html">home</a></span>
+	<span class="menuItem"><a href="../research.html">research</a></span>
+	<!--<span class="menuItem"><a href="../studies.html">studies</a></span>-->
+	<span class="menuItem"><a href="../teaching.html">teaching</a></span>
+	<span class="menuItem"><a href="../contact.html">contact</a></span>
+	<span class="menuItem"><a href="../cv.html">cv</a></span>
+	<!--<span class="menuItem"><a href="../other.html">other</a></span>-->
+	</div>
+	
+		<div id="pageContent">
+			<div id="mainContent">
+		
+			<h2 class="heading2"> About SageMath </h2>
+			<div>
+			<img class="" src="" alt="SageMath" style="width: 300px;"/><br>
+
+			SageMath is an open source math software that allows you do various types of computations and visualizations. Below I provide some of the code that I have used in my classes to visualize hard topics for students, or just symply provide them a tool to play around with the objects that they face in a course. The links open up in a sage cell server. You might need to hit the "Evaluate" button in order to see the output. Please send me any comments or updates/modifications of the code you see. I'm interested in developing them further. If you just want to see the code or an output, click on the buttons next to the title.
+		
+		
+			<h2 class="heading2"> Calculus </h2>
+				 
+				<ul class="studiesListItems"> 
+			
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJyNU02L2zAQvRv8HwaXJXKjuHbCFrrgQy8tvZhA2VNIQRvLtqgtBVlJnP76jj68m6UtW2PM6HnmvRnNzDt4HDlU_GKUXIwwcNOpGowCdjxqNYmBGQ4MtFIGVINWc5IHI5SEizAdMGk98BhHZ6bJYlqkcRRHDZlSKGH6sYYVFBaZBiERya3FJrQ2GeJXj6421nTwpzhqT3wcrQfyHLUYONpNVnMtzih15siNTkFhZaU-eD_3o0L0Po6-zyw7Z-zjCF2kgeSbFEawHr5a-AHu1nlWfGySO-L8kGCLQcdeGWKZKRCbObVJ48HmW7qvtdlUui89qF5pDEtazblMqOnE4adEunKDhF80G7hLZbt3l4O-ArBwzWTLSU6r9CGOAJ8tLIP2UWGyxOdE85SO4pe9hnVOdfvk5EoMBHyLNE19dNBZBiEL3dD2QnKye2EMVhPqTvcUPC8Wwa4JdQGjufa8TGo2drxO_kvnz_SfJf5aReGqyN-uorNjEKhgCaHl_vyeTKu5f68z6V538B8NhOcOPvUn_mah1TxcLblVDRNW8cnM44XPy4RVt85hQC15NY-oxWdqD2aS1KIVZiyLe7dZQeOzBGyO305cS9Nxv6JivNHzErtq7yIZkvp15cRXhjDLxk5dSM17di2LPE9_AxQ5KoA=&lang=sage"> Newton's method + Animation </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description1')"> > Description </button>	 <div id="description1"> <ul class="borderedContent";>	Use Newton's method to approximate a root of a function with animation.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output1')"> > Output </button>	<div id="output1" > <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"> <pre>
+Initial Guess:   3.0000000000000000
+Next Guess:      1.6666666666666667
+Next Guess:      1.1333333333333333
+Next Guess:      1.0078431372549019
+Next Guess:      1.0000305180437934
+Next Guess:      1.0000000004656613
+An estimate of the root is   1.0000000004656613
+					</pre> </div>
+					<img class="" src="sage/newton.gif" alt="newton" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code1')"> > Code </button>	</li> <div id="code1"> <ul class="borderedContent";>	
+					<div class="compute"><script type="text/x-sage">plot(sin(x), (x, 0, 2*pi))
+					# Use Newton's method to approximate a root of a function with animation
+var('x')
+
+f(x) = x^2 - 1
+
+xmin = 0
+xmax = 3.1
+ymin = -3
+ymax = 9
+guess = 3
+fprime = f.derivative(x)
+g(x) = x-f(x)/fprime(x)
+N = 5
+Sguess = [guess]
+print "Initial Guess: %20.16f"%(guess)
+P = plot(f(x), (xmin,xmax), ymin= ymin, ymax= ymax,color = "green",thickness=3)
+Frames = [P]
+
+for i in range(0,N):
+    P += plot(point((guess,0),size = 20,rgbcolor=(0, 0, 1)))
+    Frames += [P]
+    
+    P += line([(guess,0),(guess,f(guess))], color="gray", linestyle="dashed")
+    Frames += [P]
+    
+    P += plot(point((guess,f(guess)),size = 20,rgbcolor=(1, 0, 0)))
+    Frames += [P]
+    
+    h = f(guess) + fprime(guess)*(x-guess)
+    P += plot(h, (xmin,xmax),ymin= ymin, ymax= ymax, color = "blue")
+    Frames += [P]
+    
+    Nguess = g(guess)
+    print "Next Guess:    %20.16f"%(Nguess)
+    Sguess += [Nguess]
+    guess = Nguess.n(digits=15)
+
+print "An estimate of the root is %20.16f"%(Sguess[N])
+
+a = animate(Frames)
+a.show(delay=100)
+					</script></div>
+					<div style="white-space: pre-wrap;"><pre>
+
+					</pre> </div>
+					</ul></div><br>
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJxdUcFqwzAMvQfyD6KlxGFp1haysUIPO41dfBk7lXaYRU4Nix1sNcvnz4mTLatOkp-enuS3hHeHwPGbjE4c1EgXUwIZEE1jTadqQQgCrDEERvpMXvUnKaPjKI5KlCPVfQQmk5nIdLqPI_DRCsuSLklDJVmXwgFkqKorOudLMYKNVTX2cF6iVa0g1aInjM2B2q37Gfeh9xfkHtEhfZumHofkFF59uyZYvGpFSnzBSw_tYbXb5NsHuVixoXda0lhQoDRYoStkm4xPxwxS0_zqH2kmwrGjScHHnwi_JYy73vll-Xzb-ecEINesVJUid9gWaf_vM71nDego2OT9oQsGr5SbaQepIz8N7KW3XFToz7rxrjvv1sVj9pQV6Q8nKpX5&lang=sage"> Newton's method </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description2')"> > Description </button>	 <div id="description2"> <ul class="borderedContent";>	
+Just the calculation part of the Newton's method as a function without animation in order to save time.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output2')"> > Output </button>	<div id="output2" > <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"> <pre>
+Initial Guess:   9.0000000000000000
+Next Guess:      7.6666666666666670
+Next Guess:      7.5507246376811601
+Next Guess:      7.5498344877465300
+Next Guess:      7.5498344352707498
+Next Guess:      7.5498344352707498
+An estimate of the root is   7.5498344352707498
+					</pre> </div>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code2')"> > Code </button>	</li> <div id="code2"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# Use Newton's method to approximate a root of a function
+
+def Newtons_method(f,a,n):
+    var('x')
+    f(x) = f
+    guess = a
+    fprime = f.derivative(x)
+    g(x) = x-f(x)/fprime(x)
+    N = n
+    Sguess = [guess]
+    print "Initial Guess: %20.16f"%(guess)
+    for i in range(0,N):
+        Nguess = g(guess)
+        print "Next Guess:    %20.16f"%(Nguess)
+        Sguess += [Nguess]
+        guess = Nguess.n(digits=15)
+
+    print "An estimate of the root is %20.16f"%(Sguess[N])
+
+# Usage:
+Newtons_method(x^2-57,9,5)
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJxtjs0KgzAQhO-BvMNCDya4FrWlPeVWei5eSy3BxhqMRqK16tNX-nMoeFlmGGa-XcHJ2A42B3jqrgCjemUge7hetZRQ0kvHvAFHnDwOlOQgYEhj8GFMY0qS2W4paR8VO-uqMTrT3bWZ9zY3lgvxHkM2YJBgwpGNPzHhJ3pfP1xHHHMnKyWO0rSKQ27d9xNdQ-tkfVcsxGiHMb_4S6RpmRJEc4ljZo11wisLWWoPbSPn8ijC9f6PeuEvBaFRPQ==&lang=sage"> Plot with level curves </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description3')"> > Description </button>	 <div id="description3"> <ul class="borderedContent";>	
+Plot a surface with its level curves.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output3')"> > Output </button>	<div id="output3" > <ul class="borderedContent";>	
+
+					<img class="" src="sage/level_curves.png" alt="level curves" style="width: 400px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code3')"> > Code </button>	</li> <div id="code3"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# Plot 3D with level curves
+
+var('x,y,z') 
+f = x^2 + y^2
+R = 4
+sum([implicit_plot3d(f==level,(x,-R,R),(y,-R,R),(z,level,level+0.1),frame=False) for level in srange(0,16,2)]+[implicit_plot3d(f==z,(x,-R,R),(y,-R,R),(z,-1,16),color='khaki',opacity=0.7,frame=False)])
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJxVjT0LwjAYhPdA_sMLDk3oW7Gt4JRNnKVrUQk11WDalKTWpr_e-jW4HHcc99wC9sb2kG_hofsrhKRy1nvwquq1bT0llAzSsWjEgFPEgZIaBIzHDGIIx4ySYo5rSvy9YWU3o_Izq5GNmBRYcGQBjRqU-Wi8WqYcaycbJXbSeMWhtg7eHegWvJPtRbHXFFN-iEvddEZXuj_9yEJMf_CvmTBJMc84VtZYJ6LbVd50hLaT8ziI1XLz93rgT4U3SpA=&lang=sage"> Plot with \(y\)-cross-sections </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description4')"> > Description </button>	 <div id="description4"> <ul class="borderedContent";>	
+Plot a 3D surface with its \(y\)-cross-sections.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output4')"> > Output </button>	<div id="output4" > <ul class="borderedContent";>	
+
+					<img class="" src="sage/cross_sections.png" alt="cross-sections" style="width: 400px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code4')"> > Code </button>	</li> <div id="code4"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# Plot 3D with y-cross sections
+
+var('x,y,z') 
+f = x^2 + y^2
+R = 4
+sum([plot3d(f,(x,-R,R),(y,level,level+0.1),frame=False) for level in srange(-R,R,1)]+[implicit_plot3d(f==z,(x,-R,R),(y,-R,R),(z,-1,32),color='khaki',opacity=0.7,frame=False)])
+					</pre> </div>
+					</ul></div><br>
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJyVk01vpDAMhu-V-h-s7qHJQGcGtqdKc-h1T-1ob1Wn8kACGUEShdCF_fVrAnQ-1EpdDgHb7-PYJsmFhKY0f94qpQU69Re9MprJWG-S9Zo_XF8BPT9AgmoAQbY6GwTgS_RQo21gu0vBm_CSxoHosLaV-OBYF_ccNsBYt0ujdMG6KOUL1kcJ56v7uyTud-kdORO-6PlM_S4FmNbb1g_b-tIJAegENlM9o8qTqtXKQ9buxWVA1VhQEnlU0FcuHMhL5VnnA3HE20bpIti_MDN7hSEugXpn63g91Tuu7-jYbQf97eR9pKYPE0XzDHPgJ5SluDyxc1N3PfleXkdb1cWZTbnO7GHYCpQGh7oQTNMET6YzRA9fRj_2W6K1QueMqZWODyvN-bkoFDGL5FeqUNqsstHj4l1k3jj2MulfL4HReqJurFHaNywUE2emMm5zs69acRNjYynLmxt-yyaJAStbIhHLn1Oy5yMeypxxJ_Jv0NsjHcqf6YLOmv4GP67sKXqOtnw5XCFGkeur_z3wn10-_g8cgPqS&lang=sage"> Linearization with Jacobian matrix </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description5')"> > Description </button>	 <div id="description5"> <ul class="borderedContent";>	
+The code takes a function \(f\) that maps \(\mathbb{R}^2\) to \(\mathbb{R}^2\) and draws three regions:
+	<ul>
+    <li>the unit cube in blue,</li>
+    <li>the image of the unit cube under \(f\) in red, and</li>
+    <li>the linearization of the image by Jacobian of \(f\) at the origin</li>
+	</ul>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output5')"> > Output </button>	<div id="output5" > <ul class="borderedContent";>	
+					<img class="" src="sage/linearize_jacobian.png" alt="linearization with Jacobian" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code5')"> > Code </button>	</li> <div id="code5"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+def show_linearization(f,n=100):
+    # f is a function that maps R^2 to R^2 for example
+    # f(x,y) = ((x^2+2*(x+2)*(y+1))/4-1,y^2-(x+1)*y)
+    # The output is three areas:
+        # the unit cube
+        # the image of unit cube under f
+        # the linearization of the image using the Jacobian of f at (0,0)
+    
+    var('x y')
+    A = jacobian(f,(x,y))(0,0)
+    p = f(0,0)
+    domxy = []
+    imgxy = []
+    jacxy = []
+    for i in range(n+1):
+        for j in range(n+1):
+            domxy.append((i/n,j/n))
+            imgxy.append(f(i/n,j/n))
+            jacxy.append(p+A*vector([i/n,j/n]))
+            
+    P = points(domxy,color="blue",aspect_ratio=1, alpha = .3)
+    Q = points(imgxy,color="red",aspect_ratio=1, alpha = .3)
+    R = points(jacxy,color="green",aspect_ratio=1, alpha = .3)
+    
+    (P+Q+R).show()
+
+f(x,y) = ((x^2+2*(x+2)*(y+1))/4-1,y^2-(x+1)*y)
+show_linearization(f)
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJyVUU1PwzAMvSPxH6wxacnI0Fq-JKRK_ASQOG_y2qQNZHGVpFrEr8drhxgHDuSQxPbz88vLs_VJB6zT5UWjDWzF5QXwMlCBWMyNyLKaLxRY3w9pu6Ms8uYWruFhmTclrKC4X2YOH9XBNqmryrWUamLAkQEDDb6B1GnoiUfBPHMef1OuT93FT_cn0X4kOF4YHJ1tdBA3hSpKxUJxcKkqpJRPE37aW5bLXUagZFGNNUYYlSWHS5FXKCfUC0N6R4lrIitcFetluRGr4ySpAK_PY05ATY5CNdu5Qc-4nnWs3sKgFb_K1h9ex1jdSbgCQwE6CvaTfEIHCX2r-cXOMgSwaWCBsdd12gZMlqpiAYkgag2R9pq5fAt7jZ5PMzgFxKaFg41cx1bDwToH70NMUHdH5tHTkckzAUeYxlQbsO_ARvCUJjyeqzqquZl8eP32of2XD0E3f9lQnhyOHR3EC3_Bq_wCORS04A==&lang=sage"> Interactive Linear Approximation </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description12')"> > Description </button>	 <div id="description12"> <ul class="borderedContent";>	
+For a given function \(f(x)\) around a point \(a\), if you zoom in close enough on the graph of the function, you can’t tell the difference between the curve and the tangent line to the graph of the function at point a. This is the basic idea for linear approximations. Actually you need to run it in sage (click on the link) to be able to interact with it.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output12')"> > Output </button>	<div id="output12" > <ul class="borderedContent";>	
+					<img class="" src="sage/linear_appx.png" alt="linear approximation" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code12')"> > Code </button>	</li> <div id="code12"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+@interact
+def _(
+    f = ('$f(x)=$', input_box(x^3 + 6*x^2 - 15*x + 7,width=20)),
+    a = ('around the point $x = a$', input_box(0,width=10)),
+    zoom = ('zoom', slider(.1,12,default=1))):
+    
+    g(x) = f(a) + diff(f,x)(a)*(x-a)
+    P = plot(f,(x,a-10*2^(-zoom), a+10*2^(-zoom)),  color="blue", axes=True, thickness=4) 
+    # for horizontal tangent lines add 'aspect_ratio=1' to see something meaningful, 
+    # otherwise sage will just change the ration so that the graph is not just a horizontal line.
+    Q = plot(g,(x,a-10*2^(-zoom), a+10*2^(-zoom)),  color="red", axes=True, thickness=2)
+    show(P + Q)
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJylkd9KwzAUxu-FvcNhdCxhx9HO3SgUvPABdOxujpG1aRfskpKkmPr0HtP9QRRvLKEk53B-35cvj0p7aUXhRzelrGDHRjdAXwU5sGlSscDzZIqgdNv53d4E5pSmIr6r0h_yRco5DhM6TjzJ2koJpgJ_kLAWfWMstKbptTkq0SAkOvJco0pp2Sadz--3SMqia3x-d6GJSBPWdLqMqNaQUUgC1cV3Q-nJS3b1Ej6MOUaCFbqOdpLwNRWPu5P4bbZAWmfx05lfKP0vlP4nZZEirStliUti8IcBMvxrwlRzH-NgAUEgaD60nqnVNsazCqkTnW_SLQ532GRbjtAf1Ve6_aXXH0W4FDIqFIbA-XjfdHJM9CBdvradpK1rZeF3Vnhl8gwpSlW8aekcZT3ov5z16__rW1n-JX9SXNGol8EzO04mDl5F21oTYOKSMUwohpojPeoZPss42no_KLAMU6R3HkDuYN7ZM8zoDjNY8U87LNCV&lang=sage"> Interactive Taylor Polynomial </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description13')"> > Description </button>	 <div id="description13"> <ul class="borderedContent";>	
+The linear approximations have errors. One way to get better approximations is by taking into account the higher order derivatives of the function at the given point. This code will calculate and draw the n-th degree Taylor polynomial of the function so that you can compare them. You need to run it in sage (click on the link) to be able to interact with it.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output13')"> > Output </button>	<div id="output13" > <ul class="borderedContent";>	
+
+					<img class="" src="sage/taylor.png" alt="Taylor polynomial" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code13')"> > Code </button>	</li> <div id="code13"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+@interact
+def _(
+    f = ('$f(x)=$', input_box(sin(x),width=20)),
+    n = ('Degree of the Taylor polynomial, $n=$', slider([0..9],default=3)),
+    a = ('around the point $x = a$', input_box(0,width=10)),
+    xzoom = ('range of $x$', range_slider(-12,12,default=(-12,12))),
+    yzoom = ('range of $y$', range_slider(-20,20,default=(-4,4)))):
+    
+    g = f.taylor(x, a, n)
+    P = plot(f,(x,xzoom[0], xzoom[1]), ymin = yzoom[0], ymax = yzoom[1],\
+             color="blue", axes=True, aspect_ratio=1, thickness=3)
+    Q = plot(g,(x,xzoom[0], xzoom[1]), ymin = yzoom[0], ymax = yzoom[1],\
+             color="red", axes=True, aspect_ratio=1)
+    R = text(r"$%s \approx %s$" %(f,g),(0,yzoom[1]+1),rgbcolor=(1,0,0))
+    show(P + Q + R)
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+
+
+
+
+
+
+				</ul>
+
+
+
+
+
+			<h2 class="heading2"> Linear Algebra </h2>
+				 
+				<ul class="studiesListItems"> 
+				
+				
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJw9jkEOgjAQRfck3OFHF0DSsFGXLLiDKzekloFOhI5pixpPbwnE3WT-mzf_iKvlACM9YSRHXkcK0PDa9TJj1tHzBy1kwMgvcgj8JaRwJR4Kb8vGgmOA9zRgED8j-Q6ODR3qJCcEMpL4XZXCmJZkrExu45O7zbM8a9Hsf7sNLm83dVYXpadRPEc7N0W6o0kcf_V9okKtJZqTwvJ8ku_usri-uVR5Fqy8y_Y_1Gu5sqp-_ARPyw==&lang=sage"> Generate random echelonizable matrix </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description6')"> > Description </button>	 <div id="description6"> <ul class="borderedContent";>	
+ One of the problems in teaching linear algebra is coming up with a handful of examples of matrices that can 'nicely' be row-reduced. One way to do this is to start with your 'nice' row-reduced matrix and multiply it by a few (or many) 'nice' elementary matrices and there is your example. So, one might want to code this in sage, but it's actually already done. Here is a sample. The first matrix is the randomly generated matrix with integer entries whose reduced row echelon form will also have integer entries, and the second matrix is its reduced row echelon form.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output6')"> > Output </button>	<div id="output6" > <ul class="borderedContent";>	
+					<img class="" src="sage/random_echelon.png" alt="random echelon matrix" style="width: 300px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code6')"> > Code </button>	</li> <div id="code6"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# This code generates a random matrix A of given size and rank, which its rref form is "nice". The second matrix is the echoln form of A
+
+A = random_matrix(ZZ,4,5,algorithm='echelonizable',rank=3, upper_bound=5)
+show(A)
+show(A.rref())
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJxdUD1vg0AM3ZH4D0_KECJRpKhTBwbG7JmyRBcwYAnuIvsIbX99fQ2Rqm6-e5_2DueRFQN5EhdJ4SDOd2HG7KLwJ0KPgR_kofxNWDmOYB9pIAF5Y5hkHUkIcSRDHiRKcJMGjE7_Uyvk2Q6niNZ53Ag6htWb0kX0QWywKjEp73dL5Ah7e2pJ1ckXrBd06Xtu2fyespTaUSSZ2Tv7tLrpaytv8iPM-O1YpeCzIT2Lxj94Ym8bv47QbXD5m5gISm2wMXhKEo762jTP8qxBvTlcn7ricinfSzcNQexcc71fPM-hWyYn-3Kx1eR6C4vv6o9DnhVN2VSbW3E4_ADyOot5&lang=sage"> Generate random invertible matrix  </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description7')"> > Description </button>	 <div id="description7"> <ul class="borderedContent";>	
+Though a random matrix is invertible with probabiliy one, for pedagogical reasons one might need a matrix with integer entries whose inverse also has integer entries. It is easy to see that for a matrix \(A\) with integer entries to have an inverse with integer entries, it is necessary that its determinant is \(\pm 1\). It turns out that it is the sufficient condition too, surprisingly, thanks to Cramer's rule! Although it might lose some pedagogical purposes, like relating the inverse to the determinant, this code generates random matrices with integer entries where their inverses also have integer entries.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output7')"> > Output </button>	<div id="output7" > <ul class="borderedContent";>	
+
+					<img class="" src="sage/random_invertible.png" alt="random invertible matrix" style="width: 200px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code7')"> > Code </button>	</li> <div id="code7"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# This generates a random matrix of given size with integer entries where the inverse also has integer entries. 
+# It can be shown that for this to happen it is necessary and sufficient that the determinant of the matrix is 1 or -1.
+# The first matrix is the random generated matrix, and the second one is its inverse
+
+A = random_matrix(ZZ,3,algorithm='unimodular',upper_bound=9)
+show(A)
+show(A.inverse())
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJytVt9v2zYQfg-Q_-GmPERqaM3aimEw5g4Fig0F5qBN9jDAMwRaomwiFCWIVF3vr--RlGzKloOlLR8kiveL9313pG7gnvJPDP6krVKcSmhY3maaV_L6KmcFbMx6WjK9rfJw8fbvh_f_kIapjAqWCkZzLjcpk7rZz2__okrfRrPrK8ARBME7VGv4moHesqNb0BWwbMsETouqKaEqrMIGdyGhpLrhn81aQ402FSq-vnIuXXQY00EpizcxgQXMO3n48SOB5TKOV_iyT3xEztOFBP7gDWaA9k9uz50YjJgzZXae3CrYbblgkFdG5GBTiBsTgpdcUgfdM1EsTBC-YwVthY7-ZziLH0p7MB6YbhupZk7AcotlDPDIcwasKFimZ_Ch4VIrUJrVyuLVk3DAFGnqwEXgsqredxx3QMm2TJtqp-aLWJp36K1nlbDr5t2vq221CxcxrWuxT0tah4KW65yCnum4aIVIFS9rwYt9GEVRvwd0gMGnOLsBKoT5VrBmmJDBhSugOKGiQXj2CLtkzgzlgHsCjjVL5YaFU9JvN5qB0wHr9Pd7hgAhnGpHa6NPQVbyP9ZUFus9FE1VYkRR7Y5mDvbQbO63Q75HcTeozGGxxJirJcpXMMdEBtH7nXITF9FycdO6UtwQoVIujee2lCZU3z3-4AUavzGpjgjNqA3LELjsUC0g-LhLSLDjeusW-F0ybruIjZUFLcQH4dG43guJHXOxRgKf7GwoZ0KxkcwM8HdzSPoq6aAwy2_mB0JODG0M3-IG7rFENi3FEtGmCnyyfkCyBs7D0ZY1pHZnwyDaKffoLjklsOdGY5MHJPnR0yeB5iW2-ZGxoeki7neDQkvOwPwE5W8g6PhlCjXbmmbK00FruYI6ttfQASK3WHp2HrwjxBY00xhnDpPk1YiZn-O58RBP5-ocSBLUou0WvAB3CZx7RMzyPC3xKOY1Yl0VFm7PyrjsIo1U9lfi7qr7UNxdWm_XFV7F5sSzJ5t_TRK8HjTeBk-M1ZA1LVfmqsAzbcP08YLFAj81nP0ruyP-eGzyI7NjnBoX88PZP-GTZNAljqAxem39YGYD76ZNL5xr1hN5rlhGFZMLiucF8qKGG1bFS5rPH9_rpPRPsQO2F3pzDF6vzeCVA3CSTPy6Hu8wRLszfYaSIcow0ofgGhG8ToSzLVy-lcZ68jyDZzvzK8lo7I_Vi35ibvyBn_BIUQFbspWzM-n1lfeP-vhAlsufySQhr8kvK7KckoT8SqY4m_yE0ymZvF6ZYhv-hV_6AXd3VPQFXbJSmA==&lang=sage"> Step-by-step Gaussian Elimination </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description8')"> > Description </button>	 <div id="description8"> <ul class="borderedContent";>	
+Does step-by-step Gauss-Jordan elimination process, and actually tells you what to do in each step.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output8')"> > Output </button>	<div id="output8" > <ul class="borderedContent";>	
+					<img class="" src="sage/gaussian_elimination.png" alt="Gaussian elimination" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code8')"> > Code </button>	</li> <div id="code8"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# Naive Gaussian reduction
+def gauss_method(MATRIX,rescale_leading_entry='Last'):
+    """Describe the reduction to echelon form of the given matrix of rationals.
+
+    MATRIX  matrix of rationals   e.g., M = matrix(QQ, [[..], [..], ..])
+    rescale_leading_entry='First' make the leading entries to 1's while doing Gaussisan ellimination
+    rescale_leading_entry='Last' (Default) make the leading entries to 1's while reducing
+
+    Returns: reduced form.  Side effect: prints steps of reduction.
+
+    """
+    M = copy(MATRIX)
+    num_rows=M.nrows()
+    num_cols=M.ncols()
+    show(M.apply_map(lambda t:t.full_simplify()))
+
+    col = 0   # all cols before this are already done
+    for row in range(0,num_rows): 
+        # ?Need to swap in a nonzero entry from below
+        while (col < num_cols
+               and M[row][col] == 0): 
+            for i in M.nonzero_positions_in_column(col):
+                if i > row:
+                    print " swap row",row+1,"with row",i+1
+                    M.swap_rows(row,i)
+                    show(M.apply_map(lambda t:t.full_simplify()))
+                    break     
+            else:
+                col += 1
+
+        if col >= num_cols:
+            break
+
+        # Now guaranteed M[row][col] != 0
+        if (rescale_leading_entry == 'First'
+           and M[row][col] != 1):
+            print " take",1/M[row][col],"times row",row+1
+            M.rescale_row(row,1/M[row][col])
+            show(M.apply_map(lambda t:t.full_simplify()))
+            
+        for changed_row in range(row+1,num_rows):
+            if M[changed_row][col] != 0:
+                factor = -1*M[changed_row][col]/M[row][col]
+                print " take",factor,"times row",row+1,"plus row",changed_row+1 
+                M.add_multiple_of_row(changed_row,row,factor)
+                show(M.apply_map(lambda t:t.full_simplify()))
+        col +=1
+
+    print "Above is a row echelon form, let's keep cruising to get the reduced row echelon form:\n"
+    
+    for i in range(num_rows):
+        row = num_rows-i-1
+        if M[row] != 0:
+            for col in range(num_cols):
+                if M[row,col] != 0:
+                    if M[row,col] != 1:
+                        print " take",1/M[row][col],"times row",row+1
+                        M.rescale_row(row,1/M[row][col])
+                        show(M.apply_map(lambda t:t.full_simplify()))
+                    break
+
+            for changed_row in range(row):
+                factor = -1 * M[row-1-changed_row,col]
+                if factor != 0:
+                    print " take", factor,"times row", row+1, "plus row", row-1-changed_row+1
+                    M.add_multiple_of_row(row-1-changed_row,row,factor)
+                    show(M.apply_map(lambda t:t.full_simplify()))
+    return(M.apply_map(lambda t:t.full_simplify()))
+
+
+## Usage:
+M = matrix(SR,[[3,-1,4,6],[0,1,8,0],[-2,1,0,-4]])
+gauss_method(M,rescale_leading_entry='First')
+					</pre> </div>
+					</ul></div><br>
+					
+					<li><b><a href=http://sagecell.sagemath.org/?z=eJytVt-PmzgQfl9p_4c58rDQJVy5e4tKq0pVTyddVuq2J52Ui5ADhlhrDMKmae6vv7ENwSRkddsrD4R4fnm-b2bsBTwQ9pXCb6STkhEBLc27TLFa3N7ktIBSr6cVVfs699fvvzz-_lfYUpkRTlNOSc5EmVKh2mNy9weR6i5Y3d4APp7nfUC1lu0oqD0d3YKqgWZ7yvGzqNsK6sIolLgLARVRLfum11qitQmX0e2NdWmjw5wOSmlURiGsIenl_qdPIWw2UbTFH_PGV2A9XUngI2sxA7R_snvuxaDFjEq98_hOwmHPOIW81iILm0TcKOesYoJY6J6JYmAC_wMtSMdV8B_DGfxQOoDxSFXXCrmyApobLCOAzyynQIuCZmoFTcuEkiAVbaTBayDhhCnS1IOLwGV1c-w57oESXZW29UEm60joX99Zz2pu1vXvsC739cFfR6Rp-DGtSONzUu1yAmqloqLjPJWsajgrjn4QBMMe0AEGf41fCyCc6_8SdhQT0rgwCQQ_CG8RniPCLqg1QzngnoBhzRJRUv91OGw3WIHVAeP03QNFgBBOeSCN1icgavEPbWuD9RGKtq4wIq8Po5mF3debe3PKdxT3DxE5rDcYc7tB-RYSTGQSfdgp03ERLRs3bWrJNBEyZUJ77iqhQw3d4z6sQOO3OtUZoX4My-DZ7FDNC_F1H4fegam9XWD38bztOtJWBjQfXyEL5vVeSOycix0S-GS-pnLKJZ3JTAN_n0A8VEkPhV5-m5wIOTM0MVyLBTxgiZQdwRJRugpcsn5CsibO_dmW1aT2s2ES7Zx7dBefEzhwo7DJvTD-2dEPPcUqbPORsanpOhp2g0JDzsT8DOX_QdD4TxdqttfNlKeT1rIFNbbX1AEit944dg68M8QWJFMYJ4Fl_GrGzM3x0niKp3V1CWToNbzrF5wA9zFcekTM8jytcBSzBrGuCwO3Y6Vd9pFmKvs7cbfVfSruPq33uxqPYj3xzGRzj8kQjweFp8ETpQ1kbcekPipwppVUjQcsFvi54epv0Y_4cWyykdk5TrWL5DT7l2wZT7rEEjRHr6kfzGziXbfplblmPIXPFcusYnxF8bJAXtRw06p4SfO5z4-alO4UO2F7pTfn4HXaDF5ZAJfx0q3r-Q5DtHvTZyiZogwzfQi2EcHpRLjYwvVTaa4nLzN4tjO_k4zWXKxedIm5vVks4E9JSn2OOTfQz4_hZvNruIy34eaXMN7qsnlE8fROHZGurPCg8fHmJhRTOqYxP92tglB2u5x9RYXkS9vRIPgX-flRcw==&lang=sage"> Step-by-step inverting </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description9')"> > Description </button>	 <div id="description9"> <ul class="borderedContent";>	
+Inverts a matrix step-by-step by doing Gauss-Jordan elimination on the matrix augmented with the identity of the same size, and actually tells you what to do in each step.
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output9')"> > Output </button>	<div id="output9" > <ul class="borderedContent";>	
+					<img class="" src="sage/inverting.png" alt="Inverting a matrix" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code9')"> > Code </button>	</li> <div id="code9"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# Naive Gaussian reduction
+def gauss_method(MATRIX,rescale_leading_entry='Last'):
+    """Describe the reduction to echelon form of the given matrix of rationals.
+
+    MATRIX  matrix of rationals   e.g., M = matrix(QQ, [[..], [..], ..])
+    rescale_leading_entry='First' make the leading entries to 1's while doing Gaussisan ellimination
+    rescale_leading_entry='Last' (Default) make the leading entries to 1's while reducing
+
+    Returns: reduced form.  Side effect: prints steps of reduction.
+
+    """
+    M = copy(MATRIX)
+    num_rows=M.nrows()
+    num_cols=M.ncols()
+    show(M.apply_map(lambda t:t.full_simplify()))
+
+    col = 0   # all cols before this are already done
+    for row in range(0,num_rows): 
+        # ?Need to swap in a nonzero entry from below
+        while (col < num_cols
+               and M[row][col] == 0): 
+            for i in M.nonzero_positions_in_column(col):
+                if i > row:
+                    print " swap row",row+1,"with row",i+1
+                    M.swap_rows(row,i)
+                    show(M.apply_map(lambda t:t.full_simplify()))
+                    break     
+            else:
+                col += 1
+
+        if col >= num_cols:
+            break
+
+        # Now guaranteed M[row][col] != 0
+        if (rescale_leading_entry == 'First'
+           and M[row][col] != 1):
+            print " take",1/M[row][col],"times row",row+1
+            M.rescale_row(row,1/M[row][col])
+            show(M.apply_map(lambda t:t.full_simplify()))
+            
+        for changed_row in range(row+1,num_rows):
+            if M[changed_row][col] != 0:
+                factor = -1*M[changed_row][col]/M[row][col]
+                print " take",factor,"times row",row+1,"plus row",changed_row+1 
+                M.add_multiple_of_row(changed_row,row,factor)
+                show(M.apply_map(lambda t:t.full_simplify()))
+        col +=1
+
+    print "Above is a row echelon form, let's keep cruising to get the reduced row echelon form:\n"
+    
+    for i in range(num_rows):
+        row = num_rows-i-1
+        if M[row] != 0:
+            for col in range(num_cols):
+                if M[row,col] != 0:
+                    if M[row,col] != 1:
+                        print " take",1/M[row][col],"times row",row+1
+                        M.rescale_row(row,1/M[row][col])
+                        show(M.apply_map(lambda t:t.full_simplify()))
+                    break
+
+            for changed_row in range(row):
+                factor = -1 * M[row-1-changed_row,col]
+                if factor != 0:
+                    print " take", factor,"times row", row+1, "plus row", row-1-changed_row+1
+                    M.add_multiple_of_row(row-1-changed_row,row,factor)
+                    show(M.apply_map(lambda t:t.full_simplify()))
+    return(M.apply_map(lambda t:t.full_simplify()))
+
+
+## Usage:
+M = matrix(SR,[[3,-1],[2,1]])
+R = gauss_method(M.augment(identity_matrix(M.ncols()),subdivide=True))
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJytVt-PozYQfl9p_4cpeQjcEnq8Rs2dIp3uVKlZ6bZXqVIaIQcMsdYYZJtN07--YxsCJGTVvR4PhHh-eb5vZuwZPBL2QuELaZRiRICkWZNqVon7u4zmUJj1pKT6UGX-Zv3t6dc_Q0lVSjhNOCUZE0VChZan1fw3ovQ8WN7fAT6e531CNcn2FPSB9m5BV0DTA-X4mVeyhCq3CgXuQkBJtGR_mzVJjDbhKrq_cy5ddJjSQSmNiiiEDaxauf_1awjbbRTt8Me-8RU4TzcS-MwkZoD2z27PrRiMmFFldh7PFRwPjFPIKiNysCnEjXLOSiaIg-6VKBYm8D_RnDRcB_8xnMUPpR0YT1Q3UqilE9DMYhkB_M4yCjTPaaqXUEsmtAKlaa0sXh0JZ0yRphZcBC6t6lPLcQuUaMpEVke12kTC_PqD9bTidt38duvqUB39TUTqmp-SktQ-J-U-I6CXOsobzhPFypqz_OQHQdDtAR1g8Pf4NQPCufmvYE8xIYMLU0Dwg3CJ8JwQdkGdGcoB9wQMa5aIgvrvw267wRKcDlinHx8pAoRwqiOpjT4BUYl_qKws1ifIZVViRF4dezMHu28298s5317cPkRksNlizN0W5TtYYSKj6N1OmYmLaLm4SV0pZohQCRPGc1MKE6rrnuHDcjT-YFKdEJrHsgyeyw7VvBBfD3HoHZk-uAX2EE_bbiJjZUHz8RWyYFrvjcROudgjgc_2ayynXNGJzAzwDyuIuyppoTDLH1ZnQi4MbYyhxQwesUSKhmCJaFMFQ7J-QrJGzv3JljWktrNhFO2Se3QXXxLYcaOxyb0w_nmgH3qaldjmPWNj003U7QaFlpyR-QXK_4Og_p8p1PRgmilLRq3lCqpvr7EDRG6zHdgN4J0gNiepxjgrWMTvJsyGOV4bj_F0rq6BDL2aN-3CIMBDDNceEbMsS0ocxaxGrKvcwj2wMi7bSBOV_Z24u-o-F3eb1npf4VFsJp6dbMNjMsTjQeNp8ExpDalsmDJHBc60gur-gMUCvzRc_iXaEd-PTdYzO8WpcbE6z_4FW8SjLnEETdFr6wczG3k3bXpjrllP4WvFMqkY31C8LpA3Ndy4Kt7SfMPnR03K4RQ7Y3ujN6fgHbQZvHMALuLFsK6nOwzRbk1foWSMMkz0IbhGhEEnwtUWbp9KUz15ncGrnfmdZEh7sXrTJeb-bjaDPxQpzDn2QqQ_J7CHFLI5itf9jXS7JeF-F27TMNuZEnpC0eh-vY5IU5R46Ph4ixOaaRPfmq67e1YQqmafsRdUWH2TDQ2CfwGqylT9&lang=sage"> Step-by-step inverting a generic \(2\times 2\) matrix </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description10')"> > Description </button>	 <div id="description10"> <ul class="borderedContent";>	
+Inverts a generic  \(2\times 2\) matrix step-by-step by doing Gauss-Jordan elimination on the matrix augmented with the identity of the same size, and actually tells you what to do in each step. You can do the same on a  \(3\times 3\) or larger matrix by doing a similar process. like below:
+<div style="white-space: pre-wrap;"><pre>
+var('a b c d e f g h i j k l m n o p q r s t u v w x y z')
+A = matrix([[a,b,c],[d,e,f],[g,h,k]])
+R = gauss_method(A.augment(identity_matrix(A.ncols()),subdivide=True))
+</pre>
+And then you can see the final result by reading only the augmented part:
+<div style="white-space: pre-wrap;"><pre>
+view(R.subdivision(0,1))
+</pre>
+Of course it's going to look a little ugly, so you might want to first multiply it by the determinant of the original matrix and then simplify it:
+<div style="white-space: pre-wrap;"><pre>
+view((det(A)*R.subdivision(0,1)).apply_map(lambda t:t.full_simplify()))
+</pre>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output10')"> > Output </button>	<div id="output10" > <ul class="borderedContent";>	
+					<img class="" src="sage/inverting2.png" alt="Inverting a \(2\times 2\) matrix" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code10')"> > Code </button>	</li> <div id="code10"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+# Naive Gaussian reduction
+def gauss_method(MATRIX,rescale_leading_entry='Last'):
+    """Describe the reduction to echelon form of the given matrix of rationals.
+
+    MATRIX  matrix of rationals   e.g., M = matrix(QQ, [[..], [..], ..])
+    rescale_leading_entry='First' make the leading entries to 1's while doing Gaussisan ellimination
+    rescale_leading_entry='Last' (Default) make the leading entries to 1's while reducing
+
+    Returns: reduced form.  Side effect: prints steps of reduction.
+
+    """
+    M = copy(MATRIX)
+    num_rows=M.nrows()
+    num_cols=M.ncols()
+    show(M.apply_map(lambda t:t.full_simplify()))
+
+    col = 0   # all cols before this are already done
+    for row in range(0,num_rows): 
+        # ?Need to swap in a nonzero entry from below
+        while (col < num_cols
+               and M[row][col] == 0): 
+            for i in M.nonzero_positions_in_column(col):
+                if i > row:
+                    print " swap row",row+1,"with row",i+1
+                    M.swap_rows(row,i)
+                    show(M.apply_map(lambda t:t.full_simplify()))
+                    break     
+            else:
+                col += 1
+
+        if col >= num_cols:
+            break
+
+        # Now guaranteed M[row][col] != 0
+        if (rescale_leading_entry == 'First'
+           and M[row][col] != 1):
+            print " take",1/M[row][col],"times row",row+1
+            M.rescale_row(row,1/M[row][col])
+            show(M.apply_map(lambda t:t.full_simplify()))
+            
+        for changed_row in range(row+1,num_rows):
+            if M[changed_row][col] != 0:
+                factor = -1*M[changed_row][col]/M[row][col]
+                print " take",factor,"times row",row+1,"plus row",changed_row+1 
+                M.add_multiple_of_row(changed_row,row,factor)
+                show(M.apply_map(lambda t:t.full_simplify()))
+        col +=1
+
+    print "Above is a row echelon form, let's keep cruising to get the reduced row echelon form:\n"
+    
+    for i in range(num_rows):
+        row = num_rows-i-1
+        if M[row] != 0:
+            for col in range(num_cols):
+                if M[row,col] != 0:
+                    if M[row,col] != 1:
+                        print " take",1/M[row][col],"times row",row+1
+                        M.rescale_row(row,1/M[row][col])
+                        show(M.apply_map(lambda t:t.full_simplify()))
+                    break
+
+            for changed_row in range(row):
+                factor = -1 * M[row-1-changed_row,col]
+                if factor != 0:
+                    print " take", factor,"times row", row+1, "plus row", row-1-changed_row+1
+                    M.add_multiple_of_row(row-1-changed_row,row,factor)
+                    show(M.apply_map(lambda t:t.full_simplify()))
+    return(M.apply_map(lambda t:t.full_simplify()))
+
+
+## Usage:
+var('a b c d')
+A = matrix([[a,b],[c,d]])
+R = gauss_method(A.augment(identity_matrix(A.ncols()),subdivide=True))
+					</pre> </div>
+					</ul></div><br>
+					
+					<li><b><a href="http://sagecell.sagemath.org/?z=eJydkz1v2zAQhvcA_Q-HeAgJM2qMdgrAQXbjjAWCZBKEgrYp-RCKVEkqbfLrcxStxG2dpQL0dXzu5X1xpxu41T7sW-fRslLoJ2WCXNND8-tPZ0DXDErAAArCz0F5DZ2KHn9Pa9-H2A8xAXGvj7Rgh-ExgGugzGh-Nt51EFSri964WGzRb40G7HrnI6zGv9OgM86HCfQK7cb9Oha2IKEsLHGB8WxaZR854cwKuPDtJg690RcH6IbWe4c2sqrmx4LLUTB6ZUPvgp5E78hcsbLCy4WguxbQUeHC0DGo1CYwxaFxnqpFJcjYNda8MBgi4zXwywS9u3PxgevyA9fluyvPPCaewmw1Wwg7X_D6kH6KFHKFGfNaGXZXYV1d0abYqRat8s9vJi5g_EwZjcWW5xujto_n_2xipw2wgXFcQEq494M-zMufVS0Lja22xA2aOvOXuICAL1p-uZpatv7voKmxWTq3ncwCGjRGptAEKNPvlVx8tqfygePGj81c8fn4WvP5DS_CnqbnbTpmM3hIk0n5lhRuktm57kc-F2z1bS2-EnviWKVI-CtlTAER&lang=sage"> Draw Gershgorin disks </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description11')"> > Description </button>	 <div id="description11"> <ul class="borderedContent";>	
+Gershgorin circle theorem roughly states that the eigenvalues of an \(n \times n\) matrix lie inside \(n\) circles where \(i\)-th circle is centred at \(A_{i,i}\) and its radius is the sum of the absolute values of the off-diagonal entries of the \(i\)-th row of \(A\). Applying this to \(A^{\top}\) implies that the radius of this circles shall be the smaller of the sums for rows and columns. This Sage code draws the circles for a given matrix. 
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output11')"> > Output </button>	<div id="output11" > <ul class="borderedContent";>	
+
+					<img class="" src="sage/gershgorin.png" alt="Gershgorin Disks" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code11')"> > Code </button>	</li> <div id="code11"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+def Gershgorin(A,evals=False):
+    # A is a square matrix
+    # Output is the Gershgorin disks of A
+    
+    from sage.plot.circle import Circle
+    from sage.plot.colors import rainbow
+    
+    n = A.ncols()
+    Colors = rainbow(n, 'rgbtuple')
+    E = point([])
+    
+    B = A.transpose()
+    R = [(A[i-1,i-1], min(sum( [abs(a) for a in (A[i-1:i]).list()] )-abs(A[i-1,i-1]),\
+                          sum( [abs(a) for a in (B[i-1:i]).list()] )-abs(B[i-1,i-1])))\
+         for i in range(1,n+1)]
+    C = [ circle((real(R[i][0]),imaginary(R[i][0])), R[i][1], color="black") for i in range(n)]
+    if evals == True:
+        E = point(A.eigenvalues(), color="black", size=30)
+    CF = [ circle((real(R[i][0]),imaginary(R[i][0])), R[i][1], rgbcolor=Colors[i],\
+                  fill=True, alpha=1/n) for i in range(n)] 
+    
+    (sum(C)+sum(CF)+E).show()
+    
+## Usage:
+A =  random_matrix(CDF,4,)
+Gershgorin(A,evals=True)
+					</pre> </div>
+					</ul></div><br>
+					
+					
+					
+
+
+
+
+
+
+
+				</ul>
+				
+				<h2 class="heading2"> Other Areas </h2>
+				 
+				<ul class="studiesListItems"> 
+				
+				<li><b><a href="https://k1monfared.wordpress.com/2016/04/18/a-full-matrix-with-given-eigenvalues"> A full matrix with given eigenvalues </a></b> </li>
+				
+				<li><b><a href="https://k1monfared.wordpress.com/2016/03/23/on-the-last-digits-of-conscutive-prime-numbers"> On the last digits of conscutive prime numbers </a></b> </li>
+				<li><b><a href="https://k1monfared.wordpress.com/2016/02/03/multiplication-graph/"> Multiplication graph </a></b> </li>
+				
+				
+				
+				</ul>
+				<i>
+				
+
+
+<!-- SAMPLE ITEM
+					<li><b><a href="LLLLIIIIINNNNNNKKKKKKK"> TTTTTTIIIIIITTTTTTLLLLLLLEEEEEEE </a></b> </li>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('description1')"> > Description </button>	 <div id="description1"> <ul class="borderedContent";>	
+DESCRIPTION HERE
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('output1')"> > Output </button>	<div id="output1" > <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"> <pre>
+OUTPUT HERE
+					</pre> </div>
+					<img class="" src="sage/IIIIMMMMAAAAAGGGGGEEE" alt="" style="width: 600px;"/><br>
+					</ul></div><br>
+					
+					<button class="togglebutton"; onclick="toggleSlowly('code1')"> > Code </button>	</li> <div id="code1"> <ul class="borderedContent";>	
+					<div style="white-space: pre-wrap;"><pre>
+CODE HERE
+					</pre> </div>
+					</ul></div><br>
+-->
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	
+		<div id="sideContent">
+
+		<h2 class="heading2"> Github </h2>
+		<a href="https://github.com/k1monfared/"> k1monfared </a>
+		
+		</div>
+
+	</div>
+	<div class="PageFooter">Designed by Shaghayegh Khodaei and Keivan Hassani Monfared</div>
+	</div>
+	</body>
+
+</html>

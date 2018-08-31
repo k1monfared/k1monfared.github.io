@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”>
+<html xmlns=”http://www.w3.org/1999/xhtml” lang=”en” xml:lang=”en”>
+	<head>
+		<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8” />
+		<link rel="stylesheet" type="text/css" href="../css/mainCSS.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/otherStyles.css"/>
+		<title> Keivan Hassani Monfared's Home Page </title>
+	</head>
+
+	<body>
+	<div class="container">
+	
+	<div class="myTitle">
+		KEIVAN HASSANI MONFARED
+	</div>
+	<div class="myTitleFooter">Western Illinois University</div>
+	
+	<div id="menu">
+	<span class="menuItem"><a href="../index.html">home</a></span>
+	<span class="menuItem"><a href="../research.html">research</a></span>
+	<span class="menuItem"><a href="../studies.html">studies</a></span>
+	<span class="menuItem"><a href="../teaching.html">teaching</a></span>
+	<span class="menuItem"><a href="../contact.html">contact</a></span>
+	<span class="menuItem"><a href="../other.html">other</a></span>
+	</div>
+	
+	<div id="pageContent">
+		<div id="mainContent">
+
+			<h2 class="heading2withSub">Concepts of Mathematics: Math 101</h2>
+				<p class="heading2Sub">Fall 2014</p>
+
+			</br><p>
+			<b>Syllabus:</b> <a target="_blank" href="Math101F14/Syllabus.pdf">PDF</a>
+			</br>
+			<b>Office Hours:</b> MTWRF 2:00-3pm
+			</br>
+			<b>Office:</b> Morgan Hall 480
+			</br>
+			<b>Email:</b> k-hassanimonfared at wiu dot edu
+			</br>
+			<b>Class meets:</b> TH 12:30 pm - 1:45 pm in Morgan Hall 202
+			</br>
+			<b>Textbook:</b> Mathematical Ideas (12th Edition); Charles D. Miller, Vern E. Heeren, John E. Hornsby
+ <div style="text-align: center;">  <a href="http://www.amazon.com/Mathematical-Ideas-Edition-Charles-Miller/dp/0321693817"><img style="border: 0px solid ; width: 219px;" alt="" src="Math101F14/textbook.jpg" /></a></div>
+			
+			
+			<b>Math 101 Tutoring schedule:</b> <a href="http://www.wiu.edu/advising/tutoring/math_101_102.php">link</a>
+			</p>
+
+
+			
+
+
+
+
+
+	</div>
+	
+
+	<div id="leftsideContent">
+
+	<h2 class="heading2">Files</h2>
+	Quiz 1: <a href="Math101F14/Q1.pdf">PDF</a><br />
+	Exam 1: <a href="Math101F14/E1.pdf">PDF</a><br />
+
+	Quiz 2: <a href="Math101F14/Q2.pdf">PDF</a><br />
+	Exam 2: <a href="Math101F14/E2.pdf">PDF</a><br />
+
+	Worksheet 10.1: <a href="Math101F14/WS10-1.pdf">PDF</a><br />
+	Worksheet 10.2: <a href="Math101F14/WS10-2.pdf">PDF</a><br />
+	Worksheet 10.3: <a href="Math101F14/WS10-3.pdf">PDF</a><br />
+	Worksheet 10.4: <a href="Math101F14/WS10-4.pdf">PDF</a><br />
+
+	Worksheet 11.1: <a href="Math101F14/WS11-1.pdf">PDF</a><br />
+	Worksheet 11.3-4: <a href="Math101F14/WS11-3,4.pdf">PDF</a><br />
+	Worksheet 11.5: <a href="Math101F14/WS11-5.pdf">PDF</a><br />
+
+	Worksheet 12.1-2: <a href="Math101F14/WS12-1,2.pdf">PDF</a><br />
+	Worksheet 12.3-4: <a href="Math101F14/WS12-3,4.pdf">PDF</a><br />
+
+
+	
+
+
+	<h2 class="heading2">Assignments</h2>
+	
+	<b> 1.1</b> #5, 8, 12, 14, 31, 41, 43, 47, 49, 48, 55, 56</br>
+	<b> 1.2</b> #1, 3, 5, 11, 13, 17, 22, 24, 27, 32, 40, 41, 43, 44, 51, 52</br>
+
+	<b> 2.2</b> #1-50, 57, 58, 61, 62, 67, 69</br>
+
+	<b> 2.3</b> #2.3: #1-18, 49-60, 82-88, 97, 98, 109, 111, 115</br>
+
+	<b> 2.4</b> #1, 5, 10, 11, 12, 27</br>
+
+	<b> 3.1</b> #1-3, 14-16, 22-28, 33-36, 38-48, 50-54, 57-60, 65-67, 73-76</br>
+
+	<b> 3.2</b> #1-3, 6, 15, 18, 28, 29, 44, 45, 47, 52, 61, 63, 65, 74, 75, 78, 79, 83, 84</br>
+
+	<b> 3.3</b> #1, 2, 6, 7, 11, 12, 13, 14, 19, 21, 22, 32, 37, 49, 52, 53, 68, 71, 76, 81, 88, 90, 91, 97, 106</br>
+
+	<b> 3.4</b> #1-3, 11, 15, 21, 23, 29, 42, 44, 47, 48, 51, 54</br>
+
+<h3 class="heading3">Turn in:</h3>
+	<b> 1.1</b> #43, </br>
+	<b> 1.2</b> #13, </br>
+	<b> 2.1</b> #54, </br>
+	<b> 2.2</b> #58,</br>
+	<b> 2.3</b> #115, </br>
+	<b> 2.4</b> #20, </br>
+	<b> 3.1</b> #76, </br>
+	<b> 3.2</b> #18, </br>
+	<b> 3.3</b> #37 </br>
+
+
+
+
+
+	</div>
+	</div>
+	
+	</div>
+	</body>
+
+
+</html>

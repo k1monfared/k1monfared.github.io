@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+
+
+
+
+
+  
+  <script>
+function mytest1() {
+	var Excel, Book;	// Declare the variables
+	Excel = new ActiveXObject("Excel.Application");	// Create the Excel application object.
+	Excel.Visible = false;	// Make Excel invisible.
+	Book = Excel.Workbooks.Add()	// Create a new work book.
+	Book.ActiveSheet.Cells(1,1).Value = document.all.my_textarea1.value;
+	Book.SaveAs("grades.xlsx");		
+	Excel.Quit();	// Close Excel with the Quit method on the Application object.
+}
+
+function mytest2() {
+	var Excel;
+	Excel = new ActiveXObject("Excel.Application");	
+	Excel.Visible = false;
+	form1.my_textarea2.value = Excel.Workbooks.Open("grades.xlsx").ActiveSheet.Cells(1,1).Value;
+	Excel.Quit();
+}
+
+  </script><meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><title></title><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)"><style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style><meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)"><style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style><meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)"><style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style><meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)"><style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style><meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)"><style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style><meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)"><style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style></head><body>
+
+
+
+	
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><title></title><meta name="GENERATOR" content="LibreOffice 3.6  (Linux)">
+	
+	
+	<style>
+		<!-- 
+		BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Arial"; font-size:x-small }
+		 -->
+	</style>
+	
+
+<table border="0" cellspacing="0" cols="2">
+	<colgroup width="85"></colgroup>
+	<colgroup width="46"></colgroup>
+	<tbody><tr>
+		<td align="left" bgcolor="#000000" height="16" valign="middle"><font color="#ffffff">Final grades</font></td>
+		<td align="right" bgcolor="#000000" valign="middle"><font color="#ffffff"><br></font></td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W05615395</td>
+		<td sdval="97" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">97</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="16" valign="middle">W02897183</td>
+		<td sdval="95" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">95</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="16" valign="middle">W07085563</td>
+		<td sdval="94" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">94</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W05944311</td>
+		<td sdval="94" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">94</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W06304713</td>
+		<td sdval="93" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">93</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W05930094</td>
+		<td sdval="93" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">93</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W05074806</td>
+		<td sdval="93" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">93</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W04674497</td>
+		<td sdval="93" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">93</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W05347127</td>
+		<td sdval="92" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">92</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W05346994</td>
+		<td sdval="91" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">91</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ff00" height="17" valign="bottom">W06820508</td>
+		<td sdval="90" sdnum="1033;" align="right" bgcolor="#00ff00" valign="middle">90</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ffff" height="17" valign="bottom">W07082483</td>
+		<td sdval="89" sdnum="1033;" align="right" bgcolor="#00ffff" valign="middle">89</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ffff" height="17" valign="bottom">W03488144</td>
+		<td sdval="87" sdnum="1033;" align="right" bgcolor="#00ffff" valign="middle">87</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ffff" height="17" valign="bottom">W04906666</td>
+		<td sdval="86" sdnum="1033;" align="right" bgcolor="#00ffff" valign="middle">86</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ffff" height="17" valign="bottom">W05332679</td>
+		<td sdval="85" sdnum="1033;" align="right" bgcolor="#00ffff" valign="middle">85</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ffff" height="17" valign="bottom">W06950330</td>
+		<td sdval="84" sdnum="1033;" align="right" bgcolor="#00ffff" valign="middle">84</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#00ffff" height="17" valign="bottom">W00478781</td>
+		<td sdval="81" sdnum="1033;" align="right" bgcolor="#00ffff" valign="middle">81</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#ff00ff" height="17" valign="bottom">W06899594</td>
+		<td sdval="75" sdnum="1033;" align="right" bgcolor="#ff00ff" valign="middle">75</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#ff00ff" height="17" valign="bottom">W05900155</td>
+		<td sdval="75" sdnum="1033;" align="right" bgcolor="#ff00ff" valign="middle">75</td>
+	</tr>
+	<tr>
+		<td sdval="519159652" sdnum="1033;" align="left" bgcolor="#ff00ff" height="17" valign="bottom">519159652</td>
+		<td sdval="75" sdnum="1033;" align="right" bgcolor="#ff00ff" valign="middle">75</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#ffff00" height="17" valign="bottom">W07075070</td>
+		<td sdval="69" sdnum="1033;" align="right" bgcolor="#ffff00" valign="middle">69</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#ffff00" height="17" valign="bottom">W05322473</td>
+		<td sdval="69" sdnum="1033;" align="right" bgcolor="#ffff00" valign="middle">69</td>
+	</tr>
+	<tr>
+		<td align="left" bgcolor="#000000" height="16" valign="middle"><font color="#ffffff">Average</font></td>
+		<td sdval="86.41" sdnum="1033;" align="right" bgcolor="#000000" valign="middle"><font color="#ffffff">86.41</font></td>
+	</tr>
+</tbody></table>
+</body></html>

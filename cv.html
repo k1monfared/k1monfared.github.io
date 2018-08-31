@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”>
+
+<html xmlns=”https://www.w3.org/1999/xhtml” lang=”en” xml:lang=”en”>
+	<head>
+		<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8” />
+		<link rel="stylesheet" type="text/css" href="css/mainCSS.css"/>
+		<link rel="stylesheet" type="text/css" href="css/otherStyles.css"/>
+		<title> Keivan Hassani Monfared's Home Page </title>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+ 			for(i = 1; i < 2000; i++){ // i is the IDnumber of papers. See next line.
+ 			toggleSlowly('item' + i);
+ 			}
+ 			});
+
+ 			function toggleSlowly(elementId){
+ 			$("#" + elementId).slideToggle(500);
+ 			} 		
+		</script>
+		<script>
+			$(document).ready(function(){
+ 			for(i = 1; i < 2000; i++){ // i is the IDnumber of papers. See next line.
+ 			toggleSlowly('paper' + i);
+ 			}
+ 			});
+ 			
+ 			$(document).ready(function(){
+ 			for(i = 1; i < 2000; i++){ // i is the IDnumber of papers. See next line.
+ 			toggleSlowly('content' + i);
+ 			}
+ 			});
+
+ 			function toggleSlowly(elementId){
+ 			$("#" + elementId).slideToggle(500);
+ 			} 		
+		</script>
+	
+		<!-- load mathjax scripts -->
+		<script type="text/javascript"
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<!-- load floating script-->
+		<script type="text/javascript" src="css/floating-1.12.js">  </script>
+
+    <script type="text/javascript">  
+        floatingMenu.add('floatdiv',  
+            {  
+                // Represents distance from left or right browser window  
+                // border depending upon property used. Only one should be  
+                // specified.  
+                //targetLeft: 10,  
+                 targetRight: 30,  
+      
+                // Represents distance from top or bottom browser window  
+                // border depending upon property used. Only one should be  
+                // specified.  
+                // targetTop: 150,  
+                // targetBottom: 0,  
+      
+                // Uncomment one of those if you need centering on  
+                // X- or Y- axis.  
+                // centerX: true,  
+                 centerY: true,  
+      
+                // Remove this one if you don't want snap effect  
+                 snap: true  
+            });  
+    </script>
+
+	</head>
+
+
+
+
+	<body>
+
+
+	<!-- <div id="floatdiv" style="  
+        position:absolute;  
+        width:20%;height:450px;top:10px;left:10px;  
+        padding:16px;background:#FFFFFF;  
+        border:2px solid black;
+		color: black;
+		text-align: left;
+        z-index:100">  
+	<h2 class="heading2"> Contents </h2> 
+	<ol>
+		<li><a href="#education">Education</a></li>
+		<li><a href="#professtionalexperince">Professional Experience</a></li>
+		<li><a href="#teachingexperince">Teaching Experience</a></li>
+		<li><a href="#publications">Publications</a></br></li>
+		<li><a href="#honors">Honors and Awards</a></li>
+		<li><a href="#seminars">Seminars and Talks</a></li>
+		<li><a href="#memberships"> Professional Affiliations </a></li>
+		<li><a href="#services">Services</a></li>
+		<li><a href="#grants">Grants</a></li>
+		<li><a href="#skills"> Computer Skills </a></li>
+		<li><a href="#workshops"> Summer Schools and Workshops </a></li>
+		<li><a href="#volunteering">Volunteering</a></li>
+		<li><a href="#references">References</a></li>
+	</ol>
+    </div>-->
+
+
+
+	<div class="container">
+
+	<div class="myTitle">
+		KEIVAN HASSANI MONFARED
+	</div>
+	<div class="myTitleFooter">University of Calgary</div>
+
+	<div id="menu">
+	<span class="menuItem"><a href="index.html">home</a></span>
+	<span class="menuItem"><a href="research.html">research</a></span>
+	<!--<span class="menuItem"><a href="studies.html">studies</a></span>-->
+	<span class="menuItem"><a href="teaching.html">teaching</a></span>
+	<span class="menuItem"><a href="contact.html">contact</a></span>
+	<span class="menuItem"><a style="color: #FFD700" href="cv.html">cv</a></span>
+	<!--<span class="menuItem"><a href="other.html">other</a></span>-->
+	</div>
+	
+	<div id="pageContent">
+		<div id="mainContent">
+
+	<b>This page is still under construction, please download the updated CV from right sidebar.</b>
+	
+	
+	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content1')"> 
+		Education
+	</button>
+	<div id="content1">	
+		<ul> 
+			<li><b>Doctor of Philosophy (Ph.D.), Mathematics</b>: August 2014 <button class="togglebutton"; onclick="toggleSlowly('item1')"> > details </button></li> <a href="http://www.uwyo.edu/math">University of Wyoming</a>, Laramie, WY, USA
+			
+				<div id="item1">
+				<ul class="borderedContent";>
+					<b>Thesis:</b> The Jacobian Method: The art of finding more needles in nearby haystacks.  <button class="togglebutton"; onclick="toggleSlowly('paper1')"> > Summary </button> </li> </a><br>
+			
+				<div id="paper1">
+				<ul>
+				In this dissertation I develop the Jacobian method, and we give a detailed description of it, along with a geometric interpretation. We provide several examples and using the Jacobian method we solve three fundamental structured inverse eigenvalue problems including the \(\lambda\)-\(\mu\)-SIEP, the \(\lambda\)-\(\tau\)-SIEP, and the nowhere-zero eigenbasis problem for the \(\lambda\)-SIEP. The common strategy is to prove the existence of a solution for trees, then to show that these solutions are generic, and then use the Implicit Function Theorem to extend it to connected graphs. Several other important problems that can be solved using this method are mentioned, as well as two main directions for further development of the Jacobian method.
+				
+				</ul>
+				</div>
+					<b>Advisor:</b> <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>
+				<br><a href="research/The%20Jacobian%20Method.pdf"><b>PDF</b></a>
+				</ul>
+				</div>
+			
+			<li><b>Master of Science (M.Sc.), Mathematics</b>: December 2012 <button class="togglebutton"; onclick="toggleSlowly('item2')"> > details </button></li> <a href="http://www.uwyo.edu/math">University of Wyoming</a>, Laramie, WY, USA
+			
+				<div id="item2">
+				<ul class="borderedContent";>
+					<b>Thesis:</b> <a href="http://search.proquest.com/docview/920132185">On the Permanent Conjecture</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper2')"> > Summary </button> </li>
+			
+				<div id="paper2">
+				<ul>
+				The permanent rank of a matrix \(A\), \(\mbox{perrank}(A)\), is defined to be the size of a largest square submatrix of \(A\) with nonzero permanent. In this thesis we study some properties of the permanents and also permanent ranks of the matrices, and related problems. In particular we characterize matrices with small permanent ranks in order to study the following conjecture relating the \(\text{perrank}\) and the \(\text{termrank}\): 
+<br> <b>Conjecture:</b>
+For any matrix \(A\), \[ \mbox{perrank}(A) \geq \Bigg\lceil \frac{\mbox{termrank}(A)}{2} \Bigg\rceil,\] and for even \(\mbox{termrank}\) the equality holds if and only if up to equivalence and reduction \(A=\bigoplus \left[\begin{array}{cr}1&1\\1&-1\end{array}\right]\).
+				</ul>
+				</div>
+				<br><b>Advisor:</b> <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>
+</li>
+				<br><a href="research/On%20the%20Permanent%20Rank%20of%20Matrices.pdf"><b>PDF</b></a>
+				</ul>
+				</div>
+				
+			<li><b>Bachelor of Science (B.Sc.), Mathematics</b>: July 2009 <button class="togglebutton"; onclick="toggleSlowly('item3')"> > details </button></li> <a href="http://math.aut.ac.ir/autcms/mathematics-computer-science/en/home">Amirkabir University of Technology (Tehran Polytechnic)</a>, Tehran, Iran
+			
+				<div id="item3">
+				<ul class="borderedContent";>
+					<b>Thesis:</b> <a href="http://journals.cambridge.org/production/action/cjoGetFulltext?fulltextid=7897521">On the Existence of Nowhere-Zero Vectors for Linear Transformations. </a> <button class="togglebutton"; onclick="toggleSlowly('paper3')"> > Summary </button> </li> </a>
+			
+				<div id="paper3">
+				<ul>
+				If for a matrix \(A\) there is a vector \(x\) such that the vectors \(x\) and \(Ax\) have no zero entries, then \(A\) is called to have the AJT property. In this paper we make further progress on the Alon-Jaeger-Tarsi (AJT) Conjecture, using combinatorial, probabilistic, and linear algebraic methods. The AJT conjecture asserts any nonsingular matrix over a field with at least 4 elements has the AJT property. It is shown that any nonzero matrix is similar to an AJT matrix, and some necessary and some sufficient conditions for a matrix to have the AJT property are given. Also, we provide a sharp bound for the number of the elements of the field in terms of the size of the matrix.
+				
+				</ul>
+				</div>
+				<br><b>Advisor:</b> Dariush Kiani
+				<br> <a href="research/On%20The%20Existence%20of%20Nowhere-Zero%20Vectors%20for%20Linear%20Transformations.pdf"><b>PDF</b></a>
+				</ul>
+				</div>			
+		</ul>
+	</div>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content2')"> 
+		Professional Experience
+	</button>
+	<div id="content2">		
+			
+		<ul> 
+			<li><b>Postdoctoral Fellow:</b> 2015 - Present <button class="togglebutton"; onclick="toggleSlowly('item101')"> > duties </button></li>
+			<a href="http://math.ucalgary.ca/">University of Calgary</a>, Calgary, AB, Canada <br>
+			Supervisors: <a href="https://people.ucalgary.ca/~lancaste/">Peter Lancaster</a> and <a href="http://contacts.ucalgary.ca/info/math/profiles/101-152928">Alex Brudnyi</a>
+			<div id="item101">
+				<ul class="borderedContent";>
+					<li>Conducting research</li>
+					<li>Teaching mathematics courses with full responsibility</li>
+					<li>Running lab sessions</li>
+					<li>Presenting results in conferences</li>
+					<li>Attending workshops</li>
+				</ul>
+			</div>
+
+			<li><b>Visiting Assistant Professor:</b> 2014 - 2015 <button class="togglebutton"; onclick="toggleSlowly('item102')"> > duties </button></li>
+			<a href="http://www.wiu.edu/cas/math/">Western Illinois University</a>, Macomb, IL, USA
+			<div id="item102">
+				<ul class="borderedContent";>
+					<li>Conducting research</li>
+					<li>Teaching mathematics courses with full responsibility</li>
+					<li>Presenting results in conferences</li>
+				</ul>
+			</div>
+
+			<li><b>Graduate Teaching and Research Assistant:</b> 2009 - 2014 <button class="togglebutton"; onclick="toggleSlowly('item103')"> > duties </button></li>
+			<a href="http://www.uwyo.edu/math/">University of Wyoming</a>, Laramie, WY, USA
+			<div id="item103">
+				<ul class="borderedContent";>
+					<li>Conducting research</li>
+					<li>Teaching mathematics courses with full responsibility</li>
+					<li>Running lab sessions</li>
+					<li>Presenting results in conferences</li>
+					<li>Attending workshops</li>
+				</ul>
+			</div>
+			
+			<li><b>Research Assistant:</b> 2008 - 2009 <button class="togglebutton"; onclick="toggleSlowly('item104')"> > duties </button></li>
+			<a href="http://math.ipm.ac.ir/">Institute for Research in Fundamental Sciences (IPM)</a>, Tehran, Iran
+			<div id="item104">
+				<ul class="borderedContent";>
+					<li>Conducting research</li>
+				</ul>
+			</div>
+		</ul>
+		
+		<h2 class="heading2" id="teachingexperince">  Teaching Experience  </h2> 	
+		<ul> 
+			<li><b>Teaching Certificates:</b> </li>
+			Instructional Skills Workshop Certificate, <a href="http://www.ucalgary.ca/taylorinstitute/">Taylor Institute for Teaching and Learning</a>: 2016.
+			
+			<li><b>Graduate Courses:</b> </li>
+			<ul>
+				<li><b>(Online Course)</b> Discrete Mathematics (for high school teachers): Summer 2012 <button class="togglebutton"; onclick="toggleSlowly('item201')"> > responsibilities </button></li>
+			<div id="item201">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+			</ul>
+			
+			<li><b>Undergraduate Courses:</b> </li>
+			<ul>
+				<li>Discrete Mathematics: Winter 2017 <button class="togglebutton"; onclick="toggleSlowly('item202')"> > responsibilities </button></li>
+			<div id="item202">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+			
+				<li>Linear Algebra: Fall 2016 <button class="togglebutton"; onclick="toggleSlowly('item203')"> > responsibilities </button></li>
+			<div id="item203">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				
+				<li>Calculus I: Fall 2012, Spring and Fall 2015, Spring 2016 <button class="togglebutton"; onclick="toggleSlowly('item204')"> > responsibilities </button></li>
+			<div id="item204">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				<li>General Statistics: Spring 2015 and Fall 2014 <button class="togglebutton"; onclick="toggleSlowly('item205')"> > responsibilities </button></li>
+			<div id="item205">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+			
+				<li>Concepts of Mathematics: Fall 2014 <button class="togglebutton"; onclick="toggleSlowly('item206')"> > responsibilities </button></li>
+			<div id="item206">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				<li>Geometry and Measurement (for elementary school teachers): Spring 2014 <button class="togglebutton"; onclick="toggleSlowly('item207')"> > responsibilities </button></li>
+			<div id="item207">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				<li>Calculus II: Summer 2012 <button class="togglebutton"; onclick="toggleSlowly('item208')"> > responsibilities </button></li>
+			<div id="item208">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+			
+				<li>Calculus III: Summer and Fall 2013 <button class="togglebutton"; onclick="toggleSlowly('item209')"> > responsibilities </button></li>
+			<div id="item209">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				<li>Algebra and Trigonometry: Fall 2011 and Spring 2013 <button class="togglebutton"; onclick="toggleSlowly('item210')"> > responsibilities </button></li>
+			<div id="item210">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+			
+				<li>Finite Mathematics: Summer 2010 and Spring 2011 <button class="togglebutton"; onclick="toggleSlowly('item211')"> > responsibilities </button></li>
+			<div id="item211">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				<li>Trigonometry: Fall 2009 and 2010 <button class="togglebutton"; onclick="toggleSlowly('item212')"> > responsibilities </button></li>
+			<div id="item212">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+				
+				<li>College Algebra: Spring 2010 <button class="togglebutton"; onclick="toggleSlowly('item213')"> > responsibilities </button></li>
+			<div id="item213">
+				<ul class="borderedContent";>
+					<li>Designing the course theme.</li>
+					<li>producing presentations for lectures.</li>
+					<li>Writing and delivering lectures.</li>
+					<li>Devising study guides.</li>
+					<li>Creating and maintaining a class web site.</li>
+					<li>Managing instructional resources.</li>
+					<li>Writing and grading exams and assignments.</li>
+					<li>Holding regular office hours.</li>
+					<li>Mentoring and advising students.</li>
+					<li>Handling all administrative aspects of the course.</li>
+					<li>Mentoring teaching assistants.</li>
+					<li>Leading a discussion session.</li>
+					<li>Creating the syllabus.</li>
+				</ul>
+			</div></li>
+			
+			
+			</ul>
+			
+		</ul>
+	</div>
+	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content3')"> 
+		Publications
+	</button>
+	<div id="content3">			
+		<ul> 
+			<li> <b>Structured Quadratic Inverse Eigenvalue Problems for Graphs</b></li> Keivan Hassani Monfared and Peter Lancaster.
+		
+			<li><b><a href="http://arxiv.org/abs/1512.05834">A Structured Inverse Spectrum Problem For Infinite Graphs</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper111')"> > Summary </button></li>Keivan Hassani Monfared and <a href="https://sites.psu.edu/ehssan/">Ehssan Khanmohammadi</a>: <a href="research/A-Structured-Inverse-Spectrum-Problem-for-Infinite-Graphs.pdf">PDF</a>
+			
+				<div id="paper111">
+				<ul class="borderedContent";>
+					<li>It is shown that for a given infinite graph \(G\) on countably many vertices, and a bounded, countably infinite set of real numbers \(\Lambda\) there is a symmetric matrix whose graph is $G$ and its spectrum is the closure of \(\Lambda\). 
+</li>
+				</ul>
+				</div>
+			
+			
+			
+			
+			
+			<li><b><a href="https://arxiv.org/abs/1604.02195">Existence of a Not Necessarily Symmetric Matrix with Given Distinct Eigenvalues and Graph</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper110')"> > Summary </button></li>Keivan Hassani Monfared: <a href="research/Existence-of-a-Not-Necessarily-Symmetric-Matrix-with-Given-Distinct-Eigenvalues-and-Graph.pdf">PDF</a>
+				<div id="paper110">
+				<ul class="borderedContent";>
+					<li>For given distinct numbers \(\lambda_1 \pm \mu_1 \rm{i}, \lambda_2 \pm \mu_2 \rm{i}, \ldots, \lambda_k \pm \mu_k \rm{i} \in \mathbb{C} \setminus \mathbb{R}\) and \(\gamma_1, \gamma_2, \ldots, \gamma_l \in \mathbb{R}\), and a given graph \(G\) with a matching of size at least \(k\), we will show that there is a real matrix whose eigenvalues are the given numbers and its graph is \(G\). In particular, this implies that any real matrix with distinct eigenvalues is similar to a real, irreducible, tridiagonal matrix. 
+</li>
+				</ul>
+				</div>
+
+
+			<li><b><a href="http://www.sciencedirect.com/science/article/pii/S0024379516301276">The nowhere-zero eigenbasis problem for a graph</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper109')"> > Summary </button></li>Keivan Hassani Monfared and <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>, <i>Linear Algebra and its Applications</i></a>: <a href="research/The-nowhere-zero-eigenbasis-problem-for-a-graph.pdf"><b>PDF</b></a>.
+				<div id="paper109">
+				<ul class="borderedContent";>
+					<li>Using previous results and methods, it is shown that for any connected graph \(G\) on \(n\) vertices and a set of \(n\) distinct real numbers \(\Lambda\), there is an \(n\times n\) real symmetric matrix \(A\) whose graph is \(G\), its spectrum is \(\Lambda\), and none of the eigenvectors of \(A\) have a zero entry.
+</li>
+				</ul>
+				</div>
+				
+			<li><b><a href="http://repository.uwyo.edu/ela/vol31/iss1/16/">On the Principal Permanent Rank Characteristic Sequences of Graphs and Digraphs</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper108')"> > Summary </button></li>Keivan Hassani Monfared, <a href="http://web.cs.du.edu/~paulhorn/">Paul Horn</a>, <a href="http://www.caam.rice.edu/~fhk2/">Franklin Kenter</a>, Kathleen Nowak, John Sinkovic and Josh Tobin, <i>Electronic Journal of Linear Algebra</i>: <a href="research/on-the-principal-permanent-rank-characteristic-sequences-of-graphs-and-digraphs.pdf">PDF</a>.
+				<div id="paper108">
+				<ul class="borderedContent";>
+					<li>Given an \(n\times n\) real matrix \(A\), the principal characteristic perrank sequence of \(A\) is defined as \(r_0, r_1, r_2, \ldots, r_n\), where for \(k \geq 1\), \(r_k=1\) iff \(A\) has a principal submatrix of size \(k\) with nonzero permanent, and \(r_0 = 1\) iff \(A\) has a zero on its main diagonal. We study the following inverse problem: given a sequence \(r_0 r_1 \cdots r_n\) of zeros and ones, does there exist an \(n \times n\) real matrix which achieves this sequence? As a result, we characterize all the sequences corresponding to (symmetric) entry-wise nonnegative matrices, and provide some results for the skew-symmetric case.
+</li>
+				</ul>
+				</div>
+				
+				
+				<li> <b><a href="http://www.sciencedirect.com/science/article/pii/S0024379516000951">Spectral Characterization of matchings in graphs</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper107')"> > Summary </button>
+</li> Keivan Hassani monfared and <a href="http://sudiptamallik.com/">Sudipta Mallik</a>, <i>Linear Algebra and its Applications</i></a>: <a href="research/2016-spectral-characterization-of-matchings-in-graphs.pdf"><b>PDF</b></a>.
+			
+				<div id="paper107">
+				<ul class="borderedContent";>
+					<li>We provide a characterization of graphs with matching number \(k\) in terms of what spectra they can realize as skew-symmetric matrices.
+</li>
+				</ul>
+				</div>
+				
+				<li> <b><a href="http://www.tandfonline.com/doi/abs/10.1080/03081087.2014.1003527"> The \(\lambda\)-\(\tau\) structured inverse eigenvalue problem </a> </b> <button class="togglebutton"; onclick="toggleSlowly('paper106')"> > Summary </button></li> Keivan Hassani Monfared and <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>, <i>Linear and Multilinear Algebra</i>: <a href="research/The lambda-tau structured inverse eigenvalue problem.pdf"><b>PDF</b></a>. 
+			
+					<div id="paper106">
+					<ul class="borderedContent";>
+						<li>For a matrix \(A\) let \(A(\{r,s\})\) denote the principal submatrix obtained form \(A\) by removing rows and columns \(r\) and \(s\). Let \(T\) be a tree on \(n\) vertices which satisfies some necessary combinatorial restriction, \(\Lambda\) a set of \(n\) distinct real numbers, \(M\) a set of \(n-2\) distinct real numbers, and \(r\) and \(s\) two distinct fixed vertices of \(T\). Also, assume that \(M\) and \(L\) satisfy second degree strict Cauchy interlacing inequalities and some genericity conditions. Using various combinatorial techniques it is shown that there is a real symmetric matrix \(A\) whose graph is \(T\), spectrum of \(A\) is \(\Lambda\) and spectrum of \(A(\{r,s\})\) is \(M\). Then, using Jacobian method this result was extended to any supergraph of this family of trees. Also, some consequences of these results related to perturbations of diagonal entries of a matrix are presented.</li>
+				</ul>
+				</div>
+
+				<li> <b><a href="http://www.sciencedirect.com/science/article/pii/S0024379515000269">Construction of real skew-symmetric matrices from interlaced spectral data, and graph</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper105')"> > Summary </button> </li> Keivan Hassani Monfared and <a href="http://sudiptamallik.com/">Sudipta Mallik</a>, <i>Linear Algebra and its Applications</i>: <a href="research/Construction of real skew-symmetric matrices from interlaced spectral data, and graph.pdf"><b>PDF</b></a>. 
+			
+					<div id="paper105">
+					<ul class="borderedContent";>
+						<li>We provide analogues of the results presented in <i>Construction of matrices with a given graph and prescribed interlaced spectral data</i> for skew-symmetric matrices. This is first shown for a family of trees with nearly even branching at a vertex \(v\) (NEB trees) using various combinatorial techniques. Then the results are extended to any supergraph of such trees using the Jacobian method. Let \(G\) be a connected graph on \(n\) vertices, \(\Lambda\) a set of \(n\) distinct purely imaginary numbers which is closed under negation, and \(M\) a set of \(n-1\) distinct purely imaginary numbers closed under negation which strictly interlaces \(\Lambda\). Also, let \(v\) be a vertex of \(G\). It is shown that if \(G\) has a spanning tree which is NEB at \(v\), then there is a real skew-symmetric matrix \(A\) whose graph is \(G\), its spectrum is \(\Lambda\), and the spectrum of \(A(v)\) is \(M\). Some properties of NEB trees are also studied.</li>
+					</ul>
+					</div>
+
+
+			<li> <b><a href="http://search.proquest.com/docview/1615381957">The Jacobian Method: The Art Of Finding More Needles in Nearby Haystacks</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper104')"> > Summary </button> </li> (PhD dissertation, PhD advisor: <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>) <i>University of Wyoming</i>, Laramie, WY; 2014: <a href="research/The%20Jacobian%20Method.pdf"><b>PDF</b></a>. 
+			
+				<div id="paper104">
+				<ul class="borderedContent";>
+					<li>In this dissertation we develop the Jacobian method, and we give a detailed description of it, along with a geometric interpretation. We provide several examples and using the Jacobian method we solve three fundamental structured inverse eigenvalue problems including the \(\lambda\)-\(\mu\)-SIEP, the \(\lambda\)-\(\tau\)-SIEP, and the nowhere-zero eigenbasis problem for the \(\lambda\)-SIEP. The common strategy is to prove the existence of a solution for trees, then to show that these solutions are generic, and then use the Implicit Function Theorem to extend it to connected graphs. Several other important problems that can be solved using this method are mentioned, as well as two main directions for further development of the Jacobian method.</li>
+				</ul>
+				</div>
+
+			<li> <b><a href="http://www.sciencedirect.com/science/article/pii/S0024379513001006?np=y">Construction of matrices with a given graph and prescribed interlaced spectral data</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper103')"> > Summary </button> </li> Keivan Hassani Monfared and <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>, <i>Linear Algebra and Its Applications</i>; 2013: <a href="research/Construction%20of%20matrices%20with%20a%20given%20graph%20and%20prescribed%20interlaced%20spectral%20data.pdf"><b>PDF</b></a>.
+			
+				<div id="paper103">
+				<ul class="borderedContent";>
+					<li>In this paper we show that for any set of \(n\) distinct real numbers and any given connected graph on \(n\) vertices, there is a real symmetric matrix with the given eigenvalues and graph. More precisely, for a matrix \(A\) let \(A(v)\) denote the principal submatrix obtained form \(A\) by removing its \(v\)-th row and column. We show that for any given graph \(G\) on \(n\) vertices, \(\Lambda\) a set of \(n\) distinct real numbers, \(M\) a set of \(n-1\) distinct real numbers that strictly interlaces \(\Lambda\), and \(i\) a fixed vertex of \(G\), there is a real symmetric matrix \(A\) whose graph is \(G\), spectrum of \(A\) is \(\Lambda\) and spectrum of \(A(v)\) is \(M\).</li>
+				</ul>
+				</div>
+
+			<li> <b><a href="http://search.proquest.com/docview/920132185">On the Permanent Conjecture</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper102')"> > Summary </button> </li> (Masters thesis, thesis advisor: <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan L. Shader</a>) <i>University of Wyoming</i>, Laramie, WY; 2012: <a href="research/On%20the%20Permanent%20Rank%20of%20Matrices.pdf"><b>PDF</b></a>. 
+			
+				<div id="paper102">
+				<ul class="borderedContent";>
+					<li>The permanent rank of a matrix \(A\), \(\mbox{perrank}(A)\), is defined to be the size of a largest square submatrix of \(A\) with nonzero permanent. In this thesis we study some properties of the permanents and also permanent ranks of the matrices, and related problems. In particular we characterize matrices with small permanent ranks in order to study the following conjecture relating the \(\text{perrank}\) and the \(\text{termrank}\): 
+<br> <b>Conjecture:</b>
+For any matrix \(A\), \[ \mbox{perrank}(A) \geq \Bigg\lceil \frac{\mbox{termrank}(A)}{2} \Bigg\rceil,\] and for even \(\mbox{termrank}\) the equality holds if and only if up to equivalence and reduction \(A=\bigoplus \left[\begin{array}{cr}1&1\\1&-1\end{array}\right]\).</li>
+				</ul>
+				</div>
+
+			<li> <b><a href="http://journals.cambridge.org/production/action/cjoGetFulltext?fulltextid=7897521">On the existence of nowhere-zero vectors for linear transformations</a></b> <button class="togglebutton"; onclick="toggleSlowly('paper101')"> > Summary </button> </li> S. Akbari, K. Hassani Monfared, M. Jamaali, <a href="https://sites.psu.edu/ehssan/"> E. Khanmohammadi </a> and D. Kiani, <i>Bulletin of the Australian Mathematical Society</i>; 2010: <a href="research/On%20The%20Existence%20of%20Nowhere-Zero%20Vectors%20for%20Linear%20Transformations.pdf"><b>PDF</b></a>.
+			
+				<div id="paper101">
+				<ul class="borderedContent";>
+					<li>If for a matrix \(A\) there is a vector \(x\) such that the vectors \(x\) and \(Ax\) have no zero entries, then \(A\) is called to have the AJT property. In this paper we make further progress on the Alon-Jaeger-Tarsi (AJT) Conjecture, using combinatorial, probabilistic, and linear algebraic methods. The AJT conjecture asserts any nonsingular matrix over a field with at least 4 elements has the AJT property. It is shown that any nonzero matrix is similar to an AJT matrix, and some necessary and some sufficient conditions for a matrix to have the AJT property are given. Also, we provide a sharp bound for the number of the elements of the field in terms of the size of the matrix.</li>
+				</ul>
+				</div>
+
+		</ul>
+	</div>	
+
+
+
+
+
+
+
+
+
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content4')"> 
+		Honors and Awards
+	</button>
+	<div id="content4">		
+		<b> Distinguished Awards:</b>
+		<ul> 
+			<li> </li>
+		</ul>
+
+		<b> Travel Awards:</b>
+		<ul> 
+			<li> </li>
+		</ul>	
+		
+	</div>
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content5')"> 
+		Seminars and Talks
+	</button>
+	<div id="content5">		
+		<b> Invited Talks:</b>
+		<ul> 
+			<li> </li>
+		</ul>
+		
+		
+		
+		<b> Contributed Talks:</b>
+		<ul> 
+			<li> </li>
+		</ul>
+		
+		<b> Posters:</b>
+		<ul> 
+			<li> </li>
+		</ul>
+	</div>
+	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content6')"> 
+		Professional Affiliations
+	</button>
+	<div id="content6">		
+	
+	</div>	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content7')"> 
+		Services
+	</button>
+	<div id="content7">		
+	
+	</div>	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content8')"> 
+		Grants
+	</button>
+	<div id="content8">		
+	
+	</div>	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content9')"> 
+		Computer Skills
+	</button>
+	<div id="content9">		
+	
+	</div>	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content10')"> 
+		Summer Schools and Workshops
+	</button>
+	<div id="content10">		
+	
+	</div>	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content11')"> 
+		Volunteering
+	</button>
+	<div id="content11">		
+	
+	</div>	
+	
+	
+	
+	
+	<br>
+	<button class="togglebutton"; onclick="toggleSlowly('content12')"> 
+		References
+	</button>
+	<div id="content12">		
+	
+	</div>	
+	
+	
+	
+	
+	
+	
+	
+
+
+</div>
+	
+		<div id="sideContent">
+		<h2 class="heading2">Download </h2>
+		<a href="CV_Keivan_Hassani_Monfared.pdf">PDF</a>
+		
+			
+
+		</div>
+	</div>
+		<div class="PageFooter">Designed by Shaghayegh Khodaei and Keivan Hassani Monfared</div>
+	</div>
+	
+	
+	</body>
+
+
+</html>
