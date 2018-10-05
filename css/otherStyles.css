@@ -1,9 +1,10 @@
 .keivanImage {
 	border: none; /* 1px solid #e9e4d8; */
-    	padding: 4px;
+    padding: 4px;
 	float: right;
 	margin-right: 20px;
 	margin-left: 20px;
+	clip-path: circle(45% at center);
 }
 
 .sideBarContactInfo {
@@ -27,4 +28,81 @@
 
 ul.studiesListItems  li {
 	padding-bottom: 10px;
+}
+
+.imageContainerR {
+    position: relative;
+    text-align: center;
+    color: black;
+	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+}
+
+.imageContainerR:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  mask-image: linear-gradient(rgba(0, 0, 0, .5), transparent);
+  background: #ff0066;
+}
+
+.imageContainerB {
+    position: relative;
+    text-align: center;
+    color: black;
+	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+}
+
+.imageContainerB:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  mask-image: linear-gradient(rgba(0, 0, 0, .5), transparent);
+  background: #0066ff;
+}
+
+.imageContainerG {
+    position: relative;
+    text-align: center;
+    color: black;
+	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+}
+
+.imageContainerG:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  mask-image: linear-gradient(rgba(0, 0, 0, .5), transparent);
+  background: #33cc33;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    font-size: 150%;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    top: 8px;
+    right: 16px;
+    -ms-transform: rotate(-20deg); /* IE 9 */
+    -webkit-transform: rotate(-20deg); /* Safari 3-8 */
+    transform: rotate(-20deg);
 }
