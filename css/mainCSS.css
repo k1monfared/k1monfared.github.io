@@ -3,6 +3,7 @@ body {
 	font-family: Trebuchet MS,Arial,Helvetica,sans-serif;
 	font-size: 14px;
 	line-height: 2;
+	text-align: justify;
 	
 }
 
@@ -63,7 +64,14 @@ body {
 	width: 70%;
 	display: table-cell;
 	padding: 2%;
-	border-right: 1px solid #e9e4d8
+	border-right: none; /* 1px solid #e9e4d8 */
+}
+
+#boxedContent {
+	font-size: 14px;
+	width: 30%;
+	display: table-cell;
+	padding: 2%;
 }
 
 #leftsideContent {
@@ -73,9 +81,9 @@ body {
 	text-align: left;
 
 	border-top: none;
-    border-right: none;
-    border-bottom: none;
-    border-left: 1px solid #e9e4d8;
+    	border-right: none;
+    	border-bottom: none;
+   	border-left: none; /*1px solid #e9e4d8;*/
 	padding: 1%;
 }	
 
@@ -114,34 +122,34 @@ body {
 }
 
 .tagContent {
-    width: 120px;
-/*    height: 30px;*/
-    background-color: red;
+    	width: 120px;
+	/*    height: 30px;*/
+    	background-color: red;
 	text-align: center;
 	-ms-transform:matrix(1,1,-0.8,0.586,40,40);
 	-webkit-transform:matrix(1,1,-0.8,0.586,40,40);
 	-moz-transform:matrix(0,0,-0.8,0.586,40,40);
 	transform:matrix(1,-1,1,1,50,50);
-    /* Rotate div */
-/*    -ms-transform: rotate(-30deg); /* IE 9 */
-/*    -webkit-transform: rotate(-30deg); /* Chrome, Safari, Opera */
-/*    transform: rotate(-30deg); */
+    	/* Rotate div */
+	/*    -ms-transform: rotate(-30deg); /* IE 9 */
+	/*    -webkit-transform: rotate(-30deg); /* Chrome, Safari, Opera */
+	/*    transform: rotate(-30deg); */
 }
 
 .PageFooter {
 	position: relative;
 	text-align: right;
-	border-top: 1px solid #e9e4d8;
+	border-top: none; /*1px solid #e9e4d8;*/
    	border-right: none;
   	border-bottom: none;
   	border-left: none;
 	padding: 1%;
-	font-size: 80%;
-	margin-top: 10px
+	font-size: 70%;
+	margin-top: 10px;
+	color: grey
 }
 
-input[type="button"], button
-{
+input[type="button"], button {
      background: none;
      background-position: center center;
      background-repeat: no-repeat;
@@ -153,3 +161,41 @@ a:link{ color:#333333; }
 a:visited{ color:black; } 
 a:hover{ color:#666666; } 
 a:active{ color:#878787}
+
+#table1 {
+	/* font-family: arial, sans-serif; */
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;
+}
+
+/* #table1 tr:nth-child(even) {
+	background-color: #dddddd;
+} */
+
+td, th {
+	border: none;
+	text-align: left;
+	padding: .5%;
+	width: 10%;
+	vertical-align: top;
+}
+
+.imageContainer {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    font-size: 150%;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    top: 8px;
+    right: 16px;
+    -ms-transform: rotate(-20deg); /* IE 9 */
+    -webkit-transform: rotate(-20deg); /* Safari 3-8 */
+    transform: rotate(-20deg);
+}

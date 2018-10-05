@@ -1,8 +1,9 @@
 .keivanImage {
-	border: 1px solid #e9e4d8;
-    padding: 4px;
-	float: left;
+	border: none; /* 1px solid #e9e4d8; */
+    	padding: 4px;
+	float: right;
 	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .sideBarContactInfo {
@@ -10,14 +11,14 @@
 }
 
 .heading2 {
-	border-bottom: 1px solid #e9e4d8;
+	border-bottom: none; /*	1px solid #e9e4d8; */
 }
 
 .heading2withSub {
 	border-bottom: none;
 }
 .heading2Sub {
-	border-bottom: 1px solid #e9e4d8;
+	border-bottom: none; /*	1px solid #e9e4d8; */
 }
 
 .researchSideBarText {
