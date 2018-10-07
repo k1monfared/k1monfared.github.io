@@ -10,48 +10,23 @@
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function(){
- 			for(i = 1; i < 200; i++){ // i is the IDnumber of papers. See next line.
- 			toggleSlowly('paper' + i);
- 			}
+			$(document).ready(function()
+			{
+				for(i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
+				{ 
+					toggleSlowly('paper' + i);
+				}
  			});
 
- 			function toggleSlowly(elementId){
- 			$("#" + elementId).slideToggle(500);
+ 			function toggleSlowly(elementId)
+			{
+				$("#" + elementId).slideToggle(500);
  			} 		
 		</script>
 	
 		<!-- load mathjax scripts -->
 		<script type="text/javascript"
 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-		<!-- load floating script-->
-		<script type="text/javascript" src="css/floating-1.12.js">  </script>
-
-    <script type="text/javascript">  
-        floatingMenu.add('floatdiv',  
-            {  
-                // Represents distance from left or right browser window  
-                // border depending upon property used. Only one should be  
-                // specified.  
-                targetLeft: 10,  
-                // targetRight: 0,  
-      
-                // Represents distance from top or bottom browser window  
-                // border depending upon property used. Only one should be  
-                // specified.  
-                targetTop: 10,  
-                // targetBottom: 0,  
-      
-                // Uncomment one of those if you need centering on  
-                // X- or Y- axis.  
-                // centerX: true,  
-                // centerY: true,  
-      
-                // Remove this one if you don't want snap effect  
-                snap: true  
-            });  
-    </script>
 
 
 
@@ -79,7 +54,7 @@
 	<div id="menu">
 		<span class="menuItem"><a style="color: #FFD700" href="index.html">home</a></span>
 		<span class="menuItem"><a href="research.html">research</a></span>
-		<!--<span class="menuItem"><a href="studies.html">studies</a></span>-->
+		<span class="menuItem"><a href="computation.html">computation</a></span>
 		<span class="menuItem"><a href="teaching.html">teaching</a></span>
 		<span class="menuItem"><a href="contact.html">contact</a></span>
 		<span class="menuItem"><a href="cv.html">cv</a></span>
@@ -105,7 +80,6 @@
 				
 				<table style="width: 100%;">
 					<colgroup>
-						<col style="width:10%">
 						<col style="width:20%">
 						<col style="width:20%">
 						<col style="width:20%">
@@ -113,7 +87,6 @@
 					</colgroup>  
 					
 					<tr>
-						<td> Computation </td>
 						<td> 
 							<div class="imageContainer">
 							  <img src="images/computationalneuroscience.jpg" alt="Computational Neuroscience Code" style="width:100%;">
@@ -141,7 +114,6 @@
 					</tr>
 					
 					<tr>
-						<td> Research </td>
 						<td> 
 							<div class="imageContainer">
 							  <img src="images/papers.jpg" alt="Research Papers" style="width:100%;">
@@ -151,7 +123,7 @@
 						<td> 
 							<div class="imageContainer">
 							  <img src="images/talks.jpg" alt="Research Talks and Seminars" style="width:100%;">
-							  <div class="top-right">Talks <br> Seminars</div>
+							  <div class="top-right">Talks <br> & Seminars</div>
 							</div> 
 						</td>
 						<td> 
@@ -169,7 +141,6 @@
 					</tr>
 					
 					<tr>
-						<td> Teaching </td>
 						<td> 
 							<div class="imageContainer">
 							  <img src="images/teaching.jpg" alt="Teaching Philosophy" style="width:100%;">
@@ -179,13 +150,13 @@
 						<td> 
 							<div class="imageContainer">
 							  <img src="images/samples.jpg" alt="Teaching Samples and Applets" style="width:100%;">
-							  <div class="top-right">Samples <br> Applets</div>
+							  <div class="top-right">Teaching Samples <br> & Applets</div>
 							</div> 
 						</td>
 						<td> 
 							<div class="imageContainer">
 							  <img src="images/testimony.jpg" alt="Teaching Testimony" style="width:100%;">
-							  <div class="top-right">Testimony <br> Evaluation</div>
+							  <div class="top-right">Teaching Testimony <br> & Evaluations</div>
 							</div> 
 						</td>
 						<td> 
