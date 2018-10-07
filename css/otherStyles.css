@@ -33,7 +33,7 @@ ul.studiesListItems  li {
 .imageContainerR {
     position: relative;
     text-align: center;
-    color: black;
+    color: white;
 	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
 }
 
@@ -51,7 +51,12 @@ ul.studiesListItems  li {
 .imageContainerB {
     position: relative;
     text-align: center;
-    color: black;
+    color: white;
+	text-shadow:
+	   -1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		 1px 1px 0 #000;
 	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
 }
 
@@ -84,7 +89,17 @@ ul.studiesListItems  li {
   background: #33cc33;
 }
 
-
+.imageContainer {
+    position: relative;
+    text-align: center;
+    color: white;
+	  text-shadow:
+	   -1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		 1px 1px 0 #000;
+	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+}
 
 
 
@@ -97,7 +112,7 @@ ul.studiesListItems  li {
 /* Top right text */
 .top-right {
     position: absolute;
-    font-size: 150%;
+    font-size: 200%;
     font-family: arial, sans-serif;
     font-weight: bold;
     top: 8px;
