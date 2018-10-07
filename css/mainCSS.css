@@ -67,12 +67,6 @@ body {
 	border-right: none; /* 1px solid #e9e4d8 */
 }
 
-#boxedContent {
-	font-size: 14px;
-	width: 30%;
-	display: table-cell;
-	padding: 2%;
-}
 
 #leftsideContent {
 	width: 25%;
@@ -162,21 +156,12 @@ a:visited{ color:black; }
 a:hover{ color:#666666; } 
 a:active{ color:#878787}
 
-#table1 {
-	/* font-family: arial, sans-serif; */
-	border-collapse: collapse;
-	table-layout: fixed;
-	width: 100%;
-}
-
-/* #table1 tr:nth-child(even) {
-	background-color: #dddddd;
-} */
+	
 
 td, th {
 	border: none;
 	text-align: left;
-	padding: .5%;
+	padding: 0%;
 	width: 10%;
 	vertical-align: top;
 }
