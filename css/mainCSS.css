@@ -61,7 +61,7 @@ body {
 }
 
 #small_menu {
-	background-color: black;
+	background-color: rgba(0, 0, 0, .85);
 	padding: 1px 10px 1px 10px;
 	/*width: 100%;*/
 	font-size: 90%;
