@@ -52,6 +52,18 @@ ul.studiesListItems  li {
     position: relative;
     text-align: center;
     color: white;
+    /*text-shadow:
+	   -1px -1px 0 #000,  
+	    1px -1px 0 #000,
+	   -1px 1px 0 #000,
+	    1px 1px 0 #000;*/
+    /*mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);*/
+}
+
+.imageContainer2 {
+    position: relative;
+    text-align: center;
+    color: white;
     text-shadow:
 	   -1px -1px 0 #000,  
 	    1px -1px 0 #000,
@@ -63,16 +75,21 @@ ul.studiesListItems  li {
 /* Top right text */
 .top-right {
     position: absolute;
-    font-size: 200%;
+    font-size: 130%;
+	width: 100%;
     font-family: arial, sans-serif;
     font-weight: bold;
-    top: 8px;
-    right: 16px;
-    -ms-transform: rotate(-20deg); /* IE 9 */
-    -webkit-transform: rotate(-20deg); /* Safari 3-8 */
-    transform: rotate(-20deg);
+    bottom: 9px;
+    right: 0px;
+	background-color: rgba(0, 0, 0, .75);
+	line-height: 130%;
+	white-space: nowrap; 
+	overflow: hidden;
+    text-overflow: ellipsis; 
+    /*-ms-transform: rotate(-20deg); /* IE 9 */
+    /*-webkit-transform: rotate(-20deg); /* Safari 3-8 */
+    /*transform: rotate(-20deg);*/
 }
-
 
 
 #stickThis {
