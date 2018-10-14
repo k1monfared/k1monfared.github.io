@@ -1,88 +1,186 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="css/mainCSS.css"/>
 		<link rel="stylesheet" type="text/css" href="css/otherStyles.css"/>
-		<title> Keivan Hassani Monfared's Contact Page </title>
+		<title> Keivan Hassani Monfared's Home Page </title>
+
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				for(i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
+				{ 
+					toggleSlowly('paper' + i);
+				}
+ 			});
+
+ 			function toggleSlowly(elementId)
+			{
+				$("#" + elementId).slideToggle(500);
+ 			} 		
+		</script>
+	
+		<!-- load mathjax scripts -->
+		<script type="text/javascript"
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+	<!-- Big Picture --><script>!function(t,e,i){var r=t.bigPicture=t.bigPicture||{};r.SNIPPET_VERSION=1.2,r.handler=function(t){if(void 0!==r.callback)try{return r.callback(t)}catch(t){}},r.eventList=["mousedown","mouseup","click","submit"],r._q=[],r.methods=["track","identify","group","alias","integration","intelReady","on","off"],r.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);return e.unshift(t),r._q.push(e),r}};for(var n=0;n<r.methods.length;n++){var o=r.methods[n];r[o]=r.factory(o)}r.getCookie=function(t){var i=("; "+e.cookie).split("; "+t+"=");return 2==i.length&&i.pop().split(";").shift()};var c=r.isEditor=function(){try{return t.self!==t.top&&(new RegExp("app.thebigpicture.io","ig").test(e.referrer)||"edit"==r.getCookie("_bpr_edit"))}catch(t){return!1}}();r.init=function(i,n){if(r.projectId=i,r._config=n,!c)for(var o=0;o<r.eventList.length;o++)t.addEventListener(r.eventList[o],r.handler,!0);var a=e.createElement("script");a.async=!0;var u=c?"/editor/editor":"/public-"+i;a.src="//cdn.thebigpicture.io"+u+".js",e.getElementsByTagName("head")[0].appendChild(a)}}(window,document);bigPicture.init("762");</script>
+
+
+	<!-- Zoom in and zoom out -->
+	<script type="text/javascript">
+		function zoomin(it) {
+			{it.width = 2*it.width; }
+		}
+		function zoomout(it) {
+			{it.width = .5*it.width;}
+		}
+	</script>
+	
+	<!-- stick to somewhere -->
+	<script type="text/javascript">
+		function sticktothetop() {
+			var window_top = $(window).scrollTop();
+			var top = $('#stick-here').offset().top;
+			if (window_top > top) {
+				$('#stickThis').addClass('stick');
+				$('#stick-here').height($('#stickThis').outerHeight());
+			} else {
+				$('#stickThis').removeClass('stick');
+				$('#stick-here').height(0);
+			}
+		}
+		$(function() {
+			$(window).scroll(sticktothetop);
+			sticktothetop();
+		});
+	</script>
+	
+	
 
 	</head>
-
-
-
-
-	<body>
-
-
-	<div class="container">
 	
-		<div class="myTitle">
-			KEIVAN HASSANI MONFARED
+	
+	
+	
+	
+	<body> 
+	<div class="container"> 
+	<div id="stick-here"></div> 
+		<div class="myTitle"> 
+			 KEIVAN HASSANI MONFARED
+		</div> 
+		<div class="myTitleFooter"> 
+			University of Calgary
+		</div> 
+
+		<div id="stickThis"> 
+
+			<div id="menu"> 
+				<span class="menuItem"><a href="index.html">home</a></span>
+				<span class="menuItem"><a href="computation.html">computation</a></span>
+				<span class="menuItem"><a href="research.html">research</a></span>
+				<span class="menuItem"><a href="teaching.html">teaching</a></span>
+				<span class="menuItem" id="this_page"><a style="color: #FFD700" href="contact.html">contact</a></span>
+			</div>
 		</div>
-		<div class="myTitleFooter">University of Calgary</div>
-	
-		<div id="menu">
-			<span class="menuItem"><a href="index.html">home</a></span>
-			<span class="menuItem"><a href="research.html">research</a></span>
-			<!--<span class="menuItem"><a href="studies.html">studies</a></span>-->
-			<span class="menuItem"><a href="teaching.html">teaching</a></span>
-			<span class="menuItem"><a style="color: #FFD700" href="contact.html">contact</a></span>
-			<span class="menuItem"><a href="cv.html">cv</a></span>
-			<!--<span class="menuItem"><a href="other.html">other</a></span>-->
-		</div>
-	
-		<div id="pageContent">
+	<div id="pageContent"> 
 			<div id="mainContent">
 		
 			<h2 class="heading2"> Contact Information </h2>
 				<p>
-					<img class="keivanImage" src="images/k1.jpg" alt="Keivan Hassani Monfared" style="width: 350px;"/>
+					<img class="keivanImage" src="images/keivanC.jpg" alt="Keivan Hassani Monfared" style="width: 30%;"/>
 					<b> Mailing Address: </b>
-					</br>Department of Mathematics and Statistics, MS 472
+					</br>Department of Mathematics and Statistics
 					</br>University of Calgary
 					</br>2500 University Dr. NW
-					</br>Calgary, Alberta, Canada
-					</br>T2N 1N4 
+					</br>Calgary, Alberta T2N 1N4
+					</br>Canada 
 
 					</br> <br>
-					<b> Office: </b>Math Sciences (MS) 584</br></br>
-
-					<b> email: </b>	keivan.hassanimonfar [at] ucalgary.ca
+					<b> Office: </b>Math Sciences (MS) 584
+					
+					</br></br>
+					<b> email: </b>keivan.hassanimonfar [at] ucalgary.ca
+					
+					</br></br>
+					<b> Website: </b><a href="k1monfared.github.io">k1monfared.github.io</a></br>
+					<b> GitHub: </b><a href="http://www.github.com/k1monfared">k1monfared</a></br>
+					<b> LinkedIn: </b><a href="http://www.linkedin.com/in/k1monfared">k1monfared</a></br>
+					<b> ResearchGate: </b><a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">Keivan Hassani Monfared</a></br>
+					<b> Google Scholar: </b><a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">k1monfared</a></br>
+					<b> arxiv: </b><a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">K Monfared</a></br>
+					<b> wordpress: </b><a href="http://k1monfared.wordpress.com/">k1monfared</a></br>
+					<b> twitter: </b><a href="https://twitter.com/k1monfared">@k1monfared</a></br>
 				</p>
 		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		<div id="sideContent">
-			<h2 class="heading2">Find me on</h2>
-
-					<p>
-					</br><b>Research Gate:</b> <a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">Keivan Hassani Monfared</a>
-					</br><b>LinkedIn:</b> <a href="http://www.linkedin.com/in/k1monfared">linkedin.com/in/k1monfared</a>
-					<br/><b>GitHub:</b> <a href="http://www.github.com/k1monfared">github.com/k1monfared</a>
-					</br><b>Google Scholar:</b> <a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">k1monfared</a>
-					</br><b>WordPress:</b> <a href="http://k1monfared.wordpress.com/">k1monfared.wordpress.com</a>
-					</p>
-		</div>
-	
 	</div>
 	
 	
 	
-	<div class="PageFooter">Designed by Shaghayegh Khodaei and Keivan Hassani Monfared</div>
+	
+	
+	
+	
+	
+	
+
+	
+	
+ <br> <br> 
+<center> 
+<table class="socialmediapadding" style="width: 80%;"> 
+<!--	<colgroup>		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+	</colgroup> --> 
+	<tr> 
+		<td> 
+			<a href="http://www.github.com/k1monfared">
+				<img src="images/github.png" alt="github" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://www.linkedin.com/in/k1monfared">
+				<img src="images/linkedin.png" alt="linkedin" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
+				<img src="images/researchgate.png" alt="researchgate" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
+				<img src="images/googlescholar.png" alt="googlescholar" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
+				<img src="images/arxiv.png" alt="arxiv" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://k1monfared.wordpress.com/">
+				<img src="images/wordpress.png" alt="wordpress" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="https://twitter.com/k1monfared">
+				<img src="images/twitter.png" alt="twitter" style="height:25px;">
+			</a>
+		</td>
+	</tr> 
+</table> 
+</center> 
+	 </div> 
+<div class="PageFooter"> 
+		Designed by Shaghayegh Khodaei and Keivan Hassani Monfared 
 	</div>
-	</body>
-
-
-</html>
+	 </body> 
+</html> 

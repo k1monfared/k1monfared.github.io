@@ -16,6 +16,15 @@
 	clip-path: circle(49% at center);
 }
 
+.researchImage {
+	border: none;
+	padding: 0%;
+	float: left
+	margin-right: 0px;
+	margin-left: 0px;
+	clip-path: circle(49% at center);
+}
+
 .sideBarContactInfo {
 	line-height: 25px;
 }
@@ -62,4 +71,19 @@ ul.studiesListItems  li {
     -ms-transform: rotate(-20deg); /* IE 9 */
     -webkit-transform: rotate(-20deg); /* Safari 3-8 */
     transform: rotate(-20deg);
+}
+
+
+
+#stickThis {
+
+}
+#stickThis.stick {
+    /*margin-top: 0;*/
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+	width: 93%;
+	min-width: 760px;
+	height: 5%;
 }

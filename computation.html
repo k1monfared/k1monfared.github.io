@@ -34,39 +34,76 @@
 	<!-- Big Picture --><script>!function(t,e,i){var r=t.bigPicture=t.bigPicture||{};r.SNIPPET_VERSION=1.2,r.handler=function(t){if(void 0!==r.callback)try{return r.callback(t)}catch(t){}},r.eventList=["mousedown","mouseup","click","submit"],r._q=[],r.methods=["track","identify","group","alias","integration","intelReady","on","off"],r.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);return e.unshift(t),r._q.push(e),r}};for(var n=0;n<r.methods.length;n++){var o=r.methods[n];r[o]=r.factory(o)}r.getCookie=function(t){var i=("; "+e.cookie).split("; "+t+"=");return 2==i.length&&i.pop().split(";").shift()};var c=r.isEditor=function(){try{return t.self!==t.top&&(new RegExp("app.thebigpicture.io","ig").test(e.referrer)||"edit"==r.getCookie("_bpr_edit"))}catch(t){return!1}}();r.init=function(i,n){if(r.projectId=i,r._config=n,!c)for(var o=0;o<r.eventList.length;o++)t.addEventListener(r.eventList[o],r.handler,!0);var a=e.createElement("script");a.async=!0;var u=c?"/editor/editor":"/public-"+i;a.src="//cdn.thebigpicture.io"+u+".js",e.getElementsByTagName("head")[0].appendChild(a)}}(window,document);bigPicture.init("762");</script>
 
 
+	<!-- Zoom in and zoom out -->
+	<script type="text/javascript">
+		function zoomin(it) {
+			{it.width = 2*it.width; }
+		}
+		function zoomout(it) {
+			{it.width = .5*it.width;}
+		}
+	</script>
+	
+	<!-- stick to somewhere -->
+	<script type="text/javascript">
+		function sticktothetop() {
+			var window_top = $(window).scrollTop();
+			var top = $('#stick-here').offset().top;
+			if (window_top > top) {
+				$('#stickThis').addClass('stick');
+				$('#stick-here').height($('#stickThis').outerHeight());
+			} else {
+				$('#stickThis').removeClass('stick');
+				$('#stick-here').height(0);
+			}
+		}
+		$(function() {
+			$(window).scroll(sticktothetop);
+			sticktothetop();
+		});
+	</script>
+	
+	
+
 	</head>
 
 
 
 
-	<body>
+<body> 
+	<div class="container"> 
+	<div id="stick-here"></div> 
+		<div class="myTitle"> 
+			 KEIVAN HASSANI MONFARED
+		</div> 
+		<div class="myTitleFooter"> 
+			University of Calgary
+		</div> 
 
+		<div id="stickThis"> 
 
+			<div id="menu"> 
+				<span class="menuItem"><a href="index.html">home</a></span>
+				<span class="menuItem" id="this_page"><a style="color: #FFD700" href="computation.html">computation</a></span>
+				<span class="menuItem"><a href="research.html">research</a></span>
+				<span class="menuItem"><a href="teaching.html">teaching</a></span>
+				<span class="menuItem"><a href="contact.html">contact</a></span>
+			</div>
 
-	<div class="container">
-
-	<div class="myTitle">
-		KEIVAN HASSANI MONFARED
-	</div>
-	
-	<div class="myTitleFooter">University of Calgary</div>
-
-	<div id="menu">
-		<span class="menuItem"><a href="index.html">home</a></span>
-		<span class="menuItem"><a style="color: #FFD700" href="computation.html">computation</a></span>
-		<span class="menuItem"><a href="research.html">research</a></span>
-		<span class="menuItem"><a href="teaching.html">teaching</a></span>
-		<span class="menuItem"><a href="contact.html">contact</a></span>
-		<!--<span class="menuItem"><a href="cv.html">cv</a></span>-->
-		<!--<span class="menuItem"><a href="other.html">other</a></span>-->
-	</div>
-	
-	<div id="pageContent">
+			<div id="small_menu"> 
+				<span class="menuItem"><a href="#computational_neuroscience">computational neuroscience</a></span>
+				<span class="menuItem"><a href="#machine_learning">machine learning</a></span>
+				<span class="menuItem"><a href="#shell_&_bash">shell & bash</a></span>
+				<span class="menuItem"><a href="#graph_theory_&_linear algebra">graph theory and linear algebra</a></span>
+				<span class="menuItem"><a href="#signal_processing">signal processing</a></span>
+			</div>
+		</div>
+	<div id="pageContent"> 
 	
 		<div id="mainContent">
 		
 			<div id="aboutMe">
-
+				<div id="computational_neuroscience"> <br><br> </div>
 				<h2> <a name="computationalneuroscience">Computational Neuroscience</a> </h2>
 				
 					<img class="circleImage" src="images/computationalneuroscience.jpg" alt="Computational Neuroscience Code" style="width:30%;">
@@ -88,7 +125,7 @@
 				
 				
 				
-				
+				<div id="machine_learning"> <br><br> </div>
 				<h2> <a name="machinelearning">Machine Learning</a> </h2>
 				
 					<img class="circleImage" src="images/machinelearning.jpg" alt="Machine Learning Code" style="width:30%;">
@@ -130,8 +167,8 @@
 				
 				
 				
-				
-				<h2> <a name="shell">Shell</a> </h2>
+				<div id="shell_&_bash"> <br><br> </div>
+				<h2> <a name="shell_&_bash">Shell & Bash</a> </h2>
 				
 					<img class="circleImage" src="images/shell.jpg" alt="Shell Code" style="width:30%;">
 					X manipulation <br>
@@ -153,8 +190,8 @@
 				
 				
 				
-				
-				<h2> <a name="graph">Graph Theory and Linear Algebra</a> </h2>
+				<div id="graph_theory_&_linear%20algebra"> <br><br> </div>
+				<h2> <a name="graph_theory_&_linear%20algebra">Graph Theory & Linear Algebra</a> </h2>
 				
 					<img class="circleImage" src="images/graph.png" alt="Graph Theory and Linear Algebra Code" style="width:30%;">
 					Inverse Eigenvalue Problems for graphs <br>
@@ -177,8 +214,8 @@
 					
 					
 				
-				
-				<h2> <a name="signal">Signal Processing</a> </h2>
+				<div id="signal_processing"> <br><br> </div>
+				<h2> <a name="signal_processing">Signal Processing</a> </h2>
 				
 					<img class="circleImage" src="images/signal.png" alt="Graph Theory and Linear Algebra Code" style="width:30%;">
 					Mutual Information <br>
@@ -199,11 +236,53 @@
 		</div>
 	</div>	
 	
-		<div class="PageFooter">
-			Designed by Shaghayegh Khodaei and Keivan Hassani Monfared
-		</div>
-
-	</body>
-
-
-</html>
+ <br> <br> 
+<center> 
+<table class="socialmediapadding" style="width: 80%;"> 
+<!--	<colgroup>		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+	</colgroup> --> 
+	<tr> 
+		<td> 
+			<a href="http://www.github.com/k1monfared">
+				<img src="images/github.png" alt="github" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://www.linkedin.com/in/k1monfared">
+				<img src="images/linkedin.png" alt="linkedin" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
+				<img src="images/researchgate.png" alt="researchgate" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
+				<img src="images/googlescholar.png" alt="googlescholar" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
+				<img src="images/arxiv.png" alt="arxiv" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://k1monfared.wordpress.com/">
+				<img src="images/wordpress.png" alt="wordpress" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="https://twitter.com/k1monfared">
+				<img src="images/twitter.png" alt="twitter" style="height:25px;">
+			</a>
+		</td>
+	</tr> 
+</table> 
+</center> 
+	 </div> 
+<div class="PageFooter"> 
+		Designed by Shaghayegh Khodaei and Keivan Hassani Monfared 
+	</div>
+	 </body> 
+</html> 

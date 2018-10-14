@@ -14,18 +14,19 @@ body {
 	margin-top: 2%;
 	margin-bottom: 2%;
 	background-color: white;
-	padding: 0.5%;
+	padding: 1%;
 	/* border: 2px solid; */
 	/* height: 100%;     full height of the content box */
 }
 
 
 #myTitleWrapper {
-	width: 90%;
-	
+	width: 100%;
 }	
 
 .myTitle {
+	background-color: white;
+	/*width: 100%;*/
 	line-height: 80%;
 	font-size: 300%;
 	padding-bottom: 0%;
@@ -33,30 +34,55 @@ body {
 	text-align: center;
 }
 .myTitleFooter {
+	background-color: white;
+	/*width: 100%;*/
 	font-size: 100%;
 	text-align: right;
 }
 
 #menu {
 	background-color: black;
-	padding: 10px 0px 10px 20px;
-	font-size: 140%;
-	margin-bottom: 1%;
+	padding: 0px 10px  0px 10px;
+	/*width: 100%;*/
+	font-size: 130%;
+	/* margin-bottom: 1%; */
 	text-align: center;
 }
-
-#menu a:link{ color:white; } 
-#menu a:visited{ color:white; } 
-#menu a:hover{ color:#979797; } 
-#menu a:active{ color:#878787}
-
+#menu a:link{ color:white; 
+			  text-decoration: none;} 
+#menu a:visited{ color:white; 
+			  text-decoration: none;} 
+#menu a:hover{ color:#979797; 
+			  text-decoration: none;} 
+#menu a:active{ color:#878787;
+			  text-decoration: none;}
 .menuItem {
+	padding-right: 50px;
+}
+
+#small_menu {
+	background-color: black;
+	padding: 1px 10px 1px 10px;
+	/*width: 100%;*/
+	font-size: 90%;
+	text-align: center;
+}
+#small_menu a:link{ color:white; 
+					text-decoration: none;} 
+#small_menu a:visited{ color:white; 
+					text-decoration: none;} 
+#small_menu a:hover{ color:#979797; 
+					text-decoration: none;} 
+#small_menu a:active{ color:#878787;
+					text-decoration: none;}
+.small_menuItem {
 	padding-right: 50px;
 }
 
 #pageContent {
 	display: table;
 	width: 100%;
+	padding-top: 0%;
 }
 
 #mainContent {
@@ -108,11 +134,9 @@ body {
 }
 
 .borderedContent {
-	border-style:solid; 
-	border-color:black;
-	padding-top: 2%;
-	padding-bottom: 2%;
-	padding-right: 2%;
+	border-style: solid; 
+	border-color: grey;
+	padding: 1%;
 }
 
 .tagContent {
@@ -166,3 +190,12 @@ td, th {
 	vertical-align: top;
 }
 
+.paddingBetweenRows td
+{
+    padding:0 1% 0 1%;
+}
+
+.socialmediapadding td
+{
+    padding:0 5px 0 0;
+}

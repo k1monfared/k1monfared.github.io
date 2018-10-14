@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="css/mainCSS.css"/>
 		<link rel="stylesheet" type="text/css" href="css/otherStyles.css"/>
-		<title> Keivan Hassani Monfared's Teaching Page </title>
+		<title> Keivan Hassani Monfared's Home Page </title>
 
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -49,71 +49,79 @@
 		<script type="text/javascript"
 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-		<!-- load floating script-->
-		<script type="text/javascript" src="css/floating-1.12.js">  </script>
 
-    <script type="text/javascript">  
-        floatingMenu.add('floatdiv',  
-            {  
-                // Represents distance from left or right browser window  
-                // border depending upon property used. Only one should be  
-                // specified.  
-                targetLeft: 10,  
-                // targetRight: 0,  
-      
-                // Represents distance from top or bottom browser window  
-                // border depending upon property used. Only one should be  
-                // specified.  
-                targetTop: 10,  
-                // targetBottom: 0,  
-      
-                // Uncomment one of those if you need centering on  
-                // X- or Y- axis.  
-                // centerX: true,  
-                // centerY: true,  
-      
-                // Remove this one if you don't want snap effect  
-                snap: true  
-            });  
-    </script>
+
+
+	<!-- Big Picture --><script>!function(t,e,i){var r=t.bigPicture=t.bigPicture||{};r.SNIPPET_VERSION=1.2,r.handler=function(t){if(void 0!==r.callback)try{return r.callback(t)}catch(t){}},r.eventList=["mousedown","mouseup","click","submit"],r._q=[],r.methods=["track","identify","group","alias","integration","intelReady","on","off"],r.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);return e.unshift(t),r._q.push(e),r}};for(var n=0;n<r.methods.length;n++){var o=r.methods[n];r[o]=r.factory(o)}r.getCookie=function(t){var i=("; "+e.cookie).split("; "+t+"=");return 2==i.length&&i.pop().split(";").shift()};var c=r.isEditor=function(){try{return t.self!==t.top&&(new RegExp("app.thebigpicture.io","ig").test(e.referrer)||"edit"==r.getCookie("_bpr_edit"))}catch(t){return!1}}();r.init=function(i,n){if(r.projectId=i,r._config=n,!c)for(var o=0;o<r.eventList.length;o++)t.addEventListener(r.eventList[o],r.handler,!0);var a=e.createElement("script");a.async=!0;var u=c?"/editor/editor":"/public-"+i;a.src="//cdn.thebigpicture.io"+u+".js",e.getElementsByTagName("head")[0].appendChild(a)}}(window,document);bigPicture.init("762");</script>
+
+
+	<!-- Zoom in and zoom out -->
+	<script type="text/javascript">
+		function zoomin(it) {
+			{it.width = 2*it.width; }
+		}
+		function zoomout(it) {
+			{it.width = .5*it.width;}
+		}
+	</script>
+	
+	<!-- stick to somewhere -->
+	<script type="text/javascript">
+		function sticktothetop() {
+			var window_top = $(window).scrollTop();
+			var top = $('#stick-here').offset().top;
+			if (window_top > top) {
+				$('#stickThis').addClass('stick');
+				$('#stick-here').height($('#stickThis').outerHeight());
+			} else {
+				$('#stickThis').removeClass('stick');
+				$('#stick-here').height(0);
+			}
+		}
+		$(function() {
+			$(window).scroll(sticktothetop);
+			sticktothetop();
+		});
+	</script>
+	
+	
 
 	</head>
-
-
-
-
-	<body>
-
-
-	<!-- <div id="floatdiv" style="  
-        position:absolute;  
-        width:100px;height:30px;top:10px;left:10px;  
-        padding:16px;background:#FFFFFF;  
-        border:2px solid black;
-		color: red;
-		text-align: center;
-        z-index:100">  
-    <b>Hire Keivan</b>
-    </div> -->
-
-
-
-	<div class="container">
-
-	<div class="myTitle">
-		KEIVAN HASSANI MONFARED
-	</div>
-	<div class="myTitleFooter">University of Calgary</div>
-
-	<div id="menu">
-	<span class="menuItem"><a href="index.html">home</a></span>
-	<span class="menuItem"><a href="research.html">research</a></span>
-	<span class="menuItem"><a style="color: #FFD700" href="teaching.html">teaching</a></span>
-	<span class="menuItem"><a href="contact.html">contact</a></span>
-	<span class="menuItem"><a href="cv.html">cv</a></span>
-	</div>
 	
-	<div id="pageContent">
+	
+	
+	
+	
+	<body> 
+	<div class="container"> 
+	<div id="stick-here"></div> 
+		<div class="myTitle"> 
+			 KEIVAN HASSANI MONFARED
+		</div> 
+		<div class="myTitleFooter"> 
+			University of Calgary
+		</div> 
+
+		<div id="stickThis"> 
+
+			<div id="menu"> 
+				<span class="menuItem"><a href="index.html">home</a></span>
+				<span class="menuItem"><a href="computation.html">computation</a></span>
+				<span class="menuItem"><a href="research.html">research</a></span>
+				<span class="menuItem" id="this_page"><a style="color: #FFD700" href="teaching.html">teaching</a></span>
+				<span class="menuItem"><a href="contact.html">contact</a></span>
+			</div>
+<!--
+			<div id="small_menu"> 
+				<span class="menuItem"><a href="#publications">publications</a></span>
+				<span class="menuItem"><a href="#talks_&_seminars">talks & seminars</a></span>
+				<span class="menuItem"><a href="#selected_presentation_slides_&_videos">selected presentation slides & videos</a></span>
+				<span class="menuItem"><a href="#areas_of_interest">areas of interest</a></span>
+				<span class="menuItem"><a href="#collaborators">collaborators</a></span>
+			</div>
+-->
+		</div>
+	<div id="pageContent"> 
 		<div id="mainContent">
 		
 		<h2 class="heading2" id="interests">  Teaching Experience </h2>	
@@ -1317,60 +1325,65 @@ CODE HERE
 				An old Japanese practice in teaching (mathematics) is getting more and more spread throughout the west. The idea is to treat teaching like research. If you want to know how best to teach a certain topic, first plan your teaching in a way that students' learning and thinking becomes observable (that is a whole different art by itself). Then plan a topic with some colleagues, design student activities etc, and invite your colleagues to observe your class. At this point it does not really matter that who is teaching it, since everything is planned. Then the observers will record how students did (not) learn/think. Go back to your group with this observations and make adjustments, and repeat. It is suggested to do this at most twice a year.
 			</div>
 			
-		</div>
-
-		
-		
-		
-		
 			
-			
-			
-		<div id="sideContent">
 			<h2 class="heading2"> Sample Teaching Materials	 </h2>
-			Click <a href="courses/teachingsamples.html">here</a>.
-		
-		
-			<h2 class="heading2"> Online (free) Courses </h2>
-				<a href="https://www.coursera.org/"  target="_blank">Coursera</a>
-				</br><a href="http://ocw.mit.edu/index.htm" target="_blank">MIT Open Course Ware</a>
-				</br><a href="http://online.stanford.edu/courses" target="_blank">Stanford online courses</a>
-				</br><a href="http://www.whyu.org/" target="_blank">Why University</a></li>
-				</br><a href="http://education-portal.com/academy" target="_blank">Education Portal Academy</a>
-	
-			<h2 class="heading2"> YouTube Channels </h2>
-				<a href="https://www.youtube.com/user/numberphile"  target="_blank">Numberphile</a>	
-				</br><a href="https://www.youtube.com/channel/UCyp1gCHZJU_fGWFf2rtMkCg"  target="_blank">Numberphile2</a>	
-				</br><a href="https://www.youtube.com/user/singingbanana"  target="_blank">singingbanana</a>	
-				</br><a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw"  target="_blank">3Blue1Brown</a>
-				</br><a href="https://www.youtube.com/user/standupmaths"  target="_blank">Standupmaths</a>
-				</br><a href="https://www.youtube.com/channel/UCiEHVhv0SBMpP75JbzJShqw"  target="_blank">Lectures by Walter Lewin</a>
-				</br><a href="https://www.youtube.com/user/physicswoman"  target="_blank">Physics Girl</a>
-				</br><a href="https://www.youtube.com/user/bkraz333"  target="_blank">Applied Science</a>
-				</br><a href="https://www.youtube.com/user/Vihart"  target="_blank">Vihart</a>
-				</br><a href="https://www.youtube.com/user/MAAvideo"  target="_blank">Mathematical Association of America</a>
-			
-			<h2 class="heading2"> Other resources </h2>
-			<a href="https://tomprof.stanford.edu"  target="_blank">Stanford's Tomorrow's Professor Postings</a>	
-			
+				<b> <a href="courses/CalculusIFa2012.html">Calculus I</a>:</b> An introductory lecture based course.
+				<br>
+				<b> <a href="courses/CalculusIIISu2013.html">Calculus III</a>:</b> A higher level lecture based course. 
+				<br>
+				<b> <a href="courses/ElemLinAlgSu2014.html">Linear Algebra</a>:</b> An introductory <b>flipped</b> course.
+				<br>
+				<b> <a href="courses/Stat171Sp15.html">Statistics</a>:</b> An introductory <b>interactive</b> course.
 		</div>
 		
-		
-		
-		
-		
-		
-		
-		
-		
 	</div>
-		
-	<div class="PageFooter">
-		Designed by Shaghayegh Khodaei and Keivan Hassani Monfared
+ <br> <br> 
+<center> 
+<table class="socialmediapadding" style="width: 80%;"> 
+<!--	<colgroup>		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+		<col style="width:14.28%"> 
+	</colgroup> --> 
+	<tr> 
+		<td> 
+			<a href="http://www.github.com/k1monfared">
+				<img src="images/github.png" alt="github" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://www.linkedin.com/in/k1monfared">
+				<img src="images/linkedin.png" alt="linkedin" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
+				<img src="images/researchgate.png" alt="researchgate" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
+				<img src="images/googlescholar.png" alt="googlescholar" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
+				<img src="images/arxiv.png" alt="arxiv" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="http://k1monfared.wordpress.com/">
+				<img src="images/wordpress.png" alt="wordpress" style="height:25px;">
+			</a>
+		</td>		<td> 
+			<a href="https://twitter.com/k1monfared">
+				<img src="images/twitter.png" alt="twitter" style="height:25px;">
+			</a>
+		</td>
+	</tr> 
+</table> 
+</center> 
+	 </div> 
+<div class="PageFooter"> 
+		Designed by Shaghayegh Khodaei and Keivan Hassani Monfared 
 	</div>
-	
-	
-	</body>
-
-
-</html>
+	 </body> 
+</html> 
