@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+    <link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+    <title> Keivan Monfared's Home Page </title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            for (i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
+            {
+                toggleSlowly('paper' + i);
+            }
+        });
+        function toggleSlowly(elementId) {
+            $("#" + elementId).slideToggle(500);
+        }
+    </script>
+    <!-- load mathjax scripts -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- Zoom in and zoom out -->
+    <script type="text/javascript">
+        function zoomin(it) {
+            {
+                it.width = 2 * it.width;
+            }
+        }
+        function zoomout(it) {
+            {
+                it.width = .5 * it.width;
+            }
+        }
+    </script>
+    <!-- stick to somewhere -->
+    <script type="text/javascript">
+        function sticktothetop() {
+            var window_top = $(window).scrollTop();
+            var top = $('#stick-here').offset().top;
+            if (window_top > top) {
+                $('#stickThis').addClass('stick');
+                $('#stick-here').height($('#stickThis').outerHeight());
+            } else {
+                $('#stickThis').removeClass('stick');
+                $('#stick-here').height(0);
+            }
+        }
+        $(function() {
+            $(window).scroll(sticktothetop);
+            sticktothetop();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="stick-here"></div>
+        <div class="myTitle">
+            KEIVAN MONFARED
+        </div>
+        <div class="myTitleFooter">
+            Mathematics and Data Science
+        </div>
+        <div id="stickThis">
+
+            <div id="menu">
+                <span class="menuItem"><a href="../index.html">home</a></span>
+                <span class="menuItem"><a href="../computation.html">computation</a></span>
+                <span class="menuItem"><a href="../research.html">research</a></span>
+                <span class="menuItem"><a href="../teaching.html">teaching</a></span>
+                <span class="menuItem"><a href="../learning.html">learning</a></span>
+                <span class="menuItem"><a href="../contact.html">contact</a></span>
+                <span class="menuItem" id="this_page"><a style="color: #FFD700" href="blog.html">blog</a></span>
+            </div>
+        </div>
+        <div id="pageContent">
+            <div id="mainContent">
+                <h2 class="heading2"> [2022-12-12] So you want to animate your PDF files? </h2>
+                <p>
+                    Here are some quick and dirty steps to include an animation in a pdf file.
+                    <br>
+                    Note that not all pdf readers will support rendering the animation and many of them will show just a static image (likely the initial frame) or nothing at
+                    all. An open source app that does support this is KDE's <a href="https://okular.kde.org/">Okular</a>.
+                    <li>
+                        Let's assume this is your animation and it is stored in the address <code>images/masses_springs_animation.gif</code>. I got this one from <a href="https://www.acs.psu.edu/drussell/Demos/multi-dof-springs/multi-dof-springs.html">here</a>.
+                        <br>
+                        <center>
+                            <img src="images/2022_12_12/masses_springs_animation.gif" alt="masses and springs animation" style="height:50px;">
+                        </center>
+                    </li>
+                    <li>
+                        First you need to convert all the frames of the gif file into png files. On a linux terminal you do something like this:
+                        <pre>
+convert -verbose -coalesce images/masses_springs_animation.gif images/masses_springs_frame.png</pre>
+                        This will create a whole bunch of png files named <code>masses_springs_frame-x.png</code> where x is the frame number starting from 0 and going up to the last frame count. For this gif file the last one is 239.
+                    </li>
+                    <li>
+                        The rest of the magic is in the latex code. You need two style files <a href="https://github.com/k1monfared/terminal/blob/main/latex/animate_pdf/animate.sty"><code>animate.sty</code></a> and <a href="https://github.com/k1monfared/terminal/blob/main/latex/animate_pdf/animfp.sty"><code>animfp.sty</code></a>, either install them in your latex setup or just copy and paste them in the same folder as your tex file.
+                    </li>
+                    <li>
+                        Finally add the files into your tex file. You'll need some lines like this:
+                        <pre>
+...
+\usepackage{animate}
+...
+\begin{document}
+    ...
+    \animategraphics[scale=.4,autoplay,loop]{16}{images/masses_springs_frame-}{0}{239}
+    ...
+\end{document}</pre>
+                        <code>scale=.4</code>: here I'm scaling the frames to 40% of their original size<br>
+                        <code>autoplay</code>: starts playing the animation as soon as the page is opened<br>
+                        <code>loop</code>: loops through the frames indefinitely<br>
+                        <code>16</code>: is the speed of the animation (frames per second I guess)<br>
+                        <code>masses_springs_frame-</code>is the common part of the names of the files for frames<br>
+                        and finally, <code>0</code> and <code>239</code> are start and end numbers in the files names that correspond to the first and last frames.
+                    </li>
+                    This should be enough to get you going. Here is a sample <a href="https://github.com/k1monfared/terminal/blob/main/latex/animate_pdf/simple_animation.tex">tex</a> file and the resulting <a href="https://github.com/k1monfared/terminal/blob/main/latex/animate_pdf/simple_animation.pdf">pdf</a> file.
+                    Find all the files on my <a href="https://github.com/k1monfared/terminal/tree/main/latex/animate_pdf">github</a>.
+                </p>
+            </div>
+        </div>
+        <br> <br>
+        <center>
+            <table class="socialmediapadding" style="width: 80%;">
+                <tr>
+                    <td>
+                        <a href="http://www.github.com/k1monfared">
+                            <img src="../images/github.png" alt="github" style="height:25px;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://www.linkedin.com/in/k1monfared">
+                            <img src="../images/linkedin.png" alt="linkedin" style="height:25px;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
+                            <img src="../images/researchgate.png" alt="researchgate" style="height:25px;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
+                            <img src="../images/googlescholar.png" alt="googlescholar" style="height:25px;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
+                            <img src="../images/arxiv.png" alt="arxiv" style="height:25px;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://k1monfared.wordpress.com/">
+                            <img src="../images/wordpress.png" alt="wordpress" style="height:25px;">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://twitter.com/k1monfared">
+                            <img src="../images/twitter.png" alt="twitter" style="height:25px;">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </div>
+    <div class="PageFooter">
+        Designed by Shaghayegh Khodaei and Keivan Monfared
+    </div>
+</body>
+
+</html>
