@@ -1,5 +1,6 @@
 .keivanImage {
-    border: none; /* 1px solid #e9e4d8; */
+    border: none;
+    /* 1px solid #e9e4d8; */
     padding: 4px;
     float: right;
     margin-right: 20px;
@@ -19,8 +20,7 @@
 .researchImage {
     border: none;
     padding: 0%;
-    float: left
-    margin-right: 0px;
+    float: left margin-right: 0px;
     margin-left: 0px;
     clip-path: circle(49% at center);
 }
@@ -30,21 +30,24 @@
 }
 
 .heading2 {
-    border-bottom: none; /*	1px solid #e9e4d8; */
+    border-bottom: none;
+    /*	1px solid #e9e4d8; */
 }
 
 .heading2withSub {
     border-bottom: none;
 }
+
 .heading2Sub {
-    border-bottom: none; /*	1px solid #e9e4d8; */
+    border-bottom: none;
+    /*	1px solid #e9e4d8; */
 }
 
 .researchSideBarText {
     text-align: left;
 }
 
-ul.studiesListItems  li {
+ul.studiesListItems li {
     padding-bottom: 10px;
 }
 
@@ -65,9 +68,9 @@ ul.studiesListItems  li {
     text-align: center;
     color: white;
     text-shadow:
-       -1px -1px 0 #000,
+        -1px -1px 0 #000,
         1px -1px 0 #000,
-       -1px 1px 0 #000,
+        -1px 1px 0 #000,
         1px 1px 0 #000;
     mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
 }
@@ -91,10 +94,8 @@ ul.studiesListItems  li {
     /*transform: rotate(-20deg);*/
 }
 
+#stickThis {}
 
-#stickThis {
-
-}
 #stickThis.stick {
     /*margin-top: 0;*/
     position: fixed;
