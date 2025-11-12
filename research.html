@@ -1,43 +1,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="css/mainCSS.css"/>
-		<link rel="stylesheet" type="text/css" href="css/otherStyles.css"/>
-		<title> Keivan Monfared's Home Page </title>
 
-
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function()
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
+	<title> Keivan Monfared's Home Page </title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			for (i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
 			{
-				for(i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
-				{ 
-					toggleSlowly('paper' + i);
-				}
- 			});
+				toggleSlowly('paper' + i);
+			}
+		});
 
- 			function toggleSlowly(elementId)
-			{
-				$("#" + elementId).slideToggle(500);
- 			} 		
-		</script>
-	
-		<!-- load mathjax scripts -->
-		<script type="text/javascript"
-		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+		function toggleSlowly(elementId) {
+			$("#" + elementId).slideToggle(500);
+		}
+	</script>
+	<!-- load mathjax scripts -->
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	<!-- Zoom in and zoom out -->
 	<script type="text/javascript">
 		function zoomin(it) {
-			{it.width = 2*it.width; }
+			{
+				it.width = 2 * it.width;
+			}
 		}
+
 		function zoomout(it) {
-			{it.width = .5*it.width;}
+			{
+				it.width = .5 * it.width;
+			}
 		}
 	</script>
-	
 	<!-- stick to somewhere -->
 	<script type="text/javascript">
 		function sticktothetop() {
@@ -56,27 +53,15 @@
 			sticktothetop();
 		});
 	</script>
-	
-	
+</head>
 
-	</head>
-	<body> 
-	<div class="container"> 
-	<div id="stick-here"></div> 
-		<div class="myTitle"> 
-			 KEIVAN MONFARED
-		</div> 
-		<div class="myTitleFooter"> 
-			Mathematics and Data Science
-		</div> 
-
-
-
-
-
-		<div id="stickThis"> 
-
-			<div id="menu"> 
+<body>
+	<div class="container">
+		<div id="stick-here"></div>
+		<div class="myTitle"> KEIVAN MONFARED </div>
+		<div class="myTitleFooter"> Mathematics and Data Science </div>
+		<div id="stickThis">
+			<div id="menu">
 				<span class="menuItem"><a href="index.html">home</a></span>
 				<span class="menuItem"><a href="computation.html">computation</a></span>
 				<span class="menuItem" id="this_page"><a style="color: #FFD700" href="research.html">research</a></span>
@@ -84,8 +69,7 @@
 				<span class="menuItem"><a href="learning.html">learning</a></span>
 				<span class="menuItem"><a href="contact.html">contact</a></span>
 			</div>
-
-			<div id="small_menu"> 
+			<div id="small_menu">
 				<span class="menuItem"><a href="#publications">publications</a></span>
 				<span class="menuItem"><a href="#talks_&_seminars">talks & seminars</a></span>
 				<span class="menuItem"><a href="#selected_presentation_slides_&_videos">selected presentation slides & videos</a></span>
@@ -93,1018 +77,734 @@
 				<span class="menuItem"><a href="#collaborators">collaborators</a></span>
 			</div>
 		</div>
-	<div id="pageContent"> 
-
-		<div id="mainContent">
-			<div id="publications"><br><br></div> 
-    
-			<h2 class="heading2" <center>  Publications  </center></h2>
-											 <!-- Under Review --> 
-        		<h3>Under Review</h3>
-        		<ol start="1" style="list-style-type:none">
-									 <!-- PAPER 3 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.jpg" 
-            						alt="research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2018+)
-        							<b>
-        								Community structure detection and evaluation during preictal and postictal hippocampal depth recordings
-        							</b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper3')"> 
-        								> Summary 
-        							</button> <br> 
-        							Keivan Hassani Monfared, Kris Vasudevan, Jordan. S. Farrell, and G. Cam Teskey: <a href="research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1804.01568"><b>arXiv</b></a>
-        							<div id="paper3">
-        								<div class="borderedContent" style="width: 70%;";>
-        										We show how anti-correlation between neurons firing rates forms communities of neurons that influence the behaviour during an eppleptic seizure.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 4 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.jpg" 
-            						alt="research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2018+)
-        							<b>
-        								Inverse spectral problems for linked vibrating systems and structured matrix polynomials
-        							</b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper4')"> 
-        								> Summary 
-        							</button> <br> 
-        							Keivan Hassani Monfared and Peter Lancaster: <a href="research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1710.11203"><b>arXiv</b></a>
-        							<div id="paper4">
-        								<div class="borderedContent" style="width: 70%;";>
-        										We show that for a given set of \( nk \) distinct real numbers \( \Lambda \), and \( k \) graphs on \( n \) nodes, \( G_0, G_1,\cdots,G_{k-1} \), there are real symmetric \( n\times n \) matrices \( A_s \), \( s=0,1,\ldots, k \) such that the matrix polynomial \( A(z) := A_k z^k + \cdots + A_1 z + A_0 \) has proper values \( \Lambda \), the graph of \( A_s \) is \( G_s \) for \( s=0,1,\ldots,k-1 \), and \( A_k \) is an arbitrary nonsingular (positive definite) diagonal matrix. When \( k=2 \), this solves a physically significant inverse eigenvalue problem for linked vibrating systems.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-
-        		</ol>
-
-											 <!-- Published --> 
-        		<h3>Published</h3>
-        		<ol start="3" style="list-style-type:none">
-									 <!-- PAPER 5 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.jpg" 
-            						alt="research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2018)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2018.09.016">
-        								An analog of Matrix Tree Theorem for signless Laplacians
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper5')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (560) 43--55, DOI:10.1016/j.laa.2018.09.016<br>Keivan Hassani Monfared and Sudipta Mallik: <a href="research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1805.04759"><b>arXiv</b></a>
-        							<div id="paper5">
-        								<div class="borderedContent" style="width: 70%;";>
-        										A spanning tree of a graph is a connected subgraph on all vertices with the minimum number of edges. The number of spanning trees in a graph \( G \) is given by Matrix Tree Theorem in terms of principal minors of Laplacian matrix of \( G \). We show a similar combinatorial interpretation for principal minors of signless Laplacian \( Q \). We also prove that the number of odd cycles in \( G \) is less than or equal to \( \frac{\det(Q)}{4} \), where the equality holds if and only if \( G \) is a bipartite graph or an odd-unicyclic graph.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 6 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.jpg" 
-            						alt="research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2018)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2017.10.025">
-        								A structured inverse spectrum problem for infinite graphs
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper6')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (539) 28--43, DOI:10.1016/j.laa.2017.10.025<br>Keivan Hassani Monfared and Ehssan Khanmohammadi: <a href="research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1512.05834"><b>arXiv</b></a>
-        							<div id="paper6">
-        								<div class="borderedContent" style="width: 70%;";>
-        										In this paper it is shown that for a given infinite graph \( G \) on countably many vertices, and a compact, infinite set of real numbers \( \Lambda \) there is a real symmetric matrix \( A \) whose graph is \( G \) and its spectrum is \( \Lambda \). Moreover, the set of limit points of \( \Lambda \) equals the essential spectrum of \( A \), and the isolated points of \( \Lambda \) are eigenvalues of \( A \) with multiplicity one. It is also shown that any two such matrices constructed by our method are approximately unitarily equivalent.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 7 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.jpg" 
-            						alt="research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2017)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2017.04.006">
-        								Existence of a not necessarily symmetric matrix with given distinct eigenvalues and graph
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper7')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (527) 1--11, DOI:10.1016/j.laa.2017.04.006<br>Keivan Hassani Monfared: <a href="research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1604.02195"><b>arXiv</b></a>
-        							<div id="paper7">
-        								<div class="borderedContent" style="width: 70%;";>
-        										For given distinct numbers \( \lambda_1 \pm \mu_1 \rm{i}, \lambda_2 \pm \mu_2 \rm{i}, \ldots, \lambda_k \pm \mu_k \rm{i} \in \mathbb{C} \setminus \mathbb{R} \) and \( \gamma_1, \gamma_2, \ldots, \gamma_l \in \mathbb{R} \), and a given graph \( G \) with a matching of size at least \( k \), we will show that there is a real matrix whose eigenvalues are the given numbers and its graph is \( G \). In particular, this implies that any real matrix with distinct eigenvalues is similar to a real, irreducible, tridiagonal matrix.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 9 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.jpg" 
-            						alt="research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2016)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2016.04.028">
-        								The nowhere-zero eigenbasis problem for a graph
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper9')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (505) 296--312 , DOI:10.1016/j.laa.2016.04.028<br>Keivan Hassani Monfared and Bryan L. Shader: <a href="research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.pdf"><b>PDF</b></a>
-        							
-        							<div id="paper9">
-        								<div class="borderedContent" style="width: 70%;";>
-        										Using previous results and methods, it is shown that for any connected graph \( G \) on \( n \) vertices and a set of \( n \) distinct real numbers \( \Lambda \), there is an \( n\times n \) real symmetric matrix \( A \) whose graph is \( G \), its spectrum is \( \Lambda \), and none of the eigenvectors of \( A \) have a zero entry.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 10 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.jpg" 
-            						alt="research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2016)
-        							<b><a href="http://dx.doi.org/10.13001/1081-3810.3117">
-        								On the principal permanent rank characteristic sequences of graphs and digraphs
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper10')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Electronic Journal of Linear Algebra</i> (31) 187--199, DOI:10.13001/1081-3810.3117<br>Keivan Hassani Monfared, Paul Horn, Franklin H. J. Kenter, Kathleen Nowak, John Sinkovic, and Josh Tobin: <a href="research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1510.05153"><b>arXiv</b></a>
-        							<div id="paper10">
-        								<div class="borderedContent" style="width: 70%;";>
-        										Given an \( n\times n \) real matrix \( A \), the principal characteristic perrank sequence of \( A \) is defined as \( r_0, r_1, r_2, \ldots, r_n \), where for \( k \geq 1 \), \( r_k=1 \) iff \( A \) has a principal submatrix of size \( k \) with nonzero permanent, and \( r_0 = 1 \) iff \( A \) has a zero on its main diagonal. We study the following inverse problem: given a sequence \( r_0 r_1 \cdots r_n \) of zeros and ones, does there exist an \( n \times n \) real matrix which achieves this sequence? As a result, we characterize all the sequences corresponding to (symmetric) entry-wise nonnegative matrices, and provide some results for the skew-symmetric case.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 11 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2016_Spectral_characterization_of_matchings_in_graphs.jpg" 
-            						alt="research/2016_Spectral_characterization_of_matchings_in_graphs" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2016)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2016.02.004">
-        								Spectral characterization of matchings in graphs
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper11')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (496) 407--419, DOI:10.1016/j.laa.2016.02.004<br>Keivan Hassani Monfared and Sudipta Mallik: <a href="research/2016_Spectral_characterization_of_matchings_in_graphs.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1602.03590"><b>arXiv</b></a>
-        							<div id="paper11">
-        								<div class="borderedContent" style="width: 70%;";>
-        										A spectral characterization of the matching number (the size of a maximum matching) of a graph is given. More precisely, it is shown that the graphs \( G \) of order \( n \) whose matching number is \( k \) are precisely those graphs with the maximum skew rank \( 2k \) such that for any given set of \( k \) distinct nonzero purely imaginary numbers there is a real skew-symmetric matrix \( A \) with graph \( G \) whose spectrum consists of the given \( k \) numbers, their conjugate pairs and \( n-2k \) zeros.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 12 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.jpg" 
-            						alt="research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2015)
-        							<b><a href="http://dx.doi.org/10.1080/03081087.2014.1003527">
-        								The \( \lambda \)-\( \tau \) structured inverse eigenvalue problem
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper12')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear and Multilinear Algebra</i> (63) 2275--2300, DOI:10.1080/03081087.2014.1003527<br>Keivan Hassani Monfared and Bryan L. Shader: <a href="research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.pdf"><b>PDF</b></a>
-        							
-        							<div id="paper12">
-        								<div class="borderedContent" style="width: 70%;";>
-        										For a matrix \( A \) let \( A(\{r,s\}) \) denote the principal submatrix obtained form \( A \) by removing rows and columns \( r \) and \( s \). Let \( T \) be a tree on \( n \) vertices which satisfies some necessary combinatorial restriction, \( \Lambda \) a set of \( n \) distinct real numbers, \( M \) a set of \( n-2 \) distinct real numbers, and \( r \) and \( s \) two distinct fixed vertices of \( T \). Also, assume that \( M \) and \( L \) satisfy second degree strict Cauchy interlacing inequalities and some genericity conditions. Using various combinatorial techniques it is shown that there is a real symmetric matrix \( A \) whose graph is \( T \), spectrum of \( A \) is \( \Lambda \) and spectrum of \( A(\{r,s\}) \) is \( M \). Then, using Jacobian method this result was extended to any supergraph of this family of trees. Also, some consequences of these results related to perturbations of diagonal entries of a matrix are presented.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 13 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.jpg" 
-            						alt="research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2015)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2015.01.001">
-        								Construction of real skew-symmetric matrices from interlaced spectral data, and graph
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper13')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (471) 241--263, DOI:10.1016/j.laa.2015.01.001<br>Keivan Hassani Monfared and Sudipta Mallik: <a href="research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1412.6085"><b>arXiv</b></a>
-        							<div id="paper13">
-        								<div class="borderedContent" style="width: 70%;";>
-        										We provide analogues of the results presented in the \( 2013 \) paper for skew-symmetric matrices. This is first shown for a family of trees with nearly even branching at a vertex \( v \) (NEB trees) using various combinatorial techniques. Then the results are extended to any supergraph of such trees using the Jacobian method. Let \( G \) be a connected graph on \( n \) vertices, \( \Lambda \) a set of \( n \) distinct purely imaginary numbers which is closed under negation, and \( M \) a set of \( n-1 \) distinct purely imaginary numbers closed under negation which strictly interlaces \( \Lambda \). Also, let \( v \) be a vertex of \( G \). It is shown that if \( G \) has a spanning tree which is NEB at \( v \), then there is a real skew-symmetric matrix \( A \) whose graph is \( G \), its spectrum is \( \Lambda \), and the spectrum of \( A(v) \) is \( M \). Some properties of NEB trees are also studied.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 15 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.jpg" 
-            						alt="research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2013)
-        							<b><a href="http://dx.doi.org/10.1016/j.laa.2013.01.036">
-        								Construction of matrices with a given graph and prescribed interlaced spectral data
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper15')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Linear Algebra and Its Applications</i> (438) 4348--4358, DOI:10.1016/j.laa.2013.01.036<br>Keivan Hassani Monfared and Bryan L. Shader: <a href="research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.pdf"><b>PDF</b></a>
-        							
-        							<div id="paper15">
-        								<div class="borderedContent" style="width: 70%;";>
-        										For a matrix \( A \) let \( A(v) \) denote the principal submatrix obtained form \( A \) by removing its \( v \)-th row and column. In a 1989 paper, Duarte showed that for any given tree \( T \) on \( n \) vertices, \( \Lambda \) a set of \( n \) distinct real numbers, \( M \) a set of \( n-1 \) distinct real numbers that strictly interlaces \( \Lambda \), and \( i \) a fixed vertex of \( T \), there is a real symmetric matrix \( A \) whose graph is \( T \), spectrum of \( A \) is \( \Lambda \) and spectrum of \( A(v) \) is \( M \). In this paper we develop a method, called the Jacobian method, and show that Duarte's result holds for any connected graph.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 17 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.jpg" 
-            						alt="research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2010)
-        							<b><a href="http://dx.doi.org/10.1017/S0004972710001619">
-        								On the existence of nowhere-zero vectors for linear transformations
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper17')"> 
-        								> Summary 
-        							</button> <br> 
-        							<i>Bulletin of the Australian Mathematical Society</i> (82) 480--487, DOI:10.1017/S0004972710001619<br>Saeed Akbari, Keivan Hassani Monfared, Mohammad Jamaali, Ehssan Khanmohammadi, and Dariush Kiani: <a href="research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.pdf"><b>PDF</b></a>
-        							
-        							<div id="paper17">
-        								<div class="borderedContent" style="width: 70%;";>
-        										If for a matrix \( A \) there is a vector \( x \) such that the vectors \( x \) and \( Ax \) have no zero entries, then \( A \) is called to have the AJT property. In this paper we make further progress on the Alon-Jaeger-Tarsi (AJT) Conjecture, using combinatorial, probabilistic, and linear algebraic methods. The AJT conjecture asserts any nonsingular matrix over a field with at least 4 elements has the AJT property. It is shown that any nonzero matrix is similar to an AJT matrix, and some necessary and some sufficient conditions for a matrix to have the AJT property are given. Also, we provide a sharp bound for the number of the elements of the field in terms of the size of the matrix.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-
-        		</ol>
-
-											 <!-- Thesis --> 
-        		<h3>Thesis</h3>
-        		<ol start="13" style="list-style-type:none">
-									 <!-- PAPER 14 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).jpg" 
-            						alt="research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation)" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2014)
-        							<b><a href="http://search.proquest.com/docview/1615381957">
-        								The Jacobian Method: The Art Of Finding More Needles in Nearby Haystacks (PhD dissertation)
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper14')"> 
-        								> Summary 
-        							</button> <br> 
-        							Keivan Hassani Monfared, Advisor: Bryan L. Shader: <a href="research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).pdf"><b>PDF</b></a>
-        							
-        							<div id="paper14">
-        								<div class="borderedContent" style="width: 70%;";>
-        										In this dissertation we develop the Jacobian method, and we give a detailed description of it, along with a geometric interpretation. We provide several examples and using the Jacobian method we solve three fundamental structured inverse eigenvalue problems including the \( \lambda \)-\( \mu \)-SIEP, the \( \lambda \)-\( \tau \)-SIEP, and the nowhere-zero eigenbasis problem for the \( \lambda \)-SIEP. The common strategy is to prove the existence of a solution for trees, then to show that these solutions are generic, and then use the Implicit Function Theorem to extend it to connected graphs. Several other important problems that can be solved using this method are mentioned, as well as two main directions for further development of the Jacobian method.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 16 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2012_On_the_Permanent_Conjecture_(Masters_thesis).jpg" 
-            						alt="research/2012_On_the_Permanent_Conjecture_(Masters_thesis)" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2012)
-        							<b><a href="http://search.proquest.com/docview/920132185">
-        								On the Permanent Conjecture (Masters thesis)
-        							</a></b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper16')"> 
-        								> Summary 
-        							</button> <br> 
-        							Keivan Hassani Monfared, Advisor: Bryan L. Shader: <a href="research/2012_On_the_Permanent_Conjecture_(Masters_thesis).pdf"><b>PDF</b></a>
-        							
-        							<div id="paper16">
-        								<div class="borderedContent" style="width: 70%;";>
-        										The permanent rank of a matrix \( A \), \( \rm{perrank}(A) \), is defined to be the size of a largest square submatrix of \( A \) with nonzero permanent. In this thesis we study some properties of the permanents and also permanent ranks of the matrices, and related problems. In particular we characterize matrices with small permanent ranks in order to study the following conjecture relating the \( \rm{perrank} \) and the \( \rm{termrank} \). <br>
-	<b>Conjecture:</b>
-	For any matrix \( A \), \[ \rm{perrank}(A) \geq \Bigg\lceil \frac{\mbox{termrank}(A)}{2} \Bigg\rceil,\] and for even \( \rm{termrank} \) the equality holds if and only if up to equivalence and reduction \( A=\bigoplus \left[\begin{array}{cr}1&1\\1&-1\end{array}\right] \).
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-
-        		</ol>
-
-											 <!-- In Progress --> 
-        		<h3>In Progress</h3>
-        		<ol start="15" style="list-style-type:none">
-									 <!-- PAPER 1 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							
-        						</td>
-        						<td>
-        							(2018+)
-        							<b>
-        								Properties of a nonnegative reciprocal matrix and their application to AHP
-        							</b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper1')"> 
-        								> Summary 
-        							</button> <br> 
-        							Mojtabe Eslami and Keivan Hassani Monfared
-        							
-        							<div id="paper1">
-        								<div class="borderedContent" style="width: 70%;";>
-        										We study the properties of a nonnegative reciprocal matrices associated with graphs and their application to {AHP}
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-									 <!-- PAPER 2 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							
-        						</td>
-        						<td>
-        							(2018+)
-        							<b>
-        								Dissonance networks and social influence
-        							</b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper2')"> 
-        								> Summary 
-        							</button> <br> 
-        							Omid Atabati, Mojtaba Eslami, and Keivan Hassani Monfared
-        							
-        							<div id="paper2">
-        								<div class="borderedContent" style="width: 70%;";>
-        										We model how a society manages conflicts between beliefs and social standings by forming a dissonance network, and then providing measures of centrality and modularity for such signed networks.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-
-        		</ol>
-
-											 <!-- Unpublished --> 
-        		<h3>Unpublished</h3>
-        		<ol start="17" style="list-style-type:none">
-									 <!-- PAPER 8 --> 
-        			<li>
-        				<table class="paddingBetweenRows" style="width: 100%">
-        					<colgroup>
-        						<col style="width:10%">
-        						<col style="width:90%">
-        					</colgroup>  
-        					<tr>
-        						<td> 
-        							<img class="researchImage" width="100%" src="research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.jpg" 
-            						alt="research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)"> 
-
-        						</td>
-        						<td>
-        							(2016)
-        							<b>
-        								The maximum multiplicity of an eigenvalue of symmetric matrices with a given graph
-        							</b> 
-        							<button class="togglebutton"; onclick="toggleSlowly('paper8')"> 
-        								> Summary 
-        							</button> <br> 
-        							Keivan Hassani Monfared and Sudipta Mallik: <a href="research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.pdf"><b>PDF</b></a>
-        							<a href="https://arxiv.org/abs/1601.02760"><b>arXiv</b></a>
-        							<div id="paper8">
-        								<div class="borderedContent" style="width: 70%;";>
-        										For a graph \( G \), \( M(G) \) denotes the maximum multiplicity occurring of an eigenvalue of a symmetric matrix whose zero-nonzero pattern is given by edges of \( G \). We introduce two combinatorial graph parameters \( T^-(G) \) and \( T^+(G) \) that give a lower and an upper bound for \( M(G) \) respectively, and we show that these bounds are sharp. <br>
-It was pointed out by the referees that the bounds are not better than those given by zero forcing number of the graph.
-        								</div>
-        							</div>
-        						</td>
-        					</tr>
-        				</table>
-        			</li>
-
-        		</ol>
-
-
-			<div id="talks_&_seminars"><br><br></div> 
-    
-			<h2 class="heading2"><center>  Talks & Seminars  </center></h2>
-											 <!-- Invited --> 
-        			<h3>Invited</h3>
-        		<ol start="1">
-									 <!-- TALK 61 --> 
-        			<li>
-									(2019-Jul)
-        							<b> Inverse Polynomial Spectral Problems for Graphs</b>: <a href="http://ilas2019.org/wp-content/uploads/2019/06/ILAS2019_FULL_PROGRAM_20190606.pdf">Abstract</a><br> 
-        							
-        							<a href="http://ilas2019.org"> 22nd Conference of the International Linear Algebra Society (ILAS19)</a>, Rio de Janeiro, Brazil
-        			</li>
-									 <!-- TALK 60 --> 
-        			<li>
-									(2016-Jun)
-        							<b>An Analog of Matrix Tree Theorem for Signless Laplacians</b>: <a href="https://cms.math.ca/Events/summer19/abs/pdf/mta-km.pdf">Abstract</a> <a href="research/201906_Regina_CMS.pdf">Slides</a><br> 
-        							
-        							<a href="https://summer19.cms.math.ca"> Canadian Mathematical Society Summer 2019 Meeting (CMS19)</a>, Regina, SK, Canada
-        			</li>
-									 <!-- TALK 19 --> 
-        			<li>
-        							(2017-Jul)
-        								<b>Counting from one</b><br>
-        							
-        							High School Math Camp at University of Calgary, Calgary, AB, Canada
-        			</li>
-									 <!-- TALK 20 --> 
-        			<li>
-        							(2017-Jul)
-        								<b>Counting to infinity</b><br>
-        							
-        							High School Math Camp at University of Calgary, Calgary, AB, Canada
-        			</li>
-									 <!-- TALK 21 --> 
-        			<li>
-        							(2016-Nov)
-        								<b>Real life applications of calculus and linear algebra</b><br>
-        							
-        							Student Colloquium, University of Calgary, Calgary, AB, Canada
-        			</li>
-									 <!-- TALK 22 --> 
-        			<li>
-        							(2016-Jul)
-        								<b>Using jacobian method to solve inverse eigenvalue problems for graphs</b>: <a href="https://ilas2016.cs.kuleuven.be/bookofabstracts.pdf">Abstract</a><br>
-        							
-        							<a href="http://ilas2016.cs.kuleuven.be/"> International Linear Algebra Society (ILAS 16)</a>, Leuven, Belgium
-        			</li>
-									 <!-- TALK 23 --> 
-        			<li>
-        							(2016-Jun)
-        								<b>Touching infinity</b><br>
-        							
-        							Junior Math Contestants, University of Calgary, Calgary, AB, Canada
-        			</li>
-									 <!-- TALK 25 --> 
-        			<li>
-        							(2016-Mar)
-        								<b>Permanent ranks of matrices and generalized cycles of graphs</b>: <a href="http://science.fau.edu/combinatorics/MonfaredKevian1.pdf">Abstract</a><br>
-        							
-        							<a href="http://science.fau.edu/combinatorics/previous_years/conference_47.php"> 47th Southeastern International Conference on Combinatorics, Graph Theory \& Computing</a>, Boca Raton, FL, USA
-        			</li>
-									 <!-- TALK 27 --> 
-        			<li>
-        							(2016-Jan)
-        								<b>On the principal permanent rank characteristic sequences of graphs</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2181_abstracts/1116-05-638.pdf">Abstract</a><br>
-        							
-        							<a href="http://jointmathematicsmeetings.org,"> Joint Mathematics Meeting 2016 (JMM 16)</a>, Seattle, WA, USA
-        			</li>
-									 <!-- TALK 30 --> 
-        			<li>
-        							(2015-Jun)
-        								<b>Several examples on the jacobian method</b>: <a href="http://canadam.math.ca/2015/program/abs/pdf/gm2-khm.pdf">Abstract</a><br>
-        							
-        							<a href="http://canadam.math.ca/2015/"> Canadian Discrete and Algorithmic Mathematics Conference (CanaDAM 15)</a>, Saskatoon, SK, Canada
-        			</li>
-									 <!-- TALK 34 --> 
-        			<li>
-        							(2014-Aug)
-        								<b>The inverse principal perrank characteristic sequence problems</b>: <a href="https://sites.google.com/site/rmgpgrwc/problem-gardens/2014-InversePrincipalPerrankSequence.pdf?attredirects=0&d=1">Abstract</a><br>
-        							
-        							<a href="https://sites.google.com/site/rmgpgrwc/previous-workshops/grwc-2014---denver-co,"> Rocky Mountain-Great Plains Graduate Research Workshop in Combinatorics (GRWC 15)</a>, Denver, CO, USA
-        			</li>
-									 <!-- TALK 38 --> 
-        			<li>
-        							(2013-Nov)
-        								<b>Using the jacobian method in structured inverse eigenvalue problems</b>: <a href="https://www.brownbearsoftware.com/hosted/UCDenver?CalendarName=Math&ID=1040&Op=PopupWindow&DoneURL=https%3A%2F%2Fwww.brownbearsoftware.com%2Fhosted%2FUCDenver%3FCalendarName%3DMath%26Op%3DShowIt%26Amount%3DMonth%26NavType%3DAbsolute%26Type%3DBlock%26Date%3D2013%2F11%2F1&Source=&Date=2013%2F11%2F18&Amount=Month&NavType=Absolute&Type=Block">Abstract</a><br>
-        							
-        							<a href="http://wiu.edu/users/khm102/math.ucdenver.edu,"> University of Colorado</a>, Denver, CO, USA
-        			</li>
-									 <!-- TALK 52 --> 
-        			<li>
-        							(2008-Jun)
-        								<b>On mathematics education</b><br>
-        							
-        							Parviz Shahriari Scientific and Cultural Foundation, Tehran, Iran
-        			</li>
-
-        		</ol>
-
-											 <!-- Contributed --> 
-        			<h3>Contributed</h3>
-        		<ol start="12">
-									<!-- TALK 62 --> 
-        			<li>
-        							(2019-Jun)
-        								<b>Graph Clustering Problems Arising in Neuroscience - Results</b>: <a href="https://canadam.math.ca/2019/program/abs/pdf/gi-khm.pdf">Abstract</a> <a href="research/talks/201906_Vancouver_CanaDAM.pdf">Slides</a><br>
-        							
-        							<a href="https://2019.canadam.math.ca/"> The 7th Canadian Discrete and Algorithmic Mathematics Conference (CanaDAM 2019)</a>, Vancouver, BC, Canada
-        			</li>
-									 <!-- TALK 18 --> 
-        			<li>
-        							(2018-Jul)
-        								<b>Graph partitioning problems arising in neuroscience - Questions</b>: <a href="https://www.brandonu.ca/pdmw/files/PDMWprogram2018.pdf">Abstract</a><br>
-        							
-        							<a href="https://www.brandonu.ca/pdmw/"> Prairie Discrete Mathematics Workshop (PDMW18)</a>, Brandon, MB, Canada
-        			</li>
-									 <!-- TALK 24 --> 
-        			<li>
-        							(2016-May)
-        								<b>Some inverse eigenvalue problems for graphs</b>: <a href="http://server.math.umanitoba.ca/~kirkland/WCLAM_2016_Program.pdf">Abstract</a><br>
-        							
-        							<a href="http://server.math.umanitoba.ca/~kirkland/wclam"> Western Canada Linear Algebra Meeting(WCLAM)</a>, University of Manitoba, Winnipeg, MB, Canada
-        			</li>
-									 <!-- TALK 26 --> 
-        			<li>
-        							(2016-Jan)
-        								<b>Using the jacobian method to solve structured inverse eigenvalue problems</b><br>
-        							
-        							<a href="jointmathematicsmeetings.org"> Joint Mathematics Meetings</a>, Seattle, WA, USA
-        			</li>
-									 <!-- TALK 28 --> 
-        			<li>
-        							(2015-Oct)
-        								<b>What do generalized cycles of a graph tell about each other?</b><br>
-        							
-        							<a href="http://math.ucalgary.ca/events/calendar"> Research Seminars</a>, University of Calgary, Calgary, AB, Canada
-        			</li>
-									 <!-- TALK 29 --> 
-        			<li>
-        							(2015-Sep)
-        								<b>How to find more solutions when you have one in hand</b><br>
-        							
-        							<a href="http://math.ucalgary.ca/events/calendar"> Research Seminars</a>, University of Calgary, Calgary, AB, Canada
-        			</li>
-									 <!-- TALK 31 --> 
-        			<li>
-        							(2015-Jan)
-        								<b>Nowhere-zero eigenbasis for a matrix with prescribed graph and spectrum</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2168_abstracts/1106-15-1418.pdf">Abstract</a><br>
-        							
-        							<a href="http://jointmathematicsmeetings.org"> Joint Mathematics Meetings</a>, San Antonio, TX, USA
-        			</li>
-									 <!-- TALK 32 --> 
-        			<li>
-        							(2014-Oct)
-        								<b>Building vibrating systems using linear algebra and calculus</b>: <a href="http://www.wiu.edu/cas/math/events/student_colloquium_k_h_monfared101714.pdf">Abstract</a><br>
-        							
-        							Student Colloquium, Western Illinois University, Macomb, IL, USA
-        			</li>
-									 <!-- TALK 33 --> 
-        			<li>
-        							(2014-Oct)
-        								<b>Structured inverse eigenvalue problems</b>: <a href="http://www.wiu.edu/cas/math/events/ColloquiumFlyerKHMonfared103014.pdf">Abstract</a><br>
-        							
-        							Colloquium, Western Illinois University, Macomb, IL, USA
-        			</li>
-									 <!-- TALK 35 --> 
-        			<li>
-        							(2014-Apr)
-        								<b>Skew-symmetric SIEP and the role of the jacobian method</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 36 --> 
-        			<li>
-        							(2014-Jan)
-        								<b>The jacobian method and structured inverse eigenvalue problems</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2160_abstracts/1096-15-2004.pdf">Abstract</a><br>
-        							
-        							<a href="http://jointmathematicsmeetings.org/"> Joint Mathematics Meeting</a>, Baltimore, MD, USA
-        			</li>
-									 <!-- TALK 37 --> 
-        			<li>
-        							(2013-Nov)
-        								<b>On the importance of the jacobian method</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Graduate Students Seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 39 --> 
-        			<li>
-        							(2013-Oct)
-        								<b>Zonotopal algebra, an expository talk</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 40 --> 
-        			<li>
-        							(2013-Aug)
-        								<b>A structured inverse eigenvalue problem</b>: <a href="http://www.maa.org/meetings/mathfest/program-details/2013/contributed-paper-sessions">Abstract</a><br>
-        							
-        							<a href="http://www.maa.org/meetings/mathfest"> MathFest</a>, Hartford, CT, USA
-        			</li>
-									 <!-- TALK 41 --> 
-        			<li>
-        							(2013-Jul)
-        								<b>The \( \lambda \)-\( \mu \) structured inverse eigenvalue problem</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Rocky Mountain Discrete Math Days</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 42 --> 
-        			<li>
-        							(2013-Jul)
-        								<b>The \( \lambda \)-\( \mu \) structured inverse eigenvalue problem</b>: <a href="http://www.uwyo.edu/jwilliford/rmmc2013/abstracts/monfared_abs.pdf">Abstract</a><br>
-        							
-        							<a href="http://www.uwyo.edu/jwilliford/rmmc2013/rmmc_2013.html"> Rocky Mountain Mathematics Consortium</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 43 --> 
-        			<li>
-        							(2012-Oct)
-        								<b>The \( \lambda \)-\( \mu \) structured inverse eigenvalue problem</b><br>
-        							
-        							<a href="http://www.uwyo.edu/bshader/rmdmd2012.html"> Rocky Mountain Discrete Math Days</a>, Denver University, Denver, CO, USA
-        			</li>
-									 <!-- TALK 44 --> 
-        			<li>
-        							(2012-Sep)
-        								<b>A jacobian approach to some structured inverse eigenvalue problems</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 45 --> 
-        			<li>
-        							(2012-Sep)
-        								<b>Constructing matrices with interlacing spectral data and graph</b><br>
-        							
-        							<a href="http://www.math.iastate.edu/mighty2012/"> Midwestern Graph Theory (MIGHTY) LIII Conference</a>, Iowa State University, Ames, IA, USA
-        			</li>
-									 <!-- TALK 46 --> 
-        			<li>
-        							(2012-Apr)
-        								<b>Why is the permanent rank important?</b><br>
-        							
-        							<a href="http://www.math.wisc.edu/~ddrake/gscc.html"> Graduate Student Combinatorics Conference</a>, University of Illinois, Urbana-Champaign, IL, USA
-        			</li>
-									 <!-- TALK 47 --> 
-        			<li>
-        							(2012-Jan)
-        								<b>On the permanent rank of matrices</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2138_abstracts/1077-05-2438.pdf">Abstract</a><br>
-        							
-        							<a href="http://jointmathematicsmeetings.org"> Joint Mathematics Meeting</a>, Boston, MA, USA
-        			</li>
-									 <!-- TALK 48 --> 
-        			<li>
-        							(2011-Oct)
-        								<b>Perrank v.s rank</b><br>
-        							
-        							<a href="http://www.uwyo.edu/bshader/rmdmd2011/rmdmd.html"> Rocky Mountain Discrete Math Days</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 49 --> 
-        			<li>
-        							(2011-Mar)
-        								<b>What is the permanent?</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Graduate Students Seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 50 --> 
-        			<li>
-        							(2010-May)
-        								<b>A different approach to the hall's marriage theorem</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Graduate Students Seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 51 --> 
-        			<li>
-        							(2009-Nov)
-        								<b>A survey on the alon-jaeger-tarsi conjecture</b><br>
-        							
-        							<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
-        			</li>
-									 <!-- TALK 53 --> 
-        			<li>
-        							(2006--07)
-        								<b>Biweekly math problem solving seminars</b><br>
-        							
-        							Undergraduate Students Seminars, Amirkabir Univeersity of Technology, Tehran, Iran
-        			</li>
-
-        		</ol>
-
-			<div id="selected_presentation_slides_&_videos"><br><br></div>
-			<h2 class="heading2"><center> Selected Presentation Slides & Videos </center></h2>
-			<div id="content10">	
-		
-		
-				<h3 class="heading3">
-					PhD Dissertation Defense: <a href="research/talks/PhD-Defense.pdf">PDF</a>
-				</h3>
-				<a href="research/talks/PhD-Defense.pdf">
-					<img src="images/transverse.jpg" alt="PhD Defence" style="border: 0px solid ; width: 221px; height: 187px;"/>
-				</a>
-			
-				</br>
-				<h3 class="heading3">The Jacobian method
-					in 1 and a half napkins and a cup:
-				</h3>
-				<a href="images/Jacobian.jpg">
-					<img src="images/Jacobian.jpg" alt="The Jacobian method in one and a half napkins and a cup" style="border: 0px solid ; width: 221px; height: 124px;"/>
-				</a>
-
-				</br>
-				<h3 class="heading3">
-					The Jacobian Method and Structured Inverse Eigenvalue Problems at JMM 14, Baltimore, MD: <a href="https://www.youtube.com/watch?v=a7-UVsDJ-xc">Video</a>
-				</h3>
-				<a href="https://www.youtube.com/watch?v=a7-UVsDJ-xc"><img src="images/JMM14.jpg" alt="Giving a talk on the Jacobian method at the joint math meeting 2014, Baltimore, MD" style="border: 0px solid ; width: 220px; height: 118px;"/></a>
-
-				</br>
-				<h3 class="heading3">
-					The \(\lambda\)-\(\mu\) SIEP (long): <a href="research/talks/lambda-mu-long.pdf">PDF</a>
-				</h3>
-				<a href="research/talks/lambda-mu-long.pdf">
-					<img src="images/lambda-mu.jpg" alt="Lambda-mu SIEP" style="border: 0px solid ; width: 204px; height: 158px;">
-				</a>
-				<br/>
-
-				<h3 class="heading3">
-					The \(\lambda\)-\(\mu\) SIEP (short): <a href="research/talks/lambda-mu-short.pdf">PDF</a>
-				</h3>
-				<a href="research/talks/lambda-mu-short.pdf">
-					<img src="images/lambda-mu-s.jpg" alt="Lambda-mu SIEP" style="border: 0px solid ; width: 204px; height: 158px;">
-				</a>
-
-				</br>
-
-				<h3 class="heading3">
-					The \(\lambda\)-\(\tau\) SIEP: <a href="research/talks/lambda-tau.pdf">PDF</a>
-				</h3>
-				<a href="research/talks/lambda-tau.pdf">
-					<img src="images/lambda-tau.jpg" alt="lambda-tau SIEP" style="border: 0px solid ; width: 217px; height: 158px;"/>
-				</a>
-
-				</br>
-				<h3 class="heading3">
-					Permanent Rank: <a href="research/talks/Perrank.pdf">PDF</a>
-				</h3>
-
-				<a href="research/talks/Perrank.pdf">
-					<img src="images/permanent.jpg" alt="On the permanent conjecture" style="border: 0px solid ; width: 221px; height: 131px;"/>
-				</a>
-			</div>			<div id="areas_of_interest"><br><br></div>
-			<h2 class="heading2"><center> Areas of Interest </center></h2>
-			<div>
-				Linear Algebra and Matrix Analysis <br>
-				Inverse Eigenvalue Problems for Graphs <br>
-				Multilinear Functions, Permanent <br>
-				Combinatorics and Graph Theory <br>
-				Matching Problems, Cycle Analysis <br>
-				Applications in Neuroscience and Economics <br>
-				Clustering, Centrality, Connectivity <br>
-				Multilayer Netwroks, Dynamics on Networks <br>
-				Dynamical Systems, Stability, Robustness <br>
-				Signal Processing, Filtering <br>
-				Data Science, Machine Learning, Deep Learning <br>
-				Statistical Analysis, Regression Analysis, Hypothesis Testing <br>
-			</div>			<div id="collaborators"><br><br></div>
-			<h2 class="heading2"><center> Collaborators </center></h2>
-			<div>
-				Saeed Akbari <br>
-				<a href="https://profiles.stanford.edu/jordan-farrell?tab=bio">Jordan Farrell</a> <br>
-				<a href="http://web.cs.du.edu/~paulhorn/">Paul Horn</a> <br>
-				Mohammad Jamaali <br>
-				<a href="http://www.caam.rice.edu/~fhk2/">Franklin Kenter</a> <br>
-				<a href="https://sites.psu.edu/ehssan/">Ehssan Khanmohammadi</a> <br>
-				Dariush Kiani <br>
-				<a href="https://people.ucalgary.ca/~lancaste/">Peter Lancaster</a> <br>
-				<a href="http://oak.ucc.nau.edu/sm2825/">Sudipta Mallik</a> <br>
-				Kathleen Nowak <br>
-				<a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan Shader</a> <br>
-				John Sinkovic <br>
-				<a href="http://psychology.ucalgary.ca/BN/NP-Lab/index.html">Cam Teskey</a> <br>
-				Josh Tobin <br>
-				<a href="http://contacts.ucalgary.ca/info/math/profiles/101-254118">Kris Vasudevan</a> <br>
+		<div id="pageContent">
+			<div id="mainContent">
+				<div id="publications"><br><br></div>
+				<h2 class="heading2" <center> Publications </center>
+				</h2>
+				<!-- Under Review -->
+				<h3>Under Review</h3>
+				<ol start="1" style="list-style-type:none">
+					<!-- PAPER 3 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.jpg"
+										alt="research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2018+) <b> Community structure detection and evaluation during preictal and postictal hippocampal depth recordings </b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper3')"> > Summary </button> <br> Keivan Hassani Monfared, Kris Vasudevan, Jordan. S. Farrell, and G. Cam Teskey: <a
+										href="research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1804.01568"><b>arXiv</b></a>
+									<div id="paper3">
+										<div class="borderedContent" style="width: 70%;" ;> We show how anti-correlation between neurons firing rates forms communities of neurons that influence the behaviour during an eppleptic seizure. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 4 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.jpg"
+										alt="research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2018+) <b> Inverse spectral problems for linked vibrating systems and structured matrix polynomials </b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper4')"> > Summary </button> <br> Keivan Hassani Monfared and Peter Lancaster: <a
+										href="research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1710.11203"><b>arXiv</b></a>
+									<div id="paper4">
+										<div class="borderedContent" style="width: 70%;" ;> We show that for a given set of \( nk \) distinct real numbers \( \Lambda \), and \( k \) graphs on \( n \) nodes, \( G_0, G_1,\cdots,G_{k-1} \), there are
+											real symmetric \( n\times n \) matrices \( A_s \), \( s=0,1,\ldots, k \) such that the matrix polynomial \( A(z) := A_k z^k + \cdots + A_1 z + A_0 \) has proper values \( \Lambda \), the graph of \( A_s \)
+											is \( G_s \) for \( s=0,1,\ldots,k-1 \), and \( A_k \) is an arbitrary nonsingular (positive definite) diagonal matrix. When \( k=2 \), this solves a physically significant inverse eigenvalue problem for
+											linked vibrating systems. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+				<!-- Published -->
+				<h3>Published</h3>
+				<ol start="3" style="list-style-type:none">
+					<!-- PAPER 5 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.jpg" alt="research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians"
+										onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2018) <b><a href="http://dx.doi.org/10.1016/j.laa.2018.09.016"> An analog of Matrix Tree Theorem for signless Laplacians </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper5')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (560) 43--55, DOI:10.1016/j.laa.2018.09.016<br>Keivan Hassani Monfared and Sudipta Mallik: <a
+										href="research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1805.04759"><b>arXiv</b></a>
+									<div id="paper5">
+										<div class="borderedContent" style="width: 70%;" ;> A spanning tree of a graph is a connected subgraph on all vertices with the minimum number of edges. The number of spanning trees in a graph \( G \) is given
+											by Matrix Tree Theorem in terms of principal minors of Laplacian matrix of \( G \). We show a similar combinatorial interpretation for principal minors of signless Laplacian \( Q \). We also prove that the
+											number of odd cycles in \( G \) is less than or equal to \( \frac{\det(Q)}{4} \), where the equality holds if and only if \( G \) is a bipartite graph or an odd-unicyclic graph. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 6 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.jpg" alt="research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs"
+										onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2018) <b><a href="http://dx.doi.org/10.1016/j.laa.2017.10.025"> A structured inverse spectrum problem for infinite graphs </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper6')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (539) 28--43, DOI:10.1016/j.laa.2017.10.025<br>Keivan Hassani Monfared and Ehssan Khanmohammadi: <a
+										href="research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1512.05834"><b>arXiv</b></a>
+									<div id="paper6">
+										<div class="borderedContent" style="width: 70%;" ;> In this paper it is shown that for a given infinite graph \( G \) on countably many vertices, and a compact, infinite set of real numbers \( \Lambda \) there
+											is a real symmetric matrix \( A \) whose graph is \( G \) and its spectrum is \( \Lambda \). Moreover, the set of limit points of \( \Lambda \) equals the essential spectrum of \( A \), and the isolated
+											points of \( \Lambda \) are eigenvalues of \( A \) with multiplicity one. It is also shown that any two such matrices constructed by our method are approximately unitarily equivalent. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 7 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.jpg"
+										alt="research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2017) <b><a href="http://dx.doi.org/10.1016/j.laa.2017.04.006"> Existence of a not necessarily symmetric matrix with given distinct eigenvalues and graph </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper7')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (527) 1--11, DOI:10.1016/j.laa.2017.04.006<br>Keivan Hassani Monfared: <a
+										href="research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1604.02195"><b>arXiv</b></a>
+									<div id="paper7">
+										<div class="borderedContent" style="width: 70%;" ;> For given distinct numbers \( \lambda_1 \pm \mu_1 \rm{i}, \lambda_2 \pm \mu_2 \rm{i}, \ldots, \lambda_k \pm \mu_k \rm{i} \in \mathbb{C} \setminus \mathbb{R}
+											\) and \( \gamma_1, \gamma_2, \ldots, \gamma_l \in \mathbb{R} \), and a given graph \( G \) with a matching of size at least \( k \), we will show that there is a real matrix whose eigenvalues are the given
+											numbers and its graph is \( G \). In particular, this implies that any real matrix with distinct eigenvalues is similar to a real, irreducible, tridiagonal matrix. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 9 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.jpg" alt="research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph" onmouseover="zoomin(this)"
+										onmouseout="zoomout(this)">
+								</td>
+								<td> (2016) <b><a href="http://dx.doi.org/10.1016/j.laa.2016.04.028"> The nowhere-zero eigenbasis problem for a graph </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper9')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (505) 296--312 , DOI:10.1016/j.laa.2016.04.028<br>Keivan Hassani Monfared and Bryan L. Shader: <a
+										href="research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.pdf"><b>PDF</b></a>
+									<div id="paper9">
+										<div class="borderedContent" style="width: 70%;" ;> Using previous results and methods, it is shown that for any connected graph \( G \) on \( n \) vertices and a set of \( n \) distinct real numbers \( \Lambda
+											\), there is an \( n\times n \) real symmetric matrix \( A \) whose graph is \( G \), its spectrum is \( \Lambda \), and none of the eigenvectors of \( A \) have a zero entry. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 10 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.jpg"
+										alt="research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2016) <b><a href="http://dx.doi.org/10.13001/1081-3810.3117"> On the principal permanent rank characteristic sequences of graphs and digraphs </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper10')"> > Summary </button> <br>
+									<i>Electronic Journal of Linear Algebra</i> (31) 187--199, DOI:10.13001/1081-3810.3117<br>Keivan Hassani Monfared, Paul Horn, Franklin H. J. Kenter, Kathleen Nowak, John Sinkovic, and Josh Tobin: <a
+										href="research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1510.05153"><b>arXiv</b></a>
+									<div id="paper10">
+										<div class="borderedContent" style="width: 70%;" ;> Given an \( n\times n \) real matrix \( A \), the principal characteristic perrank sequence of \( A \) is defined as \( r_0, r_1, r_2, \ldots, r_n \), where
+											for \( k \geq 1 \), \( r_k=1 \) iff \( A \) has a principal submatrix of size \( k \) with nonzero permanent, and \( r_0 = 1 \) iff \( A \) has a zero on its main diagonal. We study the following inverse
+											problem: given a sequence \( r_0 r_1 \cdots r_n \) of zeros and ones, does there exist an \( n \times n \) real matrix which achieves this sequence? As a result, we characterize all the sequences
+											corresponding to (symmetric) entry-wise nonnegative matrices, and provide some results for the skew-symmetric case. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 11 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2016_Spectral_characterization_of_matchings_in_graphs.jpg" alt="research/2016_Spectral_characterization_of_matchings_in_graphs" onmouseover="zoomin(this)"
+										onmouseout="zoomout(this)">
+								</td>
+								<td> (2016) <b><a href="http://dx.doi.org/10.1016/j.laa.2016.02.004"> Spectral characterization of matchings in graphs </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper11')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (496) 407--419, DOI:10.1016/j.laa.2016.02.004<br>Keivan Hassani Monfared and Sudipta Mallik: <a
+										href="research/2016_Spectral_characterization_of_matchings_in_graphs.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1602.03590"><b>arXiv</b></a>
+									<div id="paper11">
+										<div class="borderedContent" style="width: 70%;" ;> A spectral characterization of the matching number (the size of a maximum matching) of a graph is given. More precisely, it is shown that the graphs \( G \)
+											of order \( n \) whose matching number is \( k \) are precisely those graphs with the maximum skew rank \( 2k \) such that for any given set of \( k \) distinct nonzero purely imaginary numbers there is a
+											real skew-symmetric matrix \( A \) with graph \( G \) whose spectrum consists of the given \( k \) numbers, their conjugate pairs and \( n-2k \) zeros. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 12 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.jpg" alt="research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem"
+										onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2015) <b><a href="http://dx.doi.org/10.1080/03081087.2014.1003527"> The \( \lambda \)-\( \tau \) structured inverse eigenvalue problem </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper12')"> > Summary </button> <br>
+									<i>Linear and Multilinear Algebra</i> (63) 2275--2300, DOI:10.1080/03081087.2014.1003527<br>Keivan Hassani Monfared and Bryan L. Shader: <a
+										href="research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.pdf"><b>PDF</b></a>
+									<div id="paper12">
+										<div class="borderedContent" style="width: 70%;" ;> For a matrix \( A \) let \( A(\{r,s\}) \) denote the principal submatrix obtained form \( A \) by removing rows and columns \( r \) and \( s \). Let \( T \)
+											be a tree on \( n \) vertices which satisfies some necessary combinatorial restriction, \( \Lambda \) a set of \( n \) distinct real numbers, \( M \) a set of \( n-2 \) distinct real numbers, and \( r \)
+											and \( s \) two distinct fixed vertices of \( T \). Also, assume that \( M \) and \( L \) satisfy second degree strict Cauchy interlacing inequalities and some genericity conditions. Using various
+											combinatorial techniques it is shown that there is a real symmetric matrix \( A \) whose graph is \( T \), spectrum of \( A \) is \( \Lambda \) and spectrum of \( A(\{r,s\}) \) is \( M \). Then, using
+											Jacobian method this result was extended to any supergraph of this family of trees. Also, some consequences of these results related to perturbations of diagonal entries of a matrix are presented. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 13 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.jpg"
+										alt="research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2015) <b><a href="http://dx.doi.org/10.1016/j.laa.2015.01.001"> Construction of real skew-symmetric matrices from interlaced spectral data, and graph </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper13')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (471) 241--263, DOI:10.1016/j.laa.2015.01.001<br>Keivan Hassani Monfared and Sudipta Mallik: <a
+										href="research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1412.6085"><b>arXiv</b></a>
+									<div id="paper13">
+										<div class="borderedContent" style="width: 70%;" ;> We provide analogues of the results presented in the \( 2013 \) paper for skew-symmetric matrices. This is first shown for a family of trees with nearly even
+											branching at a vertex \( v \) (NEB trees) using various combinatorial techniques. Then the results are extended to any supergraph of such trees using the Jacobian method. Let \( G \) be a connected graph on
+											\( n \) vertices, \( \Lambda \) a set of \( n \) distinct purely imaginary numbers which is closed under negation, and \( M \) a set of \( n-1 \) distinct purely imaginary numbers closed under negation
+											which strictly interlaces \( \Lambda \). Also, let \( v \) be a vertex of \( G \). It is shown that if \( G \) has a spanning tree which is NEB at \( v \), then there is a real skew-symmetric matrix \( A \)
+											whose graph is \( G \), its spectrum is \( \Lambda \), and the spectrum of \( A(v) \) is \( M \). Some properties of NEB trees are also studied. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 15 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.jpg"
+										alt="research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2013) <b><a href="http://dx.doi.org/10.1016/j.laa.2013.01.036"> Construction of matrices with a given graph and prescribed interlaced spectral data </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper15')"> > Summary </button> <br>
+									<i>Linear Algebra and Its Applications</i> (438) 4348--4358, DOI:10.1016/j.laa.2013.01.036<br>Keivan Hassani Monfared and Bryan L. Shader: <a
+										href="research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.pdf"><b>PDF</b></a>
+									<div id="paper15">
+										<div class="borderedContent" style="width: 70%;" ;> For a matrix \( A \) let \( A(v) \) denote the principal submatrix obtained form \( A \) by removing its \( v \)-th row and column. In a 1989 paper, Duarte
+											showed that for any given tree \( T \) on \( n \) vertices, \( \Lambda \) a set of \( n \) distinct real numbers, \( M \) a set of \( n-1 \) distinct real numbers that strictly interlaces \( \Lambda \), and
+											\( i \) a fixed vertex of \( T \), there is a real symmetric matrix \( A \) whose graph is \( T \), spectrum of \( A \) is \( \Lambda \) and spectrum of \( A(v) \) is \( M \). In this paper we develop a
+											method, called the Jacobian method, and show that Duarte's result holds for any connected graph. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 17 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.jpg"
+										alt="research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2010) <b><a href="http://dx.doi.org/10.1017/S0004972710001619"> On the existence of nowhere-zero vectors for linear transformations </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper17')"> > Summary </button> <br>
+									<i>Bulletin of the Australian Mathematical Society</i> (82) 480--487, DOI:10.1017/S0004972710001619<br>Saeed Akbari, Keivan Hassani Monfared, Mohammad Jamaali, Ehssan Khanmohammadi, and Dariush Kiani: <a
+										href="research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.pdf"><b>PDF</b></a>
+									<div id="paper17">
+										<div class="borderedContent" style="width: 70%;" ;> If for a matrix \( A \) there is a vector \( x \) such that the vectors \( x \) and \( Ax \) have no zero entries, then \( A \) is called to have the AJT
+											property. In this paper we make further progress on the Alon-Jaeger-Tarsi (AJT) Conjecture, using combinatorial, probabilistic, and linear algebraic methods. The AJT conjecture asserts any nonsingular
+											matrix over a field with at least 4 elements has the AJT property. It is shown that any nonzero matrix is similar to an AJT matrix, and some necessary and some sufficient conditions for a matrix to have the
+											AJT property are given. Also, we provide a sharp bound for the number of the elements of the field in terms of the size of the matrix. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+				<!-- Thesis -->
+				<h3>Thesis</h3>
+				<ol start="13" style="list-style-type:none">
+					<!-- PAPER 14 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).jpg"
+										alt="research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation)" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2014) <b><a href="http://search.proquest.com/docview/1615381957"> The Jacobian Method: The Art Of Finding More Needles in Nearby Haystacks (PhD dissertation) </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper14')"> > Summary </button> <br> Keivan Hassani Monfared, Advisor: Bryan L. Shader: <a
+										href="research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).pdf"><b>PDF</b></a>
+									<div id="paper14">
+										<div class="borderedContent" style="width: 70%;" ;> In this dissertation we develop the Jacobian method, and we give a detailed description of it, along with a geometric interpretation. We provide several
+											examples and using the Jacobian method we solve three fundamental structured inverse eigenvalue problems including the \( \lambda \)-\( \mu \)-SIEP, the \( \lambda \)-\( \tau \)-SIEP, and the nowhere-zero
+											eigenbasis problem for the \( \lambda \)-SIEP. The common strategy is to prove the existence of a solution for trees, then to show that these solutions are generic, and then use the Implicit Function
+											Theorem to extend it to connected graphs. Several other important problems that can be solved using this method are mentioned, as well as two main directions for further development of the Jacobian method.
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 16 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2012_On_the_Permanent_Conjecture_(Masters_thesis).jpg" alt="research/2012_On_the_Permanent_Conjecture_(Masters_thesis)" onmouseover="zoomin(this)"
+										onmouseout="zoomout(this)">
+								</td>
+								<td> (2012) <b><a href="http://search.proquest.com/docview/920132185"> On the Permanent Conjecture (Masters thesis) </a></b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper16')"> > Summary </button> <br> Keivan Hassani Monfared, Advisor: Bryan L. Shader: <a
+										href="research/2012_On_the_Permanent_Conjecture_(Masters_thesis).pdf"><b>PDF</b></a>
+									<div id="paper16">
+										<div class="borderedContent" style="width: 70%;" ;> The permanent rank of a matrix \( A \), \( \rm{perrank}(A) \), is defined to be the size of a largest square submatrix of \( A \) with nonzero permanent. In
+											this thesis we study some properties of the permanents and also permanent ranks of the matrices, and related problems. In particular we characterize matrices with small permanent ranks in order to study the
+											following conjecture relating the \( \rm{perrank} \) and the \( \rm{termrank} \). <br>
+											<b>Conjecture:</b> For any matrix \( A \), \[ \rm{perrank}(A) \geq \Bigg\lceil \frac{\mbox{termrank}(A)}{2} \Bigg\rceil,\] and for even \( \rm{termrank} \) the equality holds if and only if up to
+											equivalence and reduction \( A=\bigoplus \left[\begin{array}{cr}1&1\\1&-1\end{array}\right] \).
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+				<!-- In Progress -->
+				<h3>In Progress</h3>
+				<ol start="15" style="list-style-type:none">
+					<!-- PAPER 1 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+								</td>
+								<td> (2018+) <b> Properties of a nonnegative reciprocal matrix and their application to AHP </b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper1')"> > Summary </button> <br> Mojtabe Eslami and Keivan Hassani Monfared <div id="paper1">
+										<div class="borderedContent" style="width: 70%;" ;> We study the properties of a nonnegative reciprocal matrices associated with graphs and their application to {AHP} </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<!-- PAPER 2 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+								</td>
+								<td> (2018+) <b> Dissonance networks and social influence </b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper2')"> > Summary </button> <br> Omid Atabati, Mojtaba Eslami, and Keivan Hassani Monfared <div id="paper2">
+										<div class="borderedContent" style="width: 70%;" ;> We model how a society manages conflicts between beliefs and social standings by forming a dissonance network, and then providing measures of centrality and
+											modularity for such signed networks. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+				<!-- Unpublished -->
+				<h3>Unpublished</h3>
+				<ol start="17" style="list-style-type:none">
+					<!-- PAPER 8 -->
+					<li>
+						<table class="paddingBetweenRows" style="width: 100%">
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:90%">
+							</colgroup>
+							<tr>
+								<td>
+									<img class="researchImage" width="100%" src="research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.jpg"
+										alt="research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph" onmouseover="zoomin(this)" onmouseout="zoomout(this)">
+								</td>
+								<td> (2016) <b> The maximum multiplicity of an eigenvalue of symmetric matrices with a given graph </b>
+									<button class="togglebutton" ; onclick="toggleSlowly('paper8')"> > Summary </button> <br> Keivan Hassani Monfared and Sudipta Mallik: <a
+										href="research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.pdf"><b>PDF</b></a>
+									<a href="https://arxiv.org/abs/1601.02760"><b>arXiv</b></a>
+									<div id="paper8">
+										<div class="borderedContent" style="width: 70%;" ;> For a graph \( G \), \( M(G) \) denotes the maximum multiplicity occurring of an eigenvalue of a symmetric matrix whose zero-nonzero pattern is given by edges
+											of \( G \). We introduce two combinatorial graph parameters \( T^-(G) \) and \( T^+(G) \) that give a lower and an upper bound for \( M(G) \) respectively, and we show that these bounds are sharp. <br> It
+											was pointed out by the referees that the bounds are not better than those given by zero forcing number of the graph. </div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+				<div id="talks_&_seminars"><br><br></div>
+				<h2 class="heading2">
+					<center> Talks & Seminars </center>
+				</h2>
+				<!-- Invited -->
+				<h3>Invited</h3>
+				<ol start="1">
+					<!-- TALK 61 -->
+					<li> (2019-Jul) <b> Inverse Polynomial Spectral Problems for Graphs</b>: <a href="http://ilas2019.org/wp-content/uploads/2019/06/ILAS2019_FULL_PROGRAM_20190606.pdf">Abstract</a><br>
+						<a href="http://ilas2019.org"> 22nd Conference of the International Linear Algebra Society (ILAS19)</a>, Rio de Janeiro, Brazil
+					</li>
+					<!-- TALK 60 -->
+					<li> (2016-Jun) <b>An Analog of Matrix Tree Theorem for Signless Laplacians</b>: <a href="https://cms.math.ca/Events/summer19/abs/pdf/mta-km.pdf">Abstract</a> <a href="research/201906_Regina_CMS.pdf">Slides</a><br>
+						<a href="https://summer19.cms.math.ca"> Canadian Mathematical Society Summer 2019 Meeting (CMS19)</a>, Regina, SK, Canada
+					</li>
+					<!-- TALK 19 -->
+					<li> (2017-Jul) <b>Counting from one</b><br> High School Math Camp at University of Calgary, Calgary, AB, Canada </li>
+					<!-- TALK 20 -->
+					<li> (2017-Jul) <b>Counting to infinity</b><br> High School Math Camp at University of Calgary, Calgary, AB, Canada </li>
+					<!-- TALK 21 -->
+					<li> (2016-Nov) <b>Real life applications of calculus and linear algebra</b><br> Student Colloquium, University of Calgary, Calgary, AB, Canada </li>
+					<!-- TALK 22 -->
+					<li> (2016-Jul) <b>Using jacobian method to solve inverse eigenvalue problems for graphs</b>: <a href="https://ilas2016.cs.kuleuven.be/bookofabstracts.pdf">Abstract</a><br>
+						<a href="http://ilas2016.cs.kuleuven.be/"> International Linear Algebra Society (ILAS 16)</a>, Leuven, Belgium
+					</li>
+					<!-- TALK 23 -->
+					<li> (2016-Jun) <b>Touching infinity</b><br> Junior Math Contestants, University of Calgary, Calgary, AB, Canada </li>
+					<!-- TALK 25 -->
+					<li> (2016-Mar) <b>Permanent ranks of matrices and generalized cycles of graphs</b>: <a href="http://science.fau.edu/combinatorics/MonfaredKevian1.pdf">Abstract</a><br>
+						<a href="http://science.fau.edu/combinatorics/previous_years/conference_47.php"> 47th Southeastern International Conference on Combinatorics, Graph Theory \& Computing</a>, Boca Raton, FL, USA
+					</li>
+					<!-- TALK 27 -->
+					<li> (2016-Jan) <b>On the principal permanent rank characteristic sequences of graphs</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2181_abstracts/1116-05-638.pdf">Abstract</a><br>
+						<a href="http://jointmathematicsmeetings.org,"> Joint Mathematics Meeting 2016 (JMM 16)</a>, Seattle, WA, USA
+					</li>
+					<!-- TALK 30 -->
+					<li> (2015-Jun) <b>Several examples on the jacobian method</b>: <a href="http://canadam.math.ca/2015/program/abs/pdf/gm2-khm.pdf">Abstract</a><br>
+						<a href="http://canadam.math.ca/2015/"> Canadian Discrete and Algorithmic Mathematics Conference (CanaDAM 15)</a>, Saskatoon, SK, Canada
+					</li>
+					<!-- TALK 34 -->
+					<li> (2014-Aug) <b>The inverse principal perrank characteristic sequence problems</b>: <a href="https://sites.google.com/site/rmgpgrwc/problem-gardens/2014-InversePrincipalPerrankSequence.pdf?attredirects=0&d=1">Abstract</a><br>
+						<a href="https://sites.google.com/site/rmgpgrwc/previous-workshops/grwc-2014---denver-co,"> Rocky Mountain-Great Plains Graduate Research Workshop in Combinatorics (GRWC 15)</a>, Denver, CO, USA
+					</li>
+					<!-- TALK 38 -->
+					<li> (2013-Nov) <b>Using the jacobian method in structured inverse eigenvalue problems</b>: <a
+							href="https://www.brownbearsoftware.com/hosted/UCDenver?CalendarName=Math&ID=1040&Op=PopupWindow&DoneURL=https%3A%2F%2Fwww.brownbearsoftware.com%2Fhosted%2FUCDenver%3FCalendarName%3DMath%26Op%3DShowIt%26Amount%3DMonth%26NavType%3DAbsolute%26Type%3DBlock%26Date%3D2013%2F11%2F1&Source=&Date=2013%2F11%2F18&Amount=Month&NavType=Absolute&Type=Block">Abstract</a><br>
+						<a href="http://wiu.edu/users/khm102/math.ucdenver.edu,"> University of Colorado</a>, Denver, CO, USA
+					</li>
+					<!-- TALK 52 -->
+					<li> (2008-Jun) <b>On mathematics education</b><br> Parviz Shahriari Scientific and Cultural Foundation, Tehran, Iran </li>
+				</ol>
+				<!-- Contributed -->
+				<h3>Contributed</h3>
+				<ol start="12">
+					<!-- TALK 62 -->
+					<li> (2019-Jun) <b>Graph Clustering Problems Arising in Neuroscience - Results</b>: <a href="https://canadam.math.ca/2019/program/abs/pdf/gi-khm.pdf">Abstract</a> <a
+							href="research/talks/201906_Vancouver_CanaDAM.pdf">Slides</a><br>
+						<a href="https://2019.canadam.math.ca/"> The 7th Canadian Discrete and Algorithmic Mathematics Conference (CanaDAM 2019)</a>, Vancouver, BC, Canada
+					</li>
+					<!-- TALK 18 -->
+					<li> (2018-Jul) <b>Graph partitioning problems arising in neuroscience - Questions</b>: <a href="https://www.brandonu.ca/pdmw/files/PDMWprogram2018.pdf">Abstract</a><br>
+						<a href="https://www.brandonu.ca/pdmw/"> Prairie Discrete Mathematics Workshop (PDMW18)</a>, Brandon, MB, Canada
+					</li>
+					<!-- TALK 24 -->
+					<li> (2016-May) <b>Some inverse eigenvalue problems for graphs</b>: <a href="http://server.math.umanitoba.ca/~kirkland/WCLAM_2016_Program.pdf">Abstract</a><br>
+						<a href="http://server.math.umanitoba.ca/~kirkland/wclam"> Western Canada Linear Algebra Meeting(WCLAM)</a>, University of Manitoba, Winnipeg, MB, Canada
+					</li>
+					<!-- TALK 26 -->
+					<li> (2016-Jan) <b>Using the jacobian method to solve structured inverse eigenvalue problems</b><br>
+						<a href="jointmathematicsmeetings.org"> Joint Mathematics Meetings</a>, Seattle, WA, USA
+					</li>
+					<!-- TALK 28 -->
+					<li> (2015-Oct) <b>What do generalized cycles of a graph tell about each other?</b><br>
+						<a href="http://math.ucalgary.ca/events/calendar"> Research Seminars</a>, University of Calgary, Calgary, AB, Canada
+					</li>
+					<!-- TALK 29 -->
+					<li> (2015-Sep) <b>How to find more solutions when you have one in hand</b><br>
+						<a href="http://math.ucalgary.ca/events/calendar"> Research Seminars</a>, University of Calgary, Calgary, AB, Canada
+					</li>
+					<!-- TALK 31 -->
+					<li> (2015-Jan) <b>Nowhere-zero eigenbasis for a matrix with prescribed graph and spectrum</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2168_abstracts/1106-15-1418.pdf">Abstract</a><br>
+						<a href="http://jointmathematicsmeetings.org"> Joint Mathematics Meetings</a>, San Antonio, TX, USA
+					</li>
+					<!-- TALK 32 -->
+					<li> (2014-Oct) <b>Building vibrating systems using linear algebra and calculus</b>: <a href="http://www.wiu.edu/cas/math/events/student_colloquium_k_h_monfared101714.pdf">Abstract</a><br> Student Colloquium, Western Illinois
+						University, Macomb, IL, USA </li>
+					<!-- TALK 33 -->
+					<li> (2014-Oct) <b>Structured inverse eigenvalue problems</b>: <a href="http://www.wiu.edu/cas/math/events/ColloquiumFlyerKHMonfared103014.pdf">Abstract</a><br> Colloquium, Western Illinois University, Macomb, IL, USA </li>
+					<!-- TALK 35 -->
+					<li> (2014-Apr) <b>Skew-symmetric SIEP and the role of the jacobian method</b><br>
+						<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 36 -->
+					<li> (2014-Jan) <b>The jacobian method and structured inverse eigenvalue problems</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2160_abstracts/1096-15-2004.pdf">Abstract</a><br>
+						<a href="http://jointmathematicsmeetings.org/"> Joint Mathematics Meeting</a>, Baltimore, MD, USA
+					</li>
+					<!-- TALK 37 -->
+					<li> (2013-Nov) <b>On the importance of the jacobian method</b><br>
+						<a href="http://www.uwyo.edu/math/"> Graduate Students Seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 39 -->
+					<li> (2013-Oct) <b>Zonotopal algebra, an expository talk</b><br>
+						<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 40 -->
+					<li> (2013-Aug) <b>A structured inverse eigenvalue problem</b>: <a href="http://www.maa.org/meetings/mathfest/program-details/2013/contributed-paper-sessions">Abstract</a><br>
+						<a href="http://www.maa.org/meetings/mathfest"> MathFest</a>, Hartford, CT, USA
+					</li>
+					<!-- TALK 41 -->
+					<li> (2013-Jul) <b>The \( \lambda \)-\( \mu \) structured inverse eigenvalue problem</b><br>
+						<a href="http://www.uwyo.edu/math/"> Rocky Mountain Discrete Math Days</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 42 -->
+					<li> (2013-Jul) <b>The \( \lambda \)-\( \mu \) structured inverse eigenvalue problem</b>: <a href="http://www.uwyo.edu/jwilliford/rmmc2013/abstracts/monfared_abs.pdf">Abstract</a><br>
+						<a href="http://www.uwyo.edu/jwilliford/rmmc2013/rmmc_2013.html"> Rocky Mountain Mathematics Consortium</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 43 -->
+					<li> (2012-Oct) <b>The \( \lambda \)-\( \mu \) structured inverse eigenvalue problem</b><br>
+						<a href="http://www.uwyo.edu/bshader/rmdmd2012.html"> Rocky Mountain Discrete Math Days</a>, Denver University, Denver, CO, USA
+					</li>
+					<!-- TALK 44 -->
+					<li> (2012-Sep) <b>A jacobian approach to some structured inverse eigenvalue problems</b><br>
+						<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 45 -->
+					<li> (2012-Sep) <b>Constructing matrices with interlacing spectral data and graph</b><br>
+						<a href="http://www.math.iastate.edu/mighty2012/"> Midwestern Graph Theory (MIGHTY) LIII Conference</a>, Iowa State University, Ames, IA, USA
+					</li>
+					<!-- TALK 46 -->
+					<li> (2012-Apr) <b>Why is the permanent rank important?</b><br>
+						<a href="http://www.math.wisc.edu/~ddrake/gscc.html"> Graduate Student Combinatorics Conference</a>, University of Illinois, Urbana-Champaign, IL, USA
+					</li>
+					<!-- TALK 47 -->
+					<li> (2012-Jan) <b>On the permanent rank of matrices</b>: <a href="http://jointmathematicsmeetings.org/amsmtgs/2138_abstracts/1077-05-2438.pdf">Abstract</a><br>
+						<a href="http://jointmathematicsmeetings.org"> Joint Mathematics Meeting</a>, Boston, MA, USA
+					</li>
+					<!-- TALK 48 -->
+					<li> (2011-Oct) <b>Perrank v.s rank</b><br>
+						<a href="http://www.uwyo.edu/bshader/rmdmd2011/rmdmd.html"> Rocky Mountain Discrete Math Days</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 49 -->
+					<li> (2011-Mar) <b>What is the permanent?</b><br>
+						<a href="http://www.uwyo.edu/math/"> Graduate Students Seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 50 -->
+					<li> (2010-May) <b>A different approach to the hall's marriage theorem</b><br>
+						<a href="http://www.uwyo.edu/math/"> Graduate Students Seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 51 -->
+					<li> (2009-Nov) <b>A survey on the alon-jaeger-tarsi conjecture</b><br>
+						<a href="http://www.uwyo.edu/math/"> Algebra Combinatorics and Number Theory seminars</a>, University of Wyoming, Laramie, WY, USA
+					</li>
+					<!-- TALK 53 -->
+					<li> (2006--07) <b>Biweekly math problem solving seminars</b><br> Undergraduate Students Seminars, Amirkabir Univeersity of Technology, Tehran, Iran </li>
+				</ol>
+				<div id="selected_presentation_slides_&_videos"><br><br></div>
+				<h2 class="heading2">
+					<center> Selected Presentation Slides & Videos </center>
+				</h2>
+				<div id="content10">
+					<h3 class="heading3"> PhD Dissertation Defense: <a href="research/talks/PhD-Defense.pdf">PDF</a>
+					</h3>
+					<a href="research/talks/PhD-Defense.pdf">
+						<img src="images/transverse.jpg" alt="PhD Defence" style="border: 0px solid ; width: 221px; height: 187px;" />
+					</a>
+					</br>
+					<h3 class="heading3">The Jacobian method in 1 and a half napkins and a cup: </h3>
+					<a href="images/Jacobian.jpg">
+						<img src="images/Jacobian.jpg" alt="The Jacobian method in one and a half napkins and a cup" style="border: 0px solid ; width: 221px; height: 124px;" />
+					</a>
+					</br>
+					<h3 class="heading3"> The Jacobian Method and Structured Inverse Eigenvalue Problems at JMM 14, Baltimore, MD: <a href="https://www.youtube.com/watch?v=a7-UVsDJ-xc">Video</a>
+					</h3>
+					<a href="https://www.youtube.com/watch?v=a7-UVsDJ-xc"><img src="images/JMM14.jpg" alt="Giving a talk on the Jacobian method at the joint math meeting 2014, Baltimore, MD"
+							style="border: 0px solid ; width: 220px; height: 118px;" /></a>
+					</br>
+					<h3 class="heading3"> The \(\lambda\)-\(\mu\) SIEP (long): <a href="research/talks/lambda-mu-long.pdf">PDF</a>
+					</h3>
+					<a href="research/talks/lambda-mu-long.pdf">
+						<img src="images/lambda-mu.jpg" alt="Lambda-mu SIEP" style="border: 0px solid ; width: 204px; height: 158px;">
+					</a>
+					<br />
+					<h3 class="heading3"> The \(\lambda\)-\(\mu\) SIEP (short): <a href="research/talks/lambda-mu-short.pdf">PDF</a>
+					</h3>
+					<a href="research/talks/lambda-mu-short.pdf">
+						<img src="images/lambda-mu-s.jpg" alt="Lambda-mu SIEP" style="border: 0px solid ; width: 204px; height: 158px;">
+					</a>
+					</br>
+					<h3 class="heading3"> The \(\lambda\)-\(\tau\) SIEP: <a href="research/talks/lambda-tau.pdf">PDF</a>
+					</h3>
+					<a href="research/talks/lambda-tau.pdf">
+						<img src="images/lambda-tau.jpg" alt="lambda-tau SIEP" style="border: 0px solid ; width: 217px; height: 158px;" />
+					</a>
+					</br>
+					<h3 class="heading3"> Permanent Rank: <a href="research/talks/Perrank.pdf">PDF</a>
+					</h3>
+					<a href="research/talks/Perrank.pdf">
+						<img src="images/permanent.jpg" alt="On the permanent conjecture" style="border: 0px solid ; width: 221px; height: 131px;" />
+					</a>
+				</div>
+				<div id="areas_of_interest"><br><br></div>
+				<h2 class="heading2">
+					<center> Areas of Interest </center>
+				</h2>
+				<div> Linear Algebra and Matrix Analysis <br> Inverse Eigenvalue Problems for Graphs <br> Multilinear Functions, Permanent <br> Combinatorics and Graph Theory <br> Matching Problems, Cycle Analysis <br> Applications in Neuroscience
+					and Economics <br> Clustering, Centrality, Connectivity <br> Multilayer Netwroks, Dynamics on Networks <br> Dynamical Systems, Stability, Robustness <br> Signal Processing, Filtering <br> Data Science, Machine Learning, Deep
+					Learning <br> Statistical Analysis, Regression Analysis, Hypothesis Testing <br>
+				</div>
+				<div id="collaborators"><br><br></div>
+				<h2 class="heading2">
+					<center> Collaborators </center>
+				</h2>
+				<div> Saeed Akbari <br>
+					<a href="https://profiles.stanford.edu/jordan-farrell?tab=bio">Jordan Farrell</a> <br>
+					<a href="http://web.cs.du.edu/~paulhorn/">Paul Horn</a> <br> Mohammad Jamaali <br>
+					<a href="http://www.caam.rice.edu/~fhk2/">Franklin Kenter</a> <br>
+					<a href="https://sites.psu.edu/ehssan/">Ehssan Khanmohammadi</a> <br> Dariush Kiani <br>
+					<a href="https://people.ucalgary.ca/~lancaste/">Peter Lancaster</a> <br>
+					<a href="http://oak.ucc.nau.edu/sm2825/">Sudipta Mallik</a> <br> Kathleen Nowak <br>
+					<a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan Shader</a> <br> John Sinkovic <br>
+					<a href="http://psychology.ucalgary.ca/BN/NP-Lab/index.html">Cam Teskey</a> <br> Josh Tobin <br>
+					<a href="http://contacts.ucalgary.ca/info/math/profiles/101-254118">Kris Vasudevan</a> <br>
+				</div>
 			</div>
-		</div> 
-
-	</div> 
-
- <br> <br> 
-<center> 
-<table class="socialmediapadding" style="width: 80%;"> 
-<!--	<colgroup>		<col style="width:14.28%"> 
-		<col style="width:14.28%"> 
-		<col style="width:14.28%"> 
-		<col style="width:14.28%"> 
-		<col style="width:14.28%"> 
-		<col style="width:14.28%"> 
-		<col style="width:14.28%"> 
-	</colgroup> --> 
-	<tr> 
-		<td> 
-			<a href="http://www.github.com/k1monfared">
-				<img src="images/github.png" alt="github" style="height:25px;">
-			</a>
-		</td>		<td> 
-			<a href="http://www.linkedin.com/in/k1monfared">
-				<img src="images/linkedin.png" alt="linkedin" style="height:25px;">
-			</a>
-		</td>		<td> 
-			<a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
-				<img src="images/researchgate.png" alt="researchgate" style="height:25px;">
-			</a>
-		</td>		<td> 
-			<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
-				<img src="images/googlescholar.png" alt="googlescholar" style="height:25px;">
-			</a>
-		</td>		<td> 
-			<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
-				<img src="images/arxiv.png" alt="arxiv" style="height:25px;">
-			</a>
-		</td>		<td> 
-			<a href="http://k1monfared.wordpress.com/">
-				<img src="images/wordpress.png" alt="wordpress" style="height:25px;">
-			</a>
-		</td>		<td> 
-			<a href="https://twitter.com/k1monfared">
-				<img src="images/twitter.png" alt="twitter" style="height:25px;">
-			</a>
-		</td>
-	</tr> 
-</table> 
-</center> 
-	 </div> 
-<div class="PageFooter"> 
-		Designed by Shaghayegh Khodaei and Keivan Hassani Monfared 
+		</div>
+		<br> <br>
+		<center>
+			<table class="socialmediapadding" style="width: 80%;">
+				<!--	<colgroup>		<col style="width:14.28%">
+		<col style="width:14.28%">
+		<col style="width:14.28%">
+		<col style="width:14.28%">
+		<col style="width:14.28%">
+		<col style="width:14.28%">
+		<col style="width:14.28%">
+	</colgroup> -->
+				<tr>
+					<td>
+						<a href="http://www.github.com/k1monfared">
+							<img src="images/github.png" alt="github" style="height:25px;">
+						</a>
+					</td>
+					<td>
+						<a href="http://www.linkedin.com/in/k1monfared">
+							<img src="images/linkedin.png" alt="linkedin" style="height:25px;">
+						</a>
+					</td>
+					<td>
+						<a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
+							<img src="images/researchgate.png" alt="researchgate" style="height:25px;">
+						</a>
+					</td>
+					<td>
+						<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
+							<img src="images/googlescholar.png" alt="googlescholar" style="height:25px;">
+						</a>
+					</td>
+					<td>
+						<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
+							<img src="images/arxiv.png" alt="arxiv" style="height:25px;">
+						</a>
+					</td>
+					<td>
+						<a href="http://k1monfared.wordpress.com/">
+							<img src="images/wordpress.png" alt="wordpress" style="height:25px;">
+						</a>
+					</td>
+					<td>
+						<a href="https://twitter.com/k1monfared">
+							<img src="images/twitter.png" alt="twitter" style="height:25px;">
+						</a>
+					</td>
+				</tr>
+			</table>
+		</center>
 	</div>
-	 </body> 
-</html> 
+	<div class="PageFooter"> Designed by Shaghayegh Khodaei and Keivan Monfared </div>
+</body>
+
+</html>
