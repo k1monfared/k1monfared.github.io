@@ -35,24 +35,8 @@
 			}
 		}
 	</script>
-	<!-- stick to somewhere -->
-	<script type="text/javascript">
-		function sticktothetop() {
-			var window_top = $(window).scrollTop();
-			var top = $('#stick-here').offset().top;
-			if (window_top > top) {
-				$('#stickThis').addClass('stick');
-				$('#stick-here').height($('#stickThis').outerHeight());
-			} else {
-				$('#stickThis').removeClass('stick');
-				$('#stick-here').height(0);
-			}
-		}
-		$(function() {
-			$(window).scroll(sticktothetop);
-			sticktothetop();
-		});
-	</script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="js/nav-loader.js"></script>
 </head>
 
 <body>
@@ -60,21 +44,17 @@
 		<div id="stick-here"></div>
 		<div class="myTitle"> KEIVAN MONFARED </div>
 		<div class="myTitleFooter"> Mathematics and Data Science </div>
-		<div id="stickThis">
-			<div id="menu">
-				<span class="menuItem"><a href="index.html">home</a></span>
-				<span class="menuItem"><a href="computation.html">computation</a></span>
-				<span class="menuItem"><a href="research.html">research</a></span>
-				<span class="menuItem"><a href="teaching.html">teaching</a></span>
-				<span class="menuItem" id="this_page"><a style="color: #FFD700" href="learning.html">learning</a></span>
-				<span class="menuItem"><a href="contact.html">contact</a></span>
-			</div>
-			<div id="small_menu">
-				<span class="menuItem"><a href="#stem">STEM</a></span>
-				<span class="menuItem"><a href="#humanities">Humanities</a></span>
-				<span class="menuItem"><a href="#arts">Arts</a></span>
-			</div>
-		</div>
+		<!-- Navigation loaded from nav.html -->
+		<div id="nav-container"></div>
+		<script type="text/javascript">
+			// Page-specific sub-menu for learning page
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<span class="menuItem"><a href="#stem">STEM</a></span>' +
+					'<span class="menuItem"><a href="#humanities">Humanities</a></span>' +
+					'<span class="menuItem"><a href="#arts">Arts</a></span>';
+			});
+		</script>
 		<div id="pageContent">
 			<div id="mainContent">
 				<div id="stem"> <br><br> </div>
@@ -124,49 +104,9 @@
 										</ul>
 			</div>
 		</div>
-		<center>
-			<table class="socialmediapadding" style="width: 80%;">
-				<tr>
-					<td>
-						<a href="http://www.github.com/k1monfared">
-							<img src="images/github.png" alt="github" style="height:25px;">
-						</a>
-					</td>
-					<td>
-						<a href="http://www.linkedin.com/in/k1monfared">
-							<img src="images/linkedin.png" alt="linkedin" style="height:25px;">
-						</a>
-					</td>
-					<td>
-						<a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
-							<img src="images/researchgate.png" alt="researchgate" style="height:25px;">
-						</a>
-					</td>
-					<td>
-						<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
-							<img src="images/googlescholar.png" alt="googlescholar" style="height:25px;">
-						</a>
-					</td>
-					<td>
-						<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
-							<img src="images/arxiv.png" alt="arxiv" style="height:25px;">
-						</a>
-					</td>
-					<td>
-						<a href="http://k1monfared.wordpress.com/">
-							<img src="images/wordpress.png" alt="wordpress" style="height:25px;">
-						</a>
-					</td>
-					<td>
-						<a href="https://twitter.com/k1monfared">
-							<img src="images/twitter.png" alt="twitter" style="height:25px;">
-						</a>
-					</td>
-				</tr>
-			</table>
-		</center>
+		<!-- Footer and social media loaded from footer.html -->
+		<div id="footer-container"></div>
 	</div>
-	<div class="PageFooter"> Designed by Shaghayegh Khodaei and Keivan Monfared </div>
 </body>
 
 </html>

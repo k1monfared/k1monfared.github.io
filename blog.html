@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
+	<title> Keivan Monfared's Blog </title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="js/nav-loader.js"></script>
+	<style>
+		.blog-post {
+			margin-bottom: 30px;
+			padding: 20px;
+			border-left: 3px solid #757575;
+			background-color: #f9f9f9;
+		}
+		.blog-post h3 {
+			margin-top: 0;
+			color: #333;
+		}
+		.blog-post .date {
+			color: #666;
+			font-style: italic;
+			margin-bottom: 10px;
+		}
+		.blog-post .description {
+			margin-bottom: 15px;
+		}
+		.blog-post a {
+			color: #000000;
+			text-decoration: none;
+			font-weight: bold;
+		}
+		.blog-post a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div id="stick-here"></div>
+		<div class="myTitle"> KEIVAN MONFARED </div>
+		<div class="myTitleFooter"> Mathematics and Data Science </div>
+		<!-- Navigation loaded from nav.html -->
+		<div id="nav-container"></div>
+
+		<div id="pageContent">
+			<div id="mainContent">
+				<h2 class="heading2">Blog</h2>
+				<div id="blog-posts-container">
+					<!-- Blog posts will be loaded here -->
+					<p>Loading blog posts...</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer and social media loaded from footer.html -->
+		<div id="footer-container"></div>
+	</div>
+
+	<script type="text/javascript">
+		// Load and display blog posts
+		function loadBlogPosts() {
+			fetch('blog/posts.json')
+				.then(response => {
+					if (!response.ok) throw new Error('Failed to load blog posts');
+					return response.json();
+				})
+				.then(posts => {
+					displayBlogPosts(posts);
+				})
+				.catch(error => {
+					console.error('Error loading blog posts:', error);
+					document.getElementById('blog-posts-container').innerHTML =
+						'<p>Error loading blog posts. Please try again later.</p>';
+				});
+		}
+
+		function displayBlogPosts(posts) {
+			// Sort posts by date (newest first)
+			posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+			const container = document.getElementById('blog-posts-container');
+
+			if (posts.length === 0) {
+				container.innerHTML = '<p>No blog posts yet.</p>';
+				return;
+			}
+
+			let html = '';
+			posts.forEach(post => {
+				const date = new Date(post.date);
+				const formattedDate = date.toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				});
+
+				html += `
+					<div class="blog-post">
+						<h3><a href="blog/${post.filename}">${post.title}</a></h3>
+						<div class="date">${formattedDate}</div>
+						<div class="description">${post.description}</div>
+						<a href="blog/${post.filename}">Read more →</a>
+					</div>
+				`;
+			});
+
+			container.innerHTML = html;
+		}
+
+		// Load blog posts when page loads
+		document.addEventListener('DOMContentLoaded', loadBlogPosts);
+	</script>
+</body>
+
+</html>

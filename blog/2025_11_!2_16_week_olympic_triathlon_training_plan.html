@@ -4,28 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>16-Week Olympic Triathlon Training Plan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         @page { size: landscape; margin: 0.5in; }
         * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 15px; background-color: white; font-size: 10pt; }
         h1 { text-align: center; color: #2c3e50; margin: 0 0 5px 0; font-size: 1.4em; }
         .plan-info { text-align: center; color: #555; margin-bottom: 8px; font-size: 0.85em; }
+
+        /* Control Panel Styles */
+        .control-panel {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0 20px 0;
+            border-radius: 8px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            border: 2px solid #ddd;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .control-panel button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .control-panel button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        #toggle-color-btn {
+            background-color: #34495e;
+            color: white;
+        }
+        #download-pdf-btn {
+            background-color: #27ae60;
+            color: white;
+        }
+        .control-panel select {
+            padding: 10px;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .control-panel label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Black and White Mode */
+        body.bw-mode td:has(.swim-card),
+        body.bw-mode td:has(.bike-card),
+        body.bw-mode td:has(.run-card),
+        body.bw-mode td:has(.brick-card),
+        body.bw-mode td:has(.race-card) {
+            background-color: white !important;
+        }
+        body.bw-mode td.rest-day {
+            background-color: #f0f0f0 !important;
+            color: black !important;
+        }
+        body.bw-mode .workout-icon {
+            display: none !important;
+        }
+        body.bw-mode .workout-duration,
+        body.bw-mode .workout-details,
+        body.bw-mode .workout-header,
+        body.bw-mode .label {
+            color: black !important;
+        }
+        body.bw-mode .phase-header {
+            background-color: #333 !important;
+            color: white !important;
+        }
+        body.bw-mode .week-label {
+            background-color: #333 !important;
+            color: white !important;
+        }
+        body.bw-mode th {
+            background-color: #333 !important;
+            color: white !important;
+        }
+
+        .source-link {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-top: 3px solid #2c3e50;
+            font-size: 0.9em;
+        }
+        .source-link a {
+            color: #1976D2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            .control-panel, .source-link { display: none !important; }
+            body { padding: 4px; font-size: 8pt; }
+            h1 { font-size: 1em; margin: 0 0 3px 0; }
+            .plan-info { font-size: 0.7em; margin-bottom: 4px; }
+            .phase-header {
+                page-break-after: avoid;
+                padding: 4px;
+                margin: 8px 0 3px 0;
+                font-size: 0.9em;
+            }
+            .week-wrapper {
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+            }
+            .week-label {
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                padding: 4px !important;
+                min-width: auto !important;
+                width: 50px !important;
+                font-size: 0.8em !important;
+                border: none !important;
+            }
+            table { table-layout: auto !important; }
+            th.rest-header { width: 5% !important; }
+            th.training-header { width: 15.83% !important; }
+            td {
+                padding: 4px;
+                min-height: 50px;
+                font-size: 0.65em;
+                border: 1px solid #ddd !important;
+            }
+            td.rest-day { width: 5% !important; background-color: #d5d5d5 !important; }
+            td.training-day { width: 15.83% !important; }
+
+            /* Cell background colors in print */
+            td:has(.swim-card) { background-color: #bbdefb !important; }
+            td:has(.bike-card) { background-color: #ffe0b2 !important; }
+            td:has(.run-card) { background-color: #c8e6c9 !important; }
+            td:has(.brick-card) { background-color: #f3e5f5 !important; }
+            td:has(.race-card) { background-color: #ffcdd2 !important; }
+
+            th {
+                padding: 3px;
+                font-size: 0.7em;
+                border: 1px solid #ddd !important;
+            }
+            .workout-card {
+                padding: 0;
+                border: none !important;
+                background-color: transparent !important;
+                margin-bottom: 4px;
+            }
+            .workout-card:last-child { margin-bottom: 0; }
+            .workout-header { font-size: 0.75em; }
+            .workout-duration { font-size: 0.7em; }
+            .workout-details { font-size: 0.65em; margin: 2px 0 0 0; }
+            .rest-day { padding: 10px 4px; font-size: 0.8em; }
+        }
+
         .phase-header { background-color: #34495e; color: white; padding: 8px; margin: 15px 0 5px 0; font-weight: bold; font-size: 1.1em; text-align: center; }
         .week-wrapper { margin-bottom: 15px; page-break-inside: avoid; }
         .week-note { font-style: italic; color: #555; padding: 5px 10px; background-color: #f8f9fa; border-left: 3px solid #6c757d; margin-bottom: 5px; font-size: 0.85em; }
         .table-wrapper { display: flex; gap: 0; }
-        .week-label { writing-mode: vertical-lr; transform: rotate(180deg); background-color: #2c3e50; color: white; font-weight: bold; font-size: 1em; padding: 10px 6px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; border: 2px solid #1a252f; min-width: 30px; }
-        table { flex: 1; border-collapse: collapse; background-color: white; width: 100%; table-layout: fixed; }
-        th { background-color: #2c3e50; color: white; padding: 6px 4px; text-align: center; font-weight: 600; border: 2px solid #1a252f; font-size: 0.85em; width: 14.28%; }
-        td { padding: 6px; vertical-align: top; border: 1px solid #bbb; min-height: 80px; width: 14.28%; }
-        .rest-day { background-color: #d5d5d5; text-align: center; color: #444; padding: 20px 8px; font-weight: 600; font-size: 0.9em; }
-        .workout-card { border-radius: 4px; padding: 6px; margin-bottom: 6px; border: 2px solid; }
+        .week-label { writing-mode: vertical-lr; transform: rotate(180deg); background-color: #2c3e50; color: white; font-weight: bold; font-size: 1em; padding: 10px 6px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; min-width: 30px; }
+        table { flex: 1; border-collapse: collapse; background-color: white; width: 100%; table-layout: auto; }
+        th { background-color: #2c3e50; color: white; padding: 6px 4px; text-align: center; font-weight: 600; border: 1px solid #ddd; font-size: 0.85em; }
+        th.rest-header { width: 6%; }
+        th.training-header { width: 15.67%; }
+        td { padding: 6px; vertical-align: top; border: 1px solid #ddd; min-height: 80px; }
+        td.rest-day { width: 6%; background-color: #d5d5d5; text-align: center; color: #444; padding: 20px 8px; font-weight: 600; font-size: 0.9em; }
+        td.training-day { width: 15.67%; }
+
+        /* Cell background colors based on workout type */
+        td:has(.swim-card) { background-color: #bbdefb; }
+        td:has(.bike-card) { background-color: #ffe0b2; }
+        td:has(.run-card) { background-color: #c8e6c9; }
+        td:has(.brick-card) { background-color: #f3e5f5; }
+        td:has(.race-card) { background-color: #ffcdd2; }
+
+        .workout-card { padding: 0; margin-bottom: 6px; border: none; background-color: transparent; }
         .workout-card:last-child { margin-bottom: 0; }
-        .swim-card { background-color: #bbdefb; border-color: #1976D2; }
-        .bike-card { background-color: #ffe0b2; border-color: #F57C00; }
-        .run-card { background-color: #c8e6c9; border-color: #388E3C; }
-        .brick-card { background-color: #f3e5f5; border-color: #7B1FA2; }
-        .race-card { background-color: #ffcdd2; border-color: #D32F2F; font-weight: bold; text-align: center; padding: 15px 8px; }
+        .swim-card { border-color: #1976D2; }
+        .bike-card { border-color: #F57C00; }
+        .run-card { border-color: #388E3C; }
+        .brick-card { border-color: #7B1FA2; }
+        .race-card { background-color: transparent; border-color: #D32F2F; font-weight: bold; text-align: center; padding: 15px 8px; }
         .workout-header { font-weight: bold; font-size: 0.9em; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 3px; border-bottom: 1px solid rgba(0,0,0,0.15); }
         .workout-type { display: flex; align-items: center; gap: 4px; }
         .workout-icon { font-size: 1em; }
@@ -36,15 +213,35 @@
         .detail-content { display: flex; gap: 3px; flex-wrap: wrap; }
         .detail-part { white-space: nowrap; }
         .label { font-weight: 600; color: #2c3e50; }
-        @media print { body { padding: 8px; } h1 { font-size: 1.2em; } .phase-header { page-break-after: avoid; } .week-wrapper { page-break-inside: avoid; } }
     </style>
 </head>
 <body>
     <h1>16-Week Olympic Triathlon Training Plan</h1>
     <div class="plan-info">
-        Olympic Distance: 1500m swim • 40km bike • 10km run | 
+        Olympic Distance: 1500m swim • 40km bike • 10km run |
         6 workouts/week: 2 swims, 2 bikes, 2 runs | Recovery weeks: 4, 8, 12 | Race: Week 16
     </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button id="toggle-color-btn" onclick="toggleColorMode()">🎨 Toggle B&W</button>
+
+        <div class="control-group">
+            <label for="rest-day-select">Rest Day:</label>
+            <select id="rest-day-select" onchange="changeRestDay()">
+                <option value="0" selected>Monday</option>
+                <option value="1">Tuesday</option>
+                <option value="2">Wednesday</option>
+                <option value="3">Thursday</option>
+                <option value="4">Friday</option>
+                <option value="5">Saturday</option>
+                <option value="6">Sunday</option>
+            </select>
+        </div>
+
+        <button id="download-pdf-btn" onclick="downloadPDF()">📥 Download PDF</button>
+    </div>
+
 <div class="phase-header">BASE PHASE (Weeks 1-6) - Build Aerobic Capacity &amp; Endurance</div>
 <div class="week-wrapper">
 <div class="table-wrapper">
@@ -58,42 +255,42 @@
 <td><div class="workout-card swim-card">
         <div class="workout-header">
             <div class="workout-type"><span class="workout-icon">🏊</span> SWIM</div>
-            <span class="workout-duration">1460m</span>
+            <span class="workout-duration">800m</span>
         </div>
         <ul class="workout-details">
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">2</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span>
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -153,42 +350,42 @@
 <td><div class="workout-card swim-card">
         <div class="workout-header">
             <div class="workout-type"><span class="workout-icon">🏊</span> SWIM</div>
-            <span class="workout-duration">1460m</span>
+            <span class="workout-duration">800m</span>
         </div>
         <ul class="workout-details">
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">2</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span>
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -261,42 +458,42 @@
 <td><div class="workout-card swim-card">
         <div class="workout-header">
             <div class="workout-type"><span class="workout-icon">🏊</span> SWIM</div>
-            <span class="workout-duration">1640m</span>
+            <span class="workout-duration">900m</span>
         </div>
         <ul class="workout-details">
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">3</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span>
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -370,35 +567,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">5</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">5</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -470,42 +667,42 @@
 <td><div class="workout-card swim-card">
         <div class="workout-header">
             <div class="workout-type"><span class="workout-icon">🏊</span> SWIM</div>
-            <span class="workout-duration">1820m</span>
+            <span class="workout-duration">1000m</span>
         </div>
         <ul class="workout-details">
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">6</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">6</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -572,35 +769,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">7</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">7</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -680,35 +877,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">2</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">2</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -789,35 +986,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">2</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">2</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -903,35 +1100,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">8</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">8</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -998,35 +1195,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">9</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">9</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1105,35 +1302,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">10</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">10</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1207,35 +1404,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">11</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">11</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1315,42 +1512,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">3</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">5</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">5</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1424,35 +1621,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">5</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">5</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">8</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">8</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1533,42 +1730,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">2</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">2</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">3</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1642,35 +1839,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">3</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">6</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">6</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1756,42 +1953,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">6</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">6</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1865,35 +2062,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">6</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">6</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">10</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">10</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -1972,42 +2169,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">5</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">5</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">7</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">7</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2074,42 +2271,42 @@
 <td><div class="workout-card swim-card">
         <div class="workout-header">
             <div class="workout-type"><span class="workout-icon">🏊</span> SWIM</div>
-            <span class="workout-duration">2185m</span>
+            <span class="workout-duration">1200m</span>
         </div>
         <ul class="workout-details">
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">7</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">7</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">12</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">12</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card brick-card"><div class="workout-header"><div class="workout-type"><span class="workout-icon">🔀</span> BRICK</div><span class="workout-duration">2:35</span></div><ul class="workout-details"><li><span class="bullet">▸</span><div class="detail-content"><span class="detail-part"><span class="label">Bike:</span></span><span class="detail-part">2:15</span><span class="detail-part">(WU 10 min,</span><span class="detail-part">Main 95 min @ moderate,</span><span class="detail-part">CD 10 min)</span></div></li><li><span class="bullet">▸</span><div class="detail-content"><span class="detail-part"><span class="label">Run:</span></span><span class="detail-part">20 min</span><span class="detail-part">@ moderate</span><span class="detail-part">off bike</span></div></li></ul></div></td>
@@ -2162,42 +2359,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">6</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">6</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">8</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">8</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2271,35 +2468,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">8</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">8</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">14</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">14</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2380,42 +2577,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">3</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2489,35 +2686,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">8</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">8</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card brick-card"><div class="workout-header"><div class="workout-type"><span class="workout-icon">🔀</span> BRICK</div><span class="workout-duration">2:00</span></div><ul class="workout-details"><li><span class="bullet">▸</span><div class="detail-content"><span class="detail-part"><span class="label">Bike:</span></span><span class="detail-part">1:45</span><span class="detail-part">(WU 10 min,</span><span class="detail-part">Main 65 min @ moderate,</span><span class="detail-part">CD 10 min)</span></div></li><li><span class="bullet">▸</span><div class="detail-content"><span class="detail-part"><span class="label">Run:</span></span><span class="detail-part">15 min</span><span class="detail-part">@ moderate</span><span class="detail-part">off bike</span></div></li></ul></div></td>
@@ -2545,42 +2742,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">7</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">7</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">9</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">9</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2654,35 +2851,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">9</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">9</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">16</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">16</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2761,42 +2958,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">8</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">8</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">10</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">10</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -2870,35 +3067,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">9</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">9</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">16</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">16</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card brick-card"><div class="workout-header"><div class="workout-type"><span class="workout-icon">🔀</span> BRICK</div><span class="workout-duration">2:55</span></div><ul class="workout-details"><li><span class="bullet">▸</span><div class="detail-content"><span class="detail-part"><span class="label">Bike:</span></span><span class="detail-part">2:30</span><span class="detail-part">(WU 10 min,</span><span class="detail-part">Main 110 min @ moderate,</span><span class="detail-part">CD 10 min)</span></div></li><li><span class="bullet">▸</span><div class="detail-content"><span class="detail-part"><span class="label">Run:</span></span><span class="detail-part">25 min</span><span class="detail-part">@ moderate</span><span class="detail-part">off bike</span></div></li></ul></div></td>
@@ -2952,42 +3149,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">9</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">9</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">11</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">11</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -3061,35 +3258,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">9</span> <span class="detail-part">×91m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">9</span> <span class="detail-part">×100m</span> <span class="detail-part">@ threshold</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">16</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">16</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -3169,42 +3366,42 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">2</span> <span class="detail-part">×91m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
+                    <span class="detail-part">2</span> <span class="detail-part">×100m</span> <span class="detail-part">@ moderate</span> <span class="detail-part">(5s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Speed:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×69m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×75m</span> <span class="detail-part">@ VO2max</span> <span class="detail-part">(45s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Kick:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -3285,35 +3482,35 @@
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">WU:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Drills:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">(10s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">(10s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Main:</span></span>
-                    <span class="detail-part">3</span> <span class="detail-part">×91m</span> <span class="detail-part">@ race pace</span> <span class="detail-part">(30s)</span> 
+                    <span class="detail-part">3</span> <span class="detail-part">×100m</span> <span class="detail-part">@ race pace</span> <span class="detail-part">(30s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">Sprint:</span></span>
-                    <span class="detail-part">4</span> <span class="detail-part">×23m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
+                    <span class="detail-part">4</span> <span class="detail-part">×25m</span> <span class="detail-part">@ sprint</span> <span class="detail-part">(15s)</span> 
                 </div>
             </li>
             <li>
                 <span class="bullet">▸</span>
                 <div class="detail-content">
                     <span class="detail-part"><span class="label">CD:</span></span>
-                    <span class="detail-part">180m</span> <span class="detail-part">@ easy</span> 
+                    <span class="detail-part">200m</span> <span class="detail-part">@ easy</span> 
                 </div>
             </li></ul></div></td>
 <td><div class="workout-card bike-card">
@@ -3347,4 +3544,188 @@
 </tr></tbody></table>
 </div>
 </div>
+
+    <!-- Source Link -->
+    <div class="source-link">
+        <p><strong>Source:</strong> This training plan is adapted from <a href="https://www.triathlete.com/training/olympic-triathlon-16-week-training-plan/" target="_blank">Triathlete.com - 16-Week Olympic Triathlon Training Plan</a></p>
+    </div>
+
+    <script>
+        // Store original workout data for each week
+        let originalWorkoutData = [];
+        const ORIGINAL_REST_DAY = 0; // Monday is the original rest day (index 0)
+
+        // Initialize: Extract and store original workout content on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const tables = document.querySelectorAll('table');
+
+            tables.forEach(table => {
+                const headerRow = table.querySelector('thead tr');
+                const bodyRow = table.querySelector('tbody tr');
+                if (!bodyRow) return;
+
+                const headers = Array.from(headerRow.querySelectorAll('th'));
+                const cells = Array.from(bodyRow.querySelectorAll('td'));
+                if (cells.length !== 7) return;
+
+                // Store the original HTML content of each cell
+                // Index 0 (Monday) = REST, Indices 1-6 = Training Days 1-6
+                const weekData = cells.map(cell => cell.innerHTML);
+                originalWorkoutData.push(weekData);
+
+                // Set initial width classes (Monday = rest day)
+                headers.forEach((th, index) => {
+                    th.className = index === ORIGINAL_REST_DAY ? 'rest-header' : 'training-header';
+                });
+                cells.forEach((td, index) => {
+                    if (index === ORIGINAL_REST_DAY) {
+                        td.className = 'rest-day';
+                    } else {
+                        td.className = 'training-day';
+                    }
+                });
+            });
+        });
+
+        // Toggle Color Mode (Black & White)
+        function toggleColorMode() {
+            document.body.classList.toggle('bw-mode');
+            const btn = document.getElementById('toggle-color-btn');
+            if (document.body.classList.contains('bw-mode')) {
+                btn.textContent = '🎨 Toggle Color';
+            } else {
+                btn.textContent = '🎨 Toggle B&W';
+            }
+        }
+
+        // Change Rest Day
+        function changeRestDay() {
+            const selectedRestDay = parseInt(document.getElementById('rest-day-select').value);
+            const tables = document.querySelectorAll('table');
+
+            tables.forEach((table, tableIndex) => {
+                const headerRow = table.querySelector('thead tr');
+                const bodyRow = table.querySelector('tbody tr');
+                if (!bodyRow || !originalWorkoutData[tableIndex]) return;
+
+                const headers = Array.from(headerRow.querySelectorAll('th'));
+                const cells = Array.from(bodyRow.querySelectorAll('td'));
+                if (cells.length !== 7) return;
+
+                // Get the original week's data
+                const weekData = originalWorkoutData[tableIndex];
+
+                // Extract the REST cell and 6 training day cells from original data
+                // Original: Monday = REST (index 0), Tue-Sun = TD1-TD6 (indices 1-6)
+                const restCellContent = weekData[ORIGINAL_REST_DAY];
+                const trainingDays = weekData.filter((_, idx) => idx !== ORIGINAL_REST_DAY);
+
+                // Create new week layout with REST on selected day
+                const newWeekLayout = [];
+                let trainingDayIndex = 0;
+
+                for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+                    if (dayIndex === selectedRestDay) {
+                        // This day is the new rest day
+                        newWeekLayout.push(restCellContent);
+                    } else {
+                        // This day gets the next training day
+                        newWeekLayout.push(trainingDays[trainingDayIndex]);
+                        trainingDayIndex++;
+                    }
+                }
+
+                // Update the table headers and cells with new classes and content
+                headers.forEach((th, index) => {
+                    th.className = index === selectedRestDay ? 'rest-header' : 'training-header';
+                });
+
+                cells.forEach((cell, index) => {
+                    cell.innerHTML = newWeekLayout[index];
+
+                    // Update cell class based on whether it's the rest day
+                    if (index === selectedRestDay) {
+                        cell.className = 'rest-day';
+                    } else {
+                        cell.className = 'training-day';
+                    }
+                });
+            });
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            const button = document.getElementById('download-pdf-btn');
+            button.textContent = '⏳ Generating PDF...';
+            button.disabled = true;
+
+            // Hide control panel and source link for PDF
+            const controlPanel = document.querySelector('.control-panel');
+            const sourceLink = document.querySelector('.source-link');
+            const originalControlDisplay = controlPanel.style.display;
+            const originalSourceDisplay = sourceLink.style.display;
+
+            controlPanel.style.display = 'none';
+            sourceLink.style.display = 'none';
+
+            // Apply print-like styles to week labels
+            const weekLabels = document.querySelectorAll('.week-label');
+            const originalStyles = [];
+            weekLabels.forEach(label => {
+                originalStyles.push({
+                    writingMode: label.style.writingMode,
+                    transform: label.style.transform,
+                    width: label.style.width,
+                    minWidth: label.style.minWidth,
+                    padding: label.style.padding,
+                    fontSize: label.style.fontSize
+                });
+                label.style.writingMode = 'horizontal-tb';
+                label.style.transform = 'none';
+                label.style.width = '50px';
+                label.style.minWidth = 'auto';
+                label.style.padding = '4px';
+                label.style.fontSize = '0.8em';
+            });
+
+            const element = document.body;
+            const opt = {
+                margin: [0.3, 0.3, 0.3, 0.3],
+                filename: '16-week-olympic-triathlon-training-plan.pdf',
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: {
+                    scale: 1.5,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'landscape',
+                    compress: true
+                },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore original display
+                controlPanel.style.display = originalControlDisplay;
+                sourceLink.style.display = originalSourceDisplay;
+
+                // Restore original week label styles
+                weekLabels.forEach((label, index) => {
+                    const original = originalStyles[index];
+                    label.style.writingMode = original.writingMode;
+                    label.style.transform = original.transform;
+                    label.style.width = original.width;
+                    label.style.minWidth = original.minWidth;
+                    label.style.padding = original.padding;
+                    label.style.fontSize = original.fontSize;
+                });
+
+                button.textContent = '📥 Download PDF';
+                button.disabled = false;
+            });
+        }
+    </script>
 </body></html>
