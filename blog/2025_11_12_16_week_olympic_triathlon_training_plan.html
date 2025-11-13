@@ -59,9 +59,21 @@
             background-color: white;
             cursor: pointer;
         }
+        .control-panel input[type="date"] {
+            padding: 10px;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
         .control-panel label {
             font-weight: 600;
             color: #2c3e50;
+        }
+        #export-calendar-btn {
+            background-color: #3498db;
+            color: white;
         }
 
         /* Black and White Mode */
@@ -238,6 +250,13 @@
                 <option value="6">Sunday</option>
             </select>
         </div>
+
+        <div class="control-group">
+            <label for="start-date-input">Start Date:</label>
+            <input type="date" id="start-date-input" />
+        </div>
+
+        <button id="export-calendar-btn" onclick="exportToCalendar()">📅 Export to Calendar</button>
 
         <button id="download-pdf-btn" onclick="downloadPDF()">📥 Download PDF</button>
     </div>
@@ -3426,6 +3445,21 @@
                     }
                 });
             });
+
+            // Set default start date to next Monday
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const daysUntilMonday = dayOfWeek === 0 ? 1 : (8 - dayOfWeek) % 7;
+            const nextMonday = new Date(today);
+            nextMonday.setDate(today.getDate() + daysUntilMonday);
+
+            const dateInput = document.getElementById('start-date-input');
+            if (dateInput) {
+                const year = nextMonday.getFullYear();
+                const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
+                const day = String(nextMonday.getDate()).padStart(2, '0');
+                dateInput.value = `${year}-${month}-${day}`;
+            }
         });
 
         // Toggle Color Mode (Black & White)
@@ -3567,6 +3601,135 @@
                 button.textContent = '📥 Download PDF';
                 button.disabled = false;
             });
+        }
+
+        // Export to Calendar
+        function exportToCalendar() {
+            const startDateInput = document.getElementById('start-date-input');
+            if (!startDateInput.value) {
+                alert('Please select a start date for your training plan.');
+                return;
+            }
+
+            const startDate = new Date(startDateInput.value + 'T00:00:00');
+            const selectedRestDay = parseInt(document.getElementById('rest-day-select').value);
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+            // Helper function to format date for ICS (YYYYMMDD)
+            function formatICSDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}${month}${day}`;
+            }
+
+            // Helper function to get Monday of the week containing startDate
+            function getMonday(date) {
+                const d = new Date(date);
+                const dayOfWeek = d.getDay();
+                const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Adjust for Sunday (0) or other days
+                d.setDate(d.getDate() + diff);
+                return d;
+            }
+
+            // Helper function to extract text content from HTML
+            function getTextContent(htmlString) {
+                const temp = document.createElement('div');
+                temp.innerHTML = htmlString;
+                return temp.textContent || temp.innerText || '';
+            }
+
+            // Get the Monday of the start week
+            const weekStartMonday = getMonday(startDate);
+
+            // Parse all weeks
+            const tables = document.querySelectorAll('table');
+            const events = [];
+
+            tables.forEach((table, weekIndex) => {
+                const weekLabel = table.closest('.table-wrapper')?.querySelector('.week-label')?.textContent || `Week ${weekIndex + 1}`;
+                const bodyRow = table.querySelector('tbody tr');
+                if (!bodyRow) return;
+
+                const cells = Array.from(bodyRow.querySelectorAll('td'));
+
+                cells.forEach((cell, dayIndex) => {
+                    // Calculate the actual date for this day
+                    const eventDate = new Date(weekStartMonday);
+                    eventDate.setDate(weekStartMonday.getDate() + (weekIndex * 7) + dayIndex);
+
+                    // Check if it's a rest day
+                    if (cell.classList.contains('rest-day')) {
+                        // Add rest day event
+                        events.push({
+                            date: eventDate,
+                            summary: 'REST DAY',
+                            description: 'Recovery day - no training scheduled',
+                            weekLabel: weekLabel
+                        });
+                    } else {
+                        // Parse workout card
+                        const workoutCard = cell.querySelector('[class*="-card"]');
+                        if (workoutCard) {
+                            const workoutType = workoutCard.querySelector('.workout-type')?.textContent?.trim() || 'Training';
+                            const workoutDuration = workoutCard.querySelector('.workout-duration')?.textContent?.trim() || '';
+                            const workoutDetails = Array.from(workoutCard.querySelectorAll('.workout-details li'))
+                                .map(li => getTextContent(li.innerHTML).replace(/▸/g, '').trim())
+                                .join('\\n');
+
+                            events.push({
+                                date: eventDate,
+                                summary: `${workoutType} - ${workoutDuration}`,
+                                description: `${weekLabel}\\n\\n${workoutDetails}`,
+                                weekLabel: weekLabel
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Generate ICS file
+            let icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Olympic Triathlon Training Plan//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Olympic Triathlon Training
+X-WR-TIMEZONE:UTC
+X-WR-CALDESC:16-Week Olympic Triathlon Training Plan
+`;
+
+            events.forEach((event, index) => {
+                const uid = `triathlon-training-${formatICSDate(event.date)}-${index}@k1monfared.github.io`;
+                const dtstart = formatICSDate(event.date);
+                const dtend = formatICSDate(event.date);
+                const timestamp = formatICSDate(new Date()) + 'T' + new Date().toISOString().split('T')[1].split('.')[0].replace(/:/g, '') + 'Z';
+
+                icsContent += `BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${timestamp}
+DTSTART;VALUE=DATE:${dtstart}
+DTEND;VALUE=DATE:${dtend}
+SUMMARY:${event.summary}
+DESCRIPTION:${event.description}
+CATEGORIES:Triathlon Training,Olympic Distance
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+`;
+            });
+
+            icsContent += 'END:VCALENDAR';
+
+            // Download the ICS file
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'olympic-triathlon-training-plan.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
         }
     </script>
 </body></html>
