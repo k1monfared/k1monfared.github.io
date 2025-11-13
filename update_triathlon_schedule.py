@@ -112,6 +112,11 @@ def extract_duration(workout_lines: List[str]) -> str:
         if len(parts) > 1:
             duration_part = parts[1].strip()
 
+            # If the line contains WU:/MS:/CD:, extract only the duration before those markers
+            wu_match = re.search(r'\s+(WU:|MS:|CD:)', duration_part)
+            if wu_match:
+                duration_part = duration_part[:wu_match.start()].strip()
+
             # Convert "800 Yards" to "800m"
             duration_part = re.sub(r'(\d+)\s*Yards?', r'\1m', duration_part)
             # Convert "30 Minutes" to "30 min", "1 Hour" to "1:00", etc.
@@ -126,6 +131,50 @@ def extract_duration(workout_lines: List[str]) -> str:
 def parse_workout_details(workout_lines: List[str]) -> List[Dict[str, str]]:
     """Parse workout detail lines into structured format"""
     details = []
+
+    # Check if first line contains WU:/MS:/CD: all on one line
+    first_line = workout_lines[0] if workout_lines else ''
+    if 'WU:' in first_line and 'MS:' in first_line:
+        # Split the first line into separate WU/MS/CD entries
+        # Extract the part after the duration
+        match = re.search(r':\s*[\d\.:]+\s*(?:Minutes?|min|Hour|Yards?)?\s+(WU:.+)', first_line)
+        if match:
+            combined_details = match.group(1)
+            # Split by WU:, MS:, CD:
+            parts = re.split(r'\s+(WU:|MS:|CD:)\s+', combined_details)
+
+            # Reconstruct as label: content pairs
+            i = 1  # Start at 1 to skip empty first element
+            while i < len(parts) - 1:
+                label = parts[i].replace(':', '').strip()
+                content = parts[i + 1].strip()
+
+                # Remove next label from content if present
+                for next_label in ['WU:', 'MS:', 'CD:']:
+                    if next_label in content:
+                        content = content[:content.index(next_label)].strip()
+                        break
+
+                # Convert units
+                content = re.sub(r'(\d+)\s*Yards?', r'\1m', content)
+                content = re.sub(r'(\d+)\s*@', r'\1 @', content)
+                content = re.sub(r'low aerobic intensity', 'easy', content)
+                content = re.sub(r'moderate aerobic intensity', 'moderate', content)
+                content = re.sub(r'threshold intensity', 'threshold', content)
+                content = re.sub(r'recovery intensity', 'recovery', content)
+                content = re.sub(r'VO2max intensity', 'VO2max', content)
+                content = re.sub(r'speed intensity', 'speed', content)
+                content = re.sub(r'Minutes', 'min', content)
+                content = re.sub(r'minutes', 'min', content)
+                content = re.sub(r'x\s*', '×', content)
+
+                details.append({
+                    'label': label,
+                    'content': content
+                })
+                i += 2
+
+            return details
 
     # Skip first line (workout title)
     for line in workout_lines[1:]:
