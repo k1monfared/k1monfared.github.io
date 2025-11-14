@@ -1,0 +1,28 @@
+# Website redesign planning documents
+WEBSITE_REDESIGN_ANALYSIS.md
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+*~
+
+# Temporary files
+*.tmp
+_temp.*

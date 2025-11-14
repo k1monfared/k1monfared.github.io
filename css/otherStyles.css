@@ -95,6 +95,15 @@ ul.studiesListItems li {
     /*transform: rotate(-20deg);*/
 }
 
+/* Responsive text sizing for mobile */
+@media (max-width: 1023px) {
+    .top-right {
+        font-size: 0.7rem;
+        padding: 0.3rem 0;
+        line-height: 1.2;
+    }
+}
+
 /* Sticky nav styles are in mainCSS.css */
 
 code {
