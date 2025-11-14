@@ -82,10 +82,11 @@ ul.studiesListItems li {
     width: 100%;
     font-family: arial, sans-serif;
     font-weight: bold;
-    bottom: 9px;
+    bottom: 0px;
     right: 0px;
-    background-color: rgba(0, 0, 0, .75);
+    background-color: var(--image-overlay);
     line-height: 130%;
+    padding: 0.5rem 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -94,17 +95,7 @@ ul.studiesListItems li {
     /*transform: rotate(-20deg);*/
 }
 
-#stickThis {}
-
-#stickThis.stick {
-    /*margin-top: 0;*/
-    position: fixed;
-    top: 0;
-    z-index: 9999;
-    width: 93%;
-    min-width: 760px;
-    height: 5%;
-}
+/* Sticky nav styles are in mainCSS.css */
 
 code {
     background-color: #E3E6E8;

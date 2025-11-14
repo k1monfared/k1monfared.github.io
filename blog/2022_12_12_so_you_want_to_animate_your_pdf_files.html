@@ -1,80 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
-    <link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
-    <title> Keivan Monfared's Home Page </title>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            for (i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
-            {
-                toggleSlowly('paper' + i);
-            }
-        });
-        function toggleSlowly(elementId) {
-            $("#" + elementId).slideToggle(500);
-        }
-    </script>
-    <!-- load mathjax scripts -->
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- Zoom in and zoom out -->
-    <script type="text/javascript">
-        function zoomin(it) {
-            {
-                it.width = 2 * it.width;
-            }
-        }
-        function zoomout(it) {
-            {
-                it.width = .5 * it.width;
-            }
-        }
-    </script>
-    <!-- stick to somewhere -->
-    <script type="text/javascript">
-        function sticktothetop() {
-            var window_top = $(window).scrollTop();
-            var top = $('#stick-here').offset().top;
-            if (window_top > top) {
-                $('#stickThis').addClass('stick');
-                $('#stick-here').height($('#stickThis').outerHeight());
-            } else {
-                $('#stickThis').removeClass('stick');
-                $('#stick-here').height(0);
-            }
-        }
-        $(function() {
-            $(window).scroll(sticktothetop);
-            sticktothetop();
-        });
-    </script>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			// Helper to get cookie value
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+
+			// Cookie is more reliable with file:// protocol, check it first
+			let theme = getCookie('theme');
+
+			// Fall back to localStorage if cookie not set (for http:// served sites)
+			if (!theme) {
+				try {
+					theme = localStorage.getItem('theme');
+				} catch (e) {
+					// localStorage not available
+				}
+			}
+
+			// Default to dark if nothing found
+			theme = theme || 'dark';
+
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Blog Post</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			for (i = 1; i < 200; i++) {
+				toggleSlowly('paper' + i);
+			}
+		});
+		function toggleSlowly(elementId) {
+			$("#" + elementId).slideToggle(500);
+		}
+	</script>
+	<!-- load mathjax scripts -->
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- Zoom in and zoom out -->
+	<script type="text/javascript">
+		function zoomin(it) {
+			it.width = 2 * it.width;
+		}
+		function zoomout(it) {
+			it.width = .5 * it.width;
+		}
+	</script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div id="stick-here"></div>
-        <div class="myTitle">
-            KEIVAN MONFARED
-        </div>
-        <div class="myTitleFooter">
-            Mathematics and Data Science
-        </div>
-        <div id="stickThis">
+	<div class="bg-gradient"></div>
 
-            <div id="menu">
-                <span class="menuItem"><a href="../index.html">home</a></span>
-                <span class="menuItem"><a href="../computation.html">computation</a></span>
-                <span class="menuItem"><a href="../research.html">research</a></span>
-                <span class="menuItem"><a href="../teaching.html">teaching</a></span>
-                <span class="menuItem"><a href="../learning.html">learning</a></span>
-                <span class="menuItem"><a href="../contact.html">contact</a></span>
-                <span class="menuItem" id="this_page"><a style="color: #FFD700" href="blog.html">blog</a></span>
-            </div>
-        </div>
-        <div id="pageContent">
-            <div id="mainContent">
+	<header class="site-header">
+		<div class="header-content">
+			<h1 class="myTitle">KEIVAN MONFARED</h1>
+			<p class="myTitleFooter">Mathematics and Data Science</p>
+		</div>
+	</header>
+
+	<div id="stick-here"></div>
+
+	<!-- Navigation loaded from nav.html -->
+	<div id="nav-container"></div>
+
+	<div class="container">
+        		<main class="main-content">
                 <h2 class="heading2"> [2022-12-12] So you want to animate your PDF files? </h2>
                 <p>
                     Here are some quick and dirty steps to include an animation in a pdf file.
@@ -118,54 +124,45 @@ convert -verbose -coalesce images/masses_springs_animation.gif images/masses_spr
                     This should be enough to get you going. Here is a sample <a href="https://github.com/k1monfared/terminal/blob/main/latex/animate_pdf/simple_animation.tex">tex</a> file and the resulting <a href="https://github.com/k1monfared/terminal/blob/main/latex/animate_pdf/simple_animation.pdf">pdf</a> file.
                     Find all the files on my <a href="https://github.com/k1monfared/terminal/tree/main/latex/animate_pdf">github</a>.
                 </p>
-            </div>
-        </div>
-        <br> <br>
-        <center>
-            <table class="socialmediapadding" style="width: 80%;">
-                <tr>
-                    <td>
-                        <a href="http://www.github.com/k1monfared">
-                            <img src="../images/github.png" alt="github" style="height:25px;">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="http://www.linkedin.com/in/k1monfared">
-                            <img src="../images/linkedin.png" alt="linkedin" style="height:25px;">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="http://www.researchgate.net/profile/Keivan_Hassani_Monfared">
-                            <img src="../images/researchgate.png" alt="researchgate" style="height:25px;">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ">
-                            <img src="../images/googlescholar.png" alt="googlescholar" style="height:25px;">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K">
-                            <img src="../images/arxiv.png" alt="arxiv" style="height:25px;">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="http://k1monfared.wordpress.com/">
-                            <img src="../images/wordpress.png" alt="wordpress" style="height:25px;">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="https://twitter.com/k1monfared">
-                            <img src="../images/twitter.png" alt="twitter" style="height:25px;">
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </center>
-    </div>
-    <div class="PageFooter">
-        Designed by Shaghayegh Khodaei and Keivan Monfared
-    </div>
+            		</main>
+
+		<!-- Footer and social media loaded from footer.html -->
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<!-- Scroll to top button (mobile only) -->
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+
+	<script>
+		// Scroll to top button functionality
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+
+			// Show/hide scroll to top button based on scroll position
+			window.addEventListener('scroll', () => {
+				if (window.pageYOffset > 300) {
+					scrollToTopBtn.style.opacity = '1';
+					scrollToTopBtn.style.pointerEvents = 'auto';
+				} else {
+					scrollToTopBtn.style.opacity = '0';
+					scrollToTopBtn.style.pointerEvents = 'none';
+				}
+			});
+
+			// Initialize button state
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
 </body>
 
 </html>

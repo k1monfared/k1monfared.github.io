@@ -1,0 +1,3735 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-Week Olympic Triathlon Training Plan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @page { size: landscape; margin: 0.5in; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 15px; background-color: white; font-size: 10pt; }
+        h1 { text-align: center; color: #2c3e50; margin: 0 0 5px 0; font-size: 1.4em; }
+        .plan-info { text-align: center; color: #555; margin-bottom: 8px; font-size: 0.85em; }
+
+        /* Control Panel Styles */
+        .control-panel {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0 20px 0;
+            border-radius: 8px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            border: 2px solid #ddd;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .control-panel button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .control-panel button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        #toggle-color-btn {
+            background-color: #34495e;
+            color: white;
+        }
+        #download-pdf-btn {
+            background-color: #27ae60;
+            color: white;
+        }
+        .control-panel select {
+            padding: 10px;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .control-panel input[type="date"] {
+            padding: 10px;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+        .control-panel label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        #export-calendar-btn {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* Black and White Mode */
+        body.bw-mode td:has(.swim-card),
+        body.bw-mode td:has(.bike-card),
+        body.bw-mode td:has(.run-card),
+        body.bw-mode td:has(.brick-card),
+        body.bw-mode td:has(.race-card) {
+            background-color: white !important;
+        }
+        body.bw-mode td.rest-day {
+            background-color: #f0f0f0 !important;
+            color: black !important;
+        }
+        body.bw-mode .workout-icon {
+            display: none !important;
+        }
+        body.bw-mode .workout-duration,
+        body.bw-mode .workout-details,
+        body.bw-mode .workout-header,
+        body.bw-mode .label {
+            color: black !important;
+        }
+        body.bw-mode .phase-header {
+            background-color: #333 !important;
+            color: white !important;
+        }
+        body.bw-mode .week-label {
+            background-color: #333 !important;
+            color: white !important;
+        }
+        body.bw-mode th {
+            background-color: #333 !important;
+            color: white !important;
+        }
+
+        .source-link {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-top: 3px solid #2c3e50;
+            font-size: 0.9em;
+        }
+        .source-link a {
+            color: #1976D2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .source-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            .control-panel, .source-link, .intensity-guide { display: none !important; }
+            body { padding: 4px; font-size: 8pt; }
+            h1 { font-size: 1em; margin: 0 0 3px 0; }
+            .plan-info { font-size: 0.7em; margin-bottom: 4px; }
+            .phase-header {
+                page-break-after: avoid;
+                padding: 4px;
+                margin: 8px 0 3px 0;
+                font-size: 0.9em;
+            }
+            .week-wrapper {
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+            }
+            .week-label {
+                writing-mode: horizontal-tb !important;
+                transform: none !important;
+                padding: 4px !important;
+                min-width: auto !important;
+                width: 50px !important;
+                font-size: 0.8em !important;
+                border: none !important;
+            }
+            table { table-layout: auto !important; }
+            th.rest-header { width: 5% !important; }
+            th.training-header { width: 15.83% !important; }
+            td {
+                padding: 4px;
+                min-height: 50px;
+                font-size: 0.65em;
+                border: 1px solid #ddd !important;
+            }
+            td.rest-day { width: 5% !important; background-color: #d5d5d5 !important; }
+            td.training-day { width: 15.83% !important; }
+
+            /* Cell background colors in print */
+            td:has(.swim-card) { background-color: #bbdefb !important; }
+            td:has(.bike-card) { background-color: #ffe0b2 !important; }
+            td:has(.run-card) { background-color: #c8e6c9 !important; }
+            td:has(.brick-card) { background-color: #f3e5f5 !important; }
+            td:has(.race-card) { background-color: #ffcdd2 !important; }
+
+            th {
+                padding: 3px;
+                font-size: 0.7em;
+                border: 1px solid #ddd !important;
+            }
+            .workout-card {
+                padding: 0;
+                border: none !important;
+                background-color: transparent !important;
+                margin-bottom: 4px;
+            }
+            .workout-card:last-child { margin-bottom: 0; }
+            .workout-header { font-size: 0.75em; }
+            .workout-duration { font-size: 0.7em; }
+            .workout-details { font-size: 0.65em; margin: 2px 0 0 0; }
+            .rest-day { padding: 10px 4px; font-size: 0.8em; }
+        }
+
+        .phase-header { background-color: #34495e; color: white; padding: 8px; margin: 15px 0 5px 0; font-weight: bold; font-size: 1.1em; text-align: center; }
+        .week-wrapper { margin-bottom: 15px; page-break-inside: avoid; }
+        .week-note { font-style: italic; color: #555; padding: 5px 10px; background-color: #f8f9fa; border-left: 3px solid #6c757d; margin-bottom: 5px; font-size: 0.85em; }
+        .table-wrapper { display: flex; gap: 0; }
+        .week-label { writing-mode: vertical-lr; transform: rotate(180deg); background-color: #2c3e50; color: white; font-weight: bold; font-size: 1em; padding: 10px 6px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; min-width: 30px; }
+        table { flex: 1; border-collapse: collapse; background-color: white; width: 100%; table-layout: auto; }
+        th { background-color: #2c3e50; color: white; padding: 6px 4px; text-align: center; font-weight: 600; border: 1px solid #ddd; font-size: 0.85em; }
+        th.rest-header { width: 6%; }
+        th.training-header { width: 15.67%; }
+        td { padding: 6px; vertical-align: top; border: 1px solid #ddd; min-height: 80px; }
+        td.rest-day { width: 6%; background-color: #d5d5d5; text-align: center; color: #444; padding: 20px 8px; font-weight: 600; font-size: 0.9em; }
+        td.training-day { width: 15.67%; }
+
+        /* Cell background colors based on workout type */
+        td:has(.swim-card) { background-color: #bbdefb; }
+        td:has(.bike-card) { background-color: #ffe0b2; }
+        td:has(.run-card) { background-color: #c8e6c9; }
+        td:has(.brick-card) { background-color: #f3e5f5; }
+        td:has(.race-card) { background-color: #ffcdd2; }
+
+        .workout-card { padding: 0; margin-bottom: 6px; border: none; background-color: transparent; }
+        .workout-card:last-child { margin-bottom: 0; }
+        .swim-card { border-color: #1976D2; }
+        .bike-card { border-color: #F57C00; }
+        .run-card { border-color: #388E3C; }
+        .brick-card { border-color: #7B1FA2; }
+        .race-card { background-color: transparent; border-color: #D32F2F; font-weight: bold; text-align: center; padding: 15px 8px; }
+        .workout-header { font-weight: bold; font-size: 0.9em; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 3px; border-bottom: 1px solid rgba(0,0,0,0.15); }
+        .workout-type { display: flex; align-items: center; gap: 4px; }
+        .workout-icon { font-size: 1em; }
+        .workout-duration { font-size: 0.8em; color: #333; font-weight: 600; }
+        .workout-details { list-style: none; padding-left: 0; margin: 4px 0 0 0; font-size: 0.75em; line-height: 1.3; }
+        .workout-details li { padding: 1px 0; display: flex; gap: 3px; }
+        .bullet { color: #666; font-weight: bold; flex-shrink: 0; }
+        .detail-content { display: flex; gap: 3px; flex-wrap: wrap; align-items: baseline; }
+        .detail-part { word-wrap: break-word; overflow-wrap: break-word; }
+        .label { font-weight: 600; color: #2c3e50; white-space: nowrap; }
+    </style>
+</head>
+<body>
+    <h1>16-Week Olympic Triathlon Training Plan</h1>
+    <div class="plan-info">
+        Olympic Distance: 1500m swim • 40km bike • 10km run |
+        6 workouts/week: 2 swims, 2 bikes, 2 runs | Recovery weeks: 4, 8, 12 | Race: Week 16
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button id="toggle-color-btn" onclick="toggleColorMode()">🎨 Toggle B&W</button>
+
+        <div class="control-group">
+            <label for="rest-day-select">Rest Day:</label>
+            <select id="rest-day-select" onchange="changeRestDay()">
+                <option value="0" selected>Monday</option>
+                <option value="1">Tuesday</option>
+                <option value="2">Wednesday</option>
+                <option value="3">Thursday</option>
+                <option value="4">Friday</option>
+                <option value="5">Saturday</option>
+                <option value="6">Sunday</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="start-date-input">Start Date:</label>
+            <input type="date" id="start-date-input" />
+        </div>
+
+        <button id="export-calendar-btn" onclick="exportToCalendar()">📅 Export to Calendar</button>
+
+        <button id="download-pdf-btn" onclick="downloadPDF()">📥 Download PDF</button>
+    </div>
+
+    <!-- Intensity Guide -->
+    <div class="intensity-guide" style="background-color: #f8f9fa; padding: 20px; margin: 20px 0; border-left: 4px solid #2c3e50; border-radius: 4px;">
+        <h3 style="margin: 0 0 15px 0; color: #2c3e50; font-size: 1.1em;">Training Intensity & Terminology Guide</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.9em;">
+            <div>
+                <h4 style="margin: 0 0 10px 0; color: #34495e; font-size: 1em;">Intensity Levels</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div><strong>Low Aerobic:</strong> Your natural "easy" pace in swimming, cycling or running.</div>
+                    <div><strong>Moderate Aerobic:</strong> An effort that is comfortable but not dawdling.</div>
+                    <div><strong>Threshold:</strong> An effort that is right on the threshold of making you really suffer.</div>
+                    <div><strong>Recovery:</strong> A very comfortable effort, deliberately slower than your natural pace.</div>
+                    <div><strong>VO2max:</strong> Maximal oxygen uptake – exercise at or near maximum aerobic capacity (very high intensity, 90-100% effort).</div>
+                    <div><strong>Hard:</strong> An effort that is very challenging but not maximal for the prescribed duration.</div>
+                    <div><strong>Sprint:</strong> A 100 percent maximal effort.</div>
+                    <div><strong>Fartlek:</strong> Swedish for "speed play" – alternating between faster and slower paces within the same workout.</div>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin: 0 0 10px 0; color: #34495e; font-size: 1em;">Terminology</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div><strong>RI:</strong> Rest Interval – a duration of time for recovery between intervals.</div>
+                    <div><strong>WU:</strong> Warm-up</div>
+                    <div><strong>MS:</strong> Main set</div>
+                    <div><strong>CD:</strong> Cooldown</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="phase-header">BASE PHASE (Weeks 1-6) - Build Aerobic Capacity & Endurance</div>
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 1</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">800m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI (Rest Interval)=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">25 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">800m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">25 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 2</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">900m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI (Rest Interval)=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">25 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">900m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">25 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TRANSITION RUN</div>
+            <span class="workout-duration">10 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate immediately following today's bike workout</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 3</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">1000m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI (Rest Interval)=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">35 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 15 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM FARTLEK</div>
+            <span class="workout-duration">1000m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 (25 easy/25 hard) easy = moderate aerobic intensity, hard = threshold intensity, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">35 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 15 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">Olympic Triathlon Training Plan: Week 4</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 4</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">800m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI (Rest Interval)=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×1-minute hill climbs @ speed with enough recovery to reach total workout time of 45 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FARTLEK RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">6 ×30 seconds @ VO2max with enough active recovery to reach total workout time of 30 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM FARTLEK</div>
+            <span class="workout-duration">900m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 (25 build/25 descend) start @ moderate aerobic intensity, build to threshold intensity, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TRANSITION RUN</div>
+            <span class="workout-duration">10 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate immediately following today's bike workout</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 5</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">1100m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">5 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> BIKE SHORT HILL CLIMBS</div>
+            <span class="workout-duration">50 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">5 ×1-minute hill climbs @ speed with enough recovery to reach total workout time of 50 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FARTLEK RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">8 ×30 seconds @ VO2max with enough active recovery to reach total workout time of 30 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM FARTLEK</div>
+            <span class="workout-duration">1100m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 (25 easy/25 hard) easy = moderate aerobic intensity, hard = threshold intensity, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 @ speed, RI=0:20</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 6</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM THRESHOLD + SPRINT</div>
+            <span class="workout-duration">1200m</span>
+        </div>
+        <ul class="workout-details"></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> BIKE SHORT HILL CLIMBS</div>
+            <span class="workout-duration">55 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">6 ×1-minute hill climbs @ speed with enough recovery to reach total workout time of 55 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FARTLEK RUN</div>
+            <span class="workout-duration">35 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">8 ×30 seconds @ VO2max with enough active recovery to reach total workout time of 35 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 5 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM FARTLEK</div>
+            <span class="workout-duration">1100m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 (25 build/25 descend) start @ moderate aerobic intensity, build to threshold intensity, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">8 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TRANSITION RUN</div>
+            <span class="workout-duration">10 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate immediately following today's bike workout</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 25 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">Olympic Triathlon Training Plan: Week 7</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="phase-header">BUILD PHASE (Weeks 7-11) - High-Intensity & Endurance Development</div>
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 7</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1275m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">5 ×75 @ VO2max, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×5-minute hill climbs @ VO2max with enough recovery to reach total workout time of 1 hour (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> RUN LACTATE INTERVALS</div>
+            <span class="workout-duration">32 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">12 ×30 seconds @ VO2max with 30-second active recoveries @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM THRESHOLD + SPRINT</div>
+            <span class="workout-duration">1200m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×200 @ threshold, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:15</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate aerobic pace</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">55 min @ moderate aerobic pace</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate aerobic pace</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">50 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 30 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 8</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">1000m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×75 @ VO2max, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> BIKE LACTATE INTERVALS</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×3-minute intervals @ VO2max on flat or rolling terrain with enough recovery to reach total workout time of 1 hour (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> RUN LACTATE INTERVALS</div>
+            <span class="workout-duration">32 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">12 ×30 seconds @ VO2max with 30-second active recoveries @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE</div>
+            <span class="workout-duration">900m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×200 @ threshold, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TRANSITION RUN</div>
+            <span class="workout-duration">10 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate immediately following today's bike workout</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 25 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 9</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1350m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">6 ×75 @ VO2max, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> BIKE LONG HILL CLIMBS</div>
+            <span class="workout-duration">1:05</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×5-minute hill climbs @ VO2max with enough recovery to reach total workout time of 1 hour and 5 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> RUN LACTATE INTERVALS</div>
+            <span class="workout-duration">34 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">14 ×30 seconds @ VO2max with 30-second active recoveries @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1400m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10 MS: 4 ×200 @ threshold, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:15</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate aerobic pace</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">55 min @ moderate aerobic pace</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate aerobic pace</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">55 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 35 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 10</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1350m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">6 ×75 @ VO2max, RI=0:30</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> BIKE LACTATE INTERVALS</div>
+            <span class="workout-duration">1:15</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×3-minute intervals @ VO2max on flat or rolling terrain with enough recovery to reach total workout time of 1 hour and 15 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> RUN LACTATE INTERVALS</div>
+            <span class="workout-duration">36 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">8 ×1 minute @ VO2max with 1-minute active recoveries @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1400m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×200 @ threshold, RI=0:30</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card brick-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏋️</span> BRICK</div>
+            <span class="workout-duration">1:20</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Bike 1 hour @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 20 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">40 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 20 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 11</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1350m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">6 ×75 @ VO2max, RI=0:20</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> BIKE LONG HILL CLIMBS</div>
+            <span class="workout-duration">1:10</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×5-minute hill climbs @ VO2max with enough recovery to reach total workout time of 1 hour and 10 min (including warm-up and cool-down)</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> RUN LACTATE INTERVALS</div>
+            <span class="workout-duration">40 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">10 ×1 minute @ VO2max with 1-minute active recoveries @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1400m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×200 @ threshold, RI=0:20</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:30</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">1 hour and 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> LONG RUN</div>
+            <span class="workout-duration">1:05</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 45 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">Olympic Triathlon Training Plan: Week 12</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="phase-header">PEAK PHASE (Weeks 12-16) - Race-Specific Training & Taper</div>
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 12</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1100m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10 MS: 2 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×75 @ VO2max, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">8 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×10 min @ threshold with 10 min active recovery</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">7 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> FOUNDATION RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM THRESHOLD + SPRINT</div>
+            <span class="workout-duration">1200m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×200 @ threshold, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> RECOVERY BIKE</div>
+            <span class="workout-duration">20 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ recovery</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ recovery</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card race-card">
+        <div style="font-weight: bold; text-align: center;">
+            🏁 RACE DAY!
+        </div>
+        <div style="margin-top: 8px; font-size: 0.85em; text-align: center;">
+            If you can't find a local sprint triathlon to participate in today, do a sprint triathlon time trial as part of this Olympic triathlon training plan on your own instead.<br>Swim 800<br>Bike 12 miles<br>Run 3 miles
+        </div>
+    </div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 13</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1500m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">5 ×100 @ VO2max, RI=1:00</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> TEMPO BIKE</div>
+            <span class="workout-duration">55 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">17 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">22 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">16 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TEMPO RUN</div>
+            <span class="workout-duration">32 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 12 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1500m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×300 @ threshold, RI=1:00</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:45</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">1 hour and 25 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> LONG RUN</div>
+            <span class="workout-duration">1:05</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 45 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 14</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM THRESHOLD + SPRINT</div>
+            <span class="workout-duration">1500m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">5 ×100 @ VO2max, RI=1:00</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> TEMPO BIKE</div>
+            <span class="workout-duration">55 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">17 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">22 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">16 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TEMPO RUN</div>
+            <span class="workout-duration">32 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 12 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1500m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×300 @ threshold, RI=1:00</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> FOUNDATION BIKE</div>
+            <span class="workout-duration">1:45</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">1 hour and 25 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> LONG RUN</div>
+            <span class="workout-duration">1:05</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 45 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 15</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM THRESHOLD + SPRINT</div>
+            <span class="workout-duration">1500m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">4 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">5 ×100 @ VO2max, RI=0:30</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> TEMPO BIKE</div>
+            <span class="workout-duration">1:05</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">21 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">24 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">20 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TEMPO RUN</div>
+            <span class="workout-duration">36 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 16 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1500m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">3 ×300 @ threshold, RI=0:30</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> LONG BIKE</div>
+            <span class="workout-duration">2:00</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">1 hour and 40 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> LONG RUN</div>
+            <span class="workout-duration">1:05</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 45 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">Olympic Triathlon Training Plan: Week 16</span>
+                </div>
+            </li></ul></div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="week-wrapper">
+<div class="table-wrapper">
+<div class="week-label">WEEK 16</div>
+<table>
+<thead><tr>
+<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+</tr></thead>
+<tbody><tr>
+<td class="rest-day">REST</td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM BASE + LACTATE</div>
+            <span class="workout-duration">1100m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×100 @ moderate, RI=0:05</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×75 @ VO2max, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 kick, RI=0:15</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> TEMPO BIKE</div>
+            <span class="workout-duration">45 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">8 min @ moderate</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×10 min @ threshold with 10 min active recovery</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">7 min @ moderate</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card run-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏃</span> TEMPO RUN</div>
+            <span class="workout-duration">30 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">Run 10 min @ threshold</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">Run 10 min @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card swim-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🏊</span> SWIM THRESHOLD + SPRINT</div>
+            <span class="workout-duration">900m</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part">4 ×25 drills, RI=0:10</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">MS:</span></span>
+                    <span class="detail-part">2 ×200 @ threshold, RI=0:45</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">200 @ easy</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card bike-card">
+        <div class="workout-header">
+            <div class="workout-type"><span class="workout-icon">🚴</span> RECOVERY BIKE</div>
+            <span class="workout-duration">20 min</span>
+        </div>
+        <ul class="workout-details">
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">WU:</span></span>
+                    <span class="detail-part">10 min @ recovery</span>
+                </div>
+            </li>
+            <li>
+                <span class="bullet">▸</span>
+                <div class="detail-content">
+                    <span class="detail-part"><span class="label">CD:</span></span>
+                    <span class="detail-part">10 min @ recovery</span>
+                </div>
+            </li></ul></div></td><td><div class="workout-card race-card">
+        <div style="font-weight: bold; text-align: center;">
+            🏁 RACE DAY!
+        </div>
+        <div style="margin-top: 8px; font-size: 0.85em; text-align: center;">
+            
+        </div>
+    </div></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+
+<div class="source-link">
+    <p><strong>Source:</strong> This training plan is adapted from
+    <a href="https://www.triathlete.com/training/olympic-triathlon-16-week-training-plan/" target="_blank">
+    Triathlete Magazine's 16-Week Olympic Triathlon Training Plan</a></p>
+</div>
+<script>
+        // Store original workout data for each week
+        let originalWorkoutData = [];
+        const ORIGINAL_REST_DAY = 0; // Monday is the original rest day (index 0)
+
+        // Initialize: Extract and store original workout content on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const tables = document.querySelectorAll('table');
+
+            tables.forEach(table => {
+                const headerRow = table.querySelector('thead tr');
+                const bodyRow = table.querySelector('tbody tr');
+                if (!bodyRow) return;
+
+                const headers = Array.from(headerRow.querySelectorAll('th'));
+                const cells = Array.from(bodyRow.querySelectorAll('td'));
+                if (cells.length !== 7) return;
+
+                // Store the original HTML content of each cell
+                // Index 0 (Monday) = REST, Indices 1-6 = Training Days 1-6
+                const weekData = cells.map(cell => cell.innerHTML);
+                originalWorkoutData.push(weekData);
+
+                // Set initial width classes (Monday = rest day)
+                headers.forEach((th, index) => {
+                    th.className = index === ORIGINAL_REST_DAY ? 'rest-header' : 'training-header';
+                });
+                cells.forEach((td, index) => {
+                    if (index === ORIGINAL_REST_DAY) {
+                        td.className = 'rest-day';
+                    } else {
+                        td.className = 'training-day';
+                    }
+                });
+            });
+
+            // Set default start date to next Monday
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const daysUntilMonday = dayOfWeek === 0 ? 1 : (8 - dayOfWeek) % 7;
+            const nextMonday = new Date(today);
+            nextMonday.setDate(today.getDate() + daysUntilMonday);
+
+            const dateInput = document.getElementById('start-date-input');
+            if (dateInput) {
+                const year = nextMonday.getFullYear();
+                const month = String(nextMonday.getMonth() + 1).padStart(2, '0');
+                const day = String(nextMonday.getDate()).padStart(2, '0');
+                dateInput.value = `${year}-${month}-${day}`;
+            }
+        });
+
+        // Toggle Color Mode (Black & White)
+        function toggleColorMode() {
+            document.body.classList.toggle('bw-mode');
+            const btn = document.getElementById('toggle-color-btn');
+            if (document.body.classList.contains('bw-mode')) {
+                btn.textContent = '🎨 Toggle Color';
+            } else {
+                btn.textContent = '🎨 Toggle B&W';
+            }
+        }
+
+        // Change Rest Day
+        function changeRestDay() {
+            const selectedRestDay = parseInt(document.getElementById('rest-day-select').value);
+            const tables = document.querySelectorAll('table');
+
+            tables.forEach((table, tableIndex) => {
+                const headerRow = table.querySelector('thead tr');
+                const bodyRow = table.querySelector('tbody tr');
+                if (!bodyRow || !originalWorkoutData[tableIndex]) return;
+
+                const headers = Array.from(headerRow.querySelectorAll('th'));
+                const cells = Array.from(bodyRow.querySelectorAll('td'));
+                if (cells.length !== 7) return;
+
+                // Get the original week's data
+                const weekData = originalWorkoutData[tableIndex];
+
+                // Extract the REST cell and 6 training day cells from original data
+                // Original: Monday = REST (index 0), Tue-Sun = TD1-TD6 (indices 1-6)
+                const restCellContent = weekData[ORIGINAL_REST_DAY];
+                const trainingDays = weekData.filter((_, idx) => idx !== ORIGINAL_REST_DAY);
+
+                // Create new week layout with REST on selected day
+                const newWeekLayout = [];
+                let trainingDayIndex = 0;
+
+                for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+                    if (dayIndex === selectedRestDay) {
+                        // This day is the new rest day
+                        newWeekLayout.push(restCellContent);
+                    } else {
+                        // This day gets the next training day
+                        newWeekLayout.push(trainingDays[trainingDayIndex]);
+                        trainingDayIndex++;
+                    }
+                }
+
+                // Update the table headers and cells with new classes and content
+                headers.forEach((th, index) => {
+                    th.className = index === selectedRestDay ? 'rest-header' : 'training-header';
+                });
+
+                cells.forEach((cell, index) => {
+                    cell.innerHTML = newWeekLayout[index];
+
+                    // Update cell class based on whether it's the rest day
+                    if (index === selectedRestDay) {
+                        cell.className = 'rest-day';
+                    } else {
+                        cell.className = 'training-day';
+                    }
+                });
+            });
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            const button = document.getElementById('download-pdf-btn');
+            button.textContent = '⏳ Generating PDF...';
+            button.disabled = true;
+
+            // Hide control panel and source link for PDF
+            const controlPanel = document.querySelector('.control-panel');
+            const sourceLink = document.querySelector('.source-link');
+            const originalControlDisplay = controlPanel.style.display;
+            const originalSourceDisplay = sourceLink.style.display;
+
+            controlPanel.style.display = 'none';
+            sourceLink.style.display = 'none';
+
+            // Apply print-like styles to week labels
+            const weekLabels = document.querySelectorAll('.week-label');
+            const originalStyles = [];
+            weekLabels.forEach(label => {
+                originalStyles.push({
+                    writingMode: label.style.writingMode,
+                    transform: label.style.transform,
+                    width: label.style.width,
+                    minWidth: label.style.minWidth,
+                    padding: label.style.padding,
+                    fontSize: label.style.fontSize
+                });
+                label.style.writingMode = 'horizontal-tb';
+                label.style.transform = 'none';
+                label.style.width = '50px';
+                label.style.minWidth = 'auto';
+                label.style.padding = '4px';
+                label.style.fontSize = '0.8em';
+            });
+
+            const element = document.body;
+            const opt = {
+                margin: [0.3, 0.3, 0.3, 0.3],
+                filename: '16-week-olympic-triathlon-training-plan.pdf',
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: {
+                    scale: 1.5,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'landscape',
+                    compress: true
+                },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore original display
+                controlPanel.style.display = originalControlDisplay;
+                sourceLink.style.display = originalSourceDisplay;
+
+                // Restore original week label styles
+                weekLabels.forEach((label, index) => {
+                    const original = originalStyles[index];
+                    label.style.writingMode = original.writingMode;
+                    label.style.transform = original.transform;
+                    label.style.width = original.width;
+                    label.style.minWidth = original.minWidth;
+                    label.style.padding = original.padding;
+                    label.style.fontSize = original.fontSize;
+                });
+
+                button.textContent = '📥 Download PDF';
+                button.disabled = false;
+            });
+        }
+
+        // Export to Calendar
+        function exportToCalendar() {
+            const startDateInput = document.getElementById('start-date-input');
+            if (!startDateInput.value) {
+                alert('Please select a start date for your training plan.');
+                return;
+            }
+
+            const startDate = new Date(startDateInput.value + 'T00:00:00');
+            const selectedRestDay = parseInt(document.getElementById('rest-day-select').value);
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+            // Helper function to format date for ICS (YYYYMMDD)
+            function formatICSDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}${month}${day}`;
+            }
+
+            // Helper function to get Monday of the week containing startDate
+            function getMonday(date) {
+                const d = new Date(date);
+                const dayOfWeek = d.getDay();
+                const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Adjust for Sunday (0) or other days
+                d.setDate(d.getDate() + diff);
+                return d;
+            }
+
+            // Helper function to extract text content from HTML
+            function getTextContent(htmlString) {
+                const temp = document.createElement('div');
+                temp.innerHTML = htmlString;
+                return temp.textContent || temp.innerText || '';
+            }
+
+            // Get the Monday of the start week
+            const weekStartMonday = getMonday(startDate);
+
+            // Parse all weeks
+            const tables = document.querySelectorAll('table');
+            const events = [];
+
+            tables.forEach((table, weekIndex) => {
+                const weekLabel = table.closest('.table-wrapper')?.querySelector('.week-label')?.textContent || `Week ${weekIndex + 1}`;
+                const bodyRow = table.querySelector('tbody tr');
+                if (!bodyRow) return;
+
+                const cells = Array.from(bodyRow.querySelectorAll('td'));
+
+                cells.forEach((cell, dayIndex) => {
+                    // Calculate the actual date for this day
+                    const eventDate = new Date(weekStartMonday);
+                    eventDate.setDate(weekStartMonday.getDate() + (weekIndex * 7) + dayIndex);
+
+                    // Check if it's a rest day
+                    if (cell.classList.contains('rest-day')) {
+                        // Add rest day event
+                        events.push({
+                            date: eventDate,
+                            summary: 'REST DAY',
+                            description: 'Recovery day - no training scheduled',
+                            weekLabel: weekLabel
+                        });
+                    } else {
+                        // Parse workout card
+                        const workoutCard = cell.querySelector('[class*="-card"]');
+                        if (workoutCard) {
+                            const workoutType = workoutCard.querySelector('.workout-type')?.textContent?.trim() || 'Training';
+                            const workoutDuration = workoutCard.querySelector('.workout-duration')?.textContent?.trim() || '';
+                            const workoutDetails = Array.from(workoutCard.querySelectorAll('.workout-details li'))
+                                .map(li => getTextContent(li.innerHTML).replace(/▸/g, '').trim())
+                                .join('\\n');
+
+                            events.push({
+                                date: eventDate,
+                                summary: `${workoutType} - ${workoutDuration}`,
+                                description: `${weekLabel}\\n\\n${workoutDetails}`,
+                                weekLabel: weekLabel
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Generate ICS file
+            let icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Olympic Triathlon Training Plan//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Olympic Triathlon Training
+X-WR-TIMEZONE:UTC
+X-WR-CALDESC:16-Week Olympic Triathlon Training Plan
+`;
+
+            events.forEach((event, index) => {
+                const uid = `triathlon-training-${formatICSDate(event.date)}-${index}@k1monfared.github.io`;
+                const dtstart = formatICSDate(event.date);
+                const dtend = formatICSDate(event.date);
+                const timestamp = formatICSDate(new Date()) + 'T' + new Date().toISOString().split('T')[1].split('.')[0].replace(/:/g, '') + 'Z';
+
+                icsContent += `BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${timestamp}
+DTSTART;VALUE=DATE:${dtstart}
+DTEND;VALUE=DATE:${dtend}
+SUMMARY:${event.summary}
+DESCRIPTION:${event.description}
+CATEGORIES:Triathlon Training,Olympic Distance
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+`;
+            });
+
+            icsContent += 'END:VCALENDAR';
+
+            // Download the ICS file
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'olympic-triathlon-training-plan.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        }
+    </script>
+</body></html>

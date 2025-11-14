@@ -1,11 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			// Helper to get cookie value
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+
+			// Cookie is more reliable with file:// protocol, check it first
+			let theme = getCookie('theme');
+
+			// Fall back to localStorage if cookie not set (for http:// served sites)
+			if (!theme) {
+				try {
+					theme = localStorage.getItem('theme');
+				} catch (e) {
+					// localStorage not available
+				}
+			}
+
+			// Default to dark if nothing found
+			theme = theme || 'dark';
+
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
 	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
-	<title> Keivan Monfared's Home Page </title>
+	<title>Keivan Monfared - Computation</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -37,28 +67,38 @@
 	</script>
 	<!-- Navigation loader script -->
 	<script type="text/javascript" src="js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="js/theme-toggle.js"></script>
 </head>
 
 <body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header">
+		<div class="header-content">
+			<h1 class="myTitle">KEIVAN MONFARED</h1>
+			<p class="myTitleFooter">Mathematics and Data Science</p>
+		</div>
+	</header>
+
+	<div id="stick-here"></div>
+
+	<!-- Navigation loaded from nav.html -->
+	<div id="nav-container"></div>
+
 	<div class="container">
-		<div id="stick-here"></div>
-		<div class="myTitle"> KEIVAN MONFARED </div>
-		<div class="myTitleFooter"> Mathematics and Data Science </div>
-		<!-- Navigation loaded from nav.html -->
-		<div id="nav-container"></div>
 		<script type="text/javascript">
 			// Page-specific sub-menu for computation page
 			window.addEventListener('navigationLoaded', function() {
 				document.getElementById('small_menu').innerHTML =
-					'<span class="menuItem"><a href="#computational_neuroscience">computational neuroscience</a></span>' +
-					'<span class="menuItem"><a href="#machine_learning">machine learning</a></span>' +
-					'<span class="menuItem"><a href="#shell_&_bash">shell & bash</a></span>' +
-					'<span class="menuItem"><a href="#graph_theory_&_linear algebra">graph theory and linear algebra</a></span>' +
-					'<span class="menuItem"><a href="#signal_processing">signal processing</a></span>';
+					'<a href=\"#computational_neuroscience\">computational neuroscience</a>' +
+					'<a href=\"#machine_learning\">machine learning</a>' +
+					'<a href=\"#shell_&_bash\">shell & bash</a>' +
+					'<a href=\"#graph_theory_&_linear algebra\">graph theory and linear algebra</a>' +
+					'<a href=\"#signal_processing\">signal processing</a>';
 			});
 		</script>
-		<div id="pageContent">
-			<div id="mainContent">
+				<main class="main-content">
 				<div id="aboutMe">
 					<div id="computational_neuroscience"> <br><br> </div>
 					<h2>
@@ -366,11 +406,45 @@
 					<br>
 					</table>
 				</div>
-			</div>
-		</div>
+					</main>
+
 		<!-- Footer and social media loaded from footer.html -->
-		<div id="footer-container"></div>
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
 	</div>
+
+	<!-- Scroll to top button (mobile only) -->
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+
+	<script>
+		// Scroll to top button functionality
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+
+			// Show/hide scroll to top button based on scroll position
+			window.addEventListener('scroll', () => {
+				if (window.pageYOffset > 300) {
+					scrollToTopBtn.style.opacity = '1';
+					scrollToTopBtn.style.pointerEvents = 'auto';
+				} else {
+					scrollToTopBtn.style.opacity = '0';
+					scrollToTopBtn.style.pointerEvents = 'none';
+				}
+			});
+
+			// Initialize button state
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
 </body>
 
 </html>

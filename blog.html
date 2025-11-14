@@ -1,87 +1,129 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			// Helper to get cookie value
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+
+			// Cookie is more reliable with file:// protocol, check it first
+			let theme = getCookie('theme');
+
+			// Fall back to localStorage if cookie not set (for http:// served sites)
+			if (!theme) {
+				try {
+					theme = localStorage.getItem('theme');
+				} catch (e) {
+					// localStorage not available
+				}
+			}
+
+			// Default to dark if nothing found
+			theme = theme || 'dark';
+
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
 	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
 	<title> Keivan Monfared's Blog </title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Navigation loader script -->
 	<script type="text/javascript" src="js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="js/theme-toggle.js"></script>
 	<style>
 		.blog-post {
 			margin-bottom: 30px;
 			padding: 20px;
-			border-left: 3px solid #757575;
-			background-color: #f9f9f9;
+			border-left: 3px solid var(--border-color);
+			background-color: var(--bg-secondary);
+			backdrop-filter: blur(8px);
+			border-radius: 8px;
 		}
 		.blog-post h3 {
 			margin-top: 0;
-			color: #333;
+			color: var(--text-primary);
 		}
 		.blog-post .date {
-			color: #666;
+			color: var(--text-dim);
 			font-style: italic;
 			margin-bottom: 10px;
 		}
 		.blog-post .description {
 			margin-bottom: 15px;
+			color: var(--text-secondary);
 		}
 		.blog-post a {
-			color: #000000;
+			color: var(--link-default);
 			text-decoration: none;
 			font-weight: bold;
 		}
 		.blog-post a:hover {
+			color: var(--link-hover);
 			text-decoration: underline;
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div id="stick-here"></div>
-		<div class="myTitle"> KEIVAN MONFARED </div>
-		<div class="myTitleFooter"> Mathematics and Data Science </div>
-		<!-- Navigation loaded from nav.html -->
-		<div id="nav-container"></div>
+	<div class="bg-gradient"></div>
 
-		<div id="pageContent">
-			<div id="mainContent">
+	<header class="site-header">
+		<div class="header-content">
+			<h1 class="myTitle">KEIVAN MONFARED</h1>
+			<p class="myTitleFooter">Mathematics and Data Science</p>
+		</div>
+	</header>
+
+	<div id="stick-here"></div>
+
+	<!-- Navigation loaded from nav.html -->
+	<div id="nav-container"></div>
+
+	<div class="container">
+
+				<main class="main-content">
 				<h2 class="heading2">Blog</h2>
 				<div id="blog-posts-container">
 					<!-- Blog posts will be loaded here -->
 					<p>Loading blog posts...</p>
 				</div>
-			</div>
-		</div>
+					</main>
 
 		<!-- Footer and social media loaded from footer.html -->
 		<div id="footer-container"></div>
 	</div>
 
 	<script type="text/javascript">
-		// Load and display blog posts
-		function loadBlogPosts() {
-			fetch('blog/posts.json')
-				.then(response => {
-					if (!response.ok) throw new Error('Failed to load blog posts');
-					return response.json();
-				})
-				.then(posts => {
-					displayBlogPosts(posts);
-				})
-				.catch(error => {
-					console.error('Error loading blog posts:', error);
-					document.getElementById('blog-posts-container').innerHTML =
-						'<p>Error loading blog posts. Please try again later.</p>';
-				});
-		}
+		// Blog posts data (embedded to work without server)
+		const blogPosts = [
+			{
+				"title": "16 Week Olympic Triathlon Training Plan",
+				"date": "2025-11-12",
+				"filename": "2025_11_12_16_week_olympic_triathlon_training_plan.html",
+				"description": "A comprehensive 16-week training plan for Olympic distance triathlon."
+			},
+			{
+				"title": "So you want to animate your PDF files?",
+				"date": "2022-12-12",
+				"filename": "2022_12_12_so_you_want_to_animate_your_pdf_files.html",
+				"description": "Some quick and dirty steps to include an animation in a pdf file."
+			}
+		];
 
-		function displayBlogPosts(posts) {
+		function displayBlogPosts() {
 			// Sort posts by date (newest first)
-			posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+			const posts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
 
 			const container = document.getElementById('blog-posts-container');
 
@@ -113,7 +155,7 @@
 		}
 
 		// Load blog posts when page loads
-		document.addEventListener('DOMContentLoaded', loadBlogPosts);
+		document.addEventListener('DOMContentLoaded', displayBlogPosts);
 	</script>
 </body>
 
