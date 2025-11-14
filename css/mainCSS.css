@@ -660,6 +660,31 @@ button:hover {
     td, th {
         padding: 0.75rem 0;
     }
+
+    /* Portfolio grid - 2 columns on mobile */
+    .portfolio-grid table {
+        display: block;
+    }
+
+    .portfolio-grid table tbody {
+        display: block;
+    }
+
+    .portfolio-grid table tr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .portfolio-grid table td {
+        display: block;
+        padding: 0;
+    }
+
+    .main-content {
+        padding: 0 1rem 2rem;
+    }
 }
 
 /* Theme Toggle Button */
