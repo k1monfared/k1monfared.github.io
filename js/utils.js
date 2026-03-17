@@ -36,31 +36,33 @@ function renderPapers(containerId, papers) {
 			? '<img class="paper-thumb" src="' + p.thumb + '" alt="">'
 			: '<span class="paper-icon paper-icon-lg">' + ICONS.paper + '</span>';
 
-		// Line 1: icon + title
+		// Line 1: title
 		var titleHtml = p.url
 			? '<a href="' + p.url + '" target="_blank">' + p.title + '</a>'
 			: '<span class="paper-title-text">' + p.title + '</span>';
 
-		// Line 2: meta row
+		// Line 2: authors (always visible)
+		var authorsHtml = p.authors ? '<div class="paper-authors">' + p.authors + '</div>' : '';
+
+		// Line 3: meta row
 		var meta = '<div class="paper-meta">';
 		if (p.tag) meta += '<span class="paper-venue">' + p.tag + '</span>';
 		if (p.pdfUrl) meta += '<a class="paper-action-btn" href="' + p.pdfUrl + '" target="_blank">' + ICONS.pdf + 'PDF</a>';
 		if (p.arxivUrl) meta += '<a class="paper-action-btn" href="' + p.arxivUrl + '" target="_blank">' + ICONS.arxiv + 'arXiv</a>';
-		if (hasDetails) meta += '<button class="paper-action-btn" onclick="toggleSlowly(\'' + id + '-abs\')">' + ICONS.abstract + 'Abstract</button>';
+		if (p.abstract) meta += '<button class="paper-action-btn" onclick="toggleSlowly(\'' + id + '-abs\')">' + ICONS.abstract + 'Abstract</button>';
 		if (p.takeaways) meta += '<button class="paper-action-btn" onclick="toggleSlowly(\'' + id + '-tk\')">' + ICONS.takeaways + 'Takeaways</button>';
 		if (p.codeUrl) meta += '<a class="paper-action-btn" href="' + p.codeUrl + '" target="_blank">' + ICONS.code + (p.codeLabel || 'Code') + '</a>';
 		meta += '</div>';
 
 		var header = '<div class="paper-header">' + icon +
-			'<div class="paper-info">' + titleHtml + meta + '</div></div>';
+			'<div class="paper-info">' + titleHtml + authorsHtml + meta + '</div></div>';
 
 		// Expandable details
 		var detailPad = hasThumb ? '' : ' style="padding-left: calc(44px + 0.75rem);"';
 		var details = '';
-		if (hasDetails) {
+		if (p.abstract) {
 			details += '<div id="' + id + '-abs" class="collapsible paper-details"' + detailPad + '>';
-			if (p.authors) details += '<p>' + p.authors + '</p>';
-			if (p.abstract) details += '<p>' + p.abstract + '</p>';
+			details += '<p>' + p.abstract + '</p>';
 			details += '</div>';
 		}
 		if (p.takeaways) {
