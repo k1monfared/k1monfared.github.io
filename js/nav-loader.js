@@ -44,7 +44,6 @@
 	<div id="menu">
 		<a href="${pathPrefix}index.html">home</a>
 		<a href="${pathPrefix}math-and-cs.html">math & cs</a>
-		<a href="${pathPrefix}blog.html">blog</a>
 		<a href="${pathPrefix}interests.html">interests</a>
 		<a href="${pathPrefix}about.html">about</a>
 	</div>

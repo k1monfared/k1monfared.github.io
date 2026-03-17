@@ -31,3 +31,6 @@ _temp.*
 # Playwright MCP
 .playwright-mcp/
 
+# Blog backup
+blog_backup/
+
