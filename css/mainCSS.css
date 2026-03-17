@@ -1251,6 +1251,7 @@ button:hover {
 #small_menu a.sub-active {
     color: var(--text-primary);
     text-decoration: underline;
+    text-decoration-color: var(--link-active);
     text-underline-offset: 4px;
 }
 
