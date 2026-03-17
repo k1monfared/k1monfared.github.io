@@ -319,6 +319,8 @@ a:active {
     max-width: 1200px;
     margin: 1rem auto 0;
     padding: 0 2rem 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 #mainContent {
@@ -1076,9 +1078,9 @@ button:hover {
 
 .section-block ul li {
     padding: 0.35rem 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .section-block ul li + li {
@@ -1102,7 +1104,7 @@ button:hover {
 
 .domain-intro {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 1rem;
     max-width: 800px;
@@ -1323,15 +1325,16 @@ button:hover {
 
 .interest-card h3 {
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 0.15rem;
 }
 
 .interest-card p,
 .interest-card li {
     color: var(--text-muted);
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.6;
     margin: 0;
 }
 
@@ -1378,6 +1381,7 @@ button:hover {
 .contact-links p {
     margin: 0.4rem 0;
     color: var(--text-secondary);
+    font-size: 1rem;
 }
 
 
@@ -1389,9 +1393,9 @@ button:hover {
 .resume-table td {
     padding: 0.45rem 0;
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 1rem;
     vertical-align: top;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .resume-table .resume-date {
