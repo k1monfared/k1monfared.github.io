@@ -1391,6 +1391,14 @@ button:hover {
     line-height: 1.5;
 }
 
+.resume-table a {
+    text-decoration: none;
+}
+
+.resume-table a:hover {
+    text-decoration: none;
+}
+
 .resume-table .resume-date {
     width: 100px;
     color: var(--text-dim);
