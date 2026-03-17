@@ -21,7 +21,7 @@ var ICONS = {
  * Fields: title, url, tag, pdfUrl, arxivUrl, thumb, authors, abstract,
  *         takeaways, codeUrl, codeLabel
  */
-function renderPapers(containerId, papers) {
+function renderPapers(containerId, papers, defaultThumb) {
 	var ul = document.getElementById(containerId);
 	if (!ul) return;
 
@@ -30,10 +30,11 @@ function renderPapers(containerId, papers) {
 		var id = containerId + '-' + i;
 		li.className = 'paper-item';
 
-		var hasThumb = !!p.thumb;
+		var thumbSrc = p.thumb || defaultThumb;
+		var hasThumb = !!thumbSrc;
 		var hasDetails = p.authors || p.abstract;
 		var icon = hasThumb
-			? '<img class="paper-thumb" src="' + p.thumb + '" alt="">'
+			? '<img class="paper-thumb" src="' + thumbSrc + '" alt="">'
 			: '<span class="paper-icon paper-icon-lg">' + ICONS.paper + '</span>';
 
 		// Line 1: title
@@ -82,13 +83,18 @@ function renderPapers(containerId, papers) {
  * Render talk items.
  * Fields: title, url, venue, year, location, slidesUrl, abstractUrl, videoUrl
  */
-function renderTalks(containerId, talks) {
+function renderTalks(containerId, talks, defaultThumb) {
 	var ul = document.getElementById(containerId);
 	if (!ul) return;
 
 	talks.forEach(function(t) {
 		var li = document.createElement('li');
 		li.className = 'paper-item';
+
+		var thumbSrc = t.thumb || defaultThumb;
+		var icon = thumbSrc
+			? '<img class="paper-thumb" src="' + thumbSrc + '" alt="">'
+			: '<span class="paper-icon paper-icon-lg">' + ICONS.talk + '</span>';
 
 		var titleHtml = t.url
 			? '<a href="' + t.url + '" target="_blank">' + t.title + '</a>'
@@ -103,8 +109,7 @@ function renderTalks(containerId, talks) {
 		if (t.videoUrl) meta += '<a class="paper-action-btn" href="' + t.videoUrl + '" target="_blank">' + ICONS.link + 'Video</a>';
 		meta += '</div>';
 
-		li.innerHTML = '<div class="paper-header">' +
-			'<span class="paper-icon paper-icon-lg">' + ICONS.talk + '</span>' +
+		li.innerHTML = '<div class="paper-header">' + icon +
 			'<div class="paper-info">' + titleHtml + meta + '</div></div>';
 
 		ul.appendChild(li);
@@ -115,13 +120,18 @@ function renderTalks(containerId, talks) {
  * Render thesis items.
  * Fields: title, url, degree, institution, year
  */
-function renderTheses(containerId, theses) {
+function renderTheses(containerId, theses, defaultThumb) {
 	var ul = document.getElementById(containerId);
 	if (!ul) return;
 
 	theses.forEach(function(t) {
 		var li = document.createElement('li');
 		li.className = 'paper-item';
+
+		var thumbSrc = t.thumb || defaultThumb;
+		var icon = thumbSrc
+			? '<img class="paper-thumb" src="' + thumbSrc + '" alt="">'
+			: '<span class="paper-icon paper-icon-lg">' + ICONS.thesis + '</span>';
 
 		var titleHtml = t.url
 			? '<a href="' + t.url + '" target="_blank">' + t.title + '</a>'
@@ -133,8 +143,7 @@ function renderTheses(containerId, theses) {
 		if (t.year) meta += '<span class="paper-venue">' + t.year + '</span>';
 		meta += '</div>';
 
-		li.innerHTML = '<div class="paper-header">' +
-			'<span class="paper-icon paper-icon-lg">' + ICONS.thesis + '</span>' +
+		li.innerHTML = '<div class="paper-header">' + icon +
 			'<div class="paper-info">' + titleHtml + meta + '</div></div>';
 
 		ul.appendChild(li);
@@ -145,13 +154,18 @@ function renderTheses(containerId, theses) {
  * Render code/tool items.
  * Fields: title, url, description
  */
-function renderCode(containerId, items) {
+function renderCode(containerId, items, defaultThumb) {
 	var ul = document.getElementById(containerId);
 	if (!ul) return;
 
 	items.forEach(function(c) {
 		var li = document.createElement('li');
 		li.className = 'paper-item';
+
+		var thumbSrc = c.thumb || defaultThumb;
+		var icon = thumbSrc
+			? '<img class="paper-thumb" src="' + thumbSrc + '" alt="">'
+			: '<span class="paper-icon paper-icon-lg">' + ICONS.code + '</span>';
 
 		var titleHtml = c.url
 			? '<a href="' + c.url + '" target="_blank">' + c.title + '</a>'
@@ -161,8 +175,7 @@ function renderCode(containerId, items) {
 			? '<div class="paper-meta"><span class="paper-venue">' + c.description + '</span></div>'
 			: '';
 
-		li.innerHTML = '<div class="paper-header">' +
-			'<span class="paper-icon paper-icon-lg">' + ICONS.code + '</span>' +
+		li.innerHTML = '<div class="paper-header">' + icon +
 			'<div class="paper-info">' + titleHtml + desc + '</div></div>';
 
 		ul.appendChild(li);
