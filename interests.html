@@ -39,6 +39,17 @@
 	<div id="nav-container"></div>
 
 	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="interests/page.html?topic=music">music</a>' +
+					'<a href="interests/page.html?topic=calligraphy">calligraphy</a>' +
+					'<a href="interests/page.html?topic=woodworking">woodworking</a>' +
+					'<a href="interests/page.html?topic=photography">photography</a>' +
+					'<a href="learning.html">learning</a>';
+			});
+		</script>
+
 		<main class="main-content">
 
 			<div class="interests-grid">
