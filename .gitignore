@@ -1,5 +1,6 @@
 # Website redesign planning documents
 WEBSITE_REDESIGN_ANALYSIS.md
+.claude/plans/
 
 # Python cache
 __pycache__/
@@ -26,3 +27,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 _temp.*
+
+# Playwright MCP
+.playwright-mcp/
+

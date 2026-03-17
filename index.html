@@ -2,69 +2,28 @@
 <html lang="en">
 
 <head>
-		<!-- Apply saved theme immediately to prevent flash -->
+	<!-- Apply saved theme immediately to prevent flash -->
 	<script>
 		(function() {
-			// Helper to get cookie value
 			function getCookie(name) {
 				const value = `; ${document.cookie}`;
 				const parts = value.split(`; ${name}=`);
 				if (parts.length === 2) return parts.pop().split(';').shift();
 				return null;
 			}
-
-			// Cookie is more reliable with file:// protocol, check it first
 			let theme = getCookie('theme');
-
-			// Fall back to localStorage if cookie not set (for http:// served sites)
 			if (!theme) {
-				try {
-					theme = localStorage.getItem('theme');
-				} catch (e) {
-					// localStorage not available
-				}
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
 			}
-
-			// Default to dark if nothing found
 			theme = theme || 'dark';
-
 			document.documentElement.setAttribute('data-theme', theme);
 		})();
 	</script>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
 	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
-	<title>Keivan Monfared - Home</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			for (i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
-			{
-				toggleSlowly('paper' + i);
-			}
-		});
-
-		function toggleSlowly(elementId) {
-			$("#" + elementId).slideToggle(500);
-		}
-	</script>
-	<!-- load mathjax scripts -->
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	<!-- Zoom in and zoom out -->
-	<script type="text/javascript">
-		function zoomin(it) {
-			{
-				it.width = 2 * it.width;
-			}
-		}
-
-		function zoomout(it) {
-			{
-				it.width = .5 * it.width;
-			}
-		}
-	</script>
+	<title>Keivan Monfared</title>
 	<!-- Navigation loader script -->
 	<script type="text/javascript" src="js/nav-loader.js"></script>
 	<!-- Theme toggle script -->
@@ -74,270 +33,128 @@
 <body>
 	<div class="bg-gradient"></div>
 
-	<header class="site-header">
-		<div class="header-content">
-			<h1 class="myTitle">KEIVAN MONFARED</h1>
-			<p class="myTitleFooter">Mathematics and Data Science</p>
-		</div>
-	</header>
+	<header class="site-header"></header>
 
 	<div id="stick-here"></div>
-
-	<!-- Navigation loaded from nav.html -->
 	<div id="nav-container"></div>
 
 	<div class="container">
 		<script type="text/javascript">
-			// Page-specific sub-menu for index page
 			window.addEventListener('navigationLoaded', function() {
 				document.getElementById('small_menu').innerHTML =
 					'<a href="#about">about</a>' +
-					'<a href="#portfolio">portfolio</a>' +
-					'<a href="#work-experience">work experience</a>';
+					'<a href="#expertise">expertise</a>' +
+					'<a href="#career">career</a>';
 			});
 		</script>
+
 		<main class="main-content">
+
+			<!-- About -->
 			<section id="about" class="content-card">
-				<h2>About</h2>
-				<ul class="about-list">
-						<li>Highly experienced data scientist with a strong background in machine learning, statistics, complex networks, and matrix analysis.</li>
-						<li>Proven ability to lead multiple data science sub-teams and deliver high-impact projects.</li>
-						<li>Expertise in designing, launching, and analyzing controlled online experiments at scale, reducing experimentation time, and decreasing uncertainty.</li>
-						<li>Strong skills in statistical tools, SQL, and Python.</li>
-						<li>Adept at communicating complex ideas to stakeholders, and fostering a culture of experimentation within organizations.</li>
-						<li>Highly experienced in time-series analysis, forecasting, recommender systems, and clustering algorithms.</li>
-						<li>Ph.D. in mathematics with expertise in combinatorial matrix theory and spectral graph theory.</li>
-						<li>Experienced working with neuroscientists (fMRI, MEG, EEG dataon epilepsy research and forming memory), social scientists and economists (dynamics on networks, choice theory), engineers (signal processing, data analytics),
-							and data scientists.</li>
-					</ul>
+				<p>Keivan is a data scientist with a strong background in machine learning, statistics, complex networks, and matrix analysis. He holds a Ph.D. in mathematics with expertise in combinatorial matrix theory and spectral graph theory.</p>
+				<p>He has led multiple data science sub-teams and delivered high-impact projects. His expertise includes designing, launching, and analyzing controlled online experiments at scale, reducing experimentation time, and decreasing uncertainty. He works extensively with time-series analysis, forecasting, recommender systems, and clustering algorithms, using tools like SQL and Python.</p>
+				<p>He has collaborated across disciplines with neuroscientists (fMRI, MEG, EEG data on epilepsy research and forming memory), social scientists and economists (dynamics on networks, choice theory), engineers (signal processing, data analytics, machine learning engineers, ML operations, data engineers, frontend/backend, SEO), and data scientists. He is adept at communicating complex ideas to cross-functional teams, decision-makers, and leaders and fostering a culture of experimentation within organizations.</p>
 			</section>
 
-			<section id="portfolio" class="content-card">
-				<h2>Portfolio</h2>
-				<div class="portfolio-grid">
-					<table style="width: 100%;">
-						<colgroup>
-							<col style="width:20%">
-							<col style="width:20%">
-							<col style="width:20%">
-							<col style="width:20%">
-							<col style="width:20%">
-						</colgroup>
-						<tr>
-							<td>
-								<a href="computation.html#computational_neuroscience">
-									<div class="imageContainer">
-										<img src="images/computationalneuroscience.webp" alt="Computational Neuroscience Code" style="width:100%;">
-										<div class="top-right">Computational <br> Neuroscience</div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="computation.html#machine_learning">
-									<div class="imageContainer">
-										<img src="images/machinelearning.webp" alt="Machine Learning Code" style="width:100%;">
-										<div class="top-right">Machine Learning <br> <br> </div>
-									</div>
-									<a>
-							</td>
-							<td>
-								<a href="computation.html#shell_&_bash">
-									<div class="imageContainer">
-										<img src="images/shell.webp" alt="Shell Code" style="width:100%;">
-										<div class="top-right">Shell & Bash <br> <br> </div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="computation.html#graph_theory_&_linear_algebra">
-									<div class="imageContainer">
-										<img src="images/graph.png" alt="Graph Theory and Linear Algebra Code" style="width:100%;">
-										<div class="top-right">Graph Theory & <br> Linear Algebra</div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="computation.html#signal_processing">
-									<div class="imageContainer">
-										<img src="images/signal.png" alt="Signal Processing Code" style="width:100%;">
-										<div class="top-right">Signal Processing <br> <br> </div>
-									</div>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="research.html#publications">
-									<div class="imageContainer">
-										<img src="images/papers.webp" alt="Research Papers" style="width:100%;">
-										<div class="top-right">Research Papers <br> <br> </div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="research.html#talks_&_seminars">
-									<div class="imageContainer">
-										<img src="images/talks.webp" alt="Research Talks and Seminars" style="width:100%;">
-										<div class="top-right">Talks & <br> Seminars</div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="https://k1monfared.wordpress.com/category/math/" target="_blank">
-									<div class="imageContainer">
-										<img src="images/blogs.webp" alt="Research Blog Posts" style="width:100%;">
-										<div class="top-right">Research <br> Blog Posts</div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="https://github.com/k1monfared?tab=repositories" target="_blank">
-									<div class="imageContainer">
-										<img src="images/researchcode.webp" alt="Research Code" style="width:100%;">
-										<div class="top-right">Research Code <br> <br> </div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="research.html#selected_presentation_slides_&_videos">
-									<div class="imageContainer">
-										<img src="images/misc.webp" alt="Miscellaneous Research" style="width:100%;">
-										<div class="top-right">Miscellaneous <br> <br></div>
-									</div>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<a href="teaching.html">
-									<div class="imageContainer">
-										<img src="images/teaching.webp" alt="Teaching Philosophy" style="width:100%;">
-										<div class="top-right">Teaching <br> Philosophy</div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="teaching.html">
-									<div class="imageContainer">
-										<img src="images/samples.webp" alt="Teaching Samples and Applets" style="width:100%;">
-										<div class="top-right">Teaching Samples<br><br></div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="teaching.html">
-									<div class="imageContainer">
-										<img src="images/testimony.webp" alt="Teaching Testimony" style="width:100%;">
-										<div class="top-right">Teaching Evaluations<br> <br> </div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="teaching.html">
-									<div class="imageContainer">
-										<img src="images/teachingexperience.webp" alt="Teaching Experience" style="width:100%;">
-										<div class="top-right">Teaching Experience <br><br></div>
-									</div>
-								</a>
-							</td>
-							<td>
-								<a href="teaching.html">
-									<div class="imageContainer">
-										<img src="images/sotl.webp" alt="SoTL" style="width:100%;">
-										<div class="top-right">SoTL <br> <br></div>
-									</div>
-								</a>
-							</td>
-						</tr>
-					</table>
+			<!-- Expertise Cards -->
+			<section id="expertise" class="content-card">
+				<div class="expertise-grid">
+					<a href="math-and-cs.html#machine-learning" class="expertise-card" style="background-image: url('images/machinelearning.webp')"><h3>Machine Learning & Deep Learning</h3></a>
+					<a href="math-and-cs.html#data-science" class="expertise-card" style="background-image: url('images/learningcurve.webp'); background-position: center 70%"><h3>Data Science & Experimentation</h3></a>
+					<a href="math-and-cs.html#neuroscience" class="expertise-card" style="background-image: url('images/computationalneuroscience.webp')"><h3>Computational Neuroscience</h3></a>
+					<a href="math-and-cs.html#mathematics" class="expertise-card" style="background-image: url('images/misc.webp'); background-position: center 70%"><h3>Matrix Theory & Linear Algebra</h3></a>
+					<a href="math-and-cs.html#graph-theory" class="expertise-card" style="background-image: url('images/graph.png')"><h3>Graph Theory & Combinatorics</h3></a>
+					<a href="math-and-cs.html#signal-processing" class="expertise-card" style="background-image: url('images/signal.png')"><h3>Signal Processing</h3></a>
 				</div>
 			</section>
 
-			<section id="work-experience" class="content-card">
-				<h2>Work Experience</h2>
-				<div class="experience-list">
-					<table id="table1">
-						<colgroup>
-							<col style="width:10%">
-							<col style="width:30%">
-							<col style="width:20%">
-							<col style="width:40%">
-						</colgroup>
-						<tr>
-							<th> </th>
-							<th> </th>
-							<th>Work Experience</th>
-						</tr>
-						<tr>
-							<td> 2024-Present </td>
-							<td> Senior Data Scientist </td>
-							<td> <a href="https://www.quora.com">Quora</a> </td>
-							<td> Core Data </td>
-						</tr>
-						<tr>
-							<td> 2021-2023 </td>
-							<td> Senior Data Scientist </td>
-							<td> <a href="https://www.yelp.com">Yelp</a> </td>
-							<td> Consumer </td>
-						</tr>
-						<tr>
-							<td> 2019-2021 </td>
-							<td> Data Scientist </td>
-							<td> <a href="https://www.ingrooves.com">Universal Music Group (Ingrooves)</a> </td>
-							<td> Data Science and Analytics </td>
-						</tr>
-						<tr>
-							<td> 2019 </td>
-							<td> Postdoctoral Fellow </td>
-							<td> <a href="https://www.uvic.ca/science/math-statistics">University of Victoria</a> </td>
-							<td> with <a href="https://www.math.uvic.ca/faculty/pvdd/">Pauline van den Driessche</a> and <a href="http://www.math.uvic.ca/faculty/gmacgill/"> Gary MacGillivray</a>
-							</td>
-						</tr>
-						<tr>
-							<td> 2017-2018 </td>
-							<td> <a href="http://www.pims.math.ca/">PIMS</a> Postdoctoral Fellow </td>
-							<td> <a href="http://math.ucalgary.ca/">University of Calgary</a> </td>
-							<td> with <a href="http://contacts.ucalgary.ca/info/math/profiles/101-254118">Kris Vasudevan</a> and <a href="http://michaelcavers.com/">Mike Cavers</a> <br> in collaboration with <a
-									href="http://psychology.ucalgary.ca/BN/NP-Lab/index.html">Cam Teskey</a>'s lab at <a href="https://hbi.ucalgary.ca/"> Hotchkiss Brain Institute</a> <br>
-							</td>
-						</tr>
-						<tr>
-							<td> 2015-2017 </td>
-							<td> Postdoctoral Fellow </td>
-							<td> <a href="http://math.ucalgary.ca/">University of Calgary</a> </td>
-							<td> with <a href="https://people.ucalgary.ca/~lancaste/">Peter Lancaster</a> and <a href="http://contacts.ucalgary.ca/info/math/profiles/101-152928">Alex Brudnyi</a>
-							</td>
-						</tr>
-						<tr>
-							<td> 2014-2015 </td>
-							<td> Visiting Assistant Professor </td>
-							<td> <a href="http://www.wiu.edu/cas/mathematics_and_philosophy/">Western Illinois Univeristy</a> </td>
-							<td> </td>
-						</tr>
-						<tr>
-							<td> 2012-2014 </td>
-							<td> PhD Research Assistant and Instructor </td>
-							<td> <a href="https://www.uwyo.edu/mathstats/">University of Wyoming</a> </td>
-							<td> with <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan Shader</a> </td>
-						</tr>
-						<tr>
-							<td> 2009-2011 </td>
-							<td> MSc Research Assistant and Instructor </td>
-							<td> <a href="https://www.uwyo.edu/mathstats/">University of Wyoming</a> </td>
-							<td> with <a href="http://www.uwyo.edu/bshader/bryan_shader/welcome.html">Bryan Shader</a> </td>
-						</tr>
-						<tr>
-							<td> 2008-2009 </td>
-							<td> Research Assistant </td>
-							<td> <a href="http://www.ipm.ac.ir/">Institute for Research in Fundamental Sciences </a> </td>
-							<td> </td>
-						</tr>
-					</table>
+			<!-- Career Timeline (horizontal, proportional) -->
+			<!-- Range: 2004-2026 = 22 yrs. left% = 6 + (year-2004)/22 * 88 -->
+			<section id="career" class="content-card">
+				<div class="h-timeline-wrapper">
+					<div class="h-timeline">
+						<div class="h-timeline-track"></div>
+						<!-- Duration bars: left=start%, width=end%-start% -->
+						<div class="h-timeline-bar" id="bar-bsc" style="left:6%;width:20%"></div>
+						<div class="h-timeline-bar" id="bar-ipm" style="left:22%;width:4%"></div>
+						<div class="h-timeline-bar" id="bar-msc" style="left:26%;width:12%"></div>
+						<div class="h-timeline-bar" id="bar-phd" style="left:38%;width:8%"></div>
+						<div class="h-timeline-bar" id="bar-wiu" style="left:46%;width:4%"></div>
+						<div class="h-timeline-bar" id="bar-ucal" style="left:50%;width:8%"></div>
+						<div class="h-timeline-bar" id="bar-pims" style="left:58%;width:8%"></div>
+						<div class="h-timeline-bar" id="bar-uvic" style="left:66%;width:2%"></div>
+						<div class="h-timeline-bar" id="bar-umg" style="left:68%;width:6%"></div>
+						<div class="h-timeline-bar" id="bar-yelp" style="left:74%;width:12%"></div>
+						<div class="h-timeline-bar" id="bar-quora" style="left:86%;width:14%"></div>
+
+						<!-- End year marker -->
+						<div class="h-timeline-years"><span style="left:94%">2026</span></div>
+
+						<div class="h-timeline-entry below" data-bar="bar-bsc" style="left:6%">
+							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2004</div><div class="h-timeline-role">BSc</div><div class="h-timeline-org"><a href="https://aut.ac.ir/en">Tehran Polytechnic</a></div></div>
+						</div>
+						<div class="h-timeline-entry above" data-bar="bar-ipm" style="left:22%">
+							<div class="h-timeline-card"><div class="h-timeline-date">2008</div><div class="h-timeline-role">Research Assistant</div><div class="h-timeline-org"><a href="http://www.ipm.ac.ir/">IPM</a></div></div>
+							<div class="h-timeline-dot"></div>
+						</div>
+						<div class="h-timeline-entry below" data-bar="bar-msc" style="left:26%">
+							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2009</div><div class="h-timeline-role">MSc</div><div class="h-timeline-org"><a href="https://www.uwyo.edu/mathstats/">U of Wyoming</a></div></div>
+						</div>
+						<div class="h-timeline-entry above" data-bar="bar-phd" style="left:38%">
+							<div class="h-timeline-card"><div class="h-timeline-date">2012</div><div class="h-timeline-role">PhD</div><div class="h-timeline-org"><a href="https://www.uwyo.edu/mathstats/">U of Wyoming</a></div></div>
+							<div class="h-timeline-dot"></div>
+						</div>
+						<div class="h-timeline-entry below" data-bar="bar-wiu" style="left:46%">
+							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2014</div><div class="h-timeline-role">Visiting Asst Prof</div><div class="h-timeline-org"><a href="http://www.wiu.edu/cas/mathematics_and_philosophy/">Western Illinois U</a></div></div>
+						</div>
+						<div class="h-timeline-entry above" data-bar="bar-ucal" style="left:50%">
+							<div class="h-timeline-card"><div class="h-timeline-date">2015</div><div class="h-timeline-role">Postdoc</div><div class="h-timeline-org"><a href="https://science.ucalgary.ca/mathematics-statistics">U of Calgary</a></div></div>
+							<div class="h-timeline-dot"></div>
+						</div>
+						<div class="h-timeline-entry below" data-bar="bar-pims" style="left:58%">
+							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2017</div><div class="h-timeline-role">PIMS Postdoc</div><div class="h-timeline-org"><a href="https://web.pims.math.ca/sites/university-calgary">U of Calgary</a></div></div>
+						</div>
+						<div class="h-timeline-entry above" data-bar="bar-uvic" style="left:66%">
+							<div class="h-timeline-card"><div class="h-timeline-date">2019</div><div class="h-timeline-role">Postdoc</div><div class="h-timeline-org"><a href="https://www.uvic.ca/science/math-statistics">U of Victoria</a></div></div>
+							<div class="h-timeline-dot"></div>
+						</div>
+						<div class="h-timeline-entry below" data-bar="bar-umg" style="left:68%">
+							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2019</div><div class="h-timeline-role">Data Scientist</div><div class="h-timeline-org"><a href="https://www.universalmusic.com/">UMG / Ingrooves</a></div></div>
+						</div>
+						<div class="h-timeline-entry above" data-bar="bar-yelp" style="left:74%">
+							<div class="h-timeline-card"><div class="h-timeline-date">2021</div><div class="h-timeline-role">Senior Data Scientist</div><div class="h-timeline-org"><a href="https://www.yelp.com">Yelp</a></div></div>
+							<div class="h-timeline-dot"></div>
+						</div>
+						<div class="h-timeline-entry below" data-bar="bar-quora" style="left:86%">
+							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2024</div><div class="h-timeline-role">Senior Data Scientist</div><div class="h-timeline-org"><a href="https://www.quora.com">Quora</a></div></div>
+						</div>
+					</div>
 				</div>
 			</section>
+
+			<script>
+				// Highlight timeline bar on entry hover
+				document.querySelectorAll('.h-timeline-entry[data-bar]').forEach(function(entry) {
+					entry.addEventListener('mouseenter', function() {
+						var bar = document.getElementById(this.dataset.bar);
+						if (bar) bar.classList.add('highlight');
+					});
+					entry.addEventListener('mouseleave', function() {
+						var bar = document.getElementById(this.dataset.bar);
+						if (bar) bar.classList.remove('highlight');
+					});
+				});
+			</script>
+
 		</main>
 
-		<!-- Footer and social media loaded from footer.html -->
 		<footer class="site-footer">
 			<div id="footer-container"></div>
 		</footer>
@@ -347,18 +164,11 @@
 	<button class="scroll-to-top" aria-label="Scroll to top"></button>
 
 	<script>
-		// Scroll to top button functionality
 		const scrollToTopBtn = document.querySelector('.scroll-to-top');
-
 		if (scrollToTopBtn) {
 			scrollToTopBtn.addEventListener('click', () => {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
+				window.scrollTo({ top: 0, behavior: 'smooth' });
 			});
-
-			// Show/hide scroll to top button based on scroll position
 			window.addEventListener('scroll', () => {
 				if (window.pageYOffset > 300) {
 					scrollToTopBtn.style.opacity = '1';
@@ -368,8 +178,6 @@
 					scrollToTopBtn.style.pointerEvents = 'none';
 				}
 			});
-
-			// Initialize button state
 			scrollToTopBtn.style.opacity = '0';
 			scrollToTopBtn.style.pointerEvents = 'none';
 		}

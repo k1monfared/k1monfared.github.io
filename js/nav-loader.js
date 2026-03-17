@@ -1,6 +1,6 @@
 /**
- * Navigation and Footer Loader
- * Loads shared navigation and footer using innerHTML (works with file:// protocol)
+ * Navigation, Header, and Footer Loader
+ * Loads shared navigation, header, and footer using innerHTML (works with file:// protocol)
  */
 
 (function() {
@@ -33,16 +33,20 @@
 		return title.substring(0, maxLength) + '...';
 	}
 
+	// Header HTML template
+	var headerHTML = `<div class="header-content">
+	<h1 class="myTitle">KEIVAN MONFARED</h1>
+	<p class="myTitleFooter">Mathematician | Data Scientist | Communicator</p>
+</div>`;
+
 	// Navigation HTML template with dynamic path prefix
 	var navHTML = `<nav id="stickThis">
 	<div id="menu">
 		<a href="${pathPrefix}index.html">home</a>
-		<a href="${pathPrefix}computation.html">computation</a>
-		<a href="${pathPrefix}research.html">research</a>
-		<a href="${pathPrefix}teaching.html">teaching</a>
-		<a href="${pathPrefix}learning.html">learning</a>
+		<a href="${pathPrefix}math-and-cs.html">math & cs</a>
 		<a href="${pathPrefix}blog.html">blog</a>
-		<a href="${pathPrefix}contact.html">contact</a>
+		<a href="${pathPrefix}interests.html">interests</a>
+		<a href="${pathPrefix}about.html">about</a>
 	</div>
 	<div id="small_menu">
 		<!-- Page-specific sub-menu will be inserted here by each page -->
@@ -56,8 +60,15 @@
 	<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ" target="_blank" aria-label="Google Scholar" class="social-icon social-scholar"></a>
 	<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K" target="_blank" aria-label="arXiv" class="social-icon social-arxiv"></a>
 	<a href="http://k1monfared.wordpress.com/" target="_blank" aria-label="WordPress" class="social-icon social-wordpress"></a>
-</div>
-<p class="footer-credit">Designed by Shaghayegh Khodaei and Keivan Monfared</p>`;
+</div>`;
+
+	// Load header
+	function loadHeader() {
+		var headerContainer = document.querySelector('.site-header');
+		if (headerContainer) {
+			headerContainer.innerHTML = headerHTML;
+		}
+	}
 
 	// Load navigation
 	function loadNavigation() {
@@ -196,10 +207,12 @@
 	// Initialize when document is ready
 	if (document.readyState === 'loading') {
 		document.addEventListener('DOMContentLoaded', function() {
+			loadHeader();
 			loadNavigation();
 			loadFooter();
 		});
 	} else {
+		loadHeader();
 		loadNavigation();
 		loadFooter();
 	}

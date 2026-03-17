@@ -20,7 +20,8 @@
 .researchImage {
     border: none;
     padding: 0%;
-    float: left margin-right: 0px;
+    float: left;
+    margin-right: 0px;
     margin-left: 0px;
     clip-path: circle(49% at center);
 }
