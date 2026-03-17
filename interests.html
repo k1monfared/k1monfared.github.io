@@ -44,28 +44,34 @@
 
 			<div class="interests-grid">
 				<div class="interest-card">
-					<div class="interest-icon">&#127926;</div>
+					<div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
 					<h3>Music</h3>
 					<p>Santoor (Iranian hammered dulcimer). A 72-string instrument with roots in Persian classical music.</p>
 				</div>
 
 				<div class="interest-card">
-					<div class="interest-icon">&#9997;</div>
+					<div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 11-4 4L7.5 12.5 2 22l9.5-5.5L17 11a2.83 2.83 0 004-4l-4-4z"/><path d="M2 22l5-5"/></svg></div>
 					<h3>Calligraphy</h3>
 					<p>Persian calligraphy and lettering arts.</p>
 				</div>
 
 				<div class="interest-card">
-					<div class="interest-icon">&#129692;</div>
+					<div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
 					<h3>Woodworking</h3>
 					<p>Crafting functional objects from wood.</p>
 				</div>
 
 				<div class="interest-card">
-					<div class="interest-icon">&#127947;</div>
-					<h3>Triathlon</h3>
-					<p>Olympic distance triathlon training and racing. <a href="blog/2025_11_12_16_week_olympic_triathlon_training_plan.html">Training plan</a>.</p>
+					<div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+					<h3>Photography</h3>
+					<p>Landscape and street photography.</p>
 				</div>
+
+				<a href="learning.html" class="interest-card" style="text-decoration:none;">
+					<div class="interest-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+					<h3>Continuous Learning</h3>
+					<p>Courses and self-study across ML, signal processing, dynamical systems, and philosophy.</p>
+				</a>
 			</div>
 		</main>
 
@@ -74,23 +80,14 @@
 		</footer>
 	</div>
 
-	<!-- Scroll to top button (mobile only) -->
 	<button class="scroll-to-top" aria-label="Scroll to top"></button>
-
 	<script>
 		const scrollToTopBtn = document.querySelector('.scroll-to-top');
 		if (scrollToTopBtn) {
-			scrollToTopBtn.addEventListener('click', () => {
-				window.scrollTo({ top: 0, behavior: 'smooth' });
-			});
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 			window.addEventListener('scroll', () => {
-				if (window.pageYOffset > 300) {
-					scrollToTopBtn.style.opacity = '1';
-					scrollToTopBtn.style.pointerEvents = 'auto';
-				} else {
-					scrollToTopBtn.style.opacity = '0';
-					scrollToTopBtn.style.pointerEvents = 'none';
-				}
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
 			});
 			scrollToTopBtn.style.opacity = '0';
 			scrollToTopBtn.style.pointerEvents = 'none';

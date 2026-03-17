@@ -59,7 +59,6 @@
 	<a href="http://www.linkedin.com/in/k1monfared" target="_blank" aria-label="LinkedIn" class="social-icon social-linkedin"></a>
 	<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ" target="_blank" aria-label="Google Scholar" class="social-icon social-scholar"></a>
 	<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K" target="_blank" aria-label="arXiv" class="social-icon social-arxiv"></a>
-	<a href="http://k1monfared.wordpress.com/" target="_blank" aria-label="WordPress" class="social-icon social-wordpress"></a>
 </div>`;
 
 	// Load header

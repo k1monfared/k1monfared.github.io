@@ -73,13 +73,13 @@
 }
 
 html {
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 70px;
     scroll-behavior: smooth;
 }
 
 /* Ensure anchored sections clear the sticky nav */
 [id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 70px;
 }
 
 * {
@@ -1089,7 +1089,7 @@ button:hover {
 /* ===== Domain section (math-and-cs) ===== */
 .domain-section {
     margin-bottom: 3rem;
-    padding-top: 1rem;
+    padding-top: 0;
 }
 
 
@@ -1278,36 +1278,57 @@ button:hover {
 }
 
 .interest-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
+    padding: 1.25rem;
     transition: all 0.3s ease;
 }
 
 .interest-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 16px var(--shadow-color);
+    transform: translateY(-2px);
 }
 
 .interest-card .interest-icon {
-    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     margin-bottom: 0.75rem;
+    opacity: 0.4;
+}
+
+.interest-card .interest-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--text-secondary);
 }
 
 .interest-card h3 {
     color: var(--text-primary);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 0.4rem;
 }
 
-.interest-card p {
+.interest-card p,
+.interest-card li {
     color: var(--text-muted);
     font-size: 0.85rem;
     line-height: 1.5;
     margin: 0;
+}
+
+.interest-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.interest-card ul li {
+    padding: 0.2rem 0;
 }
 
 /* ===== About page ===== */
@@ -1345,16 +1366,25 @@ button:hover {
     color: var(--text-secondary);
 }
 
-.collaborators-list {
-    column-count: 2;
-    column-gap: 2rem;
-    margin-top: 0.5rem;
+.resume-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.collaborators-list p {
-    margin: 0.3rem 0;
+.resume-table td {
+    padding: 0.45rem 0;
     color: var(--text-secondary);
-    break-inside: avoid;
+    font-size: 0.95rem;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.resume-table .resume-date {
+    width: 100px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    padding-right: 1rem;
 }
 
 @media (max-width: 600px) {

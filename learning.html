@@ -2,184 +2,120 @@
 <html lang="en">
 
 <head>
-		<!-- Apply saved theme immediately to prevent flash -->
 	<script>
 		(function() {
-			// Helper to get cookie value
 			function getCookie(name) {
 				const value = `; ${document.cookie}`;
 				const parts = value.split(`; ${name}=`);
 				if (parts.length === 2) return parts.pop().split(';').shift();
 				return null;
 			}
-
-			// Cookie is more reliable with file:// protocol, check it first
 			let theme = getCookie('theme');
-
-			// Fall back to localStorage if cookie not set (for http:// served sites)
 			if (!theme) {
-				try {
-					theme = localStorage.getItem('theme');
-				} catch (e) {
-					// localStorage not available
-				}
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
 			}
-
-			// Default to dark if nothing found
 			theme = theme || 'dark';
-
 			document.documentElement.setAttribute('data-theme', theme);
 		})();
 	</script>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
 	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
 	<title>Keivan Monfared - Learning</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			for (i = 1; i < 200; i++) // i is the IDnumber of papers. See next line.
-			{
-				toggleSlowly('paper' + i);
-			}
-		});
-
-		function toggleSlowly(elementId) {
-			$("#" + elementId).slideToggle(500);
-		}
-	</script>
-	<!-- load mathjax scripts -->
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	<!-- Zoom in and zoom out -->
-	<script type="text/javascript">
-		function zoomin(it) {
-			{
-				it.width = 2 * it.width;
-			}
-		}
-
-		function zoomout(it) {
-			{
-				it.width = .5 * it.width;
-			}
-		}
-	</script>
-	<!-- Navigation loader script -->
 	<script type="text/javascript" src="js/nav-loader.js"></script>
-	<!-- Theme toggle script -->
 	<script type="text/javascript" src="js/theme-toggle.js"></script>
 </head>
 
 <body>
 	<div class="bg-gradient"></div>
 
-	<header class="site-header">
-		<div class="header-content">
-			<h1 class="myTitle">KEIVAN MONFARED</h1>
-			<p class="myTitleFooter">Mathematics and Data Science</p>
-		</div>
-	</header>
+	<header class="site-header"></header>
 
 	<div id="stick-here"></div>
-
-	<!-- Navigation loaded from nav.html -->
 	<div id="nav-container"></div>
 
 	<div class="container">
-		<div class="archive-banner">
-			This page has been archived. Visit <a href="about.html#learning">About &rarr; Learning</a> for the current version.
-		</div>
 		<script type="text/javascript">
-			// Page-specific sub-menu for learning page
 			window.addEventListener('navigationLoaded', function() {
 				document.getElementById('small_menu').innerHTML =
-					'<a href=\"#stem\">STEM</a>' +
-					'<a href=\"#humanities\">Humanities</a>' +
-					'<a href=\"#arts\">Arts</a>';
+					'<a href="#stem">STEM</a>' +
+					'<a href="#humanities">humanities</a>';
 			});
 		</script>
-				<main class="main-content">
-				<div id="stem"> <br><br> </div>
-				<h3>STEM<h3>
-						<ul>
-							<li>
-								<a href="https://www.youtube.com/watch?v=ycJEoqmQvwg&list=PLbN57C5Zdl6j_qJA-pARJnKsmROzPnO9V">Nonlinear Dynamical Systems and Chaos</a>, by <a href="http://www.stevenstrogatz.com/">Steven Strogatz</a>
-							</li>
-							<li>
-								<a href="https://www.coursera.org/learn/dsp">Digital Signal Processing</a>, by <a href="    http://lcav.epfl.ch/people/paolo.prandoni">Paolo Prandoni</a> and <a
-									href="    http://lcav.epfl.ch/people/paolo.prandoni">Martin Vetterli</a>
-							</li>
-							<li>
-								<a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a>, by <a href="https://www.andrewng.org/">Andrew Ng</a> &#10004;
-							</li>
-							<li>
-								<a href="https://www.coursera.org/specializations/deep-learning">Deep Learning</a>, by <a href="https://www.andrewng.org/">Andrew Ng</a>
-								<ol>
-									<li> Neural Networks and Deep Learning &#10004; </li>
-									<li> Improving Deep Neural Networks </li>
-									<li> Structuring Machine Learning Projects </li>
-									<li> Convolutional Neural Networks </li>
-									<li> Sequence Models </li>
-								</ol>
-							</li>
-							<li>
-								<a href="https://classroom.udacity.com/courses/ud185">Secure and Private AI</a>, by <a href="https://twitter.com/iamtrask">Andrew Trask</a>
-								<ol>
-									<li> Federated Learning &#10004; </li>
-									<li> Differential Privacy &#10004; </li>
-									<li> Encrypterd Computation </li>
-								</ol>
-							</li>
-						</ul>
-						<div id="humanities"> <br><br> </div>
-						<h3>Humanities<h3>
-								<ul>
-									<li>
-										<a href="https://www.youtube.com/watch?v=kBdfcR-8hEY&list=PL30C13C91CFFEFEA6">Justice</a>, by <a href="https://scholar.harvard.edu/sandel/home">Michael J. Sandel</a>
-									</li>
-								</ul>
-								<div id="arts"> <br><br> </div>
-								<h3>Arts<h3>
-										<ul>
-											<li> Santour </li>
-											<li> Calligraphy </li>
-										</ul>
-					</main>
 
-		<!-- Footer and social media loaded from footer.html -->
+		<main class="main-content">
+
+			<section id="stem" class="domain-section">
+				<h2>STEM</h2>
+
+				<div class="section-block">
+					<ul>
+						<li>
+							<a href="https://www.coursera.org/learn/machine-learning" target="_blank">Machine Learning</a>
+							by <a href="https://www.andrewng.org/" target="_blank">Andrew Ng</a>
+						</li>
+						<li>
+							<a href="https://www.coursera.org/specializations/deep-learning" target="_blank">Deep Learning Specialization</a>
+							by <a href="https://www.andrewng.org/" target="_blank">Andrew Ng</a>
+							<ul>
+								<li>Neural Networks and Deep Learning</li>
+								<li>Improving Deep Neural Networks</li>
+								<li>Structuring Machine Learning Projects</li>
+								<li>Convolutional Neural Networks</li>
+								<li>Sequence Models</li>
+							</ul>
+						</li>
+						<li>
+							<a href="https://www.coursera.org/learn/dsp" target="_blank">Digital Signal Processing</a>
+							by Paolo Prandoni &amp; Martin Vetterli
+						</li>
+						<li>
+							<a href="https://www.youtube.com/watch?v=ycJEoqmQvwg&list=PLbN57C5Zdl6j_qJA-pARJnKsmROzPnO9V" target="_blank">Nonlinear Dynamical Systems and Chaos</a>
+							by <a href="http://www.stevenstrogatz.com/" target="_blank">Steven Strogatz</a>
+						</li>
+						<li>
+							<a href="https://classroom.udacity.com/courses/ud185" target="_blank">Secure and Private AI</a>
+							by Andrew Trask
+							<ul>
+								<li>Federated Learning</li>
+								<li>Differential Privacy</li>
+								<li>Encrypted Computation</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="humanities" class="domain-section">
+				<h2>Humanities</h2>
+
+				<div class="section-block">
+					<ul>
+						<li>
+							<a href="https://www.youtube.com/watch?v=kBdfcR-8hEY&list=PL30C13C91CFFEFEA6" target="_blank">Justice</a>
+							by <a href="https://scholar.harvard.edu/sandel/home" target="_blank">Michael J. Sandel</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+		</main>
+
 		<footer class="site-footer">
 			<div id="footer-container"></div>
 		</footer>
 	</div>
 
-	<!-- Scroll to top button (mobile only) -->
 	<button class="scroll-to-top" aria-label="Scroll to top"></button>
-
 	<script>
-		// Scroll to top button functionality
 		const scrollToTopBtn = document.querySelector('.scroll-to-top');
-
 		if (scrollToTopBtn) {
-			scrollToTopBtn.addEventListener('click', () => {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
-			});
-
-			// Show/hide scroll to top button based on scroll position
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 			window.addEventListener('scroll', () => {
-				if (window.pageYOffset > 300) {
-					scrollToTopBtn.style.opacity = '1';
-					scrollToTopBtn.style.pointerEvents = 'auto';
-				} else {
-					scrollToTopBtn.style.opacity = '0';
-					scrollToTopBtn.style.pointerEvents = 'none';
-				}
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
 			});
-
-			// Initialize button state
 			scrollToTopBtn.style.opacity = '0';
 			scrollToTopBtn.style.pointerEvents = 'none';
 		}
