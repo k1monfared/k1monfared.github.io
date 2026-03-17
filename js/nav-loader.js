@@ -9,7 +9,7 @@
 	var currentPath = window.location.pathname;
 
 	// Check if we're in a subdirectory
-	if (currentPath.includes('/blog/') || currentPath.match(/\/blog\/[^\/]+\.html$/)) {
+	if (currentPath.includes('/blog/') || currentPath.match(/\/blog\/[^\/]+\.html$/) || currentPath.includes('/interests/')) {
 		pathPrefix = '../';
 	}
 
@@ -163,6 +163,7 @@
 
 		// Check if we're in a blog post (in blog subdirectory but not blog.html)
 		var inBlogPost = currentPath.includes('/blog/') && currentPage !== 'blog.html';
+		var inInterestPage = currentPath.includes('/interests/');
 
 		// Find the menu links that match current page
 		var menuLinks = document.querySelectorAll('#menu a');
@@ -170,8 +171,8 @@
 			var href = link.getAttribute('href');
 			var linkPage = href.split('/').pop(); // Get filename without path prefix
 
-			// Match exact page or blog section
-			if (linkPage === currentPage || (inBlogPost && linkPage === 'blog.html')) {
+			// Match exact page, blog section, or interests section
+			if (linkPage === currentPage || (inBlogPost && linkPage === 'blog.html') || (inInterestPage && linkPage === 'interests.html')) {
 				// Mark this link as active
 				link.classList.add('active');
 			}
