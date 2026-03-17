@@ -37,6 +37,26 @@
 	<div id="nav-container"></div>
 
 	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				var topic = new URLSearchParams(window.location.search).get('topic') || '';
+				var items = [
+					{ name: 'music', label: 'music' },
+					{ name: 'calligraphy', label: 'calligraphy' },
+					{ name: 'woodworking', label: 'woodworking' },
+					{ name: 'photography', label: 'photography' },
+					{ name: 'learning', label: 'learning' }
+				];
+				var html = '';
+				items.forEach(function(item) {
+					var href = item.name === 'learning' ? '../learning.html' : 'page.html?topic=' + item.name;
+					var cls = item.name === topic ? ' class="sub-active"' : '';
+					html += '<a href="' + href + '"' + cls + '>' + item.label + '</a>';
+				});
+				document.getElementById('small_menu').innerHTML = html;
+			});
+		</script>
+
 		<main class="main-content">
 			<div id="md-content" class="domain-section"></div>
 		</main>

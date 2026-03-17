@@ -1250,6 +1250,8 @@ button:hover {
 /* ===== Sub-menu for math-and-cs ===== */
 #small_menu a.sub-active {
     color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 /* ===== Publication tags (inline, for "In Progress" etc.) ===== */
