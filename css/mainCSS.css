@@ -115,7 +115,6 @@ a:visited {
 
 a:hover {
     color: var(--link-hover);
-    text-decoration: underline;
 }
 
 a:active {
@@ -1381,13 +1380,6 @@ button:hover {
     color: var(--text-secondary);
 }
 
-.contact-links a {
-    text-decoration: none;
-}
-
-.contact-links a:hover {
-    text-decoration: none;
-}
 
 .resume-table {
     width: 100%;
@@ -1400,14 +1392,6 @@ button:hover {
     font-size: 0.95rem;
     vertical-align: top;
     line-height: 1.5;
-}
-
-.resume-table a {
-    text-decoration: none;
-}
-
-.resume-table a:hover {
-    text-decoration: none;
 }
 
 .resume-table .resume-date {
