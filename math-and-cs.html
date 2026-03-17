@@ -51,6 +51,7 @@
 					'<a href="#neuroscience">neuroscience</a>' +
 					'<a href="#mathematics">matrix theory</a>' +
 					'<a href="#graph-theory">graph theory</a>' +
+					'<a href="#shell-bash">shell</a>' +
 					'<a href="#signal-processing">signal processing</a>' +
 					'<a href="#teaching">teaching</a>';
 			});
@@ -170,8 +171,8 @@
 				</div>
 				<script>
 					renderTalks('neuro-talks', [
-						{ title: 'Graph Clustering Problems Arising in Neuroscience', url: 'research/talks/201906_Vancouver_CanaDAM.pdf', venue: 'CanaDAM', year: '2019', location: 'Vancouver' },
-						{ title: 'Graph partitioning problems arising in neuroscience', venue: 'PDMW', year: '2018', location: 'Brandon' }
+						{ title: 'Graph Clustering Problems Arising in Neuroscience — Results', venue: 'CanaDAM', year: '2019', location: 'Vancouver', slidesUrl: 'research/talks/201906_Vancouver_CanaDAM.pdf', abstractUrl: 'https://canadam.math.ca/2019/program/abs/pdf/gi-khm.pdf' },
+						{ title: 'Graph partitioning problems arising in neuroscience — Questions', venue: 'PDMW', year: '2018', location: 'Brandon', abstractUrl: 'https://www.brandonu.ca/pdmw/files/PDMWprogram2018.pdf' }
 					]);
 				</script>
 
@@ -237,6 +238,14 @@
 							takeaways: '<b>Problem:</b> Can a symmetric matrix have a prescribed graph, prescribed spectrum, and all eigenvectors with no zero entries simultaneously?<br><b>Key result:</b> Yes \u2014 for every connected graph of order \\(n\\) and any \\(n\\) distinct real numbers, such a matrix exists. This is equivalent to requiring the Duarte property at every vertex simultaneously.<br><b>Method:</b> Iterative application of the Jacobian method, perturbing one vertex at a time to achieve the nowhere-zero eigenbasis property while preserving graph and spectrum.'
 						},
 						{
+							title: 'The maximum multiplicity of an eigenvalue of symmetric matrices with a given graph',
+							tag: 'Not Published',
+							pdfUrl: 'research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.pdf',
+							authors: 'K. Hassani Monfared, S. Mallik.',
+							abstract: 'For a graph G, M(G) denotes the maximum multiplicity occurring of an eigenvalue of a symmetric matrix whose zero-nonzero pattern is given by the edges of G. We introduce two combinatorial graph parameters T^-(G) and T^+(G) that give a lower and an upper bound for M(G) respectively, and we show that these bounds are sharp.',
+							takeaways: '<b>Problem:</b> Determine tight combinatorial bounds on the maximum multiplicity \\(M(G)\\) of an eigenvalue across all symmetric matrices whose pattern is prescribed by a graph \\(G\\).<br><b>Key result:</b> Two new graph parameters \\(T^-(G)\\) and \\(T^+(G)\\), defined via tree covers, satisfy \\(T^-(G) \\leq M(G) \\leq T^+(G)\\) for all graphs, and these bounds are sharp.<br><b>Method:</b> Generalization of path-cover-based parameters by replacing induced paths with induced trees, with rank arguments on principal submatrices.'
+						},
+						{
 							title: 'The \\(\\lambda\\)-\\(\\tau\\) structured inverse eigenvalue problem',
 							url: 'http://dx.doi.org/10.1080/03081087.2014.1003527',
 							tag: 'LMA 2015',
@@ -299,10 +308,24 @@
 				</div>
 				<script>
 					renderTalks('mat-talks', [
-						{ title: 'Inverse Polynomial Spectral Problems for Graphs', venue: 'ILAS', year: '2019', location: 'Rio de Janeiro' },
-						{ title: 'An Analog of Matrix Tree Theorem', venue: 'CMS', year: '2019', location: 'Regina' },
-						{ title: 'Using Jacobian Method in SIEPs', venue: 'ILAS', year: '2016', location: 'Leuven' },
-						{ title: 'The Jacobian Method', url: 'https://www.youtube.com/watch?v=a7-UVsDJ-xc', venue: 'JMM', year: '2014', location: 'Baltimore' }
+						{ title: 'Inverse Polynomial Spectral Problems for Graphs', venue: 'ILAS', year: '2019', location: 'Rio de Janeiro', abstractUrl: 'http://ilas2019.org/wp-content/uploads/2019/06/ILAS2019_FULL_PROGRAM_20190606.pdf' },
+						{ title: 'An Analog of Matrix Tree Theorem for Signless Laplacians', venue: 'CMS Summer Meeting', year: '2019', location: 'Regina', slidesUrl: 'research/201906_Regina_CMS.pdf', abstractUrl: 'https://cms.math.ca/Events/summer19/abs/pdf/mta-km.pdf' },
+						{ title: 'Some inverse eigenvalue problems for graphs', venue: 'WCLAM', year: '2016', location: 'Winnipeg', abstractUrl: 'http://server.math.umanitoba.ca/~kirkland/WCLAM_2016_Program.pdf' },
+						{ title: 'Using Jacobian method to solve inverse eigenvalue problems for graphs', venue: 'ILAS', year: '2016', location: 'Leuven', abstractUrl: 'https://ilas2016.cs.kuleuven.be/bookofabstracts.pdf' },
+						{ title: 'Using the Jacobian method to solve SIEPs', venue: 'JMM', year: '2016', location: 'Seattle' },
+						{ title: 'Several examples on the Jacobian method', venue: 'CanaDAM', year: '2015', location: 'Saskatoon', abstractUrl: 'http://canadam.math.ca/2015/program/abs/pdf/gm2-khm.pdf' },
+						{ title: 'Nowhere-zero eigenbasis for a matrix with prescribed graph and spectrum', venue: 'JMM', year: '2015', location: 'San Antonio', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2168_abstracts/1106-15-1418.pdf' },
+						{ title: 'The inverse principal perrank characteristic sequence problems', venue: 'GRWC', year: '2014', location: 'Denver', abstractUrl: 'https://sites.google.com/site/rmgpgrwc/problem-gardens/2014-InversePrincipalPerrankSequence.pdf' },
+						{ title: 'Building vibrating systems using linear algebra and calculus', venue: 'Student Colloquium, Western Illinois U', year: '2014', location: 'Macomb' },
+						{ title: 'Structured inverse eigenvalue problems', venue: 'Colloquium, Western Illinois U', year: '2014', location: 'Macomb' },
+						{ title: 'Skew-symmetric SIEP and the role of the Jacobian method', venue: 'ACNT Seminar, U of Wyoming', year: '2014', location: 'Laramie' },
+						{ title: 'The Jacobian method and structured inverse eigenvalue problems', venue: 'JMM', year: '2014', location: 'Baltimore', videoUrl: 'https://www.youtube.com/watch?v=a7-UVsDJ-xc', slidesUrl: 'research/talks/PhD-Defense.pdf', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2160_abstracts/1096-15-2004.pdf' },
+						{ title: 'Using the Jacobian method in SIEPs', venue: 'U of Colorado Denver', year: '2013', location: 'Denver' },
+						{ title: 'A structured inverse eigenvalue problem', venue: 'MathFest', year: '2013', location: 'Hartford' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2013', location: 'Laramie', slidesUrl: 'research/talks/lambda-mu-long.pdf' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMMC', year: '2013', location: 'Laramie', slidesUrl: 'research/talks/lambda-mu-short.pdf' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2012', location: 'Denver' },
+						{ title: 'Constructing matrices with interlacing spectral data and graph', venue: 'MIGHTY LIII', year: '2012', location: 'Iowa State' }
 					]);
 				</script>
 
@@ -375,7 +398,8 @@
 				</div>
 				<script>
 					renderCode('gt-code', [
-						{ title: 'Inverse eigenvalue solvers', url: 'https://github.com/k1monfared/lambda_siep', description: 'Graph-spectrum construction tools' }
+						{ title: 'Inverse eigenvalue solvers', url: 'https://github.com/k1monfared/lambda_siep', description: 'Graph-spectrum construction tools' },
+						{ title: 'Permanents and cycle analysis', url: 'https://github.com/k1monfared/matlab_octave_graph_routines', description: 'Permanent rank computation, generalized cycles of graphs' }
 					]);
 				</script>
 
@@ -385,12 +409,22 @@
 				</div>
 				<script>
 					renderTalks('gt-talks', [
-						{ title: 'Permanent ranks of matrices', venue: '47th SE Conference', year: '2016', location: 'Boca Raton' },
-						{ title: 'On the principal permanent rank sequences', venue: 'JMM', year: '2016', location: 'Seattle' },
-						{ title: 'Several examples on the Jacobian method', venue: 'CanaDAM', year: '2015', location: 'Saskatoon' },
-						{ title: 'Constructing matrices with interlacing spectral data', venue: 'MIGHTY LIII', year: '2012', location: 'Iowa State' }
+						{ title: 'Permanent ranks of matrices and generalized cycles of graphs', venue: '47th SE Conference', year: '2016', location: 'Boca Raton', slidesUrl: 'research/talks/Perrank.pdf', abstractUrl: 'http://science.fau.edu/combinatorics/MonfaredKevian1.pdf' },
+						{ title: 'On the principal permanent rank characteristic sequences of graphs', venue: 'JMM', year: '2016', location: 'Seattle', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2181_abstracts/1116-05-638.pdf' },
+						{ title: 'What do generalized cycles of a graph tell about each other?', venue: 'Seminar, U of Calgary', year: '2015', location: 'Calgary' },
+						{ title: 'On the permanent rank of matrices', venue: 'JMM', year: '2012', location: 'Boston', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2138_abstracts/1077-05-2438.pdf' },
+						{ title: 'Why is the permanent rank important?', venue: 'Graduate Student Combinatorics Conference', year: '2012', location: 'UIUC' },
+						{ title: 'Perrank vs rank', venue: 'RMDMD', year: '2011', location: 'Laramie' }
 					]);
 				</script>
+			</section>
+
+			<!-- ===== Shell & Bash ===== -->
+			<section id="shell-bash" class="domain-section">
+				<h2>Shell & Bash</h2>
+				<p class="domain-intro">
+					Utilities for script parallelization, display and input manipulation, I/O device controls, and quick command-line tools.
+				</p>
 			</section>
 
 			<!-- ===== Signal Processing ===== -->
@@ -435,6 +469,21 @@
 						<li>"He <b>cares about his students and enjoys coming to teach</b>."</li>
 					</ul>
 				</div>
+
+				<div class="section-block">
+					<h3>Outreach Talks</h3>
+					<ul id="teaching-talks"></ul>
+				</div>
+				<script>
+					renderTalks('teaching-talks', [
+						{ title: 'Counting from one', venue: 'High School Math Camp, U of Calgary', year: '2017', location: 'Calgary' },
+						{ title: 'Counting to infinity', venue: 'High School Math Camp, U of Calgary', year: '2017', location: 'Calgary' },
+						{ title: 'Real life applications of calculus and linear algebra', venue: 'Student Colloquium, U of Calgary', year: '2016', location: 'Calgary' },
+						{ title: 'Touching infinity', venue: 'Junior Math Contestants, U of Calgary', year: '2016', location: 'Calgary' },
+						{ title: 'On mathematics education', venue: 'Parviz Shahriari Foundation', year: '2008', location: 'Tehran' },
+						{ title: 'Biweekly math problem solving seminars', venue: 'Amirkabir U of Technology', year: '2006', location: 'Tehran' }
+					]);
+				</script>
 
 				<p style="margin-top: 1rem;"><a href="teaching.html">Full teaching record &rarr;</a></p>
 			</section>

@@ -80,7 +80,7 @@ function renderPapers(containerId, papers) {
 
 /**
  * Render talk items.
- * Fields: title, url, venue, year, location
+ * Fields: title, url, venue, year, location, slidesUrl, abstractUrl, videoUrl
  */
 function renderTalks(containerId, talks) {
 	var ul = document.getElementById(containerId);
@@ -98,6 +98,9 @@ function renderTalks(containerId, talks) {
 		if (t.venue) meta += '<span class="paper-venue">' + t.venue + '</span>';
 		if (t.year) meta += '<span class="paper-venue">' + t.year + '</span>';
 		if (t.location) meta += '<span class="paper-venue">' + t.location + '</span>';
+		if (t.slidesUrl) meta += '<a class="paper-action-btn" href="' + t.slidesUrl + '" target="_blank">' + ICONS.pdf + 'Slides</a>';
+		if (t.abstractUrl) meta += '<a class="paper-action-btn" href="' + t.abstractUrl + '" target="_blank">' + ICONS.link + 'Abstract</a>';
+		if (t.videoUrl) meta += '<a class="paper-action-btn" href="' + t.videoUrl + '" target="_blank">' + ICONS.link + 'Video</a>';
 		meta += '</div>';
 
 		li.innerHTML = '<div class="paper-header">' +
