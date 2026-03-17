@@ -1207,6 +1207,12 @@ button:hover {
     color: var(--link-default);
 }
 
+.paper-action-btn.active {
+    background: var(--bg-button-hover);
+    border-color: var(--border-accent);
+    color: var(--link-default);
+}
+
 .paper-action-btn svg {
     width: 12px;
     height: 12px;
@@ -1279,11 +1285,9 @@ button:hover {
 
 .interest-card {
     padding: 1.25rem;
-    transition: all 0.3s ease;
 }
 
 .interest-card:hover {
-    transform: translateY(-2px);
 }
 
 .interest-card .interest-icon {

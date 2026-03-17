@@ -174,14 +174,19 @@ function toggleSlowly(elementId) {
 	var el = document.getElementById(elementId);
 	if (!el) return;
 
+	// Find the button that triggered this toggle
+	var btn = document.querySelector('[onclick*="' + elementId + '"]');
+
 	if (el.classList.contains('expanded')) {
 		el.style.maxHeight = el.scrollHeight + 'px';
 		el.offsetHeight;
 		el.style.maxHeight = '0';
 		el.classList.remove('expanded');
+		if (btn) btn.classList.remove('active');
 	} else {
 		el.classList.add('expanded');
 		el.style.maxHeight = el.scrollHeight + 'px';
+		if (btn) btn.classList.add('active');
 		var handler = function() {
 			el.style.maxHeight = 'none';
 			el.removeEventListener('transitionend', handler);
