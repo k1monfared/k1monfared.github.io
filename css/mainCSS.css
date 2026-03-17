@@ -73,13 +73,13 @@
 }
 
 html {
-    scroll-padding-top: 70px;
+    scroll-padding-top: 62px;
     scroll-behavior: smooth;
 }
 
 /* Ensure anchored sections clear the sticky nav */
 [id] {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 62px;
 }
 
 * {
