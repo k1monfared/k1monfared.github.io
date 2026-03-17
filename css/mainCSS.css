@@ -1370,6 +1370,14 @@ button:hover {
     color: var(--text-secondary);
 }
 
+.contact-links a {
+    text-decoration: none;
+}
+
+.contact-links a:hover {
+    text-decoration: none;
+}
+
 .resume-table {
     width: 100%;
     border-collapse: collapse;
