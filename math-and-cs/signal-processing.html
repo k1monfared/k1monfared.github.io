@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+			let theme = getCookie('theme');
+			if (!theme) {
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+			}
+			theme = theme || 'dark';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Signal Processing</title>
+	<!-- Vanilla JS utilities + templates -->
+	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="machine-learning.html">machine learning</a>' +
+					'<a href="data-science.html">data science</a>' +
+					'<a href="neuroscience.html">neuroscience</a>' +
+					'<a href="matrix-theory.html">matrix theory</a>' +
+					'<a href="graph-theory.html">graph theory</a>' +
+					'<a href="shell-bash.html">shell</a>' +
+					'<a href="signal-processing.html" class="sub-active">signal processing</a>' +
+					'<a href="teaching.html">teaching</a>';
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section id="signal-processing" class="domain-section">
+				<h2>Signal Processing</h2>
+				<p class="domain-intro">
+					Digital signal processing techniques applied to neuroscience and data analysis: mutual information, moving average &amp; filtering, Fourier transforms, power spectral density, and cross-correlation.
+				</p>
+
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="sp-code"></ul>
+				</div>
+				<script>
+					renderCode('sp-code', [
+						{ title: 'Signal processing routines', url: 'https://github.com/k1monfared/clustering/tree/main/matlab_octave_graph_routines', description: 'Mutual information, moving average, filtering, Fourier transforms, power spectral density, cross-correlation' }
+					], '../images/signal.png');
+				</script>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>

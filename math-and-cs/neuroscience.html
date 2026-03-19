@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+			let theme = getCookie('theme');
+			if (!theme) {
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+			}
+			theme = theme || 'dark';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Computational Neuroscience</title>
+	<!-- Vanilla JS utilities + templates -->
+	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- MathJax for paper abstracts -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="machine-learning.html">machine learning</a>' +
+					'<a href="data-science.html">data science</a>' +
+					'<a href="neuroscience.html" class="sub-active">neuroscience</a>' +
+					'<a href="matrix-theory.html">matrix theory</a>' +
+					'<a href="graph-theory.html">graph theory</a>' +
+					'<a href="shell-bash.html">shell</a>' +
+					'<a href="signal-processing.html">signal processing</a>' +
+					'<a href="teaching.html">teaching</a>';
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section id="neuroscience" class="domain-section">
+				<h2>Computational Neuroscience</h2>
+				<p class="domain-intro">
+					Analyzing brain networks using EEG/LFP and fMRI data. Community detection in neural recordings, epileptic seizure analysis, and dynamical systems models of brain activity. Collaboration with Hotchkiss Brain Institute at University of Calgary.
+				</p>
+
+				<div class="section-block">
+					<h3>Papers</h3>
+					<ul id="neuro-papers"></ul>
+				</div>
+				<script>
+					renderPapers('neuro-papers', [
+						{
+							title: 'Community structure detection during preictal and postictal hippocampal depth recordings',
+							url: 'https://arxiv.org/abs/1804.01568',
+							tag: 'Not Published',
+							pdfUrl: '../research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1804.01568',
+							thumb: '../research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.webp',
+							authors: 'Keivan Hassani Monfared, Kris Vasudevan, Jordan S. Farrell, and G. Cam Teskey.',
+							abstract: 'Anti-correlation between neuron firing rates forms communities that influence seizure behaviour.',
+							takeaways: '<b>Problem:</b> How does the community structure of functional connectivity networks in the hippocampal CA1 region change between pre-ictal and post-ictal states?<br><b>Key result:</b> Correlation-based connectivity matrices reveal significantly finer and more dynamic community structure than coherency matrices during pre-ictal and post-ictal periods, with distinct modularity patterns linked to post-ictal hypoxia.<br><b>Method:</b> Comparative application of four unsupervised community detection methods to sliding-window correlation and coherency networks derived from 16-channel LFP depth recordings.'
+						},
+						{ title: 'Brain networks as isolated dynamical systems: Using Kuramoto model to analyse EEG data', tag: 'Not Published' },
+						{ title: 'Default mode network of healthy brains', tag: 'Not Published' }
+					], '../images/computationalneuroscience.webp');
+				</script>
+
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="neuro-code"></ul>
+				</div>
+				<script>
+					renderCode('neuro-code', [
+						{ title: 'Graph analysis routines (Matlab/Octave)', url: 'https://github.com/k1monfared/clustering/tree/main/matlab_octave_graph_routines', description: 'Cross-correlation, mutual information, centrality, community detection, Kuramoto model' },
+						{ title: 'Kuramoto clustering', url: 'https://github.com/k1monfared/clustering/tree/main/kuramoto_clustering', description: 'Kuramoto model-based network clustering and community detection' }
+					], '../images/computationalneuroscience.webp');
+				</script>
+
+				<div class="section-block">
+					<h3>Talks</h3>
+					<ul id="neuro-talks"></ul>
+				</div>
+				<script>
+					renderTalks('neuro-talks', [
+						{ title: 'Graph Clustering Problems Arising in Neuroscience — Results', venue: 'CanaDAM', year: '2019', location: 'Vancouver', slidesUrl: '../research/talks/201906_Vancouver_CanaDAM.pdf', abstractUrl: 'https://canadam.math.ca/2019/program/abs/pdf/gi-khm.pdf' },
+						{ title: 'Graph partitioning problems arising in neuroscience — Questions', venue: 'PDMW', year: '2018', location: 'Brandon', abstractUrl: 'https://www.brandonu.ca/pdmw/files/PDMWprogram2018.pdf' }
+					], '../images/computationalneuroscience.webp');
+				</script>
+
+				<p class="domain-intro" style="margin-top: 0.5rem;">
+					<b>PIMS Postdoctoral Fellow</b> (2017&ndash;2018) at University of Calgary, with Kris Vasudevan, in collaboration with Cam Teskey's lab at Hotchkiss Brain Institute.
+				</p>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>

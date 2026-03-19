@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+			let theme = getCookie('theme');
+			if (!theme) {
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+			}
+			theme = theme || 'dark';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Data Science & Experimentation</title>
+	<!-- Vanilla JS utilities + templates -->
+	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- MathJax for paper abstracts -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="machine-learning.html">machine learning</a>' +
+					'<a href="data-science.html" class="sub-active">data science</a>' +
+					'<a href="neuroscience.html">neuroscience</a>' +
+					'<a href="matrix-theory.html">matrix theory</a>' +
+					'<a href="graph-theory.html">graph theory</a>' +
+					'<a href="shell-bash.html">shell</a>' +
+					'<a href="signal-processing.html">signal processing</a>' +
+					'<a href="teaching.html">teaching</a>';
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section id="data-science" class="domain-section">
+				<h2>Data Science & Experimentation</h2>
+				<p class="domain-intro">
+					Designing, launching, and analyzing controlled online experiments at scale. Reducing experimentation time and uncertainty through statistical analysis, causal inference, and predictive modeling.
+				</p>
+
+				<div class="section-block">
+					<h3>Industry</h3>
+					<ul>
+						<li><b>Quora</b> (2024&ndash;present) &mdash; Senior Data Scientist, Core Data. ML-driven experimentation, A/B testing at scale, causal inference.</li>
+						<li><b>Yelp</b> (2021&ndash;2023) &mdash; Senior Data Scientist, Consumer. Time-series analysis, forecasting, clustering, and consumer experimentation.</li>
+						<li><b>Universal Music Group / Ingrooves</b> (2019&ndash;2021) &mdash; Data Scientist. Recommender systems, predictive analytics, and targeted marketing for music distribution.</li>
+					</ul>
+				</div>
+
+				<div class="section-block">
+					<h3>Patent</h3>
+					<ul id="ds-patent"></ul>
+				</div>
+				<script>
+					renderPapers('ds-patent', [
+						{
+							title: 'Artificial intelligence identification of high-value audiences for marketing campaigns',
+							url: 'https://patents.google.com/patent/US11113707B1/en',
+							tag: 'US Patent 2021',
+							pdfUrl: '../research/2021_US11113707_Artificial_intelligence_identification_of_high-value_audiences.pdf',
+							authors: 'Shantanu K. Sharma, Daniel Cownden, James Parks, Jia Wen Tian, Keivan Monfared, Yu-Chien Huang. US 11,113,707 B1 (Isolation Network, Inc.).',
+							abstract: 'A marketing analytics pipeline that uses collaborative filtering via matrix factorization (alternating least squares) on engagement matrices to generate goal-weighted predicted engagement scores across geodemographic groups, enabling targeted marketing campaigns while maintaining privacy compliance.',
+							takeaways: '<b>Problem:</b> How can media IP asset owners automatically identify high-growth-potential audiences and target them with effective marketing campaigns across digital service providers?<br><b>Key result:</b> A pipeline that ingests transaction-level consumption data, uses an Opportunity Detection Hub to flag statistically significant growth trends, and generates geodemographic audience descriptions with suggested campaign actions. The system closes the loop by attributing campaign performance back into the model.<br><b>Method:</b> Alternating least squares matrix factorization on consumer-asset engagement data, clustered by asset category, to build offline predictive models for online high-value audience identification.'
+						}
+					], '../images/learningcurve.webp');
+				</script>
+
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="ds-code"></ul>
+				</div>
+				<script>
+					renderCode('ds-code', [
+						{ title: 'Decision theory', url: 'https://github.com/k1monfared/decision_theory', description: 'Data science problems, signal processing, economics, causality (MATLAB)' },
+						{ title: 'Alberta schools dropout', url: 'https://github.com/k1monfared/alberta_schools_dropout', description: 'GeoWomenYYC Datathon project (Jupyter)' }
+					], '../images/learningcurve.webp');
+				</script>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>

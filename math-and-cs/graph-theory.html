@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+			let theme = getCookie('theme');
+			if (!theme) {
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+			}
+			theme = theme || 'dark';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Graph Theory & Combinatorics</title>
+	<!-- Vanilla JS utilities + templates -->
+	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- MathJax for paper abstracts -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="machine-learning.html">machine learning</a>' +
+					'<a href="data-science.html">data science</a>' +
+					'<a href="neuroscience.html">neuroscience</a>' +
+					'<a href="matrix-theory.html">matrix theory</a>' +
+					'<a href="graph-theory.html" class="sub-active">graph theory</a>' +
+					'<a href="shell-bash.html">shell</a>' +
+					'<a href="signal-processing.html">signal processing</a>' +
+					'<a href="teaching.html">teaching</a>';
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section id="graph-theory" class="domain-section">
+				<h2>Graph Theory & Combinatorics</h2>
+				<p class="domain-intro">
+					Work on permanent ranks, cycle analysis, matching problems, and spectral characterizations of graph properties.
+				</p>
+
+				<div class="section-block">
+					<h3>Papers</h3>
+					<ul id="gt-papers"></ul>
+				</div>
+				<script>
+					renderPapers('gt-papers', [
+						{
+							title: 'On the principal permanent rank characteristic sequences of graphs and digraphs',
+							url: 'http://dx.doi.org/10.13001/1081-3810.3117',
+							tag: 'EJLA 2016',
+							pdfUrl: '../research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1510.05153',
+							thumb: '../research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.webp',
+							authors: 'K. Hassani Monfared, P. Horn, F.H.J. Kenter, K. Nowak, J. Sinkovic, J. Tobin.',
+							abstract: 'A characterization of all principal permanent rank sequences obtainable by nonnegative matrices and nonnegative symmetric matrices. Constructions for all realizable sequences are provided, with results for skew-symmetric matrices also included.',
+							takeaways: '<b>Problem:</b> Which binary sequences are realizable as the principal permanent rank characteristic sequence of a matrix, where each bit indicates whether some principal submatrix of that size has nonzero permanent?<br><b>Key result:</b> Complete characterizations for nonneg. matrices, nonneg. symmetric matrices, and skew-symmetric tree matrices, with explicit constructions for every realizable sequence.<br><b>Method:</b> Exploiting the duality between permanents and generalized cycles, reducing the matrix question to combinatorial conditions on matchings and cycle structures.'
+						},
+						{
+							title: 'Spectral characterization of matchings in graphs',
+							url: 'http://dx.doi.org/10.1016/j.laa.2016.02.004',
+							tag: 'LAA 2016',
+							pdfUrl: '../research/2016_Spectral_characterization_of_matchings_in_graphs.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1602.03590',
+							thumb: '../research/2016_Spectral_characterization_of_matchings_in_graphs.webp',
+							authors: 'K. Hassani Monfared, S. Mallik.',
+							abstract: 'A spectral characterization of the matching number of a graph: graphs of order \\(n\\) with matching number \\(k\\) are precisely those with maximum skew rank \\(2k\\) such that for any \\(k\\) distinct nonzero purely imaginary numbers there is a real skew-symmetric matrix with that graph and spectrum.',
+							takeaways: '<b>Problem:</b> Can the matching number of a graph be characterized purely through eigenvalues of associated skew-symmetric matrices?<br><b>Key result:</b> A connected graph has matching number \\(k\\) iff its maximum skew rank is \\(2k\\), and for any \\(k\\) distinct nonzero purely imaginary numbers the corresponding skew-symmetric matrix with that graph and spectrum exists.<br><b>Method:</b> Characterization of NEB (nearly even branching) trees and spanning tree arguments combined with the Jacobian method.'
+						},
+						{
+							title: 'Construction of real skew-symmetric matrices from interlaced spectral data, and graph',
+							url: 'http://dx.doi.org/10.1016/j.laa.2015.01.001',
+							tag: 'LAA 2015',
+							pdfUrl: '../research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1412.6085',
+							thumb: '../research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.webp',
+							authors: 'K. Hassani Monfared, S. Mallik.',
+							abstract: 'Analogues of the Duarte/Jacobian method results are presented for real skew-symmetric matrices whose graphs belong to a certain family of trees and all of their supergraphs, constructing matrices with prescribed interlaced spectral data.',
+							takeaways: '<b>Problem:</b> Can the structured inverse eigenvalue problem with interlacing data be solved for real skew-symmetric matrices (not just symmetric)?<br><b>Key result:</b> For trees with the nearly even branching (NEB) property and all their supergraphs, the skew-symmetric SIEP with interlacing data has a solution.<br><b>Method:</b> Analysis of characteristic polynomials of skew-symmetric matrices on trees, nonsingularity of the Jacobian at matrices with the Duarte property, and the Implicit Function Theorem for extension to supergraphs.'
+						},
+						{ title: 'Properties of a nonneg. reciprocal matrix and application to AHP', tag: 'Not Published' },
+						{ title: 'Dissonance networks and social influence', tag: 'Not Published' }
+					], '../images/graph.png');
+				</script>
+
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="gt-code"></ul>
+				</div>
+				<script>
+					renderCode('gt-code', [
+						{ title: 'Inverse eigenvalue solvers', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_siep', description: 'Graph-spectrum construction tools' },
+						{ title: 'Permanents and cycle analysis', url: 'https://github.com/k1monfared/clustering/tree/main/matlab_octave_graph_routines', description: 'Permanent rank computation, generalized cycles of graphs' }
+					], '../images/graph.png');
+				</script>
+
+				<div class="section-block">
+					<h3>Talks</h3>
+					<ul id="gt-talks"></ul>
+				</div>
+				<script>
+					renderTalks('gt-talks', [
+						{ title: 'Permanent ranks of matrices and generalized cycles of graphs', venue: '47th SE Conference', year: '2016', location: 'Boca Raton', slidesUrl: '../research/talks/Perrank.pdf', abstractUrl: 'http://science.fau.edu/combinatorics/MonfaredKevian1.pdf' },
+						{ title: 'On the principal permanent rank characteristic sequences of graphs', venue: 'JMM', year: '2016', location: 'Seattle', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2181_abstracts/1116-05-638.pdf' },
+						{ title: 'What do generalized cycles of a graph tell about each other?', venue: 'Seminar, U of Calgary', year: '2015', location: 'Calgary' },
+						{ title: 'On the permanent rank of matrices', venue: 'JMM', year: '2012', location: 'Boston', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2138_abstracts/1077-05-2438.pdf' },
+						{ title: 'Why is the permanent rank important?', venue: 'Graduate Student Combinatorics Conference', year: '2012', location: 'UIUC' },
+						{ title: 'Perrank vs rank', venue: 'RMDMD', year: '2011', location: 'Laramie' }
+					], '../images/graph.png');
+				</script>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>

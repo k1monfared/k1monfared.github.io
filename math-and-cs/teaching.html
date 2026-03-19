@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+			let theme = getCookie('theme');
+			if (!theme) {
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+			}
+			theme = theme || 'dark';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Teaching</title>
+	<!-- Vanilla JS utilities + templates -->
+	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="machine-learning.html">machine learning</a>' +
+					'<a href="data-science.html">data science</a>' +
+					'<a href="neuroscience.html">neuroscience</a>' +
+					'<a href="matrix-theory.html">matrix theory</a>' +
+					'<a href="graph-theory.html">graph theory</a>' +
+					'<a href="shell-bash.html">shell</a>' +
+					'<a href="signal-processing.html">signal processing</a>' +
+					'<a href="teaching.html" class="sub-active">teaching</a>';
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section id="teaching" class="domain-section">
+				<h2>Teaching</h2>
+				<p class="domain-intro">
+					Taught graduate and undergraduate courses in mathematics and statistics at University of Calgary (2015&ndash;2018), Western Illinois University (2014&ndash;2015), and University of Wyoming (2009&ndash;2014). Developed flipped classroom methods and interactive teaching materials.
+				</p>
+
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="teaching-code"></ul>
+				</div>
+				<script>
+					renderCode('teaching-code', [
+						{ title: 'Math visualizations', url: 'https://github.com/k1monfared/education', description: 'Visualizations to help understand mathematical concepts' },
+						{ title: 'Arts & recreation', url: 'https://github.com/k1monfared/arts_and_recreation', description: 'Mathematical art, recreational math' },
+						{ title: 'TeX goodies', url: 'https://github.com/k1monfared/tex_goodies', description: 'Assortment of LaTeX useful projects' }
+					]);
+				</script>
+
+				<div class="section-block">
+					<h3>Outreach Talks</h3>
+					<ul id="teaching-talks"></ul>
+				</div>
+				<script>
+					renderTalks('teaching-talks', [
+						{ title: 'Counting from one to infinity', venue: 'High School Math Camp, U of Calgary', year: '2017', location: 'Calgary' },
+						{ title: 'Real life applications of calculus and linear algebra', venue: 'Student Colloquium, U of Calgary', year: '2016', location: 'Calgary' },
+						{ title: 'Touching infinity', venue: 'Junior Math Contestants, U of Calgary', year: '2016', location: 'Calgary' },
+						{ title: 'The Role of Intention and Initiative', venue: 'TekTalk', location: 'Vancouver', slidesUrl: '../research/talks/the_role_of_intention_and_initiative.pdf' },
+						{ title: 'On mathematics education', venue: 'Parviz Shahriari Foundation', year: '2008', location: 'Tehran' },
+						{ title: 'Biweekly math problem solving seminars', venue: 'Amirkabir U of Technology', year: '2006', location: 'Tehran' }
+					]);
+				</script>
+
+				<p style="margin-top: 1rem;"><a href="../teaching.html">Full teaching record &rarr;</a></p>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>

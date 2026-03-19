@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Apply saved theme immediately to prevent flash -->
+	<script>
+		(function() {
+			function getCookie(name) {
+				const value = `; ${document.cookie}`;
+				const parts = value.split(`; ${name}=`);
+				if (parts.length === 2) return parts.pop().split(';').shift();
+				return null;
+			}
+			let theme = getCookie('theme');
+			if (!theme) {
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+			}
+			theme = theme || 'dark';
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="../css/otherStyles.css" />
+	<title>Keivan Monfared - Matrix Theory & Linear Algebra</title>
+	<!-- Vanilla JS utilities + templates -->
+	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- MathJax for paper abstracts -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="../js/nav-loader.js"></script>
+	<!-- Theme toggle script -->
+	<script type="text/javascript" src="../js/theme-toggle.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function() {
+				document.getElementById('small_menu').innerHTML =
+					'<a href="machine-learning.html">machine learning</a>' +
+					'<a href="data-science.html">data science</a>' +
+					'<a href="neuroscience.html">neuroscience</a>' +
+					'<a href="matrix-theory.html" class="sub-active">matrix theory</a>' +
+					'<a href="graph-theory.html">graph theory</a>' +
+					'<a href="shell-bash.html">shell</a>' +
+					'<a href="signal-processing.html">signal processing</a>' +
+					'<a href="teaching.html">teaching</a>';
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section id="mathematics" class="domain-section">
+				<h2>Matrix Theory & Linear Algebra</h2>
+				<p class="domain-intro">
+					Research in combinatorial matrix theory, inverse eigenvalue problems, and spectral graph theory. Developing constructive methods for building matrices with prescribed spectral and structural properties.
+				</p>
+
+				<div class="section-block">
+					<h3>Papers</h3>
+					<ul id="mat-papers"></ul>
+				</div>
+				<script>
+					renderPapers('mat-papers', [
+						{
+							title: 'An analog of Matrix Tree Theorem for signless Laplacians',
+							url: 'http://dx.doi.org/10.1016/j.laa.2018.09.016',
+							tag: 'LAA 2018',
+							pdfUrl: '../research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1805.04759',
+							thumb: '../research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.webp',
+							authors: 'K. Hassani Monfared, S. Mallik.',
+							abstract: 'The number of spanning trees in a graph is given by Matrix Tree Theorem in terms of principal minors of the Laplacian matrix. We show a similar combinatorial interpretation for principal minors of the signless Laplacian \\(Q\\), and prove that the number of odd cycles in \\(G\\) is less than or equal to \\(\\det(Q)/4\\), where equality holds iff \\(G\\) is bipartite or odd-unicyclic.',
+							takeaways: '<b>Problem:</b> Is there an analog of the Matrix Tree Theorem for the signless Laplacian \\(Q = D + A\\)?<br><b>Key result:</b> Each principal minor of \\(Q\\) counts TU-subgraphs weighted by \\(4^{c(H)}\\) where \\(c(H)\\) is the number of odd-unicyclic components. The number of odd cycles in \\(G\\) is at most \\(\\det(Q)/4\\), with equality iff \\(G\\) is bipartite or odd-unicyclic.<br><b>Method:</b> Cauchy-Binet formula applied to the decomposition \\(Q = NN^T\\) via the incidence matrix, with case analysis of spanning subgraph types.'
+						},
+						{
+							title: 'A structured inverse spectrum problem for infinite graphs',
+							url: 'http://dx.doi.org/10.1016/j.laa.2017.10.025',
+							tag: 'LAA 2018',
+							pdfUrl: '../research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1512.05834',
+							thumb: '../research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.webp',
+							authors: 'K. Hassani Monfared, E. Khanmohammadi.',
+							abstract: 'For a given infinite graph \\(G\\) on countably many vertices and a compact, infinite set \\(\\Lambda\\) of real numbers, there is a real symmetric matrix \\(A\\) whose graph is \\(G\\) and spectrum is \\(\\Lambda\\). The set of limit points of \\(\\Lambda\\) equals the essential spectrum of \\(A\\), and isolated points are eigenvalues with multiplicity one.',
+							takeaways: '<b>Problem:</b> Can the structured inverse eigenvalue problem be extended from finite graphs to countably infinite graphs?<br><b>Key result:</b> For any infinite graph and any compact infinite set of reals, there exists a bounded self-adjoint operator whose matrix has that graph and whose spectrum equals the given set. Any two such constructed matrices are approximately unitarily equivalent.<br><b>Method:</b> Inductive application of the Jacobian method on finite truncations with careful norm control ensuring convergence in operator norm.'
+						},
+						{
+							title: 'Existence of a not necessarily symmetric matrix with given distinct eigenvalues and graph',
+							url: 'http://dx.doi.org/10.1016/j.laa.2017.04.006',
+							tag: 'LAA 2017',
+							pdfUrl: '../research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1604.02195',
+							thumb: '../research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.webp',
+							authors: 'K. Hassani Monfared.',
+							abstract: 'For given \\(k\\) distinct complex conjugate pairs, \\(l\\) distinct real numbers, and a graph \\(G\\) on \\(2k+l\\) vertices with a matching of size at least \\(k\\), there is a real matrix whose eigenvalues are the given numbers and its graph is \\(G\\). In particular, any real matrix with distinct eigenvalues is similar to a real, irreducible, tridiagonal matrix.',
+							takeaways: '<b>Problem:</b> Given a graph and distinct (possibly complex) eigenvalues, does a real matrix with that graph and spectrum exist?<br><b>Key result:</b> A sufficient condition is that the graph has a matching of size at least the number of conjugate pairs. As a corollary, a real matrix with distinct eigenvalues is similar to a real irreducible tridiagonal matrix.<br><b>Method:</b> Construction in real Jordan-like block form and application of the Implicit Function Theorem with identity Jacobian.'
+						},
+						{
+							title: 'The nowhere-zero eigenbasis problem for a graph',
+							url: 'http://dx.doi.org/10.1016/j.laa.2016.04.028',
+							tag: 'LAA 2016',
+							pdfUrl: '../research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.pdf',
+							thumb: '../research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.webp',
+							authors: 'K. Hassani Monfared, B.L. Shader.',
+							abstract: 'Using the implicit function theorem it is shown that for any \\(n\\) distinct real numbers and each connected graph \\(G\\) of order \\(n\\), there is a real symmetric matrix \\(A\\) whose graph is \\(G\\), with those eigenvalues, and every entry in each eigenvector of \\(A\\) is nonzero.',
+							takeaways: '<b>Problem:</b> Can a symmetric matrix have a prescribed graph, prescribed spectrum, and all eigenvectors with no zero entries simultaneously?<br><b>Key result:</b> Yes \u2014 for every connected graph of order \\(n\\) and any \\(n\\) distinct real numbers, such a matrix exists. This is equivalent to requiring the Duarte property at every vertex simultaneously.<br><b>Method:</b> Iterative application of the Jacobian method, perturbing one vertex at a time to achieve the nowhere-zero eigenbasis property while preserving graph and spectrum.'
+						},
+						{
+							title: 'The maximum multiplicity of an eigenvalue of symmetric matrices with a given graph',
+							tag: 'Not Published',
+							pdfUrl: '../research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.pdf',
+							authors: 'K. Hassani Monfared, S. Mallik.',
+							abstract: 'For a graph G, M(G) denotes the maximum multiplicity occurring of an eigenvalue of a symmetric matrix whose zero-nonzero pattern is given by the edges of G. We introduce two combinatorial graph parameters T^-(G) and T^+(G) that give a lower and an upper bound for M(G) respectively, and we show that these bounds are sharp.',
+							takeaways: '<b>Problem:</b> Determine tight combinatorial bounds on the maximum multiplicity \\(M(G)\\) of an eigenvalue across all symmetric matrices whose pattern is prescribed by a graph \\(G\\).<br><b>Key result:</b> Two new graph parameters \\(T^-(G)\\) and \\(T^+(G)\\), defined via tree covers, satisfy \\(T^-(G) \\leq M(G) \\leq T^+(G)\\) for all graphs, and these bounds are sharp.<br><b>Method:</b> Generalization of path-cover-based parameters by replacing induced paths with induced trees, with rank arguments on principal submatrices.'
+						},
+						{
+							title: 'The \\(\\lambda\\)-\\(\\tau\\) structured inverse eigenvalue problem',
+							url: 'http://dx.doi.org/10.1080/03081087.2014.1003527',
+							tag: 'LMA 2015',
+							pdfUrl: '../research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.pdf',
+							thumb: '../research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.webp',
+							authors: 'K. Hassani Monfared, B.L. Shader.',
+							abstract: 'Given strict second-order Cauchy interlacing data and a connected graph \\(G\\), we prove there is a real symmetric matrix \\(A\\) whose graph is \\(G\\) with the prescribed eigenvalues and principal submatrix eigenvalues, provided necessary combinatorial conditions on \\(G\\) are satisfied.',
+							takeaways: '<b>Problem:</b> Can a symmetric matrix be constructed with prescribed graph and eigenvalues for both the matrix and its doubly-deleted principal submatrix (second-order interlacing)?<br><b>Key result:</b> For trees with adjacent deleted vertices, the problem has a solution whenever the interlacing inequalities are strict and combinatorial nondegeneracy conditions hold. The result extends to connected graphs.<br><b>Method:</b> Reduction to two standard first-order interlacing problems by partitioning the eigenvalue sequence, with the Jacobian method for extension to general graphs.'
+						},
+						{
+							title: 'Construction of matrices with a given graph and prescribed interlaced spectral data',
+							url: 'http://dx.doi.org/10.1016/j.laa.2013.01.036',
+							tag: 'LAA 2013',
+							pdfUrl: '../research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.pdf',
+							thumb: '../research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.webp',
+							authors: 'K. Hassani Monfared, B.L. Shader.',
+							abstract: "Duarte's result for trees is extended to connected graphs: for strictly interlacing eigenvalue data and any connected graph, we construct a real symmetric matrix with the prescribed graph and spectral data, using the implicit function theorem.",
+							takeaways: '<b>Problem:</b> Duarte showed the structured inverse eigenvalue problem (graph + interlacing spectrum) is solvable for trees; does it extend to arbitrary connected graphs?<br><b>Key result:</b> For any connected graph and any strictly interlacing eigenvalue data, a symmetric matrix with the prescribed graph and spectral data exists.<br><b>Method:</b> Introduction of the Duarte property (a recursive genericity condition on spectral interlacing at each vertex), combined with the Jacobian method and Implicit Function Theorem.'
+						},
+						{
+							title: 'On the existence of nowhere-zero vectors for linear transformations',
+							url: 'http://dx.doi.org/10.1017/S0004972710001619',
+							tag: 'Bull AMS 2010',
+							pdfUrl: '../research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.pdf',
+							thumb: '../research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.webp',
+							authors: 'S. Akbari, K. Hassani Monfared, M. Jamaali, E. Khanmohammadi, D. Kiani.',
+							abstract: 'We prove that every nonzero matrix over a field \\(\\mathbb{F}\\) with \\(|\\mathbb{F}| \\geq 3\\) is similar to an AJT matrix (one admitting a vector \\(x\\) such that both \\(x\\) and \\(Ax\\) have no zero component), advancing the Alon\u2013Jaeger\u2013Tarsi conjecture.',
+							takeaways: '<b>Problem:</b> When does a matrix over a finite field admit a vector \\(x\\) such that both \\(x\\) and \\(Ax\\) have all nonzero entries (the Alon\u2013Jaeger\u2013Tarsi conjecture)?<br><b>Key result:</b> Every nonzero matrix over a field with \\(|\\mathbb{F}| \\geq 3\\) is similar to an AJT matrix. For \\(q \\geq 3\\), the set of invertible AJT matrices equals \\(GL_n(q)\\) iff a specific condition on triangular factorizations holds.<br><b>Method:</b> Reduction to rational canonical form and case analysis on companion matrix blocks, combined with counting arguments over finite fields.'
+						},
+						{
+							title: 'Inverse spectral problems for linked vibrating systems and structured matrix polynomials',
+							tag: 'Not Published',
+							pdfUrl: '../research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.pdf',
+							arxivUrl: 'https://arxiv.org/abs/1710.11203',
+							thumb: '../research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.webp',
+							authors: 'K. Hassani Monfared, P. Lancaster.',
+							abstract: 'For a given set of \\(nk\\) distinct real eigenvalues and \\(k\\) graphs on \\(n\\) nodes, we construct real symmetric matrices \\(A_s\\) such that the matrix polynomial \\(A(z) = A_k z^k + \\cdots + A_1 z + A_0\\) has the prescribed spectrum and graphs. When \\(k=2\\), this solves a physically significant inverse eigenvalue problem for linked vibrating systems.',
+							takeaways: '<b>Problem:</b> Given prescribed eigenvalues and graph structures for physical connectivity (e.g., mass-spring systems), can one construct real symmetric matrix polynomials with those spectra and structures?<br><b>Key result:</b> For any \\(nk\\) distinct real eigenvalues and \\(k+1\\) graphs on \\(n\\) vertices, such matrix polynomials exist with \\(A_k\\) positive definite diagonal. For \\(k=2\\), this solves the inverse problem for linked vibrating systems.<br><b>Method:</b> Perturbation of a diagonal matrix polynomial via the Implicit Function Theorem, showing the Jacobian is nonsingular at the diagonal system.'
+						}
+					], '../images/misc.webp');
+				</script>
+
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="mat-code"></ul>
+				</div>
+				<script>
+					renderCode('mat-code', [
+						{ title: 'lambda solver for all graphs', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_siep', description: 'SAGE: finds a matrix with given graph and spectrum' },
+						{ title: 'lambda-mu solver for trees', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_mu_for_trees', description: 'SAGE: interlacing eigenvalue construction' },
+						{ title: 'lambda-tau solver for trees', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_tau_for_trees', description: 'SAGE: second-degree interlacing' },
+						{ title: 'polynomial lambda solver', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_ispmpg', description: 'SAGE: quadratic inverse eigenvalue problem' },
+						{ title: 'full matrix constructor', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/nowherezeromatrixconstruction', description: 'Nowhere-zero entry matrices with given spectrum' },
+						{ title: 'Combinatorial matrix theory', url: 'https://github.com/k1monfared/combinatorial_matrix_theory', description: 'Projects in combinatorial matrix theory and inverse eigenvalue problems (Jupyter)' },
+						{ title: 'Experimental math', url: 'https://github.com/k1monfared/experimental_math', description: 'Mathematical experimentations and explorations' },
+						{ title: 'Laplacian eigenvalue problems', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/laplacian', description: 'Laplacian eigenvalue crossings and inertia' }
+					], '../images/misc.webp');
+				</script>
+
+				<div class="section-block">
+					<h3>Talks</h3>
+					<ul id="mat-talks"></ul>
+				</div>
+				<script>
+					renderTalks('mat-talks', [
+						{ title: 'Inverse Polynomial Spectral Problems for Graphs', venue: 'ILAS', year: '2019', location: 'Rio de Janeiro', abstractUrl: 'http://ilas2019.org/wp-content/uploads/2019/06/ILAS2019_FULL_PROGRAM_20190606.pdf' },
+						{ title: 'An Analog of Matrix Tree Theorem for Signless Laplacians', venue: 'CMS Summer Meeting', year: '2019', location: 'Regina', slidesUrl: '../research/201906_Regina_CMS.pdf', abstractUrl: 'https://cms.math.ca/Events/summer19/abs/pdf/mta-km.pdf' },
+						{ title: 'Some inverse eigenvalue problems for graphs', venue: 'WCLAM', year: '2016', location: 'Winnipeg', abstractUrl: 'http://server.math.umanitoba.ca/~kirkland/WCLAM_2016_Program.pdf' },
+						{ title: 'Using Jacobian method to solve inverse eigenvalue problems for graphs', venue: 'ILAS', year: '2016', location: 'Leuven', abstractUrl: 'https://ilas2016.cs.kuleuven.be/bookofabstracts.pdf' },
+						{ title: 'Using the Jacobian method to solve SIEPs', venue: 'JMM', year: '2016', location: 'Seattle' },
+						{ title: 'Several examples on the Jacobian method', venue: 'CanaDAM', year: '2015', location: 'Saskatoon', abstractUrl: 'http://canadam.math.ca/2015/program/abs/pdf/gm2-khm.pdf' },
+						{ title: 'Nowhere-zero eigenbasis for a matrix with prescribed graph and spectrum', venue: 'JMM', year: '2015', location: 'San Antonio', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2168_abstracts/1106-15-1418.pdf' },
+						{ title: 'The inverse principal perrank characteristic sequence problems', venue: 'GRWC', year: '2014', location: 'Denver', abstractUrl: 'https://sites.google.com/site/rmgpgrwc/problem-gardens/2014-InversePrincipalPerrankSequence.pdf' },
+						{ title: 'Building vibrating systems using linear algebra and calculus', venue: 'Student Colloquium, Western Illinois U', year: '2014', location: 'Macomb' },
+						{ title: 'Structured inverse eigenvalue problems', venue: 'Colloquium, Western Illinois U', year: '2014', location: 'Macomb' },
+						{ title: 'Skew-symmetric SIEP and the role of the Jacobian method', venue: 'ACNT Seminar, U of Wyoming', year: '2014', location: 'Laramie' },
+						{ title: 'The Jacobian method and structured inverse eigenvalue problems', venue: 'JMM', year: '2014', location: 'Baltimore', videoUrl: 'https://www.youtube.com/watch?v=a7-UVsDJ-xc', slidesUrl: '../research/talks/PhD-Defense.pdf', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2160_abstracts/1096-15-2004.pdf' },
+						{ title: 'Using the Jacobian method in SIEPs', venue: 'U of Colorado Denver', year: '2013', location: 'Denver' },
+						{ title: 'A structured inverse eigenvalue problem', venue: 'MathFest', year: '2013', location: 'Hartford' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2013', location: 'Laramie', slidesUrl: '../research/talks/lambda-mu-long.pdf' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMMC', year: '2013', location: 'Laramie', slidesUrl: '../research/talks/lambda-mu-short.pdf' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2012', location: 'Denver' },
+						{ title: 'Constructing matrices with interlacing spectral data and graph', venue: 'MIGHTY LIII', year: '2012', location: 'Iowa State' }
+					], '../images/misc.webp');
+				</script>
+
+				<div class="section-block">
+					<h3>Theses</h3>
+					<ul id="mat-theses"></ul>
+				</div>
+				<script>
+					renderTheses('mat-theses', [
+						{ title: 'The Jacobian Method', url: '../research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).pdf', degree: 'PhD', institution: 'University of Wyoming', year: '2014' },
+						{ title: 'On the Permanent Conjecture', url: '../research/2012_On_the_Permanent_Conjecture_(Masters_thesis).pdf', degree: 'MSc', institution: 'University of Wyoming', year: '2012' }
+					], '../images/misc.webp');
+				</script>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>
