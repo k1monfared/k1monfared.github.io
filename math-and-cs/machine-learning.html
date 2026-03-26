@@ -71,16 +71,22 @@
 				</div>
 				<script>
 					renderCode('ml-code', [
-						{ title: 'ML from scratch (Octave)', url: 'https://github.com/k1monfared/machine_learning/tree/main/machine_learning_octave', description: 'Regression, SVM, neural nets, PCA, anomaly detection, recommender systems' },
-						{ title: 'ML projects & experiments (MATLAB)', url: 'https://github.com/k1monfared/machine_learning', description: 'Collection of ML projects, courses, POCs, experiments' },
-						{ title: 'ML projects (Python)', url: 'https://github.com/k1monfared/machine_learning/tree/main/Machine_Learning_python', description: 'Linear regression and more in Python/Jupyter' },
-						{ title: 'Clustering algorithms', url: 'https://github.com/k1monfared/clustering', description: 'Clustering algorithms (MATLAB)' },
-						{ title: 'Statistics explorations', url: 'https://github.com/k1monfared/statistics', description: 'Explorations on statistical themes (Jupyter)' },
-						{ title: 'Handwritten digit recognition', description: 'MNIST dataset using neural networks' },
-						{ title: 'Email spam detection', description: 'Gaussian kernels & SVM' },
-						{ title: 'Image compression', description: 'PCA, SVD, k-means' },
-						{ title: 'Movie recommendation', description: 'Collaborative filtering' }
-					], '../images/machinelearning.webp');
+						{ title: 'Linear regression', url: 'https://github.com/k1monfared/machine_learning/tree/main/01_linear_regression', description: 'Univariate and multivariate linear regression with gradient descent and normal equations', thumb: '../images/thumbs/ml-01-linear-regression.webp' },
+						{ title: 'Logistic regression', url: 'https://github.com/k1monfared/machine_learning/tree/main/02_logistic_regression', description: 'Binary classification with regularization and decision boundaries', thumb: '../images/thumbs/ml-02-logistic-regression.webp' },
+						{ title: 'Multiclass classification', url: 'https://github.com/k1monfared/machine_learning/tree/main/03_multiclass_classification', description: 'One-vs-all logistic regression and neural network digit recognition', thumb: '../images/thumbs/code-ml-octave.webp' },
+						{ title: 'Neural networks', url: 'https://github.com/k1monfared/machine_learning/tree/main/04_neural_networks', description: 'Backpropagation, gradient checking, and training neural networks', thumb: '../images/thumbs/code-ml-octave.webp' },
+						{ title: 'Bias vs variance', url: 'https://github.com/k1monfared/machine_learning/tree/main/05_bias_variance', description: 'Learning curves, regularization selection, and polynomial regression diagnostics', thumb: '../images/thumbs/code-ml-python.webp' },
+						{ title: 'Support vector machines', url: 'https://github.com/k1monfared/machine_learning/tree/main/06_support_vector_machines', description: 'Gaussian kernels, SVM decision boundaries, and spam classification', thumb: '../images/thumbs/ml-06-svm.webp' },
+						{ title: 'K-means clustering', url: 'https://github.com/k1monfared/machine_learning/tree/main/07_kmeans_clustering', description: 'K-means algorithm, centroid initialization, and image compression', thumb: '../images/thumbs/ml-07-kmeans.webp' },
+						{ title: 'Principal component analysis', url: 'https://github.com/k1monfared/machine_learning/tree/main/08_principal_component_analysis', description: 'Dimensionality reduction, data projection, and face reconstruction', thumb: '../images/thumbs/ml-08-pca.webp' },
+						{ title: 'Anomaly detection', url: 'https://github.com/k1monfared/machine_learning/tree/main/09_anomaly_detection', description: 'Gaussian models for anomaly detection and threshold selection', thumb: '../images/thumbs/ml-09-anomaly.webp' },
+						{ title: 'Recommender systems', url: 'https://github.com/k1monfared/machine_learning/tree/main/10_recommender_systems', description: 'Collaborative filtering for movie recommendations', thumb: '../images/thumbs/code-recommender.webp' },
+						{ title: 'Declustering', url: 'https://github.com/k1monfared/clustering/tree/main/declustering', description: 'Graph declustering theory and numerical examples', thumb: '../images/thumbs/clust-declustering.webp' },
+						{ title: 'Iterative vs generalized Fiedler clustering', url: 'https://github.com/k1monfared/clustering/tree/main/iterative_vs_generalized_fiedler_clustering', description: 'Comparison of hierarchical and generalized spectral clustering methods', thumb: '../images/thumbs/clust-iterative-vs-generalized.webp' },
+						{ title: 'Kuramoto clustering', url: 'https://github.com/k1monfared/clustering/tree/main/kuramoto_clustering', description: 'Oscillator synchronization-based network clustering using the Kuramoto model', thumb: '../images/thumbs/clust-kuramoto.webp' },
+						{ title: 'Spectral clustering tools', url: 'https://github.com/k1monfared/clustering/tree/main/matlab_octave_graph_routines', description: 'Random graph generation, spectral coordinates, modularity, community detection', thumb: '../images/thumbs/clust-spectral.webp' },
+						{ title: 'Network clustering toolkit', url: 'https://github.com/k1monfared/clustering/tree/main/network_clustering_octave_matlab', description: 'Comprehensive clustering toolkit combining Kuramoto, spectral, and graph methods', thumb: '../images/thumbs/clust-graph-routines.webp' }
+					]);
 				</script>
 
 				<div class="section-block">
@@ -89,8 +95,8 @@
 				</div>
 				<script>
 					renderPapers('ml-papers', [
-						{ title: 'Using anomaly detection to identify seizures in EEG data', tag: 'Not Published' }
-					], '../images/machinelearning.webp');
+						{ title: 'Using anomaly detection to identify seizures in EEG data', url: 'https://arxiv.org/abs/1804.01568', tag: 'Not Published', arxivUrl: 'https://arxiv.org/abs/1804.01568', thumb: '../images/thumbs/ml-09-anomaly.webp' }
+					]);
 				</script>
 			</section>
 

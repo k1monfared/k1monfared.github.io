@@ -26,6 +26,8 @@
 	<title>Keivan Monfared - Teaching</title>
 	<!-- Vanilla JS utilities + templates -->
 	<script type="text/javascript" src="../js/utils.js?v=5"></script>
+	<!-- MathJax for Sage code descriptions -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	<!-- Navigation loader script -->
 	<script type="text/javascript" src="../js/nav-loader.js"></script>
 	<!-- Theme toggle script -->
@@ -63,34 +65,600 @@
 					Taught graduate and undergraduate courses in mathematics and statistics at University of Calgary (2015&ndash;2018), Western Illinois University (2014&ndash;2015), and University of Wyoming (2009&ndash;2014). Developed flipped classroom methods and interactive teaching materials.
 				</p>
 
+				<!-- ==================== 1. COURSES TAUGHT ==================== -->
 				<div class="section-block">
-					<h3>Code</h3>
-					<ul id="teaching-code"></ul>
-				</div>
-				<script>
-					renderCode('teaching-code', [
-						{ title: 'Math visualizations', url: 'https://github.com/k1monfared/education', description: 'Visualizations to help understand mathematical concepts' },
-						{ title: 'Arts & recreation', url: 'https://github.com/k1monfared/arts_and_recreation', description: 'Mathematical art, recreational math' },
-						{ title: 'TeX goodies', url: 'https://github.com/k1monfared/tex_goodies', description: 'Assortment of LaTeX useful projects' }
-					]);
-				</script>
+					<h3>Courses Taught</h3>
 
+					<button class="paper-action-btn" onclick="toggleSlowly('courses-grad')">Graduate Courses</button>
+					<div id="courses-grad" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p><b>University of Wyoming and Northern Colorado University</b></p>
+							<ul class="studiesListItems">
+								<li><b>Discrete and Combinatorial Mathematics</b> (MATH 5700 - Summer 2012)<br> For highschool teachers</li>
+							</ul>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('courses-ucalgary')" style="margin-top: 0.5rem;">University of Calgary</button>
+					<div id="courses-ucalgary" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<ul class="studiesListItems">
+								<li><a href="http://d2l.ucalgary.ca/">Calculus I</a> (Math 265 - Fall 2017)</li>
+								<li><a href="http://d2l.ucalgary.ca/">Linear Algebra</a> (Math 211 - Spring 2017)</li>
+								<li><a href="http://d2l.ucalgary.ca/">Discrete Mathematics</a> (Winter 2017)</li>
+								<li><a href="http://d2l.ucalgary.ca/">Linear Algebra</a> (Math 211 - Fall 2016)</li>
+								<li><a href="http://d2l.ucalgary.ca/">Introductory Calculus</a> (Math 249 - Spring 2016)</li>
+								<li><a href="http://d2l.ucalgary.ca/">Calculus I</a> (Math 265 - Fall 2015)</li>
+							</ul>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('courses-wiu')" style="margin-top: 0.5rem;">Western Illinois University</button>
+					<div id="courses-wiu" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<ul class="studiesListItems">
+								<li><b><a href="../courses/Math133Sp15.html">Calculus I</a></b> (Math 133 - Spring 2015)</li>
+								<li><b><a href="../courses/Stat171Sp15.html">General Elementary Statistics</a></b> (Stat 171 - Spring 2015)</li>
+								<li><b><a href="../courses/Math101F14.html">Concepts of Mathematics</a></b> (Math 101 - Fall 2014)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-wiu-math101')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-wiu-math101" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>Dr. Monfared is very helpful and I can tell <b>he cares about his students and enjoys coming to teach</b>. Overall he is a very good instructor.</li>
+											<li>He is very helpful.</li>
+											<li>He's a great teacher.</li>
+											<li>Very helpful when you ask a question. I usually don't understand when he first explains it but I do after I ask questions about the worksheets. <b>Readily available and open</b>.</li>
+										</ul>
+									</div>
+								</li>
+								<li><b><a href="../courses/Stat171F14.html">General Elementary Statistics</a></b> (Stat 171 - Fall 2014)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-wiu-stat171')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-wiu-stat171" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>My Instructor does a great job of teaching.</li>
+											<li>He does very well teaching, and <b>has the best teaching style I've seen for math</b>. He gives plenty of handouts and <b>explains everything clearly</b>.</li>
+											<li>I think overall I have a good professor. Ive <b>went to his office hours many times and he was helpful</b>.</li>
+											<li>Very organized.</li>
+											<li>Great quality teaching.</li>
+											<li><b>Math usually isn't my subject, but Professor Monfared does a good job explaining everything</b>. I really like the online homework and the worksheets we do in class together.</li>
+											<li>I like the way of learning because he teaches, we learn then <b>we do multiple examples together in class</b> and once it is time to do homework online, it is somewhat a breeze.</li>
+											<li>Clarity, encouragement, and helpfulness.</li>
+											<li>He is a great teacher. He <b>takes it slow enough for everyone to understand</b>.</li>
+											<li>Professor Monfared is well prepared and very helpful. He presents the material in a way that is <b>easily understood</b>, and his tests and homework are fair.</li>
+											<li>The worksheets handed out in class are a big help.</li>
+											<li>Overall I enjoy the class.</li>
+											<li>He was good and knew what he was talking about.</li>
+											<li>He is so helpful for me.</li>
+											<li>My instructor is very helpful and <b>if I need help he will quickly respond to my emails</b>. <b>He seems to want everyone in the course to do well</b>.</li>
+											<li>He gave worksheets to follow during class and <b>allowed me and other to actually participate</b>. This was very helpful and he should continue for future classes.</li>
+											<li>Things that I did find helpful are the written homework, and his openness to questions. He just <b>wants you to have an understanding and clear knowledge of the subject</b> rather than just getting you through the course as quick as possible.</li>
+											<li>The worksheets help significantly.</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('courses-uwy')" style="margin-top: 0.5rem;">University of Wyoming</button>
+					<div id="courses-uwy" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<ul class="studiesListItems">
+								<li><b><a href="../courses/ElemLinAlgSu2014.html">Elementary Linear Algebra</a></b> (MATH 2250 - Summer 2014)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-uwy-linalg14')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-uwy-linalg14" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>After the first week when i asked more questions I started learning more and I think it's effective. <b>Class time was utilized efficiently to understand more what was going on</b>.</li>
+											<li>Keivan's teaching method was having us watch and read the class materials before we covered them in class. I liked this approach as <b>it allowed nearly the entire class period to be open for questions</b>.</li>
+											<li>I felt like Keivan did a great job teaching this course. <b>We used effective technology. I really liked the supplemental lectures from MIT</b>. <b>Thank You! I really enjoyed the course!</b></li>
+											<li><b>I liked the setup of the class</b>. Although it was a lot of work outside of class time I found the videos and worksheets helpful.</li>
+											<li>The course has been <b>a fantastic introduction to Linear Algebra</b>. The book was <b>the best textbook I have read to date</b>. The setup of the class <b>was the optimal way to learn the material</b>. Thank you for an <b>informative, and fun class</b>.</li>
+											<li>Keivan did a great job. The course load was quick, but maintained a pace that allowed for the full grasp of the topics <b>while keeping the course challenging</b>.</li>
+											<li>Keivan was a great instructor. He was extremely helpful in class and <b>always explained things in a clear manner</b>. Everything was done extremely well.</li>
+											<li>I want to say that I really enjoyed the class.</li>
+											<li>I felt that Keivan did a great job in a short amount of time, with difficult material, and <b>a class with very diverse experience</b>.</li>
+											<li><b>I enjoyed the format of this course in which we watched the lecture outside of class, took a quiz at the beginning of class, received a short overview of the lecture, and then worked problems in class. Working problems in class helped reinforce the material and if we had any questions, Keivan was always willing to help.</b></li>
+										</ul>
+									</div>
+								</li>
+								<li><b><a href="../courses/GMESTSp2014.html">Geometry and Measurement</a></b> (MATH 2120 - Spring 2014)<br> For elementary school teachers</li>
+								<li><b><a href="http://math2210.blogspot.com">Calculus III</a></b> (MATH 2210 - Fall 2013) - Discussion Leader
+									<button class="paper-action-btn" onclick="toggleSlowly('course-uwy-calc3-13')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-uwy-calc3-13" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>Overall Keivan was extremely helpful.</li>
+											<li>Keivan was very helpful. I went to his office hours four or five times. He helped clear up my struggles.</li>
+											<li>Great teacher. <b>Always provides helpful information</b>.</li>
+											<li>Keivan is awesome.</li>
+											<li><b>Hands down the best teacher I have ever had for a class in college</b>.</li>
+											<li>Very helpful and very understanding of the material. <b>One of the best, if not the best, math instructor I have ever had at UW</b>.</li>
+											<li>He was helpful. Knows the material and is <b>almost always able to explain it in an easy way</b>.</li>
+											<li>Keivan was an excellent teacher, he was <b>the best teacher I have had at UW</b> thus far. He was <b>committed to fully answering any and all questions</b>.</li>
+											<li>He is a very nice guy and <b>enjoys teaching</b>. He seems to <b>really care about his students</b>.</li>
+											<li>Keivan not only understands the material extremely well, but he is <b>very skilled at teaching the material</b>.</li>
+											<li>Keivan was very helpful and always answered my questions as clearly and effectively as he could. He seemed to <b>care a lot about student success</b>.</li>
+										</ul>
+									</div>
+								</li>
+								<li><b><a href="../courses/CalculusIIISu2013.html">Calculus III</a></b> (MATH 2210 - Summer 2013)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-uwy-calc3-su13')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-uwy-calc3-su13" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li><b>Professor Monfared was thoroughly effective at teaching multivariable calculus. He cares whether or not his students understand the material. Fantastic course.</b></li>
+											<li>Good professor and teaching methods.</li>
+											<li>Good explanations.</li>
+										</ul>
+									</div>
+								</li>
+								<li><b><a href="../courses/AlgebraTrigSp2013.html">Algebra and Trigonometry</a></b> (MATH 1450 - Spring 2013)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-uwy-algtrig')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-uwy-algtrig" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>Mr. Monfared is an excellent instructor. He is <b>a great value to the university and mathematics</b>.</li>
+											<li>Good teacher. Very approachable!</li>
+											<li>Keivan is a great teacher. He knows <b>how to reach to students' minds</b>. He has <b>many ways for explanation</b>.</li>
+										</ul>
+									</div>
+								</li>
+								<li><b><a href="../courses/CalculusIFa2012.html">Calculus I</a></b> (MATH 2200 - Fall 2012)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-uwy-calc1')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-uwy-calc1" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>Keivan is a great teacher. He is <b>the most interested of all my teachers in an individual's progress</b>.</li>
+											<li>He is a very dedicated teacher <b>always putting in effort out of class for students</b>.</li>
+											<li>Always very helpful and seemed to <b>care about the students grades</b>.</li>
+											<li>Keivan was an excellent teacher. <b>He took interest in his students</b>. He showed <b>genuine concern</b>. He made calculus easy to understand.</li>
+										</ul>
+									</div>
+								</li>
+								<li><b>Calculus II</b> (MATH 2205 - Summer 2012)
+									<button class="paper-action-btn" onclick="toggleSlowly('course-uwy-calc2')" style="margin-left: 0.5rem;">Student Comments</button>
+									<div id="course-uwy-calc2" class="collapsible">
+										<ul style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0;">
+											<li>Very effective and <b>simplistic explanations and presentation</b> that enables all of the students to understand important concepts.</li>
+											<li>The instructor was great! He <b>always asked if we understood the material</b>.</li>
+											<li>Keivan is one of those quality teachers. Very confident in his presentation. His foreshadowing <b>helps give meaning to what we are currently studying</b>. <b>His commitment and quality of lecture would help any budding-math student</b>.</li>
+										</ul>
+									</div>
+								</li>
+								<li><b>Algebra and Trigonometry</b> (MATH 1450 - Fall 2011)</li>
+								<li><b>Elementary Linear Algebra</b> (MATH 2250 - Summer 2011)</li>
+								<li><b>Finite Mathematics</b> (MATH 1050 - Spring 2011)</li>
+								<li><b>Trigonometry</b> (MATH 1405 - Fall 2010)</li>
+								<li><b><a href="../courses/FiniteMathSu2010.html">Finite Mathematics</a></b> (MATH 1050 - Summer 2010)</li>
+								<li><b>College Algebra</b> (MATH 1400 - Spring 2010)</li>
+								<li><b>Trigonometry</b> (MATH 1405 - Fall 2009)</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- ==================== 2. TEACHING PHILOSOPHY ==================== -->
+				<div class="section-block">
+					<h3>Teaching Philosophy</h3>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('phil-doing')">Learning is done by doing and sharing</button>
+					<div id="phil-doing" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>And this can be achieved when learners are actively and independently engaged in a learning process, and when they can share this experience together. Traditionally, mathematics is taught as mostly lecture. In my classes I use a mix of strategies. For instance, in some of my classes I give only short lectures at the beginning of each day, or some days I do not lecture at all. Instead, students are given worksheets that include problems that are arranged from basic one-step questions to more involved computational and conceptual problems. Students form groups that they stay with for a portion of the semester, and they work on the worksheets in their groups. I attend each group and answer their questions and direct their discussions. Sometimes that I feel necessary, I give a mini lecture for the class, or solve one of the problems on the board, and then I let the group discussions continue. At the end of the day I post the solutions online, where the students can access them after they are ready for it. Often students come to me at the end of a class to tell me that they liked the time when they could get their hands dirty on a problem during the class, and usually they ask for more such opportunities. I have seen those "ahha!" moments happening in class when students ask a question from a group-mate and get responses from them, or when they discover new concepts or identify a common mistake together. Some of them have told me that they learned a topic when they taught it to a classmate. A few years ago I taught two linear algebra courses, one lecture based, and one using the method I described here. The response rate to my in-class questions in the second method was much higher, and the students overall performed better in the exams. I am currently working on how to incorporate these activities in larger classrooms.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('phil-motivation')" style="margin-top: 0.5rem;">Motivation is the key</button>
+					<div id="phil-motivation" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>Learners are strongly encouraged when the teacher is passionate about the subject and is respectful of the learners. A common comment that I receive from my students is that my excitement about teaching a topic made them interested in learning about it. As a result they paid more attention to it in class, asked more questions, and got actively engaged in learning as they made connections between their life or disciplines and the topic being discussed. I motivate a lot of topics in mathematics and statistics with real life applications. For example, in a linear algebra course I explain how google uses "eigenvectors" to sort the search results, or how instagram applies certain filters on images using "projections". In a statistics course, I use various games such as "plinko" to motivate topics. Often, I bring in pieces of history of mathematics and mathematicians to the discussions. I ask an open-ended question from students, and then direct them to ask more precise questions. For instance, I ask "<i>how do you estimate the area of a potato-shaped closed curve?</i>", and then we work together until we find <i>better</i> questions. Then I tell them that they would be as famous as Archimedes or even Riemann only if they were born a few hundred years ago, because they asked the same questions that they did. One of my favourite parts of teaching is getting students excited about coming up with ideas on how a lesson relates to their disciplines, how they can explain a topic to their little sibling or to their parents in a fun way, or even how to bring it up at a party. One of my challenges is to keep students motivated and active for the entire time of class. Ideally, I would love them to keep asking questions until they get to the questions that they can answer, and then work their way backwards to answer the big questions.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('phil-ways')" style="margin-top: 0.5rem;">Students' ways of learning matter</button>
+					<div id="phil-ways" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>I constantly seek for feedback from my students. If I see them on the hallways or when we are just walking to the class, I ask them about how they feel about the course, how do they think they are performing, and what are the things that they like or do not like in the class. I also send online feedback forms to students during the semester to get an understanding of how I am doing, and often I make changes according to what the students say during the semester. One of my strategies to get an informative feedback is to explain to students the results of feedback my previous students have given. Then I report on their feedback immediately, and communicate to them how I am going to implement their suggestions. I am thinking about a sustainable way of continually getting feedback from students on a daily basis and implementing it in my classes. Also, as students need our feedback to improve, I feel I need my peers' feedback to improve. Hence, I continually seek feedback from my colleagues on my teaching. Moreover, I ask people from outside mathematics department to observe my classes so that I also see a non-mathematician's point of view on delivering methods, and not just the content.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- ==================== 3. TEACHING APPROACH ==================== -->
+				<div class="section-block">
+					<h3>Teaching Approach</h3>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-overall')">Overall experience</button>
+					<div id="approach-overall" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>I have taught graduate and undergraduate mathematics courses for the past eight years and I have been trying various strategies, environments, and tools to improve the learning experience for students from diverse backgrounds in various classroom settings, from online courses to small classes of 15 students and to large classes of 300+ students. Over that past few years, I have participated in various workshops and conferences to enhance my knowledge and skills set for teaching and learning.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-isw')" style="margin-top: 0.5rem;">Instructional Skills Workshop (ISW)</button>
+					<div id="approach-isw" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>I have participated (and I am certified) in the <a href="https://en.wikipedia.org/wiki/Instructional_Skills_Workshop">Instructional Skills Workshop</a> (an internationally acclaimed instructor development program encouraging reflection and examination of one's teaching practices with feedback focused on the learning process). This workshop gave a lot of structure to my teaching practices, and added lots of tools to my teaching toolbox. After one year of practice, now I am very comfortable planning every day of my class using <a href="http://www.queensu.ca/teachingandlearning/modules/active/18_boppps_model_for_lesson_planning.html">BOPPPS</a> model, and aligning all parts of the class activities, homework, exam, lab activities etc with <a href="https://en.wikipedia.org/wiki/Bloom's_taxonomy">Bloom's taxonomy</a>. Also, through this workshop and a few others, I have developed various strategies to get the most meaning out of students feedback, seek informative feedback from my colleagues, and to reflect on my own teaching strategies.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-cdp')" style="margin-top: 0.5rem;">Course Design Program</button>
+					<div id="approach-cdp" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>I have participated (and I am certified) in the Course Design Program (a program focusing on aligning all aspects of a course from syllabus to final exam, and from class activities to outcomes, by encouraging a backward design point of view). The program has helped me not only to completely internalize what are the goals of each course, but also to be able to better communicate such goals with students, and hence shaping their way of learning by focusing on the outcomes.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-ibl')" style="margin-top: 0.5rem;">Inquiry Based Learning</button>
+					<div id="approach-ibl" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>I have always been fascinated by how naturally I learn mathematics in an "experimental" setting. As a result, I always wanted to provide such a learning environment for my students. Since I started teaching I have participated in many discussions about Inquiry Based Learning including a conference by <a href="http://www.inquirybasedlearning.org/">Academy of Inquiry Based Learning (AIBL)</a>, and I am a member of the community. One of the common strategies that I employ in my teaching is by asking open ended questions that target the final goal of the lesson. Then I let the students discuss their ideas and I try to direct their discussions and questions. This has proven to be very effective in cementing the core ideas of each lesson, and also encouraging students to try to discover mathematics on their own.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-flipped')" style="margin-top: 0.5rem;">Flipped Learning Environment</button>
+					<div id="approach-flipped" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>As I have mentioned in my teaching philosophy, I believe learning is done by doing, and flipped learning environment is best fit for this purpose. In this setting, students read part of a book, an article, or a handout at home, or watch a short video before coming to class. During the class, students start working on assignments, or problems that prepare them to learn and investigate more in depth questions. I have taught an entire linear algebra course in a flipped setting, and I use it to some extent in all courses that I teach.</p>
+
+							<button class="paper-action-btn" onclick="toggleSlowly('flipped-pre')" style="margin-top: 0.5rem;">Enforcing pre-class activities</button>
+							<div id="flipped-pre" class="collapsible">
+								<p style="margin: 0.5rem 0;">To ensure that students do their pre-class activities, I prepare a short quiz for every day of class. The questions are designed so that students do not feel like they need to actually learn anything, rather simply just remember what they have seen, targeting the lowest level of Bloom's taxonomy. Sticking to this quiz on a regular basis ensures the students that they need to do their part.</p>
+							</div>
+
+							<button class="paper-action-btn" onclick="toggleSlowly('flipped-in')" style="margin-top: 0.5rem;">In-class activities</button>
+							<div id="flipped-in" class="collapsible">
+								<p style="margin: 0.5rem 0;">I often start with a short review of what they have "learned" in their pre-class activity, usually 5-10 minutes. Then, the students are presented with a worksheet, broken into groups, and the rest of the class is spent on solving the problems. The nature of these problems build on their knowledge from the pre-class activity, slowly getting deeper into more complex conceptual situations. It is what an instructor does in class that makes all the difference, and I as an instructor, can help facilitate this learning environment which is unique, and is tailored to my students.</p>
+							</div>
+
+							<button class="paper-action-btn" onclick="toggleSlowly('flipped-post')" style="margin-top: 0.5rem;">Post-class activities</button>
+							<div id="flipped-post" class="collapsible">
+								<p style="margin: 0.5rem 0;">The students are expected to finish their work on the worksheets that they have started in class. Usually, the worksheets end up with relatively open-ended or exploratory questions that connect the current topic of the course to the one of the next day of class. Times to times I have students write reflective summaries of what they have learned and share it with me.</p>
+							</div>
+
+							<button class="paper-action-btn" onclick="toggleSlowly('flipped-groups')" style="margin-top: 0.5rem;">About group activities</button>
+							<div id="flipped-groups" class="collapsible">
+								<p style="margin: 0.5rem 0;">I have experimented a few different ways of breaking students into groups: (1) Randomized groups each day, and (2) Assigned for the whole semester. Each has its own benefits. In the first method, I shuffle a deck of playing cards and deal one card to each student, forming groups of size at most 4. Students get to work with most of their classmates and build a rather shallow trust with the whole class. In the second method, I put students in groups with a range of mathematical abilities, majors, and attitude towards group-work. They build a deep trust relationship, which sometimes end up in long-term partnership in their education.</p>
+							</div>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-feedback')" style="margin-top: 0.5rem;">Continuous feedback to and from...</button>
+					<div id="approach-feedback" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<button class="paper-action-btn" onclick="toggleSlowly('feedback-students')">Students</button>
+							<div id="feedback-students" class="collapsible">
+								<p style="margin: 0.5rem 0;">I start each semester by sending out a form to students before classes start, asking them about who they are, what their goals are, and what keeps them up at night. Around the middle of the semester, I ask students to tell me how things are going. I collect the responses, summarize them, and report back to students with what they asked for and how I am going to change my approach. I also provide plenty of feedback to students on where they stand, how their learning is being evaluated, and what they can try to improve.</p>
+							</div>
+
+							<button class="paper-action-btn" onclick="toggleSlowly('feedback-colleagues')" style="margin-top: 0.5rem;">Colleagues</button>
+							<div id="feedback-colleagues" class="collapsible">
+								<p style="margin: 0.5rem 0;">At least once a year I ask a colleague to come and observe my class. Sometimes I ask for overall feedback, other times I ask them to look for a particular aspect of my teaching such as "do I make enough eye contact?", "did I wait enough for students to respond after I asked a question?", "do I speak too fast?" etc. Many iterations of these informative feedback have helped me fine tune unconscious parts of my teaching.</p>
+							</div>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-tech')" style="margin-top: 0.5rem;">Software, online tools, technology</button>
+					<div id="approach-tech" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>Often, I use <a href="https://www.sagemath.org/">SageMath</a> in class to help students visualize different concepts, specially in calculus and linear algebra courses. I also use it in various courses just for computations. I always share the code that I use, as well as some quick reference manuals, with students so that they can go on and experiment with it. For my first year calculus course I also make use of a <a href="http://webspace.ship.edu/msrenault/GeoGebraCalculus/GeoGebraCalculusApplets.html">resources on GeoGebra by Marc Renault</a>.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-reflection')" style="margin-top: 0.5rem;">Informative self reflection</button>
+					<div id="approach-reflection" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>One of the more private parts of my teaching practice is to reflect on my teaching experience every day after class. It is shockingly effective in tracking the effectiveness of methodologies, and to come up with better strategies.</p>
+						</div>
+					</div>
+
+					<button class="paper-action-btn" onclick="toggleSlowly('approach-lesson')" style="margin-top: 0.5rem;">Lesson Study</button>
+					<div id="approach-lesson" class="collapsible">
+						<div class="paper-details" style="padding-left: 0;">
+							<p>An old Japanese practice in teaching mathematics is getting more and more spread throughout the west. The idea is to treat teaching like research. Plan your teaching in a way that students' learning and thinking becomes observable. Then plan a topic with some colleagues, design student activities, and invite your colleagues to observe your class. The observers will record how students did (not) learn/think. Go back to your group with this observations and make adjustments, and repeat. It is suggested to do this at most twice a year.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- ==================== 4. EDUCATIONAL SAGE CODE ==================== -->
+				<div class="section-block">
+					<h3>Educational Sage Code</h3>
+
+					<p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 1rem;">
+						<a href="https://www.sagemath.org/">SageMath</a> is an open source math software that allows you to do various types of computations and visualizations. Below are some of the code I have used in my classes to visualize hard topics for students, or simply provide them a tool to play around with mathematical objects. The links open up in a sage cell server. You might need to hit the "Evaluate" button to see the output.
+					</p>
+
+					<h4 style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 1rem 0 0.5rem;">Calculus</h4>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-newton.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJyNU02L2zAQvRv8HwaXJXKjuHbCFrrgQy8tvZhA2VNIQRvLtqgtBVlJnP76jj68m6UtW2PM6HnmvRnNzDt4HDlU_GKUXIwwcNOpGowCdjxqNYmBGQ4MtFIGVINWc5IHI5SEizAdMGk98BhHZ6bJYlqkcRRHDZlSKGH6sYYVFBaZBiERya3FJrQ2GeJXj6421nTwpzhqT3wcrQfyHLUYONpNVnMtzih15siNTkFhZaU-eD_3o0L0Po6-zyw7Z-zjCF2kgeSbFEawHr5a-AHu1nlWfGySO-L8kGCLQcdeGWKZKRCbObVJ48HmW7qvtdlUui89qF5pDEtazblMqOnE4adEunKDhF80G7hLZbt3l4O-ArBwzWTLSU6r9CGOAJ8tLIP2UWGyxOdE85SO4pe9hnVOdfvk5EoMBHyLNE19dNBZBiEL3dD2QnKye2EMVhPqTvcUPC8Wwa4JdQGjufa8TGo2drxO_kvnz_SfJf5aReGqyN-uorNjEKhgCaHl_vyeTKu5f68z6V538B8NhOcOPvUn_mah1TxcLblVDRNW8cnM44XPy4RVt85hQC15NY-oxWdqD2aS1KIVZiyLe7dZQeOzBGyO305cS9Nxv6JivNHzErtq7yIZkvp15cRXhjDLxk5dSM17di2LPE9_AxQ5KoA=&lang=sage" target="_blank">Newton's method + Animation</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-newton-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-newton-out')">Output</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-newton-code')">Code</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-newton-desc" class="collapsible paper-details">
+							<p>Use Newton's method to approximate a root of a function with animation.</p>
+						</div>
+						<div id="sage-newton-out" class="collapsible paper-details">
+							<pre style="font-size: 0.8rem; color: var(--text-dim);">
+Initial Guess:   3.0000000000000000
+Next Guess:      1.6666666666666667
+Next Guess:      1.1333333333333333
+Next Guess:      1.0078431372549019
+Next Guess:      1.0000305180437934
+Next Guess:      1.0000000004656613
+An estimate of the root is   1.0000000004656613</pre>
+							<p><img src="../sage/newton.gif" alt="newton" style="max-width: 100%; width: 400px;" /></p>
+						</div>
+						<div id="sage-newton-code" class="collapsible paper-details">
+							<pre style="font-size: 0.75rem; color: var(--text-dim); overflow-x: auto;">
+var('x')
+f(x) = x^2 - 1
+xmin = 0; xmax = 3.1; ymin = -3; ymax = 9
+guess = 3
+fprime = f.derivative(x)
+g(x) = x-f(x)/fprime(x)
+N = 5; Sguess = [guess]
+print "Initial Guess: %20.16f"%(guess)
+P = plot(f(x), (xmin,xmax), ymin=ymin, ymax=ymax, color="green", thickness=3)
+Frames = [P]
+for i in range(0,N):
+    P += plot(point((guess,0),size=20,rgbcolor=(0,0,1)))
+    Frames += [P]
+    P += line([(guess,0),(guess,f(guess))], color="gray", linestyle="dashed")
+    Frames += [P]
+    P += plot(point((guess,f(guess)),size=20,rgbcolor=(1,0,0)))
+    Frames += [P]
+    h = f(guess) + fprime(guess)*(x-guess)
+    P += plot(h, (xmin,xmax),ymin=ymin, ymax=ymax, color="blue")
+    Frames += [P]
+    Nguess = g(guess)
+    print "Next Guess:    %20.16f"%(Nguess)
+    Sguess += [Nguess]; guess = Nguess.n(digits=15)
+print "An estimate of the root is %20.16f"%(Sguess[N])
+a = animate(Frames); a.show(delay=100)</pre>
+						</div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-level-curves.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJxtjs0KgzAQhO-BvMNCDya4FrWlPeVWei5eSy3BxhqMRqK16tNX-nMoeFlmGGa-XcHJ2A42B3jqrgCjemUge7hetZRQ0kvHvAFHnDwOlOQgYEhj8GFMY0qS2W4paR8VO-uqMTrT3bWZ9zY3lgvxHkM2YJBgwpGNPzHhJ3pfP1xHHHMnKyWO0rSKQ27d9xNdQ-tkfVcsxGiHMb_4S6RpmRJEc4ljZo11wisLWWoPbSPn8ijC9f6PeuEvBaFRPQ==&lang=sage" target="_blank">Plot with level curves</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-level-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-level-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-level-desc" class="collapsible paper-details"><p>Plot a surface with its level curves.</p></div>
+						<div id="sage-level-out" class="collapsible paper-details"><p><img src="../sage/level_curves.png" alt="level curves" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-cross-sections.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJxVjT0LwjAYhPdA_sMLDk3oW7Gt4JRNnKVrUQk11WDalKTWpr_e-jW4HHcc99wC9sb2kG_hofsrhKRy1nvwquq1bT0llAzSsWjEgFPEgZIaBIzHDGIIx4ySYo5rSvy9YWU3o_Izq5GNmBRYcGQBjRqU-Wi8WqYcaycbJXbSeMWhtg7eHegWvJPtRbHXFFN-iEvddEZXuj_9yEJMf_CvmTBJMc84VtZYJ6LbVd50hLaT8ziI1XLz93rgT4U3SpA=&lang=sage" target="_blank">Plot with \(y\)-cross-sections</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-cross-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-cross-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-cross-desc" class="collapsible paper-details"><p>Plot a 3D surface with its \(y\)-cross-sections.</p></div>
+						<div id="sage-cross-out" class="collapsible paper-details"><p><img src="../sage/cross_sections.png" alt="cross-sections" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-linearize-jacobian.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJyVk01vpDAMhu-V-h-s7qHJQGcGtqdKc-h1T-1ob1Wn8kACGUEShdCF_fVrAnQ-1EpdDgHb7-PYJsmFhKY0f94qpQU69Re9MprJWG-S9Zo_XF8BPT9AgmoAQbY6GwTgS_RQo21gu0vBm_CSxoHosLaV-OBYF_ccNsBYt0ujdMG6KOUL1kcJ56v7uyTud-kdORO-6PlM_S4FmNbb1g_b-tIJAegENlM9o8qTqtXKQ9buxWVA1VhQEnlU0FcuHMhL5VnnA3HE20bpIti_MDN7hSEugXpn63g91Tuu7-jYbQf97eR9pKYPE0XzDHPgJ5SluDyxc1N3PfleXkdb1cWZTbnO7GHYCpQGh7oQTNMET6YzRA9fRj_2W6K1QueMqZWODyvN-bkoFDGL5FeqUNqsstHj4l1k3jj2MulfL4HReqJurFHaNywUE2emMm5zs69acRNjYynLmxt-yyaJAStbIhHLn1Oy5yMeypxxJ_Jv0NsjHcqf6YLOmv4GP67sKXqOtnw5XCFGkeur_z3wn10-_g8cgPqS&lang=sage" target="_blank">Linearization with Jacobian matrix</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-jacobian-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-jacobian-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-jacobian-desc" class="collapsible paper-details"><p>The code takes a function \(f\) that maps \(\mathbb{R}^2\) to \(\mathbb{R}^2\) and draws three regions: the unit cube in blue, the image of the unit cube under \(f\) in red, and the linearization of the image by Jacobian of \(f\) at the origin.</p></div>
+						<div id="sage-jacobian-out" class="collapsible paper-details"><p><img src="../sage/linearize_jacobian.png" alt="linearization with Jacobian" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-linear-appx.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJyVUU1PwzAMvSPxH6wxacnI0Fq-JKRK_ASQOG_y2qQNZHGVpFrEr8drhxgHDuSQxPbz88vLs_VJB6zT5UWjDWzF5QXwMlCBWMyNyLKaLxRY3w9pu6Ms8uYWruFhmTclrKC4X2YOH9XBNqmryrWUamLAkQEDDb6B1GnoiUfBPHMef1OuT93FT_cn0X4kOF4YHJ1tdBA3hSpKxUJxcKkqpJRPE37aW5bLXUagZFGNNUYYlSWHS5FXKCfUC0N6R4lrIitcFetluRGr4ySpAK_PY05ATY5CNdu5Qc-4nnWs3sKgFb_K1h9ex1jdSbgCQwE6CvaTfEIHCX2r-cXOMgSwaWCBsdd12gZMlqpiAYkgag2R9pq5fAt7jZ5PMzgFxKaFg41cx1bDwToH70NMUHdH5tHTkckzAUeYxlQbsO_ARvCUJjyeqzqquZl8eP32of2XD0E3f9lQnhyOHR3EC3_Bq_wCORS04A==&lang=sage" target="_blank">Interactive Linear Approximation</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-linapx-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-linapx-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-linapx-desc" class="collapsible paper-details"><p>For a given function \(f(x)\) around a point \(a\), if you zoom in close enough on the graph, you can't tell the difference between the curve and the tangent line. This is the basic idea for linear approximations. Run it in sage to interact with it.</p></div>
+						<div id="sage-linapx-out" class="collapsible paper-details"><p><img src="../sage/linear_appx.png" alt="linear approximation" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-taylor.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJylkd9KwzAUxu-FvcNhdCxhx9HO3SgUvPABdOxujpG1aRfskpKkmPr0HtP9QRRvLKEk53B-35cvj0p7aUXhRjelrGDHRjdAXwU5sGlSscDzZIqgdNv53d4E5pSmIr6r0h_yRco5DhM6TjzJ2koJpgJ_kLAWfWMstKbptTkq0SAkOvJco0pp2Sadz--3SMqia3x-d6GJSBPWdLqMqNaQUUgC1cV3Q-nJS3b1Ej6MOUaCFbqOdpLwNRWPu5P4bbZAWmfx05lfKP0vlP4nZZEirStliUti8IcBMvxrwlRzH-NgAUEgaD60nqnVNsazCqkTnW_SLQ532GRbjtAf1Ve6_aXXH0W4FDIqFIbA-XjfdHJM9CBdvradpK1rZeF3Vnhl8gwpSlW8aekcZT3ov5z16__rW1n-JX9SXNGol8EzO04mDl5F21oTYOKSMUwohpojPeoZPss42no_KLAMU6R3HkDuYN7ZM8zoDjNY8U87LNCV&lang=sage" target="_blank">Interactive Taylor Polynomial</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-taylor-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-taylor-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-taylor-desc" class="collapsible paper-details"><p>The linear approximations have errors. One way to get better approximations is by taking into account the higher order derivatives. This code will calculate and draw the n-th degree Taylor polynomial so you can compare them. Run it in sage to interact with it.</p></div>
+						<div id="sage-taylor-out" class="collapsible paper-details"><p><img src="../sage/taylor.png" alt="Taylor polynomial" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<h4 style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 1.5rem 0 0.5rem;">Linear Algebra</h4>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-solve-linear.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJxLK8rPVcgrzS2oVMjMLcgvKlHIycxLzEnn5XJUsFXITSwpyqzQiI421DHSMY7ViTbRMdUxA9LmOhY6BrGxmrxcScjKjIBShmAMkqoASkFM0yvOzylL1XDUSQIJAwA1ZiJg&lang=sage" target="_blank">Solving a system of linear equations (numpy)</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-linsys-desc')">Description</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-linsys-desc" class="collapsible paper-details"><p>Given the coefficients matrix \(A\) and the constants \(b\) this solves the system of linear equations \(Ax=b\).</p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-random-echelon.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJw9jkEOgjAQRfck3OFHF0DSsFGXLLiDKzekloFOhI5pixpPbwnE3WT-mzf_iKvlACM9YSRHXkcK0PDa9TJj1tHzBy1kwMgvcgj8JaRwJR4Kb8vGgmOA9zRgED8j-Q6ODR3qJCcEMpL4XZXCmJZkrExu45O7zbM8a9Hsf7sNLm83dVYXpadRPEc7N0W6o0kcf_V9okKtJZqTwvJ8ku_usri-uVR5Fqy8y_Y_1Gu5sqp-_ARPyw==&lang=sage" target="_blank">Generate random echelonizable matrix</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-echelon-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-echelon-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-echelon-desc" class="collapsible paper-details"><p>One of the problems in teaching linear algebra is coming up with a handful of examples of matrices that can 'nicely' be row-reduced. This code generates random matrices with integer entries whose reduced row echelon form will also have integer entries.</p></div>
+						<div id="sage-echelon-out" class="collapsible paper-details"><p><img src="../sage/random_echelon.png" alt="random echelon matrix" style="max-width: 100%; width: 300px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-random-invertible.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJxdUD1vg0AM3ZH4D0_KECJRpKhTBwbG7JmyRBcwYAnuIvsIbX99fQ2Rqm6-e5_2DueRFQN5EhdJ4SDOd2HG7KLwJ0KPgR_kofxNWDmOYB9pIAF5Y5hkHUkIcSRDHiRKcJMGjE7_Uyvk2Q6niNZ53Ag6htWb0kX0QWywKjEp73dL5Ah7e2pJ1ckXrBd06Xtu2fyespTaUSSZ2Tv7tLrpaytv8iPM-O1YpeCzIT2Lxj94Ym8bv47QbXD5m5gISm2wMXhKEo762jTP8qxBvTlcn7ricinfSzcNQexcc71fPM-hWyYn-3Kx1eR6C4vv6o9DnhVN2VSbW3E4_ADyOot5&lang=sage" target="_blank">Generate random invertible matrix</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-invertible-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-invertible-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-invertible-desc" class="collapsible paper-details"><p>For a matrix \(A\) with integer entries to have an inverse with integer entries, it is necessary that its determinant is \(\pm 1\). It turns out that it is the sufficient condition too, thanks to Cramer's rule! This code generates random matrices with integer entries where their inverses also have integer entries.</p></div>
+						<div id="sage-invertible-out" class="collapsible paper-details"><p><img src="../sage/random_invertible.png" alt="random invertible matrix" style="max-width: 100%; width: 200px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-gaussian-elimination.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJytVt-PmzgQfl9p_4c78rDQJVy5e4tKq0pVTyddVuq2J52Ui5ADhlhrDMKmae6vv7ENwSRkddsrD4R4fnm-b2bsBTwQ9pXCb6STkhEBLc27TLFa3N7ktIBSr6cVVfs699fvvzz-_lfYUpkRTlNOSc5EmVKh2mNy9weR6i5Y3d4APp7nfUC1lu0oqD0d3YKqgWZ7yvGzqNsK6sIolLgLARVRLfum11qitQmX0e2NdWmjw5wOSmlURiGsIenl_qdPIWw2UbTFH_PGV2A9XUngI2sxA7R_snvuxaDFjEq98_hOwmHPOIW81iILm0TcKOesYoJY6J6JYmAC_wMtSMdV8B_DGfxQOoDxSFXXCrmyApobLCOAzyynQIuCZmoFTcuEkiAVbaTBayDhhCnS1IOLwGV1c-w57oESXZW29UEm60joX99Zz2pu1vXvsC739cFfR6Rp-DGtSONzUu1yAmqloqLjPJWsajgrjn4QBMMe0AEGf41fCyCc6_8SdhQT0rgwCQQ_CG8RniPCLqg1QzngnoBhzRJRUv91OGw3WIHVAeP03QNFgBBOeSCN1icgavEPbWuD9RGKtq4wIq8Po5mF3debe3PKdxT3DxE5rDcYc7tB-RYSTGQSfdgp03ERLRs3bWrJNBEyZUJ77iqhQw3d4z6sQOO3OtUZoX4My-DZ7FDNC_F1H4fegam9XWD38bztOtJWBjQfXyEL5vVeSOycix0S-GS-pnLKJZ3JTAN_n0A8VEkPhV5-m5wIOTM0MVyLBTxgiZQdwRJRugpcsn5CsibO_dmW1aT2s2ES7Zx7dBefEzhwo7DJvTD-2dEPPcUqbPORsanpOhp2g0JDzsT8DOX_QdD4TxdqttfNlKeT1rIFNbbX1AEit944dg68M8QWJFMYJ4Fl_GrGzM3x0niKp3V1CWToNbzrF5wA9zFcekTM8jytcBSzBrGuCwO3Y6Vd9pFmKvs7cbfVfSruPq33uxqPYj3xzGRzj8kQjweFp8ETpQ1kbcekPipwppVUjQcsFvi54epv0Y_4cWyykdk5TrWL5DT7l2wZT7rEEjRHr6kfzGziXbfplblmPIXPFcusYnxF8bJAXtRw06p4SfO5z4-alO4UO2F7pTfn4HXaDF5ZAJfx0q3r-Q5DtHvTZyiZogwzfQi2EcHpRLjYwvVTaa4nLzN4tjO_k4zWXKxedIm5vVks4E9JSn2OOTfQz4_hZvNruIy34eaXMN7qsnlE8fROHZGurPCg8fHmJhRTOqYxP92tglB2u5x9RYXkS9vRIPgX-flRcw==&lang=sage" target="_blank">Step-by-step Gaussian Elimination</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-gauss-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-gauss-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-gauss-desc" class="collapsible paper-details"><p>Does step-by-step Gauss-Jordan elimination process, and actually tells you what to do in each step.</p></div>
+						<div id="sage-gauss-out" class="collapsible paper-details"><p><img src="../sage/gaussian_elimination.png" alt="Gaussian elimination" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-inverting.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJytVt-PozYQfl9p_4cpeQjcEnq8Rs2dIp3uVKlZ6bZXqVIaIQcMsdYYZJtN07--YxsCJGTVvR4PhHh-eb5vZuwZPBL2QuELaZRiRICkWZNqVon7u4zmUJj1pKT6UGX-Zv3t6dc_Q0lVSjhNOCUZE0VChZan1fw3ovQ8WN7fAT6e531CNcn2FPSB9m5BV0DTA-X4mVeyhCq3CgXuQkBJtGR_mzVJjDbhKrq_cy5ddJjSQSmNiiiEDaxauf_1awjbbRTt8Me-8RU4TzcS-MwkZoD2z27PrRiMmFFldh7PFRwPjFPIKiNysCnEjXLOSiaIg-6VKBYm8D_RnDRcB_8xnMUPpR0YT1Q3UqilE9DMYhkB_M4yCjTPaaqXUEsmtAKlaa0sXh0JZ0yRphZcBC6t6lPLcQuUaMpEVke12kTC_PqD9bTidt38duvqUB39TUTqmp-SktQ-J-U-I6CXOsobzhPFypqz_OQHQdDtAR1g8Pf4NQPCufmvYE8xIYMLU0Dwg3CJ8JwQdkGdGcoB9wQMa5aIgvrvw267wRKcDlinHx8pAoRwqiOpjT4BUYl_qKws1ifIZVViRF4dezMHu28298s5317cPkRksNlizN0W5TtYYSKj6N1OmYmLaLm4SV0pZohQCRPGc1MKE6rrnuHDcjT-YFKdEJrHsgyeyw7VvBBfD3HoHZk-uAX2EE_bbiJjZUHz8RWyYFrvjcROudgjgc_2ayynXNGJzAzwDyuIuyppoTDLH1ZnQi4MbYyhxQwesUSKhmCJaFMFQ7J-QrJGzv3JljWktrNhFO2Se3QXXxLYcaOxyb0w_nmgH3qaldjmPWNj003U7QaFlpyR-QXK_4Og_p8p1PRgmilLRq3lCqpvr7EDRG6zHdgN4J0gNiepxjgrWMTvJsyGOV4bj_F0rq6BDL2aN-3CIMBDDNceEbMsS0ocxaxGrKvcwj2wMi7bSBOV_Z24u-o-F3eb1vpf4VFsJp6dbMNjMsTjQeNp8ExpDalsmDJHBc60gur-gMUCvzRc_iXaEd-PTdYzO8WpcbE6z_4FW8SjLnEETdFr6wczG3k3bXpjrllP4WvFMqkY31C8LpA3Ndy4Kt7SfMPnR03K4RQ7Y3ujN6fgHbQZvHMALuLFsK6nOwzRbk1foWSMMkz0IbhGhEEnwtUWbp9KUz15ncGrnfmdZEh7sXrTJeb-bjaDPxQpzDn2QqQ_J7CHFLI5itf9jXS7JeF-F27TMNuZEnpC0eh-vY5IU5R46Ph4ixOaaRPfmq67e1YQqmafsRdUWH2TDQ2CfwGqylT9&lang=sage" target="_blank">Step-by-step inverting</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-inv-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-inv-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-inv-desc" class="collapsible paper-details"><p>Inverts a matrix step-by-step by doing Gauss-Jordan elimination on the matrix augmented with the identity of the same size, and actually tells you what to do in each step.</p></div>
+						<div id="sage-inv-out" class="collapsible paper-details"><p><img src="../sage/inverting.png" alt="Inverting a matrix" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-inverting2.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJytVt-PozYQfl9p_4cpeQjcEnq8Rs2dIp3uVKlZ6bZXqVIaIQcMsdYYZJtN07--YxsCJGTVvR4PhHh-eb5vZuwZPBL2QuELaZRiRICkWZNqVon7u4zmUJj1pKT6UGX-Zv3t6dc_Q0lVSjhNOCUZE0VChZan1fw3ovQ8WN7fAT6e531CNcn2FPSB9m5BV0DTA-X4mVeyhCq3CgXuQkBJtGR_mzVJjDbhKrq_cy5ddJjSQSmNiiiEDaxauf_1awjbbRTt8Me-8RU4TzcS-MwkZoB2z27PrRiMmFFldh7PFRwPjFPIKiNysCnEjXLOSiaIg-6VKBYm8D_RnDRcB_8xnMUPpR0YT1Q3UqilE9DMYhkB_M4yCjTPaaqXUEsmtAKlaa0sXh0JZ0yRphZcBC6t6lPLcQuUaMpEVke12kTC_PqD9bTidt38duvqUB39TUTqmp-SktQ-J-U-I6CXOsobzhPFypqz_OQHQdDtAR1g8Pf4NQPCufmvYE8xIYMLU0Dwg3CJ8JwQdkGdGcoB9wQMa5aIgvrvw267wRKcDlinHx8pAoRwqiOpjT4BUYl_qKws1ifIZVViRF4dezMHu28298s5317cPkRksNlizN0W5TtYYSKj6N1OmYmLaLm4SV0pZohQCRPGc1MKE6rrnuHDcjT-YFKdEJrHsgyeyw7VvBBfD3HoHZk-uAX2EE_bbiJjZUHz8RWyYFrvjcROudgjgc_2ayynXNGJzAzwDyuIuyppoTDLH1ZnQi4MbYyhxQwesUSKhmCJaFMFQ7J-QrJGzv3JljWktrNhFO2Se3QXXxLYcaOxyb0w_nmgH3qaldjmPWNj003U7QaFlpyR-QXK_4Og_p8p1PRgmilLRq3lCqpvr7EDRG6zHdgN4J0gNiepxjgrWMTvJsyGOV4bj_F0rq6BDL2aN-3CIMBDDNceEbMsS0ocxaxGrKvcwj2wMi7bSBOV_Z24u-o-F3eb1vpf4VFsJp6dbMNjMsTjQeNp8ExpDalsmDJHBc60gur-gMUCvzRc_iXaEd-PTdYzO8WpcbE6z_4FW8SjLnEETdFr6wczG3k3bXpjrllP4WvFMqkY31C8LpA3Ndy4Kt7SfMPnR03K4RQ7Y3ujN6fgFbQZvHMALuPFsK6nOwzRbk1foWSMMkz0IbhGhEEnwtUWbp9KUz15ncGrnfmdZEh7sXrTJeb-bjaDPxQpzDn2QqQ_J7CHFLI5itf9jXS7JeF-F27TMNuZEnpC0eh-vY5IU5R46Ph4ixOaaRPfmq67e1YQqmafsRdUWH2TDQ2CfwGqylT9&lang=sage" target="_blank">Step-by-step inverting a generic \(2\times 2\) matrix</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-inv2-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-inv2-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-inv2-desc" class="collapsible paper-details"><p>Inverts a generic \(2\times 2\) matrix step-by-step by doing Gauss-Jordan elimination on the matrix augmented with the identity. You can do the same on a \(3\times 3\) or larger matrix by doing a similar process.</p></div>
+						<div id="sage-inv2-out" class="collapsible paper-details"><p><img src="../sage/inverting2.png" alt="Inverting a 2x2 matrix" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<div class="paper-item">
+						<div class="paper-header">
+							<img class="paper-thumb" src="../images/thumbs/sage-gershgorin.webp" alt="">
+							<div class="paper-info">
+								<a href="http://sagecell.sagemath.org/?z=eJydkz1v2zAQhncA_Q-HeAgJM2qMdgrAQXbjjAWCZBKEgrYp-RCKVEkqbfLrcxStxG2dpQL0dXzu5X1xpxu41T7sW-fRslLoJ2WCXNND8-tPZ0DXDErAAArCz0F5DZ2KHn9Pa9-H2A8xAXGvj7Rgh-ExgGugzGh-Nt51EFSri964WGzRb40G7HrnI6zGv9OgM86HCfQK7cb9Oha2IKEsLHGB8WxaZR854cwKuPDtJg690RcH6IbWe4c2sqrmx4LLUTB6ZUPvgp5E78hcsbLCy4WguxbQUeHC0DGo1CYwxaFxnqpFJcjYNda8MBgi4zXwywS9u3PxgevyA9fluyvPPCaewmw1Wwg7X_D6kH6KFHKFGfNaGXZXYV1d0abYqRat8s9vJi5g_EwZjcWW5xujto_n_2xipw2wgXFcQEq494M-zMufVS0Lja22xA2aOvOXuICAL1p-uZpatv7voKmxWTq3ncwCGjRGptAEKNPvlVx8tqfygePGj81c8fn4WvP5DS_CnqbnbTpmM3hIk0n5lhRuktm57kc-F2z1bS2-EnviWKVI-CtlTAER&lang=sage" target="_blank">Draw Gershgorin disks</a>
+								<div class="paper-meta">
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-gersh-desc')">Description</button>
+									<button class="paper-action-btn" onclick="toggleSlowly('sage-gersh-out')">Output</button>
+								</div>
+							</div>
+						</div>
+						<div id="sage-gersh-desc" class="collapsible paper-details"><p>Gershgorin circle theorem roughly states that the eigenvalues of an \(n \times n\) matrix lie inside \(n\) circles where \(i\)-th circle is centred at \(A_{i,i}\) and its radius is the sum of the absolute values of the off-diagonal entries of the \(i\)-th row of \(A\). This Sage code draws the circles for a given matrix.</p></div>
+						<div id="sage-gersh-out" class="collapsible paper-details"><p><img src="../sage/gershgorin.png" alt="Gershgorin Disks" style="max-width: 100%; width: 400px;" /></p></div>
+					</div>
+
+					<h4 style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 1.5rem 0 0.5rem;">Other</h4>
+
+					<ul style="list-style: none; padding: 0;">
+						<li class="paper-item" style="padding: 0.35rem 0;"><a href="https://k1monfared.wordpress.com/2016/04/18/a-full-matrix-with-given-eigenvalues">A full matrix with given eigenvalues</a></li>
+						<li class="paper-item" style="padding: 0.35rem 0;"><a href="https://k1monfared.wordpress.com/2016/03/23/on-the-last-digits-of-conscutive-prime-numbers">On the last digits of consecutive prime numbers</a></li>
+						<li class="paper-item" style="padding: 0.35rem 0;"><a href="https://k1monfared.wordpress.com/2016/02/03/multiplication-graph/">Multiplication graph</a></li>
+					</ul>
+				</div>
+
+				<!-- ==================== 5. OUTREACH TALKS ==================== -->
 				<div class="section-block">
 					<h3>Outreach Talks</h3>
 					<ul id="teaching-talks"></ul>
 				</div>
 				<script>
 					renderTalks('teaching-talks', [
-						{ title: 'Counting from one to infinity', venue: 'High School Math Camp, U of Calgary', year: '2017', location: 'Calgary' },
-						{ title: 'Real life applications of calculus and linear algebra', venue: 'Student Colloquium, U of Calgary', year: '2016', location: 'Calgary' },
-						{ title: 'Touching infinity', venue: 'Junior Math Contestants, U of Calgary', year: '2016', location: 'Calgary' },
-						{ title: 'The Role of Intention and Initiative', venue: 'TekTalk', location: 'Vancouver', slidesUrl: '../research/talks/the_role_of_intention_and_initiative.pdf' },
-						{ title: 'On mathematics education', venue: 'Parviz Shahriari Foundation', year: '2008', location: 'Tehran' },
-						{ title: 'Biweekly math problem solving seminars', venue: 'Amirkabir U of Technology', year: '2006', location: 'Tehran' }
+						{ title: 'Counting from one to infinity', venue: 'High School Math Camp, U of Calgary', year: '2017', location: 'Calgary', thumb: '../images/thumbs/talk-counting-infinity.webp' },
+						{ title: 'Real life applications of calculus and linear algebra', venue: 'Student Colloquium, U of Calgary', year: '2016', location: 'Calgary', thumb: '../images/thumbs/talk-calculus-apps.webp' },
+						{ title: 'Touching infinity', venue: 'Junior Math Contestants, U of Calgary', year: '2016', location: 'Calgary', thumb: '../images/thumbs/talk-touching-infinity.webp' },
+						{ title: 'The Role of Intention and Initiative', venue: 'TekTalk', location: 'Vancouver', slidesUrl: '../research/talks/the_role_of_intention_and_initiative.pdf', thumb: '../images/thumbs/talk-tektalk.webp' },
+						{ title: 'On mathematics education', venue: 'Parviz Shahriari Foundation', year: '2008', location: 'Tehran', thumb: '../images/thumbs/talk-math-education.webp' },
+						{ title: 'Biweekly math problem solving seminars', venue: 'Amirkabir U of Technology', year: '2006', location: 'Tehran', thumb: '../images/thumbs/talk-problem-solving.webp' }
 					]);
 				</script>
 
-				<p style="margin-top: 1rem;"><a href="../teaching.html">Full teaching record &rarr;</a></p>
+				<!-- ==================== 6. CODE ==================== -->
+				<div class="section-block">
+					<h3>Code</h3>
+					<ul id="teaching-code"></ul>
+				</div>
+				<script>
+					renderCode('teaching-code', [
+						{ title: "Newton's method", url: 'https://github.com/k1monfared/education/tree/main/calculus/newtons_method', description: 'Root approximation with visualization', thumb: '../images/thumbs/edu-newtons-method.webp' },
+						{ title: "Newton's method (animated)", url: 'https://github.com/k1monfared/education/tree/main/calculus/newtons_method_animated', description: 'Step-by-step animation of Newton\'s method convergence', thumb: '../images/thumbs/edu-newton-animated.webp' },
+						{ title: 'Taylor expansion (animated)', url: 'https://github.com/k1monfared/education/tree/main/calculus/taylor_expansion_animated_dir', description: 'Animated Taylor polynomial approximation', thumb: '../images/thumbs/edu-taylor.webp' },
+						{ title: 'Partial fraction decomposition', url: 'https://github.com/k1monfared/education/tree/main/calculus/step_by_step_partial_fraction_decomposition', description: 'Step-by-step partial fraction decomposition', thumb: '../images/thumbs/edu-partial-fractions.webp' },
+						{ title: '3D plot with level curves', url: 'https://github.com/k1monfared/education/tree/main/calculus/plot3d_level_curves', description: 'Interactive 3D surface with level curve visualization', thumb: '../images/thumbs/edu-level-curves.webp' },
+						{ title: '3D plot with cross-sections', url: 'https://github.com/k1monfared/education/tree/main/calculus/plot3d_cross_sections', description: '3D surface with cross-section slices', thumb: '../images/thumbs/edu-cross-sections.webp' },
+						{ title: 'Gradient descent (2 variables)', url: 'https://github.com/k1monfared/education/tree/main/calculus/gradient_descent_for_two_variables_with_plot', description: 'Gradient descent optimization with contour plot', thumb: '../images/thumbs/edu-gradient-descent.webp' },
+						{ title: 'Linearization with Jacobian', url: 'https://github.com/k1monfared/education/tree/main/linear_algebra/linearize_jacobian', description: 'Jacobian matrix linearization visualization', thumb: '../images/thumbs/edu-linearize-jacobian.webp' },
+						{ title: 'Optical illusion', url: 'https://github.com/k1monfared/arts_and_recreation/tree/main/an_optical_illusion', description: 'Mathematical optical illusion generator', thumb: '../images/thumbs/arts-optical-illusion.webp' },
+						{ title: 'Modular times table graph', url: 'https://github.com/k1monfared/arts_and_recreation/tree/main/modular_timestable_graph', description: 'Circular multiplication table visualizations', thumb: '../images/thumbs/arts-timestable.webp' },
+						{ title: 'Lissajous curve table', url: 'https://github.com/k1monfared/arts_and_recreation/tree/main/lissajouse_curve_table', description: 'Animated Lissajous curve patterns', thumb: '../images/thumbs/arts-lissajous.webp' },
+						{ title: 'Random walker art', url: 'https://github.com/k1monfared/arts_and_recreation/tree/main/random_walkers_art', description: 'Generative art from random walk simulations', thumb: '../images/thumbs/arts-random-walkers.webp' },
+						{ title: 'TeX goodies', url: 'https://github.com/k1monfared/tex_goodies', description: 'Assortment of LaTeX useful projects', thumb: '../images/thumbs/code-tex.webp' }
+					]);
+				</script>
+
+				<!-- ==================== 7. SAMPLE TEACHING MATERIALS ==================== -->
+				<div class="section-block">
+					<h3>Sample Teaching Materials</h3>
+					<ul style="list-style: none; padding: 0;">
+						<li style="padding: 0.35rem 0;"><b><a href="../courses/CalculusIFa2012.html">Calculus I</a>:</b> An introductory lecture based course.</li>
+						<li style="padding: 0.35rem 0;"><b><a href="../courses/CalculusIIISu2013.html">Calculus III</a>:</b> A higher level lecture based course.</li>
+						<li style="padding: 0.35rem 0;"><b><a href="../courses/ElemLinAlgSu2014.html">Linear Algebra</a>:</b> An introductory <b>flipped</b> course.</li>
+						<li style="padding: 0.35rem 0;"><b><a href="../courses/Stat171Sp15.html">Statistics</a>:</b> An introductory <b>interactive</b> course.</li>
+					</ul>
+				</div>
+
 			</section>
 
 		</main>

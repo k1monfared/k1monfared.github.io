@@ -118,6 +118,7 @@
 							title: 'The maximum multiplicity of an eigenvalue of symmetric matrices with a given graph',
 							tag: 'Not Published',
 							pdfUrl: '../research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.pdf',
+							thumb: '../images/thumbs/mat-max-multiplicity.webp',
 							authors: 'K. Hassani Monfared, S. Mallik.',
 							abstract: 'For a graph G, M(G) denotes the maximum multiplicity occurring of an eigenvalue of a symmetric matrix whose zero-nonzero pattern is given by the edges of G. We introduce two combinatorial graph parameters T^-(G) and T^+(G) that give a lower and an upper bound for M(G) respectively, and we show that these bounds are sharp.',
 							takeaways: '<b>Problem:</b> Determine tight combinatorial bounds on the maximum multiplicity \\(M(G)\\) of an eigenvalue across all symmetric matrices whose pattern is prescribed by a graph \\(G\\).<br><b>Key result:</b> Two new graph parameters \\(T^-(G)\\) and \\(T^+(G)\\), defined via tree covers, satisfy \\(T^-(G) \\leq M(G) \\leq T^+(G)\\) for all graphs, and these bounds are sharp.<br><b>Method:</b> Generalization of path-cover-based parameters by replacing induced paths with induced trees, with rank arguments on principal submatrices.'
@@ -162,7 +163,7 @@
 							abstract: 'For a given set of \\(nk\\) distinct real eigenvalues and \\(k\\) graphs on \\(n\\) nodes, we construct real symmetric matrices \\(A_s\\) such that the matrix polynomial \\(A(z) = A_k z^k + \\cdots + A_1 z + A_0\\) has the prescribed spectrum and graphs. When \\(k=2\\), this solves a physically significant inverse eigenvalue problem for linked vibrating systems.',
 							takeaways: '<b>Problem:</b> Given prescribed eigenvalues and graph structures for physical connectivity (e.g., mass-spring systems), can one construct real symmetric matrix polynomials with those spectra and structures?<br><b>Key result:</b> For any \\(nk\\) distinct real eigenvalues and \\(k+1\\) graphs on \\(n\\) vertices, such matrix polynomials exist with \\(A_k\\) positive definite diagonal. For \\(k=2\\), this solves the inverse problem for linked vibrating systems.<br><b>Method:</b> Perturbation of a diagonal matrix polynomial via the Implicit Function Theorem, showing the Jacobian is nonsingular at the diagonal system.'
 						}
-					], '../images/misc.webp');
+					]);
 				</script>
 
 				<div class="section-block">
@@ -171,15 +172,16 @@
 				</div>
 				<script>
 					renderCode('mat-code', [
-						{ title: 'lambda solver for all graphs', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_siep', description: 'SAGE: finds a matrix with given graph and spectrum' },
-						{ title: 'lambda-mu solver for trees', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_mu_for_trees', description: 'SAGE: interlacing eigenvalue construction' },
-						{ title: 'lambda-tau solver for trees', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_tau_for_trees', description: 'SAGE: second-degree interlacing' },
-						{ title: 'polynomial lambda solver', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_ispmpg', description: 'SAGE: quadratic inverse eigenvalue problem' },
-						{ title: 'full matrix constructor', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/nowherezeromatrixconstruction', description: 'Nowhere-zero entry matrices with given spectrum' },
-						{ title: 'Combinatorial matrix theory', url: 'https://github.com/k1monfared/combinatorial_matrix_theory', description: 'Projects in combinatorial matrix theory and inverse eigenvalue problems (Jupyter)' },
-						{ title: 'Experimental math', url: 'https://github.com/k1monfared/experimental_math', description: 'Mathematical experimentations and explorations' },
-						{ title: 'Laplacian eigenvalue problems', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/laplacian', description: 'Laplacian eigenvalue crossings and inertia' }
-					], '../images/misc.webp');
+						{ title: 'lambda solver for all graphs', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_siep', description: 'SAGE: finds a matrix with given graph and spectrum', thumb: '../images/thumbs/code-lambda-solver.webp' },
+						{ title: 'lambda-mu solver for trees', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_mu_for_trees', description: 'SAGE: interlacing eigenvalue construction', thumb: '../images/thumbs/code-lambda-mu.webp' },
+						{ title: 'lambda-tau solver for trees', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_tau_for_trees', description: 'SAGE: second-degree interlacing', thumb: '../images/thumbs/code-lambda-tau.webp' },
+						{ title: 'polynomial lambda solver', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/lambda_ispmpg', description: 'SAGE: quadratic inverse eigenvalue problem', thumb: '../images/thumbs/code-poly-lambda.webp' },
+						{ title: 'full matrix constructor', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/inverse_eigenvalue_problems/nowherezeromatrixconstruction', description: 'Nowhere-zero entry matrices with given spectrum', thumb: '../images/thumbs/code-full-matrix.webp' },
+						{ title: 'Laplacian eigenvalue problems', url: 'https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/laplacian', description: 'Laplacian eigenvalue crossings and inertia', thumb: '../images/thumbs/code-laplacian.webp' },
+						{ title: 'Cross-entropy for combinatorics', url: 'https://github.com/k1monfared/cross-entropy-for-combinatorics', description: 'Constructions in combinatorics via neural networks and LP solvers', thumb: '../images/thumbs/code-comb-matrix.webp' },
+						{ title: 'Goldbach comet', url: 'https://github.com/k1monfared/experimental_math/tree/main/statistical_goldbach', description: 'Statistical exploration of Goldbach conjecture representations', thumb: '../images/thumbs/exp-goldbach-comet.webp' },
+						{ title: 'Experimental math', url: 'https://github.com/k1monfared/experimental_math', description: 'Mathematical experimentations and explorations', thumb: '../images/thumbs/code-experimental-math.webp' }
+					]);
 				</script>
 
 				<div class="section-block">
@@ -188,25 +190,25 @@
 				</div>
 				<script>
 					renderTalks('mat-talks', [
-						{ title: 'Inverse Polynomial Spectral Problems for Graphs', venue: 'ILAS', year: '2019', location: 'Rio de Janeiro', abstractUrl: 'http://ilas2019.org/wp-content/uploads/2019/06/ILAS2019_FULL_PROGRAM_20190606.pdf' },
-						{ title: 'An Analog of Matrix Tree Theorem for Signless Laplacians', venue: 'CMS Summer Meeting', year: '2019', location: 'Regina', slidesUrl: '../research/201906_Regina_CMS.pdf', abstractUrl: 'https://cms.math.ca/Events/summer19/abs/pdf/mta-km.pdf' },
-						{ title: 'Some inverse eigenvalue problems for graphs', venue: 'WCLAM', year: '2016', location: 'Winnipeg', abstractUrl: 'http://server.math.umanitoba.ca/~kirkland/WCLAM_2016_Program.pdf' },
-						{ title: 'Using Jacobian method to solve inverse eigenvalue problems for graphs', venue: 'ILAS', year: '2016', location: 'Leuven', abstractUrl: 'https://ilas2016.cs.kuleuven.be/bookofabstracts.pdf' },
-						{ title: 'Using the Jacobian method to solve SIEPs', venue: 'JMM', year: '2016', location: 'Seattle' },
-						{ title: 'Several examples on the Jacobian method', venue: 'CanaDAM', year: '2015', location: 'Saskatoon', abstractUrl: 'http://canadam.math.ca/2015/program/abs/pdf/gm2-khm.pdf' },
-						{ title: 'Nowhere-zero eigenbasis for a matrix with prescribed graph and spectrum', venue: 'JMM', year: '2015', location: 'San Antonio', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2168_abstracts/1106-15-1418.pdf' },
-						{ title: 'The inverse principal perrank characteristic sequence problems', venue: 'GRWC', year: '2014', location: 'Denver', abstractUrl: 'https://sites.google.com/site/rmgpgrwc/problem-gardens/2014-InversePrincipalPerrankSequence.pdf' },
-						{ title: 'Building vibrating systems using linear algebra and calculus', venue: 'Student Colloquium, Western Illinois U', year: '2014', location: 'Macomb' },
-						{ title: 'Structured inverse eigenvalue problems', venue: 'Colloquium, Western Illinois U', year: '2014', location: 'Macomb' },
-						{ title: 'Skew-symmetric SIEP and the role of the Jacobian method', venue: 'ACNT Seminar, U of Wyoming', year: '2014', location: 'Laramie' },
-						{ title: 'The Jacobian method and structured inverse eigenvalue problems', venue: 'JMM', year: '2014', location: 'Baltimore', videoUrl: 'https://www.youtube.com/watch?v=a7-UVsDJ-xc', slidesUrl: '../research/talks/PhD-Defense.pdf', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2160_abstracts/1096-15-2004.pdf' },
-						{ title: 'Using the Jacobian method in SIEPs', venue: 'U of Colorado Denver', year: '2013', location: 'Denver' },
-						{ title: 'A structured inverse eigenvalue problem', venue: 'MathFest', year: '2013', location: 'Hartford' },
-						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2013', location: 'Laramie', slidesUrl: '../research/talks/lambda-mu-long.pdf' },
-						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMMC', year: '2013', location: 'Laramie', slidesUrl: '../research/talks/lambda-mu-short.pdf' },
-						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2012', location: 'Denver' },
-						{ title: 'Constructing matrices with interlacing spectral data and graph', venue: 'MIGHTY LIII', year: '2012', location: 'Iowa State' }
-					], '../images/misc.webp');
+						{ title: 'Inverse Polynomial Spectral Problems for Graphs', venue: 'ILAS', year: '2019', location: 'Rio de Janeiro', abstractUrl: 'http://ilas2019.org/wp-content/uploads/2019/06/ILAS2019_FULL_PROGRAM_20190606.pdf', thumb: '../images/thumbs/talk-ilas-2019.webp' },
+						{ title: 'An Analog of Matrix Tree Theorem for Signless Laplacians', venue: 'CMS Summer Meeting', year: '2019', location: 'Regina', slidesUrl: '../research/201906_Regina_CMS.pdf', abstractUrl: 'https://cms.math.ca/Events/summer19/abs/pdf/mta-km.pdf', thumb: '../images/thumbs/talk-cms-2019.webp' },
+						{ title: 'Some inverse eigenvalue problems for graphs', venue: 'WCLAM', year: '2016', location: 'Winnipeg', abstractUrl: 'http://server.math.umanitoba.ca/~kirkland/WCLAM_2016_Program.pdf', thumb: '../images/thumbs/talk-wclam-2016.webp' },
+						{ title: 'Using Jacobian method to solve inverse eigenvalue problems for graphs', venue: 'ILAS', year: '2016', location: 'Leuven', abstractUrl: 'https://ilas2016.cs.kuleuven.be/bookofabstracts.pdf', thumb: '../images/thumbs/talk-ilas-2016.webp' },
+						{ title: 'Using the Jacobian method to solve SIEPs', venue: 'JMM', year: '2016', location: 'Seattle', thumb: '../images/thumbs/talk-jmm-2016.webp' },
+						{ title: 'Several examples on the Jacobian method', venue: 'CanaDAM', year: '2015', location: 'Saskatoon', abstractUrl: 'http://canadam.math.ca/2015/program/abs/pdf/gm2-khm.pdf', thumb: '../images/thumbs/talk-jmm-2015.webp' },
+						{ title: 'Nowhere-zero eigenbasis for a matrix with prescribed graph and spectrum', venue: 'JMM', year: '2015', location: 'San Antonio', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2168_abstracts/1106-15-1418.pdf', thumb: '../images/thumbs/talk-jmm-2015.webp' },
+						{ title: 'The inverse principal perrank characteristic sequence problems', venue: 'GRWC', year: '2014', location: 'Denver', abstractUrl: 'https://sites.google.com/site/rmgpgrwc/problem-gardens/2014-InversePrincipalPerrankSequence.pdf', thumb: '../images/thumbs/talk-grwc-2014.webp' },
+						{ title: 'Building vibrating systems using linear algebra and calculus', venue: 'Student Colloquium, Western Illinois U', year: '2014', location: 'Macomb', thumb: '../images/thumbs/talk-wiu-colloquium.webp' },
+						{ title: 'Structured inverse eigenvalue problems', venue: 'Colloquium, Western Illinois U', year: '2014', location: 'Macomb', thumb: '../images/thumbs/talk-wiu-seminar.webp' },
+						{ title: 'Skew-symmetric SIEP and the role of the Jacobian method', venue: 'ACNT Seminar, U of Wyoming', year: '2014', location: 'Laramie', thumb: '../images/thumbs/talk-acnt.webp' },
+						{ title: 'The Jacobian method and structured inverse eigenvalue problems', venue: 'JMM', year: '2014', location: 'Baltimore', videoUrl: 'https://www.youtube.com/watch?v=a7-UVsDJ-xc', slidesUrl: '../research/talks/PhD-Defense.pdf', abstractUrl: 'http://jointmathematicsmeetings.org/amsmtgs/2160_abstracts/1096-15-2004.pdf', thumb: '../images/thumbs/talk-phd-defense.webp' },
+						{ title: 'Using the Jacobian method in SIEPs', venue: 'U of Colorado Denver', year: '2013', location: 'Denver', thumb: '../images/thumbs/talk-ucd-2013.webp' },
+						{ title: 'A structured inverse eigenvalue problem', venue: 'MathFest', year: '2013', location: 'Hartford', thumb: '../images/thumbs/talk-mathfest-2013.webp' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2013', location: 'Laramie', slidesUrl: '../research/talks/lambda-mu-long.pdf', thumb: '../images/thumbs/talk-lambda-mu-long.webp' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMMC', year: '2013', location: 'Laramie', slidesUrl: '../research/talks/lambda-mu-short.pdf', thumb: '../images/thumbs/talk-lambda-mu-short.webp' },
+						{ title: 'The lambda-mu structured inverse eigenvalue problem', venue: 'RMDMD', year: '2012', location: 'Denver', thumb: '../images/thumbs/talk-rmdmd-2012.webp' },
+						{ title: 'Constructing matrices with interlacing spectral data and graph', venue: 'MIGHTY LIII', year: '2012', location: 'Iowa State', thumb: '../images/thumbs/talk-mighty-2012.webp' }
+					]);
 				</script>
 
 				<div class="section-block">
@@ -215,9 +217,9 @@
 				</div>
 				<script>
 					renderTheses('mat-theses', [
-						{ title: 'The Jacobian Method', url: '../research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).pdf', degree: 'PhD', institution: 'University of Wyoming', year: '2014' },
-						{ title: 'On the Permanent Conjecture', url: '../research/2012_On_the_Permanent_Conjecture_(Masters_thesis).pdf', degree: 'MSc', institution: 'University of Wyoming', year: '2012' }
-					], '../images/misc.webp');
+						{ title: 'The Jacobian Method', url: '../research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).pdf', degree: 'PhD', institution: 'University of Wyoming', year: '2014', thumb: '../images/thumbs/thesis-phd.webp' },
+						{ title: 'On the Permanent Conjecture', url: '../research/2012_On_the_Permanent_Conjecture_(Masters_thesis).pdf', degree: 'MSc', institution: 'University of Wyoming', year: '2012', thumb: '../images/thumbs/thesis-msc.webp' }
+					]);
 				</script>
 			</section>
 
