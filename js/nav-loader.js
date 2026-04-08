@@ -149,6 +149,15 @@
 		}
 	}
 
+	// Create theme toggle button for site_kit theme.js
+	function createThemeToggleButton() {
+		if (document.getElementById('theme-toggle')) return;
+		var btn = document.createElement('button');
+		btn.id = 'theme-toggle';
+		btn.setAttribute('aria-label', 'Toggle theme');
+		document.body.appendChild(btn);
+	}
+
 	// Set active page based on current URL
 	function setActivePage() {
 		// Get current page filename
@@ -210,10 +219,12 @@
 			loadHeader();
 			loadNavigation();
 			loadFooter();
+			createThemeToggleButton();
 		});
 	} else {
 		loadHeader();
 		loadNavigation();
 		loadFooter();
+		createThemeToggleButton();
 	}
 })();
