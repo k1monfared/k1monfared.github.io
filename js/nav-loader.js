@@ -58,9 +58,7 @@
 	<a href="http://www.linkedin.com/in/k1monfared" target="_blank" aria-label="LinkedIn" class="social-icon social-linkedin"></a>
 	<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ" target="_blank" aria-label="Google Scholar" class="social-icon social-scholar"></a>
 	<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K" target="_blank" aria-label="arXiv" class="social-icon social-arxiv"></a>
-</div>
-<div class="footer-sponsor-link">
-	<a href="${pathPrefix}sponsor.html">Support my work</a>
+	<a href="${pathPrefix}sponsor.html" aria-label="Support my work" title="Support my work" class="social-icon social-sponsor"></a>
 </div>`;
 
 	// Load header
