@@ -49,16 +49,16 @@
     --bg-button: rgba(226, 232, 240, 0.6);
     --bg-button-hover: rgba(59, 130, 246, 0.1);
 
-    --text-primary: #1e293b;
-    --text-secondary: #334155;
-    --text-muted: #475569;
-    --text-dim: #64748b;
-    --text-dimmer: #94a3b8;
+    --text-primary: #0f172a;
+    --text-secondary: #1e293b;
+    --text-muted: #334155;
+    --text-dim: #475569;
+    --text-dimmer: #64748b;
 
-    --link-default: #0284c7;
-    --link-hover: #0369a1;
-    --link-visited: #0ea5e9;
-    --link-active: #0284c7;
+    --link-default: #0369a1;
+    --link-hover: #075985;
+    --link-visited: #0284c7;
+    --link-active: #0369a1;
 
     --border-color: rgba(148, 163, 184, 0.3);
     --border-hover: rgba(100, 116, 139, 0.5);
