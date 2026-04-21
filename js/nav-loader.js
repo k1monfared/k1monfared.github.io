@@ -150,13 +150,23 @@
 		}
 	}
 
-	// Create theme toggle button for site_kit theme.js
+	// Create theme toggle button and wire up its click handler.
+	// site_kit theme.js runs its DOMContentLoaded listener before this one
+	// (it's loaded first in the head), so its own click-handler attach misses
+	// the button. We attach our own here.
 	function createThemeToggleButton() {
 		if (document.getElementById('theme-toggle')) return;
 		var btn = document.createElement('button');
 		btn.id = 'theme-toggle';
 		btn.setAttribute('aria-label', 'Toggle theme');
 		document.body.appendChild(btn);
+
+		btn.addEventListener('click', function () {
+			var current = document.documentElement.getAttribute('data-theme') || 'dark';
+			var next = current === 'dark' ? 'light' : 'dark';
+			document.documentElement.setAttribute('data-theme', next);
+			try { localStorage.setItem('theme', next); } catch (e) {}
+		});
 	}
 
 	// Set active page based on current URL
