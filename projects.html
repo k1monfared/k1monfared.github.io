@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://k1monfared.github.io/site_kit/js/theme.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
+	<title>Projects | Keivan Monfared</title>
+	<script type="text/javascript" src="js/nav-loader.js"></script>
+	<!-- MathJax: renders the inline \( ... \) math in card titles and summaries.
+	     The cards are built synchronously at end-of-body, so they are already in
+	     the DOM by the time MathJax runs its initial typeset pass on load. -->
+	<script>
+		window.MathJax = {
+			tex: { inlineMath: [['\\(', '\\)']] },
+			options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+		};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<style>
+		.area-lead { color: var(--text-muted); margin: 0 0 1rem; max-width: 820px; }
+		.proj-grid {
+			display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+			gap: 18px; margin-bottom: 0.5rem;
+		}
+		.proj-card {
+			background: var(--bg-secondary); border: 1px solid var(--border-color);
+			border-radius: 12px; overflow: hidden;
+			display: flex; flex-direction: column;
+			transition: border-color 0.2s ease, transform 0.2s ease;
+		}
+		.proj-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+		.proj-media-wrap { position: relative; }
+		.proj-media { width: 100%; height: 140px; object-fit: cover; display: block; background: #0b0f18; }
+		/* Card art is stored dark (light originals were pre-inverted), so it sits
+		   right in the default dark theme. In light mode we invert every banner
+		   back to its light form, except images tagged .no-invert (the Jacobian
+		   diagram and photos, which read correctly in both themes as authored). */
+		[data-theme="light"] .proj-media:not(.no-invert) { filter: invert(1); }
+		.proj-media-wrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 46px; background: linear-gradient(to bottom, rgba(0,0,0,0), var(--bg-secondary)); pointer-events: none; }
+		.proj-body { padding: 16px 18px 16px; display: flex; flex-direction: column; gap: 10px; }
+		.proj-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+		.proj-name { font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.25; }
+		.proj-links { display: flex; gap: 8px; flex-wrap: wrap; }
+		.proj-pill {
+			font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
+			padding: 2px 9px; border-radius: 999px; border: 1px solid var(--border-color);
+			color: var(--text-muted); white-space: nowrap;
+		}
+		.proj-pill.demo { border-color: var(--border-accent); color: var(--link-default); }
+		.proj-summary { color: var(--text-secondary); font-weight: 600; font-size: 0.96rem; margin: 0; }
+		.proj-pitch { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; margin: 0; }
+		.proj-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+		.proj-tag { font-size: 0.7rem; color: var(--text-dim); border: 1px solid var(--border-color); border-radius: 6px; padding: 1px 7px; }
+
+		/* Academic research cards (multiple papers + talks per card) */
+		#matrix-graph .proj-grid, #neuro-signal .proj-grid { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
+		.rc-papers { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+		.rc-paper { font-size: 0.85rem; }
+		.rc-ptitle { color: var(--text-secondary); font-weight: 600; line-height: 1.35; }
+		.rc-meta { color: var(--text-dim); font-size: 0.76rem; margin-top: 1px; }
+		.rc-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+		.rc-code { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+		.rc-lbl { color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+		.rc-note { color: var(--text-dim); font-size: 0.8rem; margin: 6px 0 0; line-height: 1.45; }
+		details.rc-talks { margin-top: 8px; }
+		details.rc-talks summary { cursor: pointer; color: var(--link-default); font-size: 0.82rem; font-weight: 600; }
+		details.rc-talks ul { margin: 6px 0 0; padding-left: 16px; display: flex; flex-direction: column; gap: 5px; }
+		details.rc-talks li { color: var(--text-muted); font-size: 0.8rem; line-height: 1.4; }
+	</style>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+		<script type="text/javascript">
+			window.addEventListener('navigationLoaded', function () {
+				// Build the sub-nav from the actual sections so its labels always
+				// match the current section headings (falls back to a short label map).
+				var shortLabel = {
+					'ai': 'AI automation',
+					'experimentation': 'experimentation',
+					'recommenders': 'recommenders',
+					'modeling': 'modeling',
+					'research': 'research & analysis',
+					'more': 'products & tools',
+					'matrix-graph': 'matrix & graph',
+					'neuro-signal': 'neuro & signal',
+					'teaching': 'teaching & outreach'
+				};
+				var secs = document.querySelectorAll('main > section.content-card[id]');
+				document.getElementById('small_menu').innerHTML = Array.prototype.map.call(secs, function (s) {
+					var h2 = s.querySelector('h2');
+					var label = shortLabel[s.id] || (h2 ? h2.textContent : s.id);
+					return '<a href="#' + s.id + '">' + label + '</a>';
+				}).join('');
+			});
+		</script>
+
+		<main class="main-content">
+
+			<section class="content-card">
+				<h2>Projects</h2>
+			</section>
+
+			<section id="ai" class="content-card">
+				<h2>AI automation</h2>
+				<p class="area-lead">Agentic LLM systems and evaluation, from a hands-off publishing pipeline to
+					model selection at scale.</p>
+				<div class="proj-grid" data-area="ai"></div>
+			</section>
+
+			<section id="experimentation" class="content-card">
+				<h2>Experimentation and causal inference</h2>
+				<p class="area-lead">Deciding what a change really caused, how long to run for, and which number
+					to put in front of leadership.</p>
+				<div class="proj-grid" data-area="experimentation"></div>
+			</section>
+
+			<section id="recommenders" class="content-card">
+				<h2>Recommenders and personalization</h2>
+				<p class="area-lead">Learning what users want and ranking what they see, at scale and under privacy
+					constraints.</p>
+				<div class="proj-grid" data-area="recommenders"></div>
+			</section>
+
+			<section id="modeling" class="content-card">
+				<h2>Modeling and evaluation</h2>
+				<p class="area-lead">Predictive models and measurement systems built to be calibrated, explainable,
+					and cheap to run.</p>
+				<div class="proj-grid" data-area="modeling"></div>
+			</section>
+
+			<section id="research" class="content-card">
+				<h2>Research and analysis</h2>
+				<p class="area-lead">Studies that answer a question from data: regression, simulation, and
+					quasi-experiments with a written conclusion.</p>
+				<div class="proj-grid" data-area="research"></div>
+			</section>
+
+			<section id="more" class="content-card">
+				<h2>Applied products and tools</h2>
+				<p class="area-lead">Shipped products and utilities, built end to end and in use.</p>
+				<div class="proj-grid" data-area="more"></div>
+			</section>
+
+			<section id="matrix-graph" class="content-card">
+				<h2>Combinatorial matrix theory and algebraic graph theory</h2>
+				<p class="area-lead">Doctoral and postdoctoral research on matrices, graphs, and their spectra.</p>
+				<div class="proj-grid" data-area="matrix_graph"></div>
+			</section>
+
+			<section id="neuro-signal" class="content-card">
+				<h2>Computational neuroscience and signal processing</h2>
+				<p class="area-lead">Analysis of brain and time-series signals, network dynamics, and spectral methods.</p>
+				<div class="proj-grid" data-area="neuro_signal"></div>
+			</section>
+
+			<section id="teaching" class="content-card">
+				<h2>Teaching and outreach</h2>
+				<p class="area-lead">Courses taught and materials built, plus interactive explainers and
+					visualizations that make technical ideas approachable.</p>
+				<div class="proj-grid" data-area="outreach"></div>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+
+	<script>
+		const GH = "https://github.com/k1monfared/";
+		const PAGES = "https://k1monfared.github.io/";
+
+		// area: ai | experimentation | recommenders | modeling | research | more
+		const PROJECTS = [
+			// ---- AI automation ----
+			{
+				area: "ai", name: "LLM content-quality evaluation", repo: "content_quality_evaluation_llm", demo: true,
+				tags: ["LLM-as-judge", "human agreement", "cost analysis"],
+				summary: "Benchmarks four low-cost LLM judges against a human panel for scoring writing quality at scale.",
+				pitch: "Content platforms need to score writing quality at scale, but human review is slow and expensive, so the decision is whether an LLM can stand in and which model to trust. This project benchmarks four low-cost LLM judges against a simulated human panel, grading each judge by how closely it tracks a human reviewer relative to how well two humans agree, and pairs that with full cost accounting. The result is a defensible, data-driven pick: a judge that matches human-level agreement for a fraction of a cent per passage, so quality scoring can run at scale with clear evidence behind the model choice."
+			},
+			{
+				area: "ai", name: "Automated bilingual news brief", repo: "news_reader", demo: true,
+				tags: ["agentic LLM", "NLP pipeline", "automation"],
+				summary: "A 12-stage agentic LLM pipeline that publishes a hands-off daily bilingual news brief.",
+				pitch: "A daily brief on a fast-moving topic has to stay current, deduplicated, and trustworthy with no manual effort. This is a 12-stage agentic LLM pipeline that fetches, translates, deduplicates, tracks stories across days, runs an editorial pass for contradictions and sole-source claims, and publishes to a live site and an email list, all behind an audited model wrapper with per-call cost and budget caps. It debiases coverage by weighting each source for its known slant and flagging contradictions and sole-source claims, so the brief reflects the story rather than one outlet's framing. It runs fully hands-off on free tiers and ships a real product with subscribers."
+			},
+			{
+				area: "ai", name: "Claude public skills", repo: "claude_public_skills", demo: false,
+				tags: ["developer tooling", "CLI", "reusable skills"],
+				summary: "A reusable library of Claude Code skills with a management CLI to install or link them into any project.",
+				pitch: "Agentic coding work repeats the same chores across every project. This is a reusable library of Claude Code skills for changelog generation, code review, code explanation, and the loglog format, plus meta-skills that create, audit, and improve skills, all installable per project or globally through a small CLI. It turns ad-hoc prompting into a versioned, shareable toolkit."
+			},
+
+			// ---- Experimentation and causal inference ----
+			{
+				area: "experimentation", name: "Novelty effect analysis", repo: "novelty_effect_analysis", demo: true,
+				tags: ["A/B testing", "time series", "debiasing"],
+				summary: "Detects novelty and primacy bias in A/B tests and returns debiased long-term lift estimates.",
+				pitch: "Teams routinely ship or kill features on early A/B readings that novelty and primacy effects have quietly biased, and they book inflated or deflated lifts into quarterly goals. This framework fits each metric's daily lift to a long-term level plus a decaying transient, classifies the shape, and returns a debiased long-term estimate along with the run length needed to trust it. The payoff is decisions and reported numbers that still hold up a quarter later, cutting error on novelty-affected metrics by roughly 60 percent versus the raw dashboard reading."
+			},
+			{
+				area: "experimentation", name: "Variance reduction methods", repo: "variance_reduction_methods", demo: true,
+				tags: ["CUPED", "power", "meta-analysis"],
+				summary: "Equal-footing framework scoring variance-reduction methods on production signals, recommending one defensible pick per metric.",
+				pitch: "A/B test teams reach for a different variance-reduction trick every quarter and never learn which ones genuinely make experiments more sensitive versus which quietly bias the result. This framework puts every proposed technique on equal footing, scores them only on signals a live experiment can measure (power, A/A calibration, early-to-long predictiveness), and returns one defensible recommendation per metric with CUPED as the anchor. The payoff is faster, more reliable ship decisions at the same sample size, plus a built-in guard that flags when a high-power method is silently changing the estimand."
+			},
+			{
+				area: "experimentation", name: "Outlier handling methods", repo: "outlier_handling_methods", demo: true,
+				tags: ["guardrail metrics", "calibration", "meta-analysis"],
+				summary: "Per-metric A/B outlier-handling selector that recovers real wins using production-measurable signals, validated on ground truth.",
+				pitch: "Every experimentation metric can flip an A/B verdict depending on how its outliers are handled, and today each analyst picks a method by feel, so real wins stay buried in contaminated variance. This framework selects the outlier-handling method per metric using only production-measurable signals, calibration coverage and early-to-long predictiveness, and reserves held-out ground truth to confirm the call. Across the sampled experiments it recovers 39 true wins that would otherwise ship nothing at no added risk of a wrong launch, an estimated 82 million USD per year in avoided decision regret."
+			},
+			{
+				area: "experimentation", name: "Seasonal extrapolation", repo: "seasonal_extrapolation", demo: true,
+				tags: ["seasonality", "uncertainty", "annualization"],
+				summary: "Seasonality-aware extrapolation that turns a one-week experiment into a calibrated, defensible annual impact estimate.",
+				pitch: "Teams freeze experiments through the highest-value seasons because a peak-season reading scaled naively across the year is badly wrong, which leaves the most commercially important windows untested. This project builds a seasonality-aware extrapolation that reweights a short experiment's measured relative lift by the year's true seasonal composition, learned from the always-on baseline, and propagates the full uncertainty into a calibrated annual interval. The payoff: a one-week test run in the December peak reports a defensible 8.1M dollars per year instead of the naive 11.7M that overstates the return by 43 percent, so experimentation can run year-round without misleading the exec team."
+			},
+			{
+				area: "experimentation", name: "Data acquisition decision", repo: "data_acquisition_simulation", demo: true,
+				tags: ["difference-in-differences", "Monte Carlo", "NPV"],
+				summary: "Simulation-first decision framework pairing matched difference-in-differences with Monte Carlo NPV to guide a data-buy decision.",
+				pitch: "A platform-wide decision worth millions: should we license third-party business-hours data across all one million listings, or skip it entirely? This is a simulation-first decision framework that recovers the true conversion lift with a matched difference-in-differences natural experiment, then propagates that estimate and its uncertainty through a Monte Carlo NPV model. It converts a likely 1.1M dollar loss from a blanket buy into a targeted strategy with a positive expected NPV of about 1.5M dollars, making the analysis itself worth roughly 2.5M dollars in avoided and unlocked value."
+			},
+			{
+				area: "experimentation", name: "Marketing attribution", repo: "ad_attribution", demo: true,
+				tags: ["Bayesian structural time series", "counterfactual", "reconciliation"],
+				summary: "Bayesian counterfactual attribution measuring true ad-campaign lift on streaming, with reconciled per-region totals.",
+				pitch: "Marketing teams need to know how much of a streaming lift a paid campaign actually caused, not just what moved after it ran, because that number decides how the next budget is spent. This builds the missing no-campaign counterfactual with a Bayesian structural time-series model fit on aggregated daily data alone, reads the causal effect as observed minus counterfactual with a full credible interval, and reconciles the per-region and total figures into one coherent set finance can trust. The payoff is a defensible, uncertainty-aware attribution number that survives a skeptical review and turns campaign spend into a decision rather than a guess."
+			},
+
+			// ---- Recommenders and personalization ----
+			{
+				area: "recommenders", name: "User topic interest manager", repo: "user_topic_interest_manager", demo: true,
+				tags: ["Beta-Bernoulli", "hierarchical shrinkage", "personalization"],
+				summary: "Beta-Bernoulli per-user interest model that beats recent-activity feeds and flags steering.",
+				pitch: "Recommendation feeds live or die on how quickly and how completely they learn what a user actually cares about, and most systems still lean on a recent-activity heuristic that plateaus early. This project builds a per-user, per-topic interest manager on a time-decayed Beta-Bernoulli model with hierarchical smoothing across the topic tree, so beliefs borrow strength across related topics and follow taste as it shifts. It raises next-interaction AUC and candidate recall over that heuristic, serves calibrated probabilities in microseconds at fixed memory, and doubles as a steering signal for trust and safety."
+			},
+			{
+				area: "recommenders", name: "Artist comparison and journey", repo: "artist_journey", demo: true,
+				tags: ["vector autoregression", "classification", "dashboard"],
+				summary: "A synthetic A&R dashboard ranking artists by momentum, reach, and breakthrough likelihood.",
+				pitch: "A&R and marketing leads decide which artists to fund on a limited budget, usually from raw stream counts that flatten momentum, reach, and timing into one number. This framework places every artist against the full field on a development plane, then layers a log space vector autoregression forecast and a breakthrough classifier on top, so each act reads as a trajectory rather than a snapshot. The payoff is an investment shortlist that separates artists compounding into the strong corner from those coasting on a single hit, with every score reproducible from the weekly series."
+			},
+			{
+				area: "recommenders", name: "Privacy-preserving audience recommender", repo: "cohort_audience_recommender", demo: true,
+				tags: ["matrix factorization", "SGD", "k-anonymity"],
+				summary: "Privacy-preserving audience recommender factoring a cohort by song stream matrix to target campaign spend without modeling individuals.",
+				pitch: "Marketing teams need to know which audiences deserve finite campaign budget, but modeling individual listeners is a privacy and compliance liability under GDPR and CCPA. This project reframes collaborative filtering onto aggregated, k-anonymous cohorts instead of people, factoring a cohort by song stream-count matrix and turning the predicted streams into calibrated High, Medium, and Low tiers a planner can act on. A campaign promotes a small set of songs, so its audience shortlist is read straight off the model's predicted streams, returning roughly 3.4 times the streams of untargeted spend while never touching a named individual."
+			},
+
+			{
+				area: "recommenders", name: "AI identification of high-value audiences (patent)",
+				img: "images/projects/patent_audiences-01.png",
+				links: [{ label: "Patent", url: "https://patents.google.com/patent/US11113707B1" }, { label: "PDF", url: "research/2021_US11113707_Artificial_intelligence_identification_of_high-value_audiences.pdf" }],
+				tags: ["patent", "matrix factorization", "privacy"],
+				summary: "US Patent US11113707B1. An end-to-end pipeline that identifies high-value marketing audiences from aggregated geodemographic and interest data with optimized matrix factorization, granted at Universal Music Group / Ingrooves and never modeling an individual listener."
+			},
+
+			// ---- Modeling and evaluation ----
+			{
+				area: "modeling", name: "Lifetime value estimation", repo: "LTV", demo: true,
+				tags: ["JAX neural net", "gradient boosting", "SHAP"],
+				summary: "JAX neural network estimating 24-month subscriber LTV, benchmarked against gradient-boosted trees.",
+				pitch: "Marketing and partnerships need a defensible dollar figure for what a streaming subscriber is worth before they set acquisition budgets and negotiate label deals. This project builds that estimate with a JAX deep neural network that predicts 24-month discounted contribution margin from nine per-subscriber features, benchmarked against gradient-boosted trees, a linear model, and a business heuristic. The payoff is a calibrated, per-subscriber LTV that ranks who to acquire and retain and holds up as the basis for real spend and deal decisions."
+			},
+			{
+				area: "modeling", name: "Time-series anomaly detection", repo: "time_series_anomaly_detection", demo: false,
+				tags: ["robust z-score", "seasonal baseline", "fleet scale"],
+				summary: "Numpy-only robust z-score detector flagging seasonal metric anomalies across millions of series.",
+				pitch: "Monitoring millions of metrics means deciding which overnight dip or midday spike is worth paging an on-call engineer, without drowning teams in false alerts or standing up a heavy per-series model. This detector learns a robust weekly-seasonal baseline for each series and scores every point with a single robust z-score, catching spikes and dips at 0.98 recall while carrying only a few kilobytes per series. It scores 100 million series every five minutes on about three pods, so fleet-scale seasonal anomaly detection costs a rounding error on the cluster."
+			},
+
+			{
+				area: "modeling", name: "Foundational ML implementations", repo: "machine_learning", demo: false,
+				tags: ["from-scratch", "classic ML", "course projects"],
+				summary: "From-scratch implementations of the core machine-learning algorithms: linear and logistic regression, multiclass classification, neural networks, SVMs, k-means, PCA, anomaly detection, and recommender systems."
+			},
+			{
+				area: "modeling", name: "Mutual information & joint entropy", img: "images/projects/mutual_information.png",
+				links: [{ label: "Output", url: "https://github.com/k1monfared/decision_theory/blob/HEAD/mutual_information_joint_entropy/README.md" }, { label: "Code", url: "https://github.com/k1monfared/decision_theory/tree/main/mutual_information_joint_entropy" }],
+				tags: ["information theory", "entropy", "signal timing"],
+				summary: "Computing the mutual information and joint entropy of two signals, and using lagged mutual information to detect the time delay between them, a nonlinear alternative to cross-correlation."
+			},
+
+			// ---- Research and analysis ----
+			{
+				area: "research", name: "Manufacturing Taste", repo: "manufacturing_taste", demo: false,
+				tags: ["simulation", "cultural markets", "hypothesis testing"],
+				summary: "A computational study of how cultural canons form, testing whether quality, capital, or path dependence drives them.",
+				pitch: "Does the cultural canon reflect genuine quality, or mostly money, connections, and luck? This simulates how cultural markets form a canon through exposure, the mere-exposure effect, and institutional lock-in, runs it thousands of times under varied conditions, and tests three hypotheses. The simulations support bounded path dependence: quality matters at the extremes, while luck and capital dominate the broad middle."
+			},
+			{
+				area: "research", name: "Star-rating regression analysis", repo: "star_rating_regression_analysis", demo: true,
+				tags: ["logistic regression", "negative binomial", "g-computation"],
+				summary: "Regression analysis of how star rating drives review completion and length, with confounder adjustment.",
+				pitch: "Product needs to know where the review-creation funnel leaks and where the reviews we do get are too thin, so we can target completion help and detail prompts at the right raters. This project models completion and review length as a function of the intended star rating, using logistic and negative binomial regression with confounder adjustment and g-computation to separate the rating from the user and the device that produced it. The payoff is a defensible read on which levers actually move completion, worth up to +16.8 points per lever, so roadmap investment goes to real leaks rather than an artifact of who rates on mobile."
+			},
+			{
+				area: "research", name: "Pandemic music-market shifts", repo: "music_market_shifts", demo: true,
+				tags: ["regression discontinuity", "interrupted time series", "HAC standard errors"],
+				summary: "Interrupted time series showing pandemic streaming did not shrink but relocated.",
+				pitch: "When lockdowns spread in March 2020, leadership needed a credible answer to a blunt question from press and partners: is the streaming market shrinking? This is a PR-ready analysis that pairs before-and-after period comparisons with a regression discontinuity in time, which pins each behavior change to the lockdown cutoff with autocorrelation-robust standard errors. The payoff is a defensible, well-communicated finding that listening did not fall but relocated, ready to steer public relations, release planning, and partner conversations."
+			},
+
+			{
+				area: "research", name: "States during regime change", repo: "states_during_regime_change", demo: true,
+				tags: ["political transitions", "composite index", "dashboard"],
+				summary: "A data-driven framework that measures, scores, and compares post-regime-change trajectories across 40 countries, tracking how each fares before, during, and after a major political transition."
+			},
+			{
+				area: "research", name: "Alberta schools dropout analysis", repo: "alberta_schools_dropout", demo: false,
+				tags: ["exploratory analysis", "education data", "datathon"],
+				summary: "An exploratory analysis of Alberta school enrollment, dropout rates, and grade transitions across school authorities, built for the GeoWomenYYC 2021 datathon."
+			},
+			{
+				area: "research", name: "Pandas: apply vs applymap benchmark", img: "images/projects/pandas_applymap.png",
+				links: [{ label: "Output", url: "https://github.com/k1monfared/coding/blob/HEAD/pandas-apply-vs-applymap/README.md" }, { label: "Code", url: "https://github.com/k1monfared/coding/tree/main/pandas-apply-vs-applymap" }],
+				tags: ["pandas", "benchmark", "vectorization"],
+				summary: "A systematic benchmark comparing apply, applymap, np.vectorize, and nested loops for element-wise string operations across a pandas DataFrame of varying shape."
+			},
+
+			// ---- Applied products and tools ----
+			{
+				area: "more", name: "License Explorer", repo: "license_explorer", demo: true,
+				tags: ["software licenses", "sentence-level citations", "provenance"],
+				summary: "An interactive, evidence-backed guide to 21 software and media licenses where every comparison claim links to the exact sentence in the license text, with OSI and FSF status and grey-area flags."
+			},
+			{
+				area: "more", name: "Large dog breeds archive", repo: "large_dog_breeds", demo: true,
+				tags: ["web scraping", "trait scoring", "interactive site"],
+				summary: "An interactive reference for 75 large dog breeds with a service-dog suitability score built from a trait correlation analysis."
+			},
+			{
+				area: "more", name: "Interest rate tracker", repo: "mortgage_rate_tracker", demo: true,
+				tags: ["public API", "auto-updating", "time series"],
+				summary: "A live, auto-updating tracker of the Bank of Canada policy and commercial prime rates, rebuilt daily from the public API."
+			},
+			{
+				area: "more", name: "Cafe supply manager", repo: "cafe_manager", demo: false,
+				tags: ["forecasting", "inventory", "product"],
+				summary: "A supply-management app for cafes that forecasts stockout dates and generates tiered purchase recommendations from plain-CSV data."
+			},
+			{
+				area: "more", name: "Can't Stop game and analysis", repo: "cantstop-game", demoUrl: "https://cantstop-frontend.onrender.com/",
+				tags: ["full stack", "probability", "game"],
+				summary: "A full-stack implementation of the push-your-luck dice game Can't Stop with live bust and advance probabilities, plus a companion math write-up."
+			},
+			{
+				area: "more", name: "Shell and bash utilities", repo: "terminal", demo: false,
+				tags: ["bash", "CLI", "automation"],
+				summary: "Command-line utilities for script parallelization, display and input manipulation, I/O device control, and quick shell tools."
+			},
+			{
+				area: "more", name: "Mobile photo editor (ImgEdt)", repo: "mobile_photo_editor", demoUrl: "https://k1monfared.github.io/imgedt/",
+				tags: ["Android", "GPU / OpenGL", "image processing"],
+				summary: "An open-source, GPU-accelerated photo editor for Android, with real-time filters and adjustments rendered on the GPU."
+			},
+
+			// ---- Teaching and outreach ----
+			{
+				area: "outreach", name: "Teaching", img: "images/projects/teaching_card.png", noInvert: true,
+				links: [{ label: "Open the teaching page &rarr;", url: "teaching-and-outreach.html" }],
+				tags: ["courses", "materials", "students"],
+				summary: "Courses taught across universities, with syllabi, lecture materials, and student resources, collected on a dedicated page."
+			},
+			{
+				area: "outreach",
+				name: "Newton's method + Animation",
+				img: "images/thumbs/sage-newton.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJyNU02L2zAQvRv8HwaXJXKjuHbCFrrgQy8tvZhA2VNIQRvLtqgtBVlJnP76jj68m6UtW2PM6HnmvRnNzDt4HDlU_GKUXIwwcNOpGowCdjxqNYmBGQ4MtFIGVINWc5IHI5SEizAdMGk98BhHZ6bJYlqkcRRHDZlSKGH6sYYVFBaZBiERya3FJrQ2GeJXj6421nTwpzhqT3wcrQfyHLUYONpNVnMtzih15siNTkFhZaU-eD_3o0L0Po6-zyw7Z-zjCF2kgeSbFEawHr5a-AHu1nlWfGySO-L8kGCLQcdeGWKZKRCbObVJ48HmW7qvtdlUui89qF5pDEtazblMqOnE4adEunKDhF80G7hLZbt3l4O-ArBwzWTLSU6r9CGOAJ8tLIP2UWGyxOdE85SO4pe9hnVOdfvk5EoMBHyLNE19dNBZBiEL3dD2QnKye2EMVhPqTvcUPC8Wwa4JdQGjufa8TGo2drxO_kvnz_SfJf5aReGqyN-uorNjEKhgCaHl_vyeTKu5f68z6V538B8NhOcOPvUn_mah1TxcLblVDRNW8cnM44XPy4RVt85hQC15NY-oxWdqD2aS1KIVZiyLe7dZQeOzBGyO305cS9Nxv6JivNHzErtq7yIZkvp15cRXhjDLxk5dSM17di2LPE9_AxQ5KoA=&lang=sage" }],
+				tags: ["SageMath", "calculus", "root finding"],
+				summary: "Use Newton's method to approximate a root of a function with animation."
+			},
+			{
+				area: "outreach",
+				name: "Plot with level curves",
+				img: "images/thumbs/sage-level-curves.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJxtjs0KgzAQhO-BvMNCDya4FrWlPeVWei5eSy3BxhqMRqK16tNX-nMoeFlmGGa-XcHJ2A42B3jqrgCjemUge7hetZRQ0kvHvAFHnDwOlOQgYEhj8GFMY0qS2W4paR8VO-uqMTrT3bWZ9zY3lgvxHkM2YJBgwpGNPzHhJ3pfP1xHHHMnKyWO0rSKQ27d9xNdQ-tkfVcsxGiHMb_4S6RpmRJEc4ljZo11wisLWWoPbSPn8ijC9f6PeuEvBaFRPQ==&lang=sage" }],
+				tags: ["SageMath", "calculus", "visualization"],
+				summary: "Plot a surface with its level curves."
+			},
+			{
+				area: "outreach",
+				name: "Plot with \\(y\\)-cross-sections",
+				img: "images/thumbs/sage-cross-sections.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJxVjT0LwjAYhPdA_sMLDk3oW7Gt4JRNnKVrUQk11WDalKTWpr_e-jW4HHcc99wC9sb2kG_hofsrhKRy1nvwquq1bT0llAzSsWjEgFPEgZIaBIzHDGIIx4ySYo5rSvy9YWU3o_Izq5GNmBRYcGQBjRqU-Wi8WqYcaycbJXbSeMWhtg7eHegWvJPtRbHXFFN-iEvddEZXuj_9yEJMf_CvmTBJMc84VtZYJ6LbVd50hLaT8ziI1XLz93rgT4U3SpA=&lang=sage" }],
+				tags: ["SageMath", "calculus", "visualization"],
+				summary: "Plot a 3D surface with its \\(y\\)-cross-sections."
+			},
+			{
+				area: "outreach",
+				name: "Linearization with Jacobian matrix",
+				img: "images/thumbs/sage-linearize-jacobian.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJyVk01vpDAMhu-V-h-s7qHJQGcGtqdKc-h1T-1ob1Wn8kACGUEShdCF_fVrAnQ-1EpdDgHb7-PYJsmFhKY0f94qpQU69Re9MprJWG-S9Zo_XF8BPT9AgmoAQbY6GwTgS_RQo21gu0vBm_CSxoHosLaV-OBYF_ccNsBYt0ujdMG6KOUL1kcJ56v7uyTud-kdORO-6PlM_S4FmNbb1g_b-tIJAegENlM9o8qTqtXKQ9buxWVA1VhQEnlU0FcuHMhL5VnnA3HE20bpIti_MDN7hSEugXpn63g91Tuu7-jYbQf97eR9pKYPE0XzDHPgJ5SluDyxc1N3PfleXkdb1cWZTbnO7GHYCpQGh7oQTNMET6YzRA9fRj_2W6K1QueMqZWODyvN-bkoFDGL5FeqUNqsstHj4l1k3jj2MulfL4HReqJurFHaNywUE2emMm5zs69acRNjYynLmxt-yyaJAStbIhHLn1Oy5yMeypxxJ_Jv0NsjHcqf6YLOmv4GP67sKXqOtnw5XCFGkeur_z3wn10-_g8cgPqS&lang=sage" }],
+				tags: ["SageMath", "calculus", "linearization"],
+				summary: "The code takes a function \\(f\\) that maps \\(\\mathbb{R}^2\\) to \\(\\mathbb{R}^2\\) and draws three regions: the unit cube in blue, the image of the unit cube under \\(f\\) in red, and the linearization of the image by Jacobian of \\(f\\) at the origin."
+			},
+			{
+				area: "outreach",
+				name: "Interactive Linear Approximation",
+				img: "images/thumbs/sage-linear-appx.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJyVUU1PwzAMvSPxH6wxacnI0Fq-JKRK_ASQOG_y2qQNZHGVpFrEr8drhxgHDuSQxPbz88vLs_VJB6zT5UWjDWzF5QXwMlCBWMyNyLKaLxRY3w9pu6Ms8uYWruFhmTclrKC4X2YOH9XBNqmryrWUamLAkQEDDb6B1GnoiUfBPHMef1OuT93FT_cn0X4kOF4YHJ1tdBA3hSpKxUJxcKkqpJRPE37aW5bLXUagZFGNNUYYlSWHS5FXKCfUC0N6R4lrIitcFetluRGr4ySpAK_PY05ATY5CNdu5Qc-4nnWs3sKgFb_K1h9ex1jdSbgCQwE6CvaTfEIHCX2r-cXOMgSwaWCBsdd12gZMlqpiAYkgag2R9pq5fAt7jZ5PMzgFxKaFg41cx1bDwToH70NMUHdH5tHTkckzAUeYxlQbsO_ARvCUJjyeqzqquZl8eP32of2XD0E3f9lQnhyOHR3EC3_Bq_wCORS04A==&lang=sage" }],
+				tags: ["SageMath", "calculus", "approximation"],
+				summary: "For a given function \\(f(x)\\) around a point \\(a\\), if you zoom in close enough on the graph, you can't tell the difference between the curve and the tangent line. This is the basic idea for linear approximations. Run it in sage to interact with it."
+			},
+			{
+				area: "outreach",
+				name: "Interactive Taylor Polynomial",
+				img: "images/thumbs/sage-taylor.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJylkd9KwzAUxu-FvcNhdCxhx9HO3SgUvPABdOxujpG1aRfskpKkmPr0HtP9QRRvLKEk53B-35cvj0p7aUXhRjelrGDHRjdAXwU5sGlSscDzZIqgdNv53d4E5pSmIr6r0h_yRco5DhM6TjzJ2koJpgJ_kLAWfWMstKbptTkq0SAkOvJco0pp2Sadz--3SMqia3x-d6GJSBPWdLqMqNaQUUgC1cV3Q-nJS3b1Ej6MOUaCFbqOdpLwNRWPu5P4bbZAWmfx05lfKP0vlP4nZZEirStliUti8IcBMvxrwlRzH-NgAUEgaD60nqnVNsazCqkTnW_SLQ532GRbjtAf1Ve6_aXXH0W4FDIqFIbA-XjfdHJM9CBdvradpK1rZeF3Vnhl8gwpSlW8aekcZT3ov5z16__rW1n-JX9SXNGol8EzO04mDl5F21oTYOKSMUwohpojPeoZPss42no_KLAMU6R3HkDuYN7ZM8zoDjNY8U87LNCV&lang=sage" }],
+				tags: ["SageMath", "calculus", "approximation"],
+				summary: "The linear approximations have errors. One way to get better approximations is by taking into account the higher order derivatives. This code will calculate and draw the n-th degree Taylor polynomial so you can compare them. Run it in sage to interact with it."
+			},
+			{
+				area: "outreach",
+				name: "Solving a system of linear equations (numpy)",
+				img: "images/thumbs/sage-solve-linear.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJxLK8rPVcgrzS2oVMjMLcgvKlHIycxLzEnn5XJUsFXITSwpyqzQiI421DHSMY7ViTbRMdUxA9LmOhY6BrGxmrxcScjKjIBShmAMkqoASkFM0yvOzylL1XDUSQIJAwA1ZiJg&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "numpy"],
+				summary: "Given the coefficients matrix \\(A\\) and the constants \\(b\\) this solves the system of linear equations \\(Ax=b\\)."
+			},
+			{
+				area: "outreach",
+				name: "Generate random echelonizable matrix",
+				img: "images/thumbs/sage-random-echelon.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJw9jkEOgjAQRfck3OFHF0DSsFGXLLiDKzekloFOhI5pixpPbwnE3WT-mzf_iKvlACM9YSRHXkcK0PDa9TJj1tHzBy1kwMgvcgj8JaRwJR4Kb8vGgmOA9zRgED8j-Q6ODR3qJCcEMpL4XZXCmJZkrExu45O7zbM8a9Hsf7sNLm83dVYXpadRPEc7N0W6o0kcf_V9okKtJZqTwvJ8ku_usri-uVR5Fqy8y_Y_1Gu5sqp-_ARPyw==&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "matrices"],
+				summary: "One of the problems in teaching linear algebra is coming up with a handful of examples of matrices that can 'nicely' be row-reduced. This code generates random matrices with integer entries whose reduced row echelon form will also have integer entries."
+			},
+			{
+				area: "outreach",
+				name: "Generate random invertible matrix",
+				img: "images/thumbs/sage-random-invertible.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJxdUD1vg0AM3ZH4D0_KECJRpKhTBwbG7JmyRBcwYAnuIvsIbX99fQ2Rqm6-e5_2DueRFQN5EhdJ4SDOd2HG7KLwJ0KPgR_kofxNWDmOYB9pIAF5Y5hkHUkIcSRDHiRKcJMGjE7_Uyvk2Q6niNZ53Ag6htWb0kX0QWywKjEp73dL5Ah7e2pJ1ckXrBd06Xtu2fyespTaUSSZ2Tv7tLrpaytv8iPM-O1YpeCzIT2Lxj94Ym8bv47QbXD5m5gISm2wMXhKEo762jTP8qxBvTlcn7ricinfSzcNQexcc71fPM-hWyYn-3Kx1eR6C4vv6o9DnhVN2VSbW3E4_ADyOot5&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "matrices"],
+				summary: "For a matrix \\(A\\) with integer entries to have an inverse with integer entries, it is necessary that its determinant is \\(\\pm 1\\). It turns out that it is the sufficient condition too, thanks to Cramer's rule! This code generates random matrices with integer entries where their inverses also have integer entries."
+			},
+			{
+				area: "outreach",
+				name: "Step-by-step Gaussian Elimination",
+				img: "images/thumbs/sage-gaussian-elimination.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJytVt-PmzgQfl9p_4c78rDQJVy5e4tKq0pVTyddVuq2J52Ui5ADhlhrDMKmae6vv7ENwSRkddsrD4R4fnm-b2bsBTwQ9pXCb6STkhEBLc27TLFa3N7ktIBSr6cVVfs699fvvzz-_lfYUpkRTlNOSc5EmVKh2mNy9weR6i5Y3d4APp7nfUC1lu0oqD0d3YKqgWZ7yvGzqNsK6sIolLgLARVRLfum11qitQmX0e2NdWmjw5wOSmlURiGsIenl_qdPIWw2UbTFH_PGV2A9XUngI2sxA7R_snvuxaDFjEq98_hOwmHPOIW81iILm0TcKOesYoJY6J6JYmAC_wMtSMdV8B_DGfxQOoDxSFXXCrmyApobLCOAzyynQIuCZmoFTcuEkiAVbaTBayDhhCnS1IOLwGV1c-w57oESXZW29UEm60joX99Zz2pu1vXvsC739cFfR6Rp-DGtSONzUu1yAmqloqLjPJWsajgrjn4QBMMe0AEGf41fCyCc6_8SdhQT0rgwCQQ_CG8RniPCLqg1QzngnoBhzRJRUv91OGw3WIHVAeP03QNFgBBOeSCN1icgavEPbWuD9RGKtq4wIq8Po5mF3debe3PKdxT3DxE5rDcYc7tB-RYSTGQSfdgp03ERLRs3bWrJNBEyZUJ77iqhQw3d4z6sQOO3OtUZoX4My-DZ7FDNC_F1H4fegam9XWD38bztOtJWBjQfXyEL5vVeSOycix0S-GS-pnLKJZ3JTAN_n0A8VEkPhV5-m5wIOTM0MVyLBTxgiZQdwRJRugpcsn5CsibO_dmW1aT2s2ES7Zx7dBefEzhwo7DJvTD-2dEPPcUqbPORsanpOhp2g0JDzsT8DOX_QdD4TxdqttfNlKeT1rIFNbbX1AEit944dg68M8QWJFMYJ4Fl_GrGzM3x0niKp3V1CWToNbzrF5wA9zFcekTM8jytcBSzBrGuCwO3Y6Vd9pFmKvs7cbfVfSruPq33uxqPYj3xzGRzj8kQjweFp8ETpQ1kbcekPipwppVUjQcsFvi54epv0Y_4cWyykdk5TrWL5DT7l2wZT7rEEjRHr6kfzGziXbfplblmPIXPFcusYnxF8bJAXtRw06p4SfO5z4-alO4UO2F7pTfn4HXaDF5ZAJfx0q3r-Q5DtHvTZyiZogwzfQi2EcHpRLjYwvVTaa4nLzN4tjO_k4zWXKxedIm5vVks4E9JSn2OOTfQz4_hZvNruIy34eaXMN7qsnlE8fROHZGurPCg8fHmJhRTOqYxP92tglB2u5x9RYXkS9vRIPgX-flRcw==&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "step by step"],
+				summary: "Does step-by-step Gauss-Jordan elimination process, and actually tells you what to do in each step."
+			},
+			{
+				area: "outreach",
+				name: "Step-by-step inverting",
+				img: "images/thumbs/sage-inverting.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJytVt-PozYQfl9p_4cpeQjcEnq8Rs2dIp3uVKlZ6bZXqVIaIQcMsdYYZJtN07--YxsCJGTVvR4PhHh-eb5vZuwZPBL2QuELaZRiRICkWZNqVon7u4zmUJj1pKT6UGX-Zv3t6dc_Q0lVSjhNOCUZE0VChZan1fw3ovQ8WN7fAT6e531CNcn2FPSB9m5BV0DTA-X4mVeyhCq3CgXuQkBJtGR_mzVJjDbhKrq_cy5ddJjSQSmNiiiEDaxauf_1awjbbRTt8Me-8RU4TzcS-MwkZoD2z27PrRiMmFFldh7PFRwPjFPIKiNysCnEjXLOSiaIg-6VKBYm8D_RnDRcB_8xnMUPpR0YT1Q3UqilE9DMYhkB_M4yCjTPaaqXUEsmtAKlaa0sXh0JZ0yRphZcBC6t6lPLcQuUaMpEVke12kTC_PqD9bTidt38duvqUB39TUTqmp-SktQ-J-U-I6CXOsobzhPFypqz_OQHQdDtAR1g8Pf4NQPCufmvYE8xIYMLU0Dwg3CJ8JwQdkGdGcoB9wQMa5aIgvrvw267wRKcDlinHx8pAoRwqiOpjT4BUYl_qKws1ifIZVViRF4dezMHu28298s5317cPkRksNlizN0W5TtYYSKj6N1OmYmLaLm4SV0pZohQCRPGc1MKE6rrnuHDcjT-YFKdEJrHsgyeyw7VvBBfD3HoHZk-uAX2EE_bbiJjZUHz8RWyYFrvjcROudgjgc_2ayynXNGJzAzwDyuIuyppoTDLH1ZnQi4MbYyhxQwesUSKhmCJaFMFQ7J-QrJGzv3JljWktrNhFO2Se3QXXxLYcaOxyb0w_nmgH3qaldjmPWNj003U7QaFlpyR-QXK_4Og_p8p1PRgmilLRq3lCqpvr7EDRG6zHdgN4J0gNiepxjgrWMTvJsyGOV4bj_F0rq6BDL2aN-3CIMBDDNceEbMsS0ocxaxGrKvcwj2wMi7bSBOV_Z24u-o-F3eb1vpf4VFsJp6dbMNjMsTjQeNp8ExpDalsmDJHBc60gur-gMUCvzRc_iXaEd-PTdYzO8WpcbE6z_4FW8SjLnEETdFr6wczG3k3bXpjrllP4WvFMqkY31C8LpA3Ndy4Kt7SfMPnR03K4RQ7Y3ujN6fgHbQZvHMALuLFsK6nOwzRbk1foWSMMkz0IbhGhEEnwtUWbp9KUz15ncGrnfmdZEh7sXrTJeb-bjaDPxQpzDn2QqQ_J7CHFLI5itf9jXS7JeF-F27TMNuZEnpC0eh-vY5IU5R46Ph4ixOaaRPfmq67e1YQqmafsRdUWH2TDQ2CfwGqylT9&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "step by step"],
+				summary: "Inverts a matrix step-by-step by doing Gauss-Jordan elimination on the matrix augmented with the identity of the same size, and actually tells you what to do in each step."
+			},
+			{
+				area: "outreach",
+				name: "Step-by-step inverting a generic \\(2\\times 2\\) matrix",
+				img: "images/thumbs/sage-inverting2.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJytVt-PozYQfl9p_4cpeQjcEnq8Rs2dIp3uVKlZ6bZXqVIaIQcMsdYYZJtN07--YxsCJGTVvR4PhHh-eb5vZuwZPBL2QuELaZRiRICkWZNqVon7u4zmUJj1pKT6UGX-Zv3t6dc_Q0lVSjhNOCUZE0VChZan1fw3ovQ8WN7fAT6e531CNcn2FPSB9m5BV0DTA-X4mVeyhCq3CgXuQkBJtGR_mzVJjDbhKrq_cy5ddJjSQSmNiiiEDaxauf_1awjbbRTt8Me-8RU4TzcS-MwkZoB2z27PrRiMmFFldh7PFRwPjFPIKiNysCnEjXLOSiaIg-6VKBYm8D_RnDRcB_8xnMUPpR0YT1Q3UqilE9DMYhkB_M4yCjTPaaqXUEsmtAKlaa0sXh0JZ0yRphZcBC6t6lPLcQuUaMpEVke12kTC_PqD9bTidt38duvqUB39TUTqmp-SktQ-J-U-I6CXOsobzhPFypqz_OQHQdDtAR1g8Pf4NQPCufmvYE8xIYMLU0Dwg3CJ8JwQdkGdGcoB9wQMa5aIgvrvw267wRKcDlinHx8pAoRwqiOpjT4BUYl_qKws1ifIZVViRF4dezMHu28298s5317cPkRksNlizN0W5TtYYSKj6N1OmYmLaLm4SV0pZohQCRPGc1MKE6rrnuHDcjT-YFKdEJrHsgyeyw7VvBBfD3HoHZk-uAX2EE_bbiJjZUHz8RWyYFrvjcROudgjgc_2ayynXNGJzAzwDyuIuyppoTDLH1ZnQi4MbYyhxQwesUSKhmCJaFMFQ7J-QrJGzv3JljWktrNhFO2Se3QXXxLYcaOxyb0w_nmgH3qaldjmPWNj003U7QaFlpyR-QXK_4Og_p8p1PRgmilLRq3lCqpvr7EDRG6zHdgN4J0gNiepxjgrWMTvJsyGOV4bj_F0rq6BDL2aN-3CIMBDDNceEbMsS0ocxaxGrKvcwj2wMi7bSBOV_Z24u-o-F3eb1vpf4VFsJp6dbMNjMsTjQeNp8ExpDalsmDJHBc60gur-gMUCvzRc_iXaEd-PTdYzO8WpcbE6z_4FW8SjLnEETdFr6wczG3k3bXpjrllP4WvFMqkY31C8LpA3Ndy4Kt7SfMPnR03K4RQ7Y3ujN6fgFbQZvHMALuPFsK6nOwzRbk1foWSMMkz0IbhGhEEnwtUWbp9KUz15ncGrnfmdZEh7sXrTJeb-bjaDPxQpzDn2QqQ_J7CHFLI5itf9jXS7JeF-F27TMNuZEnpC0eh-vY5IU5R46Ph4ixOaaRPfmq67e1YQqmafsRdUWH2TDQ2CfwGqylT9&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "step by step"],
+				summary: "Inverts a generic \\(2\\times 2\\) matrix step-by-step by doing Gauss-Jordan elimination on the matrix augmented with the identity. You can do the same on a \\(3\\times 3\\) or larger matrix by doing a similar process."
+			},
+			{
+				area: "outreach",
+				name: "Draw Gershgorin disks",
+				img: "images/thumbs/sage-gershgorin.webp",
+				links: [{ label: "Open in Sage", url: "http://sagecell.sagemath.org/?z=eJydkz1v2zAQhncA_Q-HeAgJM2qMdgrAQXbjjAWCZBKEgrYp-RCKVEkqbfLrcxStxG2dpQL0dXzu5X1xpxu41T7sW-fRslLoJ2WCXNND8-tPZ0DXDErAAArCz0F5DZ2KHn9Pa9-H2A8xAXGvj7Rgh-ExgGugzGh-Nt51EFSri964WGzRb40G7HrnI6zGv9OgM86HCfQK7cb9Oha2IKEsLHGB8WxaZR854cwKuPDtJg690RcH6IbWe4c2sqrmx4LLUTB6ZUPvgp5E78hcsbLCy4WguxbQUeHC0DGo1CYwxaFxnqpFJcjYNda8MBgi4zXwywS9u3PxgevyA9fluyvPPCaewmw1Wwg7X_D6kH6KFHKFGfNaGXZXYV1d0abYqRat8s9vJi5g_EwZjcWW5xujto_n_2xipw2wgXFcQEq494M-zMufVS0Lja22xA2aOvOXuICAL1p-uZpatv7voKmxWTq3ncwCGjRGptAEKNPvlVx8tqfygePGj81c8fn4WvP5DS_CnqbnbTpmM3hIk0n5lhRuktm57kc-F2z1bS2-EnviWKVI-CtlTAER&lang=sage" }],
+				tags: ["SageMath", "linear algebra", "eigenvalues"],
+				summary: "Gershgorin circle theorem roughly states that the eigenvalues of an \\(n \\times n\\) matrix lie inside \\(n\\) circles where \\(i\\)-th circle is centred at \\(A_{i,i}\\) and its radius is the sum of the absolute values of the off-diagonal entries of the \\(i\\)-th row of \\(A\\). This Sage code draws the circles for a given matrix."
+			},
+			{
+				area: "outreach",
+				name: "Counting from one to infinity",
+				img: "images/thumbs/talk-counting-infinity.webp",
+				tags: ["talk", "outreach", "infinity"],
+				summary: "High School Math Camp, U of Calgary, 2017, Calgary"
+			},
+			{
+				area: "outreach",
+				name: "Real life applications of calculus and linear algebra",
+				img: "images/thumbs/talk-calculus-apps.webp",
+				tags: ["talk", "outreach", "applications"],
+				summary: "Student Colloquium, U of Calgary, 2016, Calgary"
+			},
+			{
+				area: "outreach",
+				name: "Touching infinity",
+				img: "images/thumbs/talk-touching-infinity.webp",
+				tags: ["talk", "outreach", "infinity"],
+				summary: "Junior Math Contestants, U of Calgary, 2016, Calgary"
+			},
+			{
+				area: "outreach",
+				name: "The Role of Intention and Initiative",
+				img: "images/thumbs/talk-tektalk.webp",
+				links: [{ label: "Slides", url: "research/talks/the_role_of_intention_and_initiative.pdf" }],
+				tags: ["talk", "outreach", "motivation"],
+				summary: "TekTalk, Vancouver"
+			},
+			{
+				area: "outreach",
+				name: "On mathematics education",
+				img: "images/thumbs/talk-math-education.webp",
+				tags: ["talk", "outreach", "education"],
+				summary: "Parviz Shahriari Foundation, 2008, Tehran"
+			},
+			{
+				area: "outreach",
+				name: "Biweekly math problem solving seminars",
+				img: "images/thumbs/talk-problem-solving.webp",
+				tags: ["talk", "outreach", "problem solving"],
+				summary: "Amirkabir U of Technology, 2006, Tehran"
+			},
+			{
+				area: "outreach",
+				name: "Newton's method",
+				img: "images/thumbs/edu-newtons-method.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/newtons_method" }],
+				tags: ["Python", "calculus", "visualization"],
+				summary: "Root approximation with visualization"
+			},
+			{
+				area: "outreach",
+				name: "Newton's method (animated)",
+				img: "images/thumbs/edu-newton-animated.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/newtons_method_animated" }],
+				tags: ["Python", "calculus", "animation"],
+				summary: "Step-by-step animation of Newton's method convergence"
+			},
+			{
+				area: "outreach",
+				name: "Taylor expansion (animated)",
+				img: "images/thumbs/edu-taylor.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/taylor_expansion_animated_dir" }],
+				tags: ["Python", "calculus", "animation"],
+				summary: "Animated Taylor polynomial approximation"
+			},
+			{
+				area: "outreach",
+				name: "Partial fraction decomposition",
+				img: "images/thumbs/edu-partial-fractions.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/step_by_step_partial_fraction_decomposition" }],
+				tags: ["Python", "calculus", "step by step"],
+				summary: "Step-by-step partial fraction decomposition"
+			},
+			{
+				area: "outreach",
+				name: "3D plot with level curves",
+				img: "images/thumbs/edu-level-curves.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/plot3d_level_curves" }],
+				tags: ["Python", "calculus", "visualization"],
+				summary: "Interactive 3D surface with level curve visualization"
+			},
+			{
+				area: "outreach",
+				name: "3D plot with cross-sections",
+				img: "images/thumbs/edu-cross-sections.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/plot3d_cross_sections" }],
+				tags: ["Python", "calculus", "visualization"],
+				summary: "3D surface with cross-section slices"
+			},
+			{
+				area: "outreach",
+				name: "Gradient descent (2 variables)",
+				img: "images/thumbs/edu-gradient-descent.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/calculus/gradient_descent_for_two_variables_with_plot" }],
+				tags: ["Python", "optimization", "visualization"],
+				summary: "Gradient descent optimization with contour plot"
+			},
+			{
+				area: "outreach",
+				name: "Linearization with Jacobian",
+				img: "images/thumbs/edu-linearize-jacobian.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/education/tree/main/linear_algebra/linearize_jacobian" }],
+				tags: ["Python", "linear algebra", "visualization"],
+				summary: "Jacobian matrix linearization visualization"
+			},
+			{
+				area: "outreach",
+				name: "Optical illusion",
+				img: "images/projects/optical_illusion.png",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/arts_and_recreation/tree/main/an_optical_illusion" }],
+				tags: ["Python", "generative art", "visualization"],
+				summary: "Mathematical optical illusion generator"
+			},
+			{
+				area: "outreach",
+				name: "Modular times table graph",
+				img: "images/thumbs/arts-timestable.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/arts_and_recreation/tree/main/modular_timestable_graph" }],
+				tags: ["Python", "generative art", "number theory"],
+				summary: "Circular multiplication table visualizations"
+			},
+			{
+				area: "outreach",
+				name: "Lissajous curve table",
+				img: "images/thumbs/arts-lissajous.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/arts_and_recreation/tree/main/lissajouse_curve_table" }],
+				tags: ["Python", "generative art", "animation"],
+				summary: "Animated Lissajous curve patterns"
+			},
+			{
+				area: "outreach",
+				name: "Random walker art",
+				img: "images/thumbs/arts-random-walkers.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/arts_and_recreation/tree/main/random_walkers_art" }],
+				tags: ["Python", "generative art", "simulation"],
+				summary: "Generative art from random walk simulations"
+			},
+			{
+				area: "outreach",
+				name: "TeX goodies",
+				img: "images/thumbs/code-tex.webp",
+				links: [{ label: "Code", url: "https://github.com/k1monfared/tex_goodies" }],
+				tags: ["LaTeX", "typesetting", "tools"],
+				summary: "Assortment of LaTeX useful projects"
+			},
+			{
+				area: "outreach",
+				name: "A full matrix with given eigenvalues",
+				img: "images/projects/full_matrix_eigenvalues.png",
+				links: [{ label: "Read", url: "https://k1monfared.wordpress.com/2016/04/18/a-full-matrix-with-given-eigenvalues" }],
+				tags: ["blog", "linear algebra", "eigenvalues"],
+				summary: "A full matrix with given eigenvalues"
+			},
+			{
+				area: "outreach",
+				name: "On the last digits of consecutive prime numbers",
+				img: "images/projects/prime_last_digits.png",
+				links: [{ label: "Read", url: "https://k1monfared.wordpress.com/2016/03/23/on-the-last-digits-of-conscutive-prime-numbers" }],
+				tags: ["blog", "number theory", "primes"],
+				summary: "On the last digits of consecutive prime numbers"
+			},
+			{
+				area: "outreach",
+				name: "Multiplication graph",
+				img: "images/projects/multiplication_graph.png",
+				links: [{ label: "Read", url: "https://k1monfared.wordpress.com/2016/02/03/multiplication-graph/" }],
+				tags: ["blog", "number theory", "visualization"],
+				summary: "Multiplication graph"
+			},
+			{
+				area: "outreach", name: "Visual Gale-Shapley algorithm", img: "images/projects/visual_gale_shapley.png",
+				links: [{ label: "Output", url: "https://github.com/k1monfared/decision_theory/blob/HEAD/visual_gale_shapley/README.md" }, { label: "Code", url: "https://github.com/k1monfared/decision_theory/tree/main/visual_gale_shapley" }],
+				tags: ["game theory", "stable matching", "visualization"],
+				summary: "A visual walkthrough of the Gale-Shapley stable-marriage algorithm: day-by-day proposals and acceptances with color-coded preference tables, showing how the proposing side determines who is favored."
+			}
+		];
+
+		// Repos with a hero chart copied into images/projects/<repo>.png
+		const HERO = new Set(["ad_attribution", "variance_reduction_methods", "outlier_handling_methods",
+			"novelty_effect_analysis", "seasonal_extrapolation", "data_acquisition_simulation",
+			"user_topic_interest_manager", "artist_journey", "cohort_audience_recommender", "LTV",
+			"time_series_anomaly_detection", "star_rating_regression_analysis", "music_market_shifts",
+			"content_quality_evaluation_llm", "news_reader", "claude_public_skills",
+			"manufacturing_taste", "large_dog_breeds", "mortgage_rate_tracker", "cafe_manager",
+			"machine_learning", "terminal", "states_during_regime_change", "alberta_schools_dropout",
+			"cantstop-game", "license_explorer"]);
+
+		function card(p) {
+			const links = [];
+			const demoUrl = p.demoUrl || (p.demo ? PAGES + p.repo + "/" : null);
+			// Order: Output (the README write-up), then Code, then Demo.
+			// blob/HEAD resolves to the repo default branch (main or master), so the
+			// README link is real regardless of which branch a repo uses.
+			if (p.repo) links.push(`<a class="proj-pill" href="${GH + p.repo}/blob/HEAD/README.md" target="_blank" rel="noopener">Output</a>`);
+			if (p.repo) links.push(`<a class="proj-pill" href="${GH + p.repo}" target="_blank" rel="noopener">Code</a>`);
+			if (demoUrl) links.push(`<a class="proj-pill demo" href="${demoUrl}" target="_blank" rel="noopener">Demo</a>`);
+			(p.links || []).forEach(l => links.push(`<a class="proj-pill" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`));
+			const tags = (p.tags || []).map(t => `<span class="proj-tag">${t}</span>`).join("");
+			const pitch = p.pitch ? `<p class="proj-pitch">${p.pitch}</p>` : "";
+			const img = p.img || (HERO.has(p.repo) ? `images/projects/${p.repo}.png` : null);
+			const mediaCls = "proj-media" + (p.noInvert ? " no-invert" : "");
+			const banner = img ? `<div class="proj-media-wrap"><img class="${mediaCls}" src="${img}" alt="" loading="lazy"></div>` : "";
+			return `<article class="proj-card">
+				${banner}
+				<div class="proj-body">
+					<h3 class="proj-name">${p.name}</h3>
+					<div class="proj-links">${links.join("")}</div>
+					<p class="proj-summary">${p.summary}</p>
+					${pitch}
+					<div class="proj-tags">${tags}</div>
+				</div>
+			</article>`;
+		}
+
+		// Academic research cards: each clusters several papers/theses by topic,
+		// with talks folded into the same card. Links are verified (arXiv/DOI live,
+		// PDFs and thumbnails served locally from research/).
+		const RESEARCH = [
+			{
+				area: "matrix_graph", name: "Inverse eigenvalue problems and the Jacobian method",
+				img: "images/projects/jacobian_iep.png", noInvert: true,
+				blurb: "Given a graph and target spectral data, construct a matrix that realizes it. The unifying tool is the Jacobian method, which turns a single solution into a whole neighborhood of them and extends tree results to any connected graph. The same circle of ideas reaches infinite graphs, structured matrix polynomials (linked vibrating systems), and signed-graph Laplacian inertia.",
+				items: [
+					{ title: "Construction of matrices with a given graph and prescribed interlaced spectral data", meta: "with B. L. Shader &middot; Linear Algebra Appl. 438 (2013)", links: [{ label: "PDF", url: "research/2013_Construction_of_matrices_with_a_given_graph_and_prescribed_interlaced_spectral_data.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2013.01.036" }] },
+					{ title: "The λ-τ structured inverse eigenvalue problem", meta: "with B. L. Shader &middot; Linear and Multilinear Algebra 63 (2015)", links: [{ label: "PDF", url: "research/2015_The_lambda-tau_structured_inverse_eigenvalue_problem.pdf" }, { label: "DOI", url: "https://doi.org/10.1080/03081087.2014.1003527" }] },
+					{ title: "Construction of real skew-symmetric matrices from interlaced spectral data, and graph", meta: "with S. Mallik &middot; Linear Algebra Appl. 471 (2015)", links: [{ label: "PDF", url: "research/2015_Construction_of_real_skew-symmetric_matrices_from_interlaced_spectral_data,_and_graph.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2015.01.001" }, { label: "arXiv", url: "https://arxiv.org/abs/1412.6085" }] },
+					{ title: "The nowhere-zero eigenbasis problem for a graph", meta: "with B. L. Shader &middot; Linear Algebra Appl. 505 (2016)", links: [{ label: "PDF", url: "research/2016_The_nowhere-zero_eigenbasis_problem_for_a_graph.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2016.04.028" }] },
+					{ title: "Existence of a not necessarily symmetric matrix with given distinct eigenvalues and graph", meta: "Linear Algebra Appl. 527 (2017)", links: [{ label: "PDF", url: "research/2017_Existence_of_a_not_necessarily_symmetric_matrix_with_given_distinct_eigenvalues_and_graph.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2017.04.006" }, { label: "arXiv", url: "https://arxiv.org/abs/1604.02195" }] },
+					{ title: "A structured inverse spectrum problem for infinite graphs", meta: "with E. Khanmohammadi &middot; Linear Algebra Appl. 539 (2018)", links: [{ label: "PDF", url: "research/2018_A_structured_inverse_spectrum_problem_for_infinite_graphs.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2017.10.025" }, { label: "arXiv", url: "https://arxiv.org/abs/1512.05834" }] },
+					{ title: "The maximum multiplicity of an eigenvalue of symmetric matrices with a given graph", meta: "with S. Mallik &middot; preprint (2016)", links: [{ label: "PDF", url: "research/2016_The_maximum_multiplicity_of_an_eigenvalue_of_symmetric_matrices_with_a_given_graph.pdf" }, { label: "arXiv", url: "https://arxiv.org/abs/1601.02760" }] },
+					{ title: "Inverse spectral problems for linked vibrating systems and structured matrix polynomials", meta: "with P. Lancaster &middot; preprint (2017)", links: [{ label: "PDF", url: "research/Inverse_spectral_problems_for_linked_vibrating_systems_and_structured_matrix_polynomials.pdf" }, { label: "arXiv", url: "https://arxiv.org/abs/1710.11203" }] },
+					{ title: "Inertias of Laplacian matrices of weighted signed graphs", meta: "with G. MacGillivray, D. D. Olesky, P. van den Driessche &middot; Special Matrices 7 (2019), open access", links: [{ label: "DOI", url: "https://doi.org/10.1515/spma-2019-0026" }, { label: "arXiv", url: "https://arxiv.org/abs/1912.03844" }] },
+					{ title: "The Jacobian Method: The Art of Finding More Needles in Nearby Haystacks (PhD dissertation)", meta: "University of Wyoming (2014)", links: [{ label: "PDF", url: "research/2014_The_Jacobian_Method_The_Art_Of_Finding_More_Needles_in_Nearby_Haystacks_(PhD_dissertation).pdf" }] }
+				],
+				code: [{ label: "combinatorial_matrix_theory", url: "https://github.com/k1monfared/combinatorial_matrix_theory" }],
+				talks: [
+					{ t: "The Jacobian method and structured inverse eigenvalue problems &mdash; JMM, Baltimore (2014)", links: [{ label: "video", url: "https://www.youtube.com/watch?v=a7-UVsDJ-xc" }, { label: "slides", url: "research/talks/PhD-Defense.pdf" }] },
+					{ t: "Using the Jacobian method to solve inverse eigenvalue problems for graphs &mdash; ILAS, Leuven (2016)", links: [] },
+					{ t: "Several examples on the Jacobian method &mdash; CanaDAM, Saskatoon (2015)", links: [] },
+					{ t: "The λ-μ structured inverse eigenvalue problem &mdash; RMMC, Wyoming (2013)", links: [{ label: "slides", url: "research/talks/lambda-mu-short.pdf" }] },
+					{ t: "The λ-τ structured inverse eigenvalue problem", links: [{ label: "slides", url: "research/talks/lambda-tau.pdf" }] },
+					{ t: "Some inverse eigenvalue problems for graphs &mdash; WCLAM, Manitoba (2016)", links: [] }
+				],
+				tags: ["inverse eigenvalue problems", "Jacobian method", "spectral graph theory"]
+			},
+			{
+				area: "matrix_graph", name: "Laplacians, permanents, and combinatorial matrix invariants",
+				img: "images/projects/perrank.png",
+				blurb: "Combinatorial invariants of a graph read off its matrices: a signless-Laplacian analog of the matrix-tree theorem, the permanent-rank and generalized-cycle theory, the Alon-Jaeger-Tarsi nowhere-zero conjecture, and a spectral characterization of matchings.",
+				items: [
+					{ title: "An analog of Matrix Tree Theorem for signless Laplacians", meta: "with S. Mallik &middot; Linear Algebra Appl. 560 (2019)", links: [{ label: "PDF", url: "research/2018_An_analog_of_Matrix_Tree_Theorem_for_signless_Laplacians.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2018.09.016" }, { label: "arXiv", url: "https://arxiv.org/abs/1805.04759" }] },
+					{ title: "On the principal permanent rank characteristic sequences of graphs and digraphs", meta: "with P. Horn, F. Kenter, K. Nowak, J. Sinkovic, J. Tobin &middot; Electron. J. Linear Algebra 31 (2016)", links: [{ label: "PDF", url: "research/2016_On_the_principal_permanent_rank_characteristic_sequences_of_graphs_and_digraphs.pdf" }, { label: "DOI", url: "https://doi.org/10.13001/1081-3810.3117" }, { label: "arXiv", url: "https://arxiv.org/abs/1510.05153" }] },
+					{ title: "On the Permanent Conjecture (Master's thesis)", meta: "University of Wyoming (2012)", links: [{ label: "PDF", url: "research/2012_On_the_Permanent_Conjecture_(Masters_thesis).pdf" }] },
+					{ title: "On the existence of nowhere-zero vectors for linear transformations", meta: "with S. Akbari, M. Jamaali, E. Khanmohammadi, D. Kiani &middot; Bull. Aust. Math. Soc. 82 (2010)", links: [{ label: "PDF", url: "research/2010_On_the_existence_of_nowhere-zero_vectors_for_linear_transformations.pdf" }, { label: "DOI", url: "https://doi.org/10.1017/S0004972710001619" }] },
+					{ title: "Spectral characterization of matchings in graphs", meta: "with S. Mallik &middot; Linear Algebra Appl. 496 (2016)", links: [{ label: "PDF", url: "research/2016_Spectral_characterization_of_matchings_in_graphs.pdf" }, { label: "DOI", url: "https://doi.org/10.1016/j.laa.2016.02.004" }, { label: "arXiv", url: "https://arxiv.org/abs/1602.03590" }] },
+					{ title: "Properties of a nonnegative reciprocal matrix and their application to AHP", meta: "with M. Eslami", links: [] },
+					{ title: "Dissonance networks and social influence", meta: "with O. Atabati, M. Eslami", links: [] }
+				],
+				code: [{ label: "combinatorial_matrix_theory / laplacian", url: "https://github.com/k1monfared/combinatorial_matrix_theory/tree/main/laplacian" }],
+				talks: [
+					{ t: "An analog of Matrix Tree Theorem for signless Laplacians &mdash; CMS Summer Meeting, Regina (2019)", links: [{ label: "slides", url: "research/201906_Regina_CMS.pdf" }] },
+					{ t: "Permanent ranks of matrices and generalized cycles of graphs &mdash; 47th SEICCGTC, Boca Raton (2016)", links: [{ label: "slides", url: "research/talks/Perrank.pdf" }] },
+					{ t: "On the principal permanent rank characteristic sequences of graphs &mdash; JMM, Seattle (2016)", links: [] },
+					{ t: "Why is the permanent rank important? &mdash; Graduate Student Combinatorics Conf., UIUC (2012)", links: [] }
+				],
+				tags: ["signless Laplacian", "permanent rank", "matchings", "Alon-Jaeger-Tarsi"]
+			},
+			{
+				area: "neuro_signal", name: "Graph clustering in epilepsy brain networks",
+				img: "images/projects/epilepsy_clustering.png",
+				blurb: "Spectral clustering, community detection, and the Kuramoto model applied to brain-signal networks, developed with neuroscientists studying seizures. Anti-correlation between neuron firing rates forms communities that shape behaviour around a seizure.",
+				items: [
+					{ title: "Community structure detection and evaluation during preictal and postictal hippocampal depth recordings", meta: "with K. Vasudevan, J. S. Farrell, G. C. Teskey &middot; preprint (2018)", links: [{ label: "PDF", url: "research/Community_structure_detection_and_evaluation_during_preictal_and_postictal_hippocampal_depth_recordings.pdf" }, { label: "arXiv", url: "https://arxiv.org/abs/1804.01568" }] }
+				],
+				note: "Related unpublished explorations: Kuramoto-model analysis of EEG brain networks, default-mode network structure, and seizure detection via anomaly detection.",
+				code: [{ label: "clustering (Kuramoto, network clustering, graph and signal routines)", url: "https://github.com/k1monfared/clustering" }],
+				talks: [
+					{ t: "Graph clustering problems arising in neuroscience &mdash; CanaDAM, Vancouver (2019)", links: [{ label: "slides", url: "research/talks/201906_Vancouver_CanaDAM.pdf" }] },
+					{ t: "Graph partitioning problems arising in neuroscience &mdash; PDMW, Brandon (2018)", links: [] }
+				],
+				tags: ["spectral clustering", "community detection", "epilepsy / EEG"]
+			},
+			{
+				area: "neuro_signal", name: "Graph clustering toolkit (Octave / MATLAB)",
+				img: "images/projects/graph_clustering.png",
+				blurb: "Octave and MATLAB routines for spectral graph clustering and community detection, several of which grew out of the brain-network work.",
+				items: [
+					{ title: "Kuramoto clustering", links: [{ label: "Code", url: "https://github.com/k1monfared/clustering/tree/main/kuramoto_clustering" }] },
+					{ title: "Iterative vs generalized Fiedler clustering", links: [{ label: "Code", url: "https://github.com/k1monfared/clustering/tree/main/iterative_vs_generalized_fiedler_clustering" }] },
+					{ title: "Network clustering toolkit", links: [{ label: "Code", url: "https://github.com/k1monfared/clustering/tree/main/network_clustering_octave_matlab" }] },
+					{ title: "Spectral clustering tools and graph routines", links: [{ label: "Code", url: "https://github.com/k1monfared/clustering/tree/main/matlab_octave_graph_routines" }] },
+					{ title: "Declustering", links: [{ label: "Code", url: "https://github.com/k1monfared/clustering/tree/main/declustering" }] }
+				],
+				code: [{ label: "clustering", url: "https://github.com/k1monfared/clustering" }],
+				tags: ["spectral clustering", "Octave / MATLAB", "graph routines"]
+			}
+		];
+
+		function researchCard(p) {
+			const pill = l => `<a class="proj-pill" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`;
+			const banner = p.img ? `<div class="proj-media-wrap"><img class="proj-media${p.noInvert ? " no-invert" : ""}" src="${p.img}" alt="" loading="lazy"></div>` : "";
+			const items = (p.items || []).map(it => `<li class="rc-paper">
+					<div class="rc-ptitle">${it.title}</div>
+					${it.meta ? `<div class="rc-meta">${it.meta}</div>` : ""}
+					${it.links && it.links.length ? `<div class="rc-links">${it.links.map(pill).join("")}</div>` : ""}
+				</li>`).join("");
+			const note = p.note ? `<p class="rc-note">${p.note}</p>` : "";
+			const code = (p.code && p.code.length) ? `<div class="rc-code"><span class="rc-lbl">Code</span> ${p.code.map(pill).join("")}</div>` : "";
+			const talks = (p.talks && p.talks.length) ? `<details class="rc-talks"><summary>Talks (${p.talks.length})</summary><ul>${p.talks.map(tk => `<li>${tk.t}${tk.links && tk.links.length ? " " + tk.links.map(pill).join(" ") : ""}</li>`).join("")}</ul></details>` : "";
+			const tags = (p.tags || []).map(t => `<span class="proj-tag">${t}</span>`).join("");
+			return `<article class="proj-card">
+				${banner}
+				<div class="proj-body">
+					<h3 class="proj-name">${p.name}</h3>
+					<p class="proj-summary" style="font-weight:500;color:var(--text-muted);">${p.blurb}</p>
+					<ul class="rc-papers">${items}</ul>
+					${note}
+					${code}
+					${talks}
+					<div class="proj-tags">${tags}</div>
+				</div>
+			</article>`;
+		}
+
+		document.querySelectorAll(".proj-grid").forEach(grid => {
+			const area = grid.dataset.area;
+			if (area === "matrix_graph" || area === "neuro_signal") {
+				grid.innerHTML = RESEARCH.filter(p => p.area === area).map(researchCard).join("");
+			} else {
+				grid.innerHTML = PROJECTS.filter(p => p.area === area).map(card).join("");
+			}
+		});
+	</script>
+
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+			window.addEventListener('scroll', () => {
+				if (window.pageYOffset > 300) { scrollToTopBtn.style.opacity = '1'; scrollToTopBtn.style.pointerEvents = 'auto'; }
+				else { scrollToTopBtn.style.opacity = '0'; scrollToTopBtn.style.pointerEvents = 'none'; }
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>

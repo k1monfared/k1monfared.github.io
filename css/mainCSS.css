@@ -177,7 +177,7 @@ a:active {
 }
 
 .myTitleFooter {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: var(--text-dim);
     font-weight: 400;
     letter-spacing: 0.05em;
@@ -212,7 +212,7 @@ a:active {
     color: var(--text-muted);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
     position: relative;
     padding: 0.15rem 0;
@@ -849,7 +849,9 @@ button:hover {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--image-overlay);
+    /* Light wash only: keep the artwork visible while a text-shadow carries
+       title legibility on both dark and light images. */
+    background: rgba(0, 0, 0, 0.22);
     transition: background 0.3s ease;
     z-index: 0;
     border-radius: inherit;
@@ -861,7 +863,7 @@ button:hover {
 }
 
 .expertise-card:hover::before {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.08);
 }
 
 .expertise-card h3,
@@ -874,6 +876,12 @@ button:hover {
     color: #f1f5f9;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
+    /* Black outline around the letters for legibility over any image; the
+       stroke is painted behind the fill so it does not thin the glyphs. */
+    -webkit-text-stroke: 0.6px #000;
+    text-stroke: 0.6px #000;
+    paint-order: stroke fill;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
 .expertise-card p {
@@ -881,6 +889,26 @@ button:hover {
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
+}
+
+/* Card art is stored dark, so it sits right in the default dark theme. In light
+   mode the whole card is inverted as a group to flip the image, then the overlay
+   and text are inverted a second time to cancel, leaving only the image flipped. */
+[data-theme="light"] .expertise-card {
+    filter: invert(1);
+}
+[data-theme="light"] .expertise-card::before,
+[data-theme="light"] .expertise-card h3,
+[data-theme="light"] .expertise-card p {
+    filter: invert(1);
+}
+
+/* In light mode the card titles read as black with a white outline. */
+[data-theme="light"] .expertise-card h3 {
+    color: #0f172a;
+    -webkit-text-stroke-color: #ffffff;
+    text-stroke-color: #ffffff;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
 /* ===== Horizontal career timeline (homepage) ===== */

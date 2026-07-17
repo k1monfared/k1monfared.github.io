@@ -13,6 +13,19 @@
 		pathPrefix = '../';
 	}
 
+	// ---- Shared preferences (dark/light theme + zoom level) via a cookie, so
+	// every page on the site opens with the same look the visitor last chose. ----
+	function setCookie(k, v) { try { document.cookie = k + '=' + encodeURIComponent(v) + ';path=/;max-age=31536000;samesite=lax'; } catch (e) {} }
+	function getCookie(k) { var m = document.cookie.match('(?:^|; )' + k + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : null; }
+	function ls(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+	function applySavedPrefs() {
+		var t = getCookie('theme') || ls('theme') || 'dark';
+		document.documentElement.setAttribute('data-theme', t);
+		try { localStorage.setItem('theme', t); } catch (e) {}
+		setCookie('theme', t);
+	}
+	applySavedPrefs();
+
 	// Blog posts data (sorted by date, newest first)
 	var blogPosts = [
 		{
@@ -43,7 +56,8 @@
 	var navHTML = `<nav id="stickThis">
 	<div id="menu">
 		<a href="${pathPrefix}index.html">home</a>
-		<a href="${pathPrefix}math-and-cs.html">math & cs</a>
+		<a href="${pathPrefix}projects.html">projects</a>
+		<a href="${pathPrefix}notes.html">notes</a>
 		<a href="${pathPrefix}interests.html">interests</a>
 		<a href="${pathPrefix}about.html">about</a>
 	</div>
@@ -166,6 +180,7 @@
 			var next = current === 'dark' ? 'light' : 'dark';
 			document.documentElement.setAttribute('data-theme', next);
 			try { localStorage.setItem('theme', next); } catch (e) {}
+			setCookie('theme', next);
 		});
 	}
 

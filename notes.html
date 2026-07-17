@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://k1monfared.github.io/site_kit/js/theme.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/mainCSS.css" />
+	<link rel="stylesheet" type="text/css" href="css/otherStyles.css" />
+	<title>Keivan Monfared - Notes</title>
+	<!-- Navigation loader script -->
+	<script type="text/javascript" src="js/nav-loader.js"></script>
+</head>
+
+<body>
+	<div class="bg-gradient"></div>
+
+	<header class="site-header"></header>
+
+	<div id="stick-here"></div>
+	<div id="nav-container"></div>
+
+	<div class="container">
+
+		<main class="main-content">
+
+			<!-- Notes intro -->
+			<section class="content-card">
+				<h2>Notes</h2>
+				<p>A collection of notebooks, logs, and small apps. Each entry links to its own page.</p>
+			</section>
+
+			<!-- Notes list -->
+			<section class="content-card">
+				<div class="sponsor-grid">
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/blog/">
+						<div class="sponsor-body"><h3>Blog</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/photoblog/">
+						<div class="sponsor-body"><h3>Photoblog</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/news_reader/">
+						<div class="sponsor-body"><h3>News Reader</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/movies/">
+						<div class="sponsor-body"><h3>Movies</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/books/">
+						<div class="sponsor-body"><h3>Books</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/podcasts/">
+						<div class="sponsor-body"><h3>Podcasts</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/people/">
+						<div class="sponsor-body"><h3>People</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/places/">
+						<div class="sponsor-body"><h3>Places</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/products/">
+						<div class="sponsor-body"><h3>Products</h3></div>
+					</a>
+					<a class="sponsor-card" href="https://k1monfared.github.io/notes/shopping/">
+						<div class="sponsor-body"><h3>Shopping</h3></div>
+					</a>
+				</div>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<div id="footer-container"></div>
+		</footer>
+	</div>
+
+	<button class="scroll-to-top" aria-label="Scroll to top"></button>
+	<script>
+		const scrollToTopBtn = document.querySelector('.scroll-to-top');
+		if (scrollToTopBtn) {
+			scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			window.addEventListener('scroll', () => {
+				scrollToTopBtn.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+				scrollToTopBtn.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+			});
+			scrollToTopBtn.style.opacity = '0';
+			scrollToTopBtn.style.pointerEvents = 'none';
+		}
+	</script>
+</body>
+
+</html>
