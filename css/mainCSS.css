@@ -554,6 +554,25 @@ button:hover {
     width: 100%;
 }
 
+/* On non-mobile, pin the footer to the bottom of the screen (always visible).
+   Content gets bottom padding so nothing hides behind the fixed bar. */
+@media (min-width: 768px) {
+    .site-footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin-top: 0;
+        padding: 0.75rem 0;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border-color);
+        z-index: 50;
+    }
+    .container {
+        padding-bottom: 84px;
+    }
+}
+
 .footer-credit {
     color: var(--text-dimmer);
     font-size: 0.85rem;
@@ -903,6 +922,14 @@ button:hover {
     filter: invert(1);
 }
 
+/* Cards whose art must not invert (photos): keep the image and cancel the group flip. */
+[data-theme="light"] .expertise-card.no-invert,
+[data-theme="light"] .expertise-card.no-invert::before,
+[data-theme="light"] .expertise-card.no-invert h3,
+[data-theme="light"] .expertise-card.no-invert p {
+    filter: none;
+}
+
 /* In light mode the card titles read as black with a white outline. */
 [data-theme="light"] .expertise-card h3 {
     color: #0f172a;
@@ -958,7 +985,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 105px;
+    width: auto;
     transform: translateX(-50%);
 }
 
@@ -995,8 +1022,26 @@ button:hover {
 .h-timeline-card {
     text-align: center;
     padding: 0.25rem;
-    width: 105px;
+    width: auto;
+    max-width: 120px;
+    position: relative;
 }
+
+/* Dotted connector from the dot on the line to the (possibly offset) card.
+   Height is set per-card by the layout script via the --conn variable. It picks
+   up the accent colour along with the bar when its entry is hovered. */
+.h-timeline-card::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: var(--conn, 0);
+    border-left: 1px dotted var(--text-dimmer);
+    pointer-events: none;
+}
+.h-timeline-entry.above .h-timeline-card::after { top: 100%; }
+.h-timeline-entry.below .h-timeline-card::after { bottom: 100%; }
+.h-timeline-entry:hover .h-timeline-card::after { border-color: var(--link-default); }
 
 .h-timeline-date {
     font-size: 0.65rem;
@@ -1041,6 +1086,20 @@ button:hover {
 
 .h-timeline-entry.edge-left .h-timeline-card {
     text-align: left;
+}
+
+/* On narrow screens the proportional timeline can't fit; instead of letting the
+   absolutely-positioned cards overlap and spill outside the page, keep the full
+   spacing and let the whole timeline scroll horizontally within its box. */
+@media (max-width: 760px) {
+    .h-timeline-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .h-timeline {
+        min-width: 700px;
+    }
 }
 
 /* ===== Selected highlights (homepage) ===== */
@@ -1382,6 +1441,30 @@ button:hover {
 
 .interest-card ul li {
     padding: 0.2rem 0;
+}
+
+.interest-card h3 a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.interest-card h3 a:hover {
+    color: var(--link-default);
+}
+
+.interest-card .interest-links {
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.interest-card .interest-links a {
+    color: var(--link-default);
+    text-decoration: none;
+}
+
+.interest-card .interest-links a:hover {
+    text-decoration: underline;
 }
 
 /* ===== About page ===== */

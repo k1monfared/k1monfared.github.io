@@ -47,7 +47,7 @@
 					<a href="projects.html#recommenders" class="expertise-card" style="background-image: url('images/projects/recommenders_home.png')"><h3>Recommenders and personalization</h3></a>
 					<a href="projects.html#modeling" class="expertise-card" style="background-image: url('images/projects/modeling_home.png')"><h3>Modeling and evaluation</h3></a>
 					<a href="projects.html#research" class="expertise-card" style="background-image: url('images/projects/research_home.png')"><h3>Research and analysis</h3></a>
-					<a href="projects.html#more" class="expertise-card" style="background-image: url('images/projects/large_dog_breeds.png')"><h3>Applied products and tools</h3></a>
+					<a href="projects.html#more" class="expertise-card" style="background-image: url('images/projects/cantstop-game.png')"><h3>Applied products and tools</h3></a>
 					<a href="projects.html#matrix-graph" class="expertise-card" style="background-image: url('images/projects/matrix_home.png')"><h3>Combinatorial matrix theory and algebraic graph theory</h3></a>
 					<a href="projects.html#neuro-signal" class="expertise-card" style="background-image: url('images/computationalneuroscience.webp')"><h3>Computational neuroscience and signal processing</h3></a>
 					<a href="projects.html#teaching" class="expertise-card" style="background-image: url('images/projects/teaching_home.png')"><h3>Teaching and outreach</h3></a>
@@ -72,6 +72,9 @@
 						<div class="h-timeline-bar" id="bar-umg" style="left:68%;width:6%"></div>
 						<div class="h-timeline-bar" id="bar-yelp" style="left:74%;width:12%"></div>
 						<div class="h-timeline-bar" id="bar-quora" style="left:86%;width:14%"></div>
+						<!-- Consulting is an ongoing, concurrent role (2018-present); the bar spans
+						     the full range and the card sits in the open space near "present". -->
+						<div class="h-timeline-bar" id="bar-consult" style="left:54%;width:46%"></div>
 
 						<!-- End year marker -->
 						<div class="h-timeline-years"><span style="left:94%">2026</span></div>
@@ -100,25 +103,29 @@
 							<div class="h-timeline-card"><div class="h-timeline-date">2015</div><div class="h-timeline-role">Postdoc</div><div class="h-timeline-org"><a href="https://science.ucalgary.ca/mathematics-statistics">U of Calgary</a></div></div>
 							<div class="h-timeline-dot"></div>
 						</div>
-						<div class="h-timeline-entry below" data-bar="bar-pims" style="left:58%">
+						<div class="h-timeline-entry below" data-bar="bar-consult" style="left:54%">
 							<div class="h-timeline-dot"></div>
+							<div class="h-timeline-card"><div class="h-timeline-date">2016&ndash;present</div><div class="h-timeline-role">Consultant</div><div class="h-timeline-org">Independent</div></div>
+						</div>
+						<div class="h-timeline-entry above" data-bar="bar-pims" style="left:58%">
 							<div class="h-timeline-card"><div class="h-timeline-date">2017</div><div class="h-timeline-role">PIMS Postdoc</div><div class="h-timeline-org"><a href="https://web.pims.math.ca/sites/university-calgary">U of Calgary</a></div></div>
+							<div class="h-timeline-dot"></div>
 						</div>
-						<div class="h-timeline-entry above" data-bar="bar-uvic" style="left:66%">
+						<div class="h-timeline-entry below" data-bar="bar-uvic" style="left:66%">
+							<div class="h-timeline-dot"></div>
 							<div class="h-timeline-card"><div class="h-timeline-date">2019</div><div class="h-timeline-role">Postdoc</div><div class="h-timeline-org"><a href="https://www.uvic.ca/science/math-statistics">U of Victoria</a></div></div>
-							<div class="h-timeline-dot"></div>
 						</div>
-						<div class="h-timeline-entry below" data-bar="bar-umg" style="left:68%">
-							<div class="h-timeline-dot"></div>
+						<div class="h-timeline-entry above" data-bar="bar-umg" style="left:68%">
 							<div class="h-timeline-card"><div class="h-timeline-date">2019</div><div class="h-timeline-role">Data Scientist</div><div class="h-timeline-org"><a href="https://www.universalmusic.com/">UMG / Ingrooves</a></div></div>
+							<div class="h-timeline-dot"></div>
 						</div>
-						<div class="h-timeline-entry above" data-bar="bar-yelp" style="left:74%">
+						<div class="h-timeline-entry below" data-bar="bar-yelp" style="left:74%">
+							<div class="h-timeline-dot"></div>
 							<div class="h-timeline-card"><div class="h-timeline-date">2021</div><div class="h-timeline-role">Data Scientist</div><div class="h-timeline-org"><a href="https://www.yelp.com">Yelp</a></div></div>
-							<div class="h-timeline-dot"></div>
 						</div>
-						<div class="h-timeline-entry below" data-bar="bar-quora" style="left:86%">
-							<div class="h-timeline-dot"></div>
+						<div class="h-timeline-entry above" data-bar="bar-quora" style="left:86%">
 							<div class="h-timeline-card"><div class="h-timeline-date">2024</div><div class="h-timeline-role">Senior Data Scientist</div><div class="h-timeline-org"><a href="https://www.quora.com">Quora</a></div></div>
+							<div class="h-timeline-dot"></div>
 						</div>
 					</div>
 				</div>
@@ -136,6 +143,50 @@
 						if (bar) bar.classList.remove('highlight');
 					});
 				});
+
+				// Collision-avoidance for the timeline labels. For each side of the line
+				// (above / below) we place cards left-to-right into stacked "tiers": a card
+				// that would horizontally overlap the last card in a tier is pushed to the
+				// next tier further from the line, so labels never overlap. The timeline
+				// height then grows to fit the deepest stack.
+				function layoutTimeline() {
+					var tl = document.querySelector('.h-timeline');
+					if (!tl) return;
+					var maxExt = 0;
+					var GAP = 6;
+					['above', 'below'].forEach(function (side) {
+						var entries = Array.prototype.slice.call(tl.querySelectorAll('.h-timeline-entry.' + side));
+						entries.forEach(function (e) { e.querySelector('.h-timeline-card').style.transform = ''; });
+						entries.sort(function (a, b) { return a.offsetLeft - b.offsetLeft; });
+						// Minimal-offset placement: each card (using its real content box) is pushed
+						// away from the line only as far as needed to clear the cards it actually
+						// overlaps, so labels that fit stay low.
+						var placed = [];
+						entries.forEach(function (e) {
+							var card = e.querySelector('.h-timeline-card');
+							var w = card.offsetWidth, h = card.offsetHeight, cx = e.offsetLeft;
+							var L = cx - w / 2, R = cx + w / 2;
+							var off = 0, changed = true;
+							while (changed) {
+								changed = false;
+								for (var i = 0; i < placed.length; i++) {
+									var p = placed[i];
+									if (p.R > L - GAP && p.L < R + GAP && !(off >= p.bottom + GAP || off + h <= p.top - GAP)) {
+										off = p.bottom + GAP; changed = true;
+									}
+								}
+							}
+							placed.push({ L: L, R: R, top: off, bottom: off + h });
+							card.style.transform = side === 'above' ? 'translateY(-' + off + 'px)' : 'translateY(' + off + 'px)';
+							card.style.setProperty('--conn', (off + 6) + 'px');
+							if (off + h > maxExt) maxExt = off + h;
+						});
+					});
+					tl.style.height = (2 * maxExt + 70) + 'px';
+				}
+				window.addEventListener('load', layoutTimeline);
+				window.addEventListener('resize', function () { clearTimeout(window.__tlT); window.__tlT = setTimeout(layoutTimeline, 150); });
+				if (document.readyState === 'complete') layoutTimeline();
 			</script>
 
 		</main>
