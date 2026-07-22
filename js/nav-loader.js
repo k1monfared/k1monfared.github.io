@@ -96,7 +96,44 @@
 			initializeStickyNav();
 			// Dispatch event so page-specific scripts can populate small_menu
 			window.dispatchEvent(new Event('navigationLoaded'));
+			// Highlight the sub-nav link for whichever section is in view
+			setupSubnavScrollSpy();
 		}
+	}
+
+	// Scroll-spy for the section sub-nav: as the reader scrolls, the link for the
+	// section currently in view gets the .sub-active highlight; clicking a link
+	// also lights it immediately. Only runs when the sub-nav holds in-page anchors
+	// (e.g. projects/about/interests), not the blog prev/next links.
+	function setupSubnavScrollSpy() {
+		var links = Array.prototype.slice.call(document.querySelectorAll('#small_menu a[href^="#"]'));
+		if (!links.length) return;
+		var items = [];
+		links.forEach(function (a) {
+			var el = document.getElementById(a.getAttribute('href').slice(1));
+			if (el) items.push({ a: a, el: el });
+		});
+		if (!items.length) return;
+		function setActive(a) {
+			links.forEach(function (x) { x.classList.remove('sub-active'); });
+			if (a) a.classList.add('sub-active');
+		}
+		function onScroll() {
+			var offset = 140; // clear the sticky nav bar
+			var cur = items[0];
+			for (var i = 0; i < items.length; i++) {
+				if (items[i].el.getBoundingClientRect().top <= offset) cur = items[i];
+			}
+			// At the very bottom, force the last section active (it may be too short to reach the offset).
+			if ((window.innerHeight + (window.scrollY || window.pageYOffset)) >= document.documentElement.scrollHeight - 4) {
+				cur = items[items.length - 1];
+			}
+			setActive(cur ? cur.a : null);
+		}
+		links.forEach(function (a) { a.addEventListener('click', function () { setActive(a); }); });
+		window.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('resize', onScroll);
+		onScroll();
 	}
 
 	// Load blog post navigation (prev/current/next)
