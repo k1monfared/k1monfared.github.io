@@ -897,8 +897,8 @@ button:hover {
     margin-bottom: 0.5rem;
     /* Black outline around the letters for legibility over any image; the
        stroke is painted behind the fill so it does not thin the glyphs. */
-    -webkit-text-stroke: 1.8px #000;
-    text-stroke: 1.8px #000;
+    -webkit-text-stroke: 3px #000;
+    text-stroke: 3px #000;
     paint-order: stroke fill;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.98), 0 0 14px rgba(0, 0, 0, 0.9);
 }
