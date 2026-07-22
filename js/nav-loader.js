@@ -49,7 +49,7 @@
 	// Header HTML template
 	var headerHTML = `<div class="header-content">
 	<h1 class="myTitle">KEIVAN MONFARED</h1>
-	<p class="myTitleFooter">Mathematician | Data Scientist | Communicator</p>
+	<p class="myTitleFooter">Mathematician | Data Scientist | Builder</p>
 </div>`;
 
 	// Navigation HTML template with dynamic path prefix
