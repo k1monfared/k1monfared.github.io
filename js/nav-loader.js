@@ -71,7 +71,7 @@
 	<a href="http://www.github.com/k1monfared" target="_blank" aria-label="GitHub" class="social-icon social-github"></a>
 	<a href="http://www.linkedin.com/in/k1monfared" target="_blank" aria-label="LinkedIn" class="social-icon social-linkedin"></a>
 	<a href="http://scholar.google.com/citations?hl=en&user=usBmFlsAAAAJ" target="_blank" aria-label="Google Scholar" class="social-icon social-scholar"></a>
-	<a href="https://arxiv.org/search/?searchtype=author&query=Monfared%2C+K" target="_blank" aria-label="arXiv" class="social-icon social-arxiv"></a>
+	<a href="https://arxiv.org/search/?query=Monfared%2C+Keivan&searchtype=all" target="_blank" aria-label="arXiv" class="social-icon social-arxiv"></a>
 	<a href="${pathPrefix}sponsor.html" aria-label="Support my work" title="Support my work" class="social-icon social-sponsor"></a>
 </div>`;
 
